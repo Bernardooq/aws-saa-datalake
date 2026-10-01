@@ -24,7 +24,6 @@ aws-saa-datalake/
 └── AWS_SAA-C03/                             # AWS Solutions Architect - Associate
     ├── README.md                            # Guía de la certificación y herramientas
     ├── extractor.py                         # CLI para extracción automatizada de cursos PDF
-    ├── secciones_solutions_architect.txt   # Configuración de secciones del curso
     └── spanish/                             # Bóveda en Español (Obsidian Vault)
         ├── 00_MOC_SAA-C03.md                # Map of Content (Índice central de apuntes)
         └── Knowledge_Base/                  # 29 módulos organizados
