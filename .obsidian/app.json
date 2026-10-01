@@ -1,1 +1,15 @@
-{}
+{
+  "useMarkdownLinks": false,
+  "newLinkFormat": "shortest",
+  "attachmentFolderPath": "./media",
+  "userIgnoreFilters": [
+    "**/media/**",
+    "**/*.png",
+    "**/*.jpg",
+    "**/*.jpeg"
+  ],
+  "livePreview": true,
+  "showLineNumber": true,
+  "foldHeading": true,
+  "foldIndent": true
+}
