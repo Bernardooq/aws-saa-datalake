@@ -197,36 +197,70 @@ def main():
     args = parser.parse_args()
     script_dir = Path(__file__).parent
 
-    # Resolver PDF
+    # Resolver PDF (por CLI o interactivo)
     if args.pdf:
         pdf_path = Path(args.pdf)
     else:
-        # Búsqueda automática de algún PDF en el directorio del script
-        candidatos_pdf = list(script_dir.glob("*.pdf"))
+        # Búsqueda automática de PDFs en el entorno de trabajo
+        candidatos_pdf = list(script_dir.glob("*.pdf")) + list(script_dir.glob("*/*.pdf"))
         if candidatos_pdf:
-            pdf_path = candidatos_pdf[0]
+            print("PDFs detectados:")
+            for idx, c in enumerate(candidatos_pdf, 1):
+                print(f"  [{idx}] {c}")
+            entrada = input("\nIngresa la ruta al archivo PDF (o número detectado) [Enter para cancelar]: ").strip()
+            if entrada.isdigit() and 1 <= int(entrada) <= len(candidatos_pdf):
+                pdf_path = candidatos_pdf[int(entrada) - 1]
+            elif entrada:
+                pdf_path = Path(entrada.strip('\"\''))
+            else:
+                pdf_path = candidatos_pdf[0]
         else:
-            pdf_path = script_dir / "curso.pdf"
+            entrada = input("Ingresa la ruta al archivo PDF fuente: ").strip('\"\'')
+            if not entrada:
+                print("❌ Se requiere la ruta al archivo PDF para continuar.")
+                return
+            pdf_path = Path(entrada)
 
-    # Resolver Secciones
+    # Resolver Directorio Destino (por CLI o interactivo)
+    if args.output and args.output != "Knowledge_Base":
+        output_dir = Path(args.output)
+    elif args.output == "Knowledge_Base" and not args.pdf:
+        entrada_out = input(f"Ingresa la carpeta destino [por defecto: {args.output}]: ").strip('\"\'')
+        output_dir = Path(entrada_out) if entrada_out else Path(args.output)
+    else:
+        output_dir = Path(args.output)
+
+    # Resolver Archivo de Secciones
     if args.config:
         config_path = Path(args.config)
         secciones = cargar_secciones_desde_archivo(config_path)
     else:
-        archivo_secciones = script_dir / "secciones_solutions_architect.txt"
-        if archivo_secciones.exists():
-            secciones = cargar_secciones_desde_archivo(archivo_secciones)
+        # Búsqueda automática de archivos con prefijo _secciones
+        candidatos_sec = list(script_dir.glob("_secciones*.txt")) + list(script_dir.glob("*/_secciones*.txt"))
+        if candidatos_sec:
+            print("\nArchivos de secciones detectados:")
+            for idx, s in enumerate(candidatos_sec, 1):
+                print(f"  [{idx}] {s}")
+            entrada_sec = input("Selecciona archivo de secciones (número o ruta) [Enter para usar el primero]: ").strip()
+            if entrada_sec.isdigit() and 1 <= int(entrada_sec) <= len(candidatos_sec):
+                secciones = cargar_secciones_desde_archivo(candidatos_sec[int(entrada_sec) - 1])
+            elif entrada_sec:
+                secciones = cargar_secciones_desde_archivo(Path(entrada_sec.strip('\"\'')))
+            else:
+                secciones = cargar_secciones_desde_archivo(candidatos_sec[0])
         else:
-            print("⚠️ No se proporcionó archivo de secciones. Utilizando configuración de ejemplo...")
-            secciones = SECCIONES_EJEMPLO
+            entrada_sec = input("\nRuta al archivo de secciones (_secciones_*.txt) [Enter para usar ejemplo básico]: ").strip('\"\'')
+            if entrada_sec and Path(entrada_sec).exists():
+                secciones = cargar_secciones_desde_archivo(Path(entrada_sec))
+            else:
+                print("⚠️ No se proporcionó archivo de secciones. Utilizando configuración de ejemplo...")
+                secciones = SECCIONES_EJEMPLO
 
     # Configurar patrones de limpieza
     patrones = list(PATRONES_LIMPIEZA_DEFECTO)
     for autor in args.autores:
         patron_autor = rf'(?i){re.escape(autor)}'
         patrones.append(patron_autor)
-
-    output_dir = Path(args.output) if args.output else (script_dir / "Knowledge_Base")
 
     extraer_curso(
         pdf_path=pdf_path,

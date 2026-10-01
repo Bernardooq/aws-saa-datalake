@@ -12,6 +12,8 @@ env/
 AWS_SAA-C03/*.pdf
 raw_data/
 **/raw_text.txt
+_secciones*.txt
+**/_secciones*.txt
 
 # OS & Editor Files
 .DS_Store
@@ -22,4 +24,3 @@ Thumbs.db
 # Obsidian workspace cache (keeps notes and plugins, ignores local layout state)
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
-secciones_solutions_architect.txt

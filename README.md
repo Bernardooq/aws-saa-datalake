@@ -18,12 +18,12 @@ Repositorio centralizado de estudio, apuntes arquitectónicos de alta fidelidad 
 ```text
 aws-saa-datalake/
 ├── README.md                                # Hub central del repositorio
-├── .gitignore                               # Exclusiones de Git (PDFs, venvs, cache)
+├── .gitignore                               # Exclusiones de Git (PDFs, venvs, cache, _secciones*.txt)
+├── extractor.py                             # CLI universal interactivo para procesar cursos en PDF
 ├── AWS_CLF-C02/                             # AWS Certified Cloud Practitioner
 │   └── README.md
 └── AWS_SAA-C03/                             # AWS Solutions Architect - Associate
-    ├── README.md                            # Guía de la certificación y herramientas
-    ├── extractor.py                         # CLI para extracción automatizada de cursos PDF
+    ├── README.md                            # Guía de la certificación y apuntes
     └── spanish/                             # Bóveda en Español (Obsidian Vault)
         ├── 00_MOC_SAA-C03.md                # Map of Content (Índice central de apuntes)
         └── Knowledge_Base/                  # 29 módulos organizados
