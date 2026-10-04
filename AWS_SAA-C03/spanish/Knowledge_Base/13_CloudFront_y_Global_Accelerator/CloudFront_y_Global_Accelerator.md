@@ -17,9 +17,9 @@ Para resolver este desafío y garantizar alta disponibilidad, AWS proporciona do
 
 **Amazon CloudFront** es un servicio de CDN de nivel empresarial diseñado para acelerar la entrega de contenido estático y dinámico hacia usuarios de todo el mundo mediante una red perimetral distribuida de más de 400 **Edge Locations** y múltiples **Regional Edge Caches**.
 
-![](./media/slide335_img1.jpeg)
+![](./media/13_img1.jpg)
 
-![](./media/slide337_img5.png)
+![](./media/13_img2.png)
 
 ### Tipos de Orígenes Soportados por CloudFront
 Un origen es la ubicación raíz donde reside la versión original definitiva del contenido:
@@ -35,11 +35,11 @@ Un origen es la ubicación raíz donde reside la versión original definitiva de
 3. **VPC Origins (Nativo para Recursos Privados)**:
    - Permite que CloudFront enrute tráfico directamente a recursos alojados en **subredes privadas dentro de una VPC** (Application Load Balancer interno, Network Load Balancer o instancias EC2 privadas) sin necesidad de exponerlos a Internet ni asignarles IPs públicas.
 
-![](./media/slide338_img1.png)
+![](./media/13_img3.png)
 
-![](./media/slide338_img3.jpeg)
+![](./media/13_img4.jpg)
 
-![](./media/slide338_img5.png)
+![](./media/13_img5.png)
 
 ---
 
@@ -68,7 +68,7 @@ Ambas soluciones mejoran la accesibilidad geográfica de los datos, pero respond
 - Se pueden invalidar rutas específicas (ej. `/images/banner.png`), directorios completos (`/images/*`) o todo el sitio (`/*`).
 - *Nota FinOps*: Las primeras 1,000 rutas invalidadas al mes son gratuitas; después aplican un pequeño costo por ruta.
 
-![](./media/slide343_img1.png)
+![](./media/13_img6.png)
 
 ### Restricciones Geográficas (Geo Restriction)
 - Permite crear una **Allowlist (Lista de permitidos)** o una **Blocklist (Lista de bloqueados)** a nivel de país para restringir el acceso a la distribución.
@@ -89,7 +89,7 @@ Ambas soluciones mejoran la accesibilidad geográfica de los datos, pero respond
 - **IP Unicast**: Cada servidor posee una dirección IP única y distinta. El tráfico viaja por múltiples routers públicos hasta llegar a esa dirección específica.
 - **IP Anycast**: Una misma dirección IP pública es anunciada globalmente desde múltiples ubicaciones geográficas simultáneamente. El cliente es dirigido a la **Edge Location físicamente más cercana** a través del protocolo BGP.
 
-![](./media/slide345_img1.png)
+![](./media/13_img7.png)
 
 ### Cómo Opera AWS Global Accelerator
 1. Suministra **2 direcciones IP Anycast estáticas** que sirven como punto de entrada fijo para la aplicación a nivel mundial.
@@ -97,7 +97,7 @@ Ambas soluciones mejoran la accesibilidad geográfica de los datos, pero respond
 3. Desde el Edge Location, el tráfico ingresa de inmediato a la **red troncal privada de AWS** y transita directo hacia el endpoint de destino en la región correspondiente (ALB, NLB, EC2 o Elastic IP).
 4. Realiza **Health Checks continuos** hacia los endpoints. Si una región completa o un balanceador falla, Global Accelerator ejecuta un **failover automático e inadvertido en menos de 1 minuto** hacia la región saludable más cercana.
 
-![](./media/slide344_img1.png)
+![](./media/13_img8.png)
 
 
 > **💡 SAA-C03 Exam Tip:**  

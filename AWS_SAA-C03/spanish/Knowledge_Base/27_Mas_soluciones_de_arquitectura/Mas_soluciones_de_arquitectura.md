@@ -18,11 +18,11 @@ El examen **AWS Certified Solutions Architect - Associate (SAA-C03)** incluye co
 - **Procesamiento de Colas Estándar con Lambda:** Lambda realiza un sondeo continuo (*polling*) de la cola. Si una invocación falla, el mensaje vuelve a estar visible en la cola tras el tiempo de visibilidad (*Visibility Timeout*). Tras alcanzar el número máximo de reintentos (*maxReceiveCount*), el mensaje se desvía a una **Dead Letter Queue (DLQ)** de SQS para su posterior depuración.
 - **SQS FIFO + Lambda:** Los mensajes se procesan en estricto orden por grupo de mensajes (*MessageGroupID*). Si un mensaje falla, el procesamiento de ese grupo se bloquea (*head-of-line blocking*) hasta que se resuelva o el mensaje se envíe a la DLQ.
 
-![](./media/slide801_img1.jpeg)
+![](./media/27_img1.jpg)
 
-![](./media/slide801_img2.jpeg)
+![](./media/27_img2.jpg)
 
-![](./media/slide802_img1.jpeg)
+![](./media/27_img3.jpg)
 
 ---
 
@@ -35,7 +35,7 @@ Amazon S3 puede emitir notificaciones ante mutaciones de objetos (`s3:ObjectCrea
 | **Capacidades de Filtrado** | Básico: únicamente por prefijo y sufijo del nombre de la clave (ej. `.jpg`). | **Filtrado JSON avanzado** (por tamaño de objeto, metadatos, tipo de operación, cabeceras). |
 | **Gobernanza y Confiabilidad** | Sin capacidades de archivo ni repetición. | **Archive & Replay**, entrega confiable y auditoría de eventos. |
 
-![](./media/slide802_img2.jpeg)
+![](./media/27_img4.jpg)
 
 ---
 
@@ -44,7 +44,7 @@ Un patrón recurrente de seguridad consiste en reaccionar ante acciones destruct
 - CloudTrail registra el evento de gestión.
 - **Amazon EventBridge** captura la regla del evento y activa una alerta inmediata a un tema de **Amazon SNS** o dispara una función **AWS Lambda** para revertir el cambio.
 
-![](./media/slide803_img2.jpeg)
+![](./media/27_img5.jpg)
 
 ---
 
@@ -53,7 +53,7 @@ Para ingestar datos masivos en tiempo real (ej. streaming de telemetría IoT o c
 - **API Gateway** puede configurarse con una **Integración Directa de Servicio de AWS (*AWS Service Integration*)** hacia **Amazon Kinesis Data Streams** o **Amazon Kinesis Data Firehose**.
 - Elimina capas innecesarias de cómputo, reduce la latencia de ingestión y minimiza costos operativos.
 
-![](./media/slide806_img1.jpeg)
+![](./media/27_img6.jpg)
 
 ---
 
@@ -66,7 +66,7 @@ El examen evalúa con frecuencia la optimización de latencia, cómputo y costos
 3. **Capa de Aplicación en Memoria (Amazon ElastiCache Redis / Memcached):** Almacena estructuras de datos complejas, sesiones web distribuidas y resultados computados pesados con latencia de submilisegundos.
 4. **Capa de Base de Datos NoSQL (DynamoDB Accelerator - DAX):** Clúster de caché en memoria transparente frente a tablas DynamoDB que reduce la latencia de lectura de milisegundos a microsegundos.
 
-![](./media/slide807_img1.jpeg)
+![](./media/27_img7.jpg)
 
 ---
 
@@ -92,15 +92,15 @@ Una de las preguntas clásicas del examen SAA-C03 presenta un ataque proveniente
    - Si una distribución de CloudFront está situada frente al ALB, la NACL del ALB solo ve las direcciones IP públicas de los Edge Locations de CloudFront (**bloquear IPs en la NACL del ALB bloquearía a CloudFront entero**).
    - **Solución Obligatoria:** Implementar **AWS WAF acoplado a la distribución de CloudFront** (o usar la función de restricción geográfica de CloudFront) para descartar el tráfico malicioso en el borde antes de que ingrese a la red de AWS.
 
-![](./media/slide808_img1.jpeg)
+![](./media/27_img8.jpg)
 
-![](./media/slide808_img2.png)
+![](./media/27_img9.png)
 
-![](./media/slide808_img3.jpeg)
+![](./media/27_img10.jpg)
 
-![](./media/slide809_img1.jpeg)
+![](./media/27_img11.jpg)
 
-![](./media/slide809_img2.jpeg)
+![](./media/27_img12.jpg)
 
 ---
 
@@ -130,7 +130,7 @@ Cuando una aplicación heredada no puede ejecutarse en múltiples instancias sim
 - Se monitorea la instancia mediante una alarma de CloudWatch (`StatusCheckFailed_System`).
 - En caso de fallo, una automatización o función Lambda inicia una instancia secundaria de respaldo en espera y le **reasigna la Elastic IP (EIP)** de la instancia dañada.
 
-![](./media/slide819_img1.png)
+![](./media/27_img13.png)
 
 ---
 
@@ -143,7 +143,7 @@ Cuando una aplicación heredada no puede ejecutarse en múltiples instancias sim
 - Si la instancia falla o la Zona de Disponibilidad se degrada, el ASG termina automáticamente la instancia no saludable y lanza una nueva instancia en una AZ sana.
 - **Asignación de IP:** Mediante un script en los datos de usuario de EC2 (*User Data*) y un rol IAM con permisos `ec2:AssociateAddress`, la nueva instancia se autoasigna la Elastic IP fija en el arranque.
 
-![](./media/slide820_img1.png)
+![](./media/27_img14.png)
 
 ---
 
@@ -152,7 +152,7 @@ Para preservar los datos en un volumen EBS cuando la instancia se reemplaza en o
 1. **Terminación:** Se configura un **ASG Lifecycle Hook** en el evento de terminación. Un script o función Lambda genera un **Snapshot del volumen EBS** y le asigna una etiqueta identificadora antes de destruir la instancia.
 2. **Lanzamiento:** Durante el lanzamiento de la nueva instancia en otra AZ, otro Lifecycle Hook restaura el volumen EBS a partir del último snapshot etiquetado en la nueva AZ y lo adjunta a la instancia antes de que comience a procesar tráfico.
 
-![](./media/slide821_img1.png)
+![](./media/27_img15.png)
 
 ---
 

@@ -26,9 +26,9 @@ Un volumen **EBS** es un dispositivo de almacenamiento en bloque virtualizado qu
   - Para cualquier **volumen de datos adicional adjunto**, el atributo viene **deshabilitado por defecto (`false`)**, preservando los datos tras la terminación.
 - **Migración entre AZs y Regiones**: Para trasladar un volumen a otra AZ o región, se debe tomar un **Snapshot**, transferirlo (si es a otra región) y restaurarlo como un volumen nuevo en la AZ de destino.
 
-![](./media/slide94_img1.jpeg)
-![](./media/slide96_img1.png)
-![](./media/slide97_img1.jpeg)
+![](./media/05_img1.jpg)
+![](./media/05_img2.png)
+![](./media/05_img3.jpg)
 
 ---
 
@@ -48,9 +48,9 @@ Un **EBS Snapshot** es una copia de respaldo point-in-time incremental almacenad
 3. **Fast Snapshot Restore (FSR)**:
    - Elimina la latencia de inicialización (*pre-warming*) al restaurar instantáneas en nuevos volúmenes, garantizando rendimiento máximo inmediato de IOPS.
 
-![](./media/slide98_img1.png)
+![](./media/05_img4.png)
 
-![](./media/slide98_img2.png)
+![](./media/05_img5.png)
 
 ---
 
@@ -61,7 +61,7 @@ Una **AMI** empaqueta el sistema operativo, configuraciones, parches y software 
 - **Ámbito regional**: Una AMI reside en una región específica. Para usarla en otra región, debe **copiarse explícitamente** hacia la región de destino.
 - **Proceso de creación**: Genera automáticamente snapshots subyacentes de todos los volúmenes EBS adjuntos. Se recomienda detener la instancia antes de generar la AMI para garantizar consistencia del sistema de archivos.
 
-![](./media/slide100_img1.png)
+![](./media/05_img6.png)
 
 ---
 
@@ -75,7 +75,7 @@ A diferencia de EBS (que se conecta vía red), un **EC2 Instance Store** consist
   - Si la instancia se **detiene (*stop*)**, se **termina (*terminate*)** o el hardware subyacente sufre una falla, **todos los datos del Instance Store se pierden irremediablemente**.
 - **Responsabilidad compartida**: La tolerancia a fallos y copias de seguridad corren 100% por cuenta del arquitecto (ej. replicación a nivel de software en HDFS o Cassandra).
 
-![](./media/slide103_img1.jpeg)
+![](./media/05_img7.jpg)
 
 > **💡 SAA-C03 Exam Tip:**  
 > Si una pregunta de examen describe una aplicación distribuida de procesamiento en memoria o búferes de transcodificación que requiere **"el rendimiento de E/S más alto posible al menor costo, tolerando la pérdida de datos de nodos individuales"**, la respuesta correcta es **EC2 Instance Store**.  
@@ -97,14 +97,14 @@ EBS ofrece diversas familias optimizadas según balance de costo, IOPS y Through
 | **Throughput Optimized HDD** | `st1` | 125 GiB - 16 TiB | 500 IOPS | 500 MiB/s | **No** | Cargas secuenciales masivas con acceso frecuente: **Big Data, Hadoop HDFS, Kafka, Data Warehousing, procesamiento de logs**. |
 | **Cold HDD** | `sc1` | 125 GiB - 16 TiB | 250 IOPS | 250 MiB/s | **No** | Datos de acceso infrecuente donde el costo mínimo por GB es el requerimiento principal (archivos históricos y logs fríos). |
 
-![](./media/slide108_img1.jpeg)
-![](./media/slide108_img2.jpeg)
+![](./media/05_img8.jpg)
+![](./media/05_img9.jpg)
 
 ### EBS Multi-Attach (Familias io1 / io2)
 - Permite adjuntar un único volumen EBS de alto rendimiento de forma concurrente a **hasta 16 instancias EC2 dentro de la misma AZ**.
 - **Requisito arquitectónico**: La aplicación o el sistema de archivos debe ser consciente del clúster (*Cluster-Aware Filesystem* como GFS2 u OCFS2) para evitar corrupción de datos por escrituras simultáneas (antipatrón: usar sistemas de archivos estándar como EXT4 o XFS).
 
-![](./media/slide109_img1.png)
+![](./media/05_img10.png)
 
 ---
 
@@ -135,7 +135,7 @@ No es posible cifrar directamente un volumen EBS existente *in situ*. Para cifra
 - **Acceso concurrente Multi-AZ**: Cientos o miles de instancias EC2 distribuidas en **múltiples Zonas de Disponibilidad (AZs)** pueden montar y escribir en el mismo sistema de archivos simultáneamente a través de **EFS Mount Targets** ubicados en cada subred.
 - **Compatibilidad**: Diseñado exclusivamente para sistemas operativos basados en Linux (no compatible con Windows; para Windows el equivalente es **Amazon FSx for Windows File Server**).
 
-![](./media/slide112_img1.png)
+![](./media/05_img11.png)
 
 ### Modos de Rendimiento y Clases de Almacenamiento en EFS
 - **Modos de Rendimiento (Performance Modes)**:
@@ -146,15 +146,15 @@ No es posible cifrar directamente un volumen EBS existente *in situ*. Para cifra
   - **EFS Infrequent Access (EFS-IA)**: Hasta un 92% más económico que Standard. Las políticas de ciclo de vida mueven archivos automáticamente tras $N$ días sin accesos (ej. 7, 30, 60 o 90 días). Aplica una tarifa por GiB leído al recuperar datos.
   - **EFS One Zone / One Zone-IA**: Almacenamiento confinado a una única AZ para entornos de desarrollo y ahorro adicional de costos.
 
-![](./media/slide115_img1.png)
+![](./media/05_img12.png)
 
 ---
 
 ## 8. Comparativa Maestra: EBS vs. Instance Store vs. EFS
 
-![](./media/slide116_img1.png)
+![](./media/05_img13.png)
 
-![](./media/slide117_img3.png)
+![](./media/05_img14.png)
 
 | Característica | Amazon EBS | EC2 Instance Store | Amazon EFS |
 | :--- | :--- | :--- | :--- |

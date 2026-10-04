@@ -34,7 +34,7 @@ IAM opera como un **servicio global**. Las configuraciones, usuarios y política
   - Un usuario puede pertenecer a múltiples grupos (hasta un límite de 10 grupos por usuario por defecto).
   - Los grupos no son identidades autenticables (no tienen credenciales de inicio de sesión ni pueden ser identificados como `Principal` en una política de recursos).
 
-![](./media/slide25_img1.jpeg)
+![](./media/02_img1.jpg)
 
 ---
 
@@ -81,15 +81,15 @@ Una **política de IAM** es un documento JSON que formaliza los permisos concedi
 }
 ```
 
-![](./media/slide26_img1.png)
-![](./media/slide28_img1.jpeg)
+![](./media/02_img2.png)
+![](./media/02_img3.jpg)
 
 ### Tipos de Políticas y Herencia
 1. **Managed Policies (Políticas Administradas por AWS)**: Creadas y mantenidas por AWS (ej. `AdministratorAccess`, `ReadOnlyAccess`).
 2. **Customer Managed Policies (Políticas Administradas por el Cliente)**: Creadas por el usuario en su cuenta, reutilizables y con control de versiones.
 3. **Inline Policies (Políticas en Línea)**: Documentos JSON incrustados directamente y de forma estricta en un único usuario, grupo o rol. Si se elimina la identidad, la política se destruye. (Antipatrón: usar administradas siempre que sea posible).
 
-![](./media/slide27_img2.png)
+![](./media/02_img4.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > **Lógica de evaluación de políticas en AWS**:  
@@ -112,7 +112,7 @@ AWS permite aplicar parámetros estrictos de higiene de seguridad para contrase�
 ### Multi-Factor Authentication (MFA)
 MFA añade una capa crítica de seguridad requiriendo un factor de conocimiento (*password*) y un factor de posesión (*token o dispositivo*).
 
-![](./media/slide30_img1.png)
+![](./media/02_img5.png)
 
 ### Comparativa de Métodos MFA en AWS
 
@@ -123,11 +123,11 @@ MFA añade una capa crítica de seguridad requiriendo un factor de conocimiento 
 | **Hardware Key Fob (Llavero Físico)** | Gemalto (SafeNet) | Generador de tokens OTP físico e independiente fuera de redes móviles o internet. | Cuentas corporativas reguladas y protección exclusiva de la **Cuenta Root**. |
 | **Hardware Token para Entornos Regulados** | SurePassID | Cumplimiento de estándares gubernamentales de alta seguridad. | Implementaciones en **AWS GovCloud (US)** y entornos militares/defensa. |
 
-![](./media/slide31_img1.jpeg)
-![](./media/slide31_img2.jpeg)
-![](./media/slide31_img3.jpeg)
-![](./media/slide32_img1.jpeg)
-![](./media/slide32_img2.jpeg)
+![](./media/02_img6.jpg)
+![](./media/02_img7.jpg)
+![](./media/02_img8.jpg)
+![](./media/02_img9.jpg)
+![](./media/02_img10.jpg)
 
 ---
 
@@ -145,10 +145,10 @@ Los usuarios y servicios interactúan con los servicios de AWS a través de llam
   - **Secret Access Key**: Equivale a la contraseña secreta. Solo es visible una vez al momento de la creación.
 - **Riesgo crítico**: Si una clave de acceso se filtra en un repositorio público (ej. GitHub), la cuenta puede ser comprometida en segundos por bots maliciosos.
 
-![](./media/slide33_img1.png)
-![](./media/slide34_img1.jpeg)
-![](./media/slide35_img1.jpeg)
-![](./media/slide36_img1.png)
+![](./media/02_img11.png)
+![](./media/02_img12.jpg)
+![](./media/02_img13.jpg)
+![](./media/02_img14.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > **Antipatrón clásico de examen**: Guardar credenciales estáticas (`Access Key ID` y `Secret Access Key`) en el código fuente de una aplicación o codificarlas en el archivo de configuración de una instancia EC2.  
@@ -170,7 +170,7 @@ Un **IAM Role** es una identidad de AWS que no tiene credenciales a largo plazo 
 - **Acceso Cruzado entre Cuentas (Cross-Account Access)**: Permitir que usuarios de la Cuenta A administren recursos en la Cuenta B sin duplicar usuarios ni exponer credenciales.
 - **Federación de Identidades**: Delegar autenticación a proveedores externos mediante SAML 2.0 u OpenID Connect (OIDC) (ej. Microsoft Entra ID / Active Directory, Google, Okta).
 
-![](./media/slide37_img1.png)
+![](./media/02_img15.png)
 
 ---
 
@@ -191,7 +191,7 @@ El mantenimiento del principio de mínimo privilegio (*Least Privilege*) requier
 
 ## 7. Buenas Prácticas de IAM (Checklist para el Examen)
 
-![](./media/slide39_img1.jpeg)
+![](./media/02_img16.jpg)
 
 1. **Aislar la Cuenta Root**: Usarla exclusivamente para crear el primer usuario/rol administrador, configurar la facturación y habilitar MFA físico; jamás para despliegues cotidianos.
 2. **Un Usuario Físico = Un Usuario IAM**: No compartir cuentas ni credenciales genéricas entre desarrolladores.

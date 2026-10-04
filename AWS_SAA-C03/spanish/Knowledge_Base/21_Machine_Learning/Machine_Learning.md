@@ -23,7 +23,7 @@ Servicio de visión artificial basado en Deep Learning para análisis de imágen
   - **Detección de Texto (*Text in Image*):** Extrae texto incrustado en imágenes (señales viales, placas de matrícula).
   - **Seguimiento de Trayectorias (*Pathing*):** Rastreo de rutas de personas en eventos deportivos o tiendas comerciales.
 
-![](./media/slide560_img1.jpeg)
+![](./media/21_img1.jpg)
 
 ---
 
@@ -32,7 +32,7 @@ Rekognition detecta de manera automatizada contenido explícito, sugerente, viol
 - Permite definir un **Umbral Mínimo de Confianza (*Minimum Confidence Threshold*)**.
 - Para casos ambiguos o de alta sensibilidad legal, se integra con **Amazon Augmented AI (A2I)**, el cual desvía automáticamente las imágenes dudosas hacia equipos de revisión humana antes de publicar el contenido.
 
-![](./media/slide561_img1.jpeg)
+![](./media/21_img2.jpg)
 
 ---
 
@@ -44,7 +44,7 @@ Convierte lenguaje hablado en texto escrito utilizando reconocimiento automátic
 - **Identificación Automática de Idioma:** Detecta el idioma predominante en archivos con pistas multilingües.
 - **Transcripción de Llamadas:** Transcribe audio de centros de contacto y separa canales de audio por interlocutor (*Speaker Identification* / diarización).
 
-![](./media/slide562_img1.jpeg)
+![](./media/21_img3.jpg)
 
 ---
 
@@ -53,7 +53,7 @@ Convierte cadenas de texto en audio realista utilizando tecnologías neuronales 
 - **SSML (Speech Synthesis Markup Language):** Permite personalizar el tono, énfasis, pausas, pronunciación fonética, susurros o adoptar el estilo dinámico de presentador de noticias (*Newscaster style*).
 - **Léxicos de Pronunciación (*Pronunciation Lexicons*):** Reglas para pronunciar correctamente acrónimos de la industria (ej. "AWS" -> "Amazon Web Services") o nombres corporativos estilizados.
 
-![](./media/slide563_img1.jpeg)
+![](./media/21_img4.jpg)
 
 ---
 
@@ -62,10 +62,10 @@ Servicio de traducción automática neuronal que entrega traducciones de alta ca
 - Ideal para traducir catálogos de e-commerce, sitios web dinámicos y comunicaciones de soporte al cliente en tiempo real.
 - Permite terminología personalizada para preservar nombres de marcas y jerga corporativa sin traducir.
 
-![](./media/slide565_img4.jpeg)
-![](./media/slide565_img1.jpeg)
-![](./media/slide565_img2.jpeg)
-![](./media/slide565_img3.jpeg)
+![](./media/21_img5.jpg)
+![](./media/21_img6.jpg)
+![](./media/21_img7.jpg)
+![](./media/21_img8.jpg)
 
 ---
 
@@ -78,7 +78,7 @@ Servicio de traducción automática neuronal que entrega traducciones de alta ca
   - Reemplaza PBX físicas tradicionales con ahorros de hasta un 80%.
   - Se integra de forma nativa con Amazon Lex para resolver peticiones de clientes de manera automatizada antes de transferir a un agente humano.
 
-![](./media/slide566_img1.png)
+![](./media/21_img9.png)
 
 ---
 
@@ -89,9 +89,9 @@ Servicio Serverless de Procesamiento de Lenguaje Natural (**NLP**) que analiza t
 - **Funcionalidades:** Detección de idioma, extracción de entidades (personas, lugares, marcas), análisis de sentimientos (positivo, negativo, neutral, mixto), y modelado de temas (*Topic Modeling*).
 - **Amazon Comprehend Medical:** Modelo especializado en documentación médica (recetas, notas clínicas, historias de salud) que detecta entidades biomédicas y resguarda Información Sanitaria Protegida (**PHI**) para cumplimiento normativo HIPAA a través de la API `DetectPHI`.
 
-![](./media/slide567_img1.jpeg)
+![](./media/21_img10.jpg)
 
-![](./media/slide568_img1.jpeg)
+![](./media/21_img11.jpg)
 
 ---
 
@@ -101,7 +101,7 @@ Motor de búsqueda corporativo impulsado por Machine Learning que comprende cons
 - **Conectores Nativos:** Se conecta e indexa automáticamente documentos en Amazon S3, SharePoint, Google Drive, Salesforce, RDS y sistemas locales.
 - **Aprendizaje Continuo:** Reordena los resultados basándose en la retroalimentación de los clics de los usuarios (*Search Relevance Tuning*).
 
-![](./media/slide570_img1.jpeg)
+![](./media/21_img12.jpg)
 
 ---
 
@@ -123,8 +123,8 @@ Servicio de reconocimiento óptico de caracteres (**OCR**) inteligente basado en
 - Extrae texto manuscrito, datos estructurados en **formularios (pares clave-valor)** y **tablas (filas y columnas)** a partir de PDFs, imágenes escaneadas o fotos.
 - Evita el procesamiento manual o el etiquetado de plantillas rígidas para facturas, formularios de impuestos y pasaportes.
 
-![](./media/slide572_img1.jpeg)
-![](./media/slide572_img2.jpeg)
+![](./media/21_img13.jpg)
+![](./media/21_img14.jpg)
 
 ---
 
@@ -133,7 +133,7 @@ Motor de personalización y recomendaciones en tiempo real basado en la misma te
 - Ingesta datos históricos de interacciones desde Amazon S3 y eventos en tiempo real vía API.
 - Genera recomendaciones a medida de productos, reclasificación de contenidos y campañas de marketing dirigido sin que los desarrolladores deban diseñar modelos de Machine Learning.
 
-![](./media/slide571_img1.jpeg)
+![](./media/21_img15.jpg)
 
 ---
 
@@ -144,7 +144,7 @@ Motor de personalización y recomendaciones en tiempo real basado en la misma te
 - Distribuye el entrenamiento sobre flotas optimizadas de cómputo y GPUs.
 - Gestiona endpoints de inferencia elásticos en tiempo real o procesamiento por lotes (*Batch Transform*).
 
-![](./media/slide569_img1.jpeg)
+![](./media/21_img16.jpg)
 
 ---
 

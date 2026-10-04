@@ -21,11 +21,11 @@ En el examen **AWS Certified Solutions Architect - Associate (SAA-C03)**, es com
 - **Service Roles en CloudFormation:** Permite asociar un **IAM Service Role** a la pila para que CloudFormation cree, actualice o elimine recursos en nombre del usuario.
   - **Principio de Mínimo Privilegio:** Permite a los desarrolladores desplegar pilas sin necesidad de tener permisos directos de administración en su usuario IAM, requiriendo únicamente el permiso `iam:PassRole` sobre el rol del servicio de CloudFormation.
 
-![](./media/slide826_img1.jpeg)
-![](./media/slide826_img2.png)
-![](./media/slide826_img3.png)
+![](./media/28_img1.jpg)
+![](./media/28_img2.png)
+![](./media/28_img3.png)
 
-![](./media/slide827_img1.png)
+![](./media/28_img4.png)
 
 ---
 
@@ -38,9 +38,9 @@ En el examen **AWS Certified Solutions Architect - Associate (SAA-C03)**, es com
 | **Gestión de Campañas** | Envío transaccional puro. | **Campañas de marketing completas**, pruebas A/B, plantillas visuales y flujos de automatización (*Journeys*). |
 | **Autenticación** | Soporte nativo para DKIM, SPF, DMARC e IPs dedicadas. | Construido sobre la infraestructura de entrega de SES y SNS. |
 
-![](./media/slide828_img1.jpeg)
+![](./media/28_img5.jpg)
 
-![](./media/slide828_img3.jpeg)
+![](./media/28_img6.jpg)
 
 ---
 
@@ -54,7 +54,7 @@ Permite abrir una terminal interactiva (Bash / PowerShell) en instancias EC2 o s
 - **Sin Gestión de Claves SSH:** El acceso se controla estrictamente mediante políticas **AWS IAM**.
 - **Auditoría Forense:** Registra cada comando ejecutado en la sesión y retransmite los logs completos hacia **Amazon S3** o **Amazon CloudWatch Logs**.
 
-![](./media/slide830_img1.png)
+![](./media/28_img7.png)
 
 ---
 
@@ -62,7 +62,7 @@ Permite abrir una terminal interactiva (Bash / PowerShell) en instancias EC2 o s
 - **Run Command:** Ejecuta scripts o comandos de configuración de manera controlada y a escala masiva sobre flotas completas de instancias (agrupadas por etiquetas o Resource Groups) sin iniciar sesión interactiva en cada una. Emite el estado a CloudWatch, S3 y SNS.
 - **Maintenance Windows (Ventanas de Mantenimiento):** Define calendarios recurrentes (expresiones cron o rate) para ejecutar tareas de mantenimiento programadas (ej. reinicios, instalación de software o parches) limitando el impacto en la disponibilidad mediante umbrales de concurrencia y tolerancia a errores (*Concurrency and Error Thresholds*).
 
-![](./media/slide830_img3.png)
+![](./media/28_img8.png)
 
 ---
 
@@ -70,11 +70,11 @@ Permite abrir una terminal interactiva (Bash / PowerShell) en instancias EC2 o s
 - **Patch Manager:** Automatiza el escaneo y despliegue de parches del sistema operativo y aplicaciones de seguridad sobre flotas de Linux, Windows y macOS. Utiliza **Líneas Base de Parches (*Patch Baselines*)** para aprobar parches críticos tras un número de días determinado.
 - **SSM Automation:** Orquesta flujos de trabajo operativos complejos definidos en **Automation Runbooks** (documentos JSON/YAML). Puede ejecutarse manualmente, programado, mediante eventos de EventBridge, o como acción de remediación automática desde **AWS Config**.
 
-![](./media/slide832_img1.png)
+![](./media/28_img9.png)
 
-![](./media/slide832_img3.jpeg)
+![](./media/28_img10.jpg)
 
-![](./media/slide832_img4.jpeg)
+![](./media/28_img11.jpg)
 
 ---
 
@@ -86,15 +86,15 @@ Herramienta de análisis financiero para visualizar, desglosar y proyectar gasto
 - Granularidad mensual, diaria o por horas.
 - Genera recomendaciones de compra para **Savings Plans** e **Instancias Reservadas (RI)** y proyecta gastos hasta 12 meses hacia el futuro.
 
-![](./media/slide835_img1.jpeg)
+![](./media/28_img12.jpg)
 
-![](./media/slide836_img1.jpeg)
+![](./media/28_img13.jpg)
 
-![](./media/slide837_img1.jpeg)
+![](./media/28_img14.jpg)
 
-![](./media/slide838_img1.jpeg)
+![](./media/28_img15.jpg)
 
-![](./media/slide839_img1.jpeg)
+![](./media/28_img16.jpg)
 
 ---
 
@@ -104,7 +104,7 @@ Servicio basado en modelos de Machine Learning avanzados que monitorea continuam
 - Identifica picos atípicos (ej. un bucle infinito en Lambda o una base de datos mal configurada) y proporciona un **análisis de causa raíz (*Root Cause Analysis*)**.
 - Envía alertas inmediatas a través de **Amazon SNS** o resúmenes periódicos por correo electrónico.
 
-![](./media/slide840_img1.png)
+![](./media/28_img17.png)
 
 ---
 
@@ -117,11 +117,11 @@ Racks físicos de hardware de AWS instalados dentro del centro de datos local de
   - **Latencia de un solo dígito de milisegundo** hacia sistemas de fabricación industrial o equipos hospitalarios locales.
   - **Residencia estricta y soberanía de datos** donde las regulaciones legales prohíben transferir datos fuera del edificio o país.
 
-![](./media/slide841_img4.jpeg)
+![](./media/28_img18.jpg)
 
-![](./media/slide841_img1.jpeg)
+![](./media/28_img19.jpg)
 
-![](./media/slide841_img2.png)
+![](./media/28_img20.png)
 
 ---
 
@@ -143,7 +143,7 @@ Servicio de integración completamente administrado para transferir datos bidire
 - **Destinos en AWS:** Amazon S3, Amazon Redshift, Amazon DynamoDB.
 - **Seguridad en Tránsito:** Puede configurarse para transferir datos de forma privada a través de **AWS PrivateLink** sin exponer el tráfico a la Internet pública.
 
-![](./media/slide846_img1.jpeg)
+![](./media/28_img21.jpg)
 
 ---
 
@@ -153,7 +153,7 @@ Servicio de integración completamente administrado para transferir datos bidire
 Plataforma completa para desarrolladores front-end web y móviles que acelera la creación y despliegue de aplicaciones full-stack:
 - Integra de forma nativa autenticación (**Cognito**), persistencia (**DynamoDB**), APIs (**AppSync GraphQL y API Gateway REST**), alojamiento estático y CI/CD global (**CloudFront + S3**).
 
-![](./media/slide848_img1.jpeg)
+![](./media/28_img22.jpg)
 
 ---
 
@@ -162,7 +162,7 @@ Solución prediseñada de referencia basada en CloudFormation que inicia y detie
 - Permite ahorrar hasta un 70% en costos de desarrollo y pruebas.
 - Utiliza etiquetas de recursos y una tabla de **Amazon DynamoDB** para almacenar los horarios de apagado y encendido ejecutados por **AWS Lambda**.
 
-![](./media/slide849_img1.jpeg)
+![](./media/28_img23.jpg)
 
 ---
 

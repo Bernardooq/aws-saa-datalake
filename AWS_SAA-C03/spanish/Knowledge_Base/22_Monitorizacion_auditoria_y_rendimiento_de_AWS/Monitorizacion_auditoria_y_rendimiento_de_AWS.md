@@ -25,7 +25,7 @@ CloudWatch recopila métricas operativas numéricas de prácticamente todos los 
   - *Resolución:* Estándar (intervalo de 1 o 5 minutos) o Alta Resolución (*High-Resolution Custom Metrics* con intervalos de 1, 5, 10 o 30 segundos).
 - **CloudWatch Metric Streams:** Permite transmitir métricas continuamente con latencia de submilisegundo hacia destinos como **Amazon Kinesis Data Firehose** (y desde allí a S3, Redshift u OpenSearch) o plataformas SaaS de terceros (Datadog, Dynatrace, New Relic, Splunk).
 
-![](./media/slide575_img1.jpeg)
+![](./media/22_img1.jpg)
 
 ---
 
@@ -36,9 +36,9 @@ CloudWatch recopila métricas operativas numéricas de prácticamente todos los 
 - **Cifrado y Seguridad:** Cifrado por defecto en reposo con soporte opcional de claves administradas por el cliente en **AWS KMS**.
 - **CloudWatch Logs Insights:** Motor de consultas interactivo con sintaxis propia diseñada para filtrar, ordenar, calcular estadísticas y extraer campos JSON de logs sin aprovisionar servidores.
 
-![](./media/slide579_img1.jpeg)
+![](./media/22_img2.jpg)
 
-![](./media/slide580_img1.jpeg)
+![](./media/22_img3.jpg)
 
 ---
 
@@ -48,16 +48,16 @@ Un concepto crítico evaluado en el examen es la diferencia en tiempo de entrega
 - **Subscription Filters (Filtros de Suscripción):** Entrega en tiempo real o casi real directamente hacia **AWS Lambda**, **Amazon Kinesis Data Streams** o **Amazon Kinesis Data Firehose** (y de allí a S3 u OpenSearch).
 - **Agregación Multi-Cuenta / Multi-Región:** Permite centralizar logs de múltiples cuentas en un único Kinesis Data Stream receptor mediante un rol IAM de asunción entre cuentas (*Cross-Account IAM Role*).
 
-![](./media/slide581_img1.jpeg)
+![](./media/22_img4.jpg)
 
-![](./media/slide582_img1.jpeg)
+![](./media/22_img5.jpg)
 
-![](./media/slide582_img3.jpeg)
+![](./media/22_img6.jpg)
 
-![](./media/slide582_img5.jpeg)
+![](./media/22_img7.jpg)
 
-![](./media/slide584_img2.jpeg)
-![](./media/slide584_img3.jpeg)
+![](./media/22_img8.jpg)
+![](./media/22_img9.jpg)
 
 ---
 
@@ -77,11 +77,11 @@ Una alarma pasa por tres estados: `OK`, `ALARM` e `INSUFFICIENT_DATA`.
 - **Alarmas Compuestas (*Composite Alarms*):** Agrupan múltiples alarmas mediante operadores lógicos booleanos (`AND`, `OR`) para reducir el ruido y falsos positivos (ej. alertar solo si `CPU > 85%` **Y** `StatusCheckFailed_Instance = 1`).
 - **EC2 Instance Recovery:** Si la comprobación de estado de hardware subyacente (**`StatusCheckFailed_System`**) falla, una alarma puede recuperar automáticamente la instancia trasladándola a un host físico sano conservando la misma IP privada, IP pública/elástica, metadatos y volúmenes EBS vinculados.
 
-![](./media/slide588_img1.png)
+![](./media/22_img10.png)
 
-![](./media/slide589_img1.jpeg)
+![](./media/22_img11.jpg)
 
-![](./media/slide589_img3.jpeg)
+![](./media/22_img12.jpg)
 
 ---
 
@@ -91,12 +91,12 @@ Una alarma pasa por tres estados: `OK`, `ALARM` e `INSUFFICIENT_DATA`.
 - **CloudWatch Contributor Insights:** Identifica los N principales elementos contribuyentes (*Top-N contributors*) que impactan el rendimiento analizando logs de VPC, DNS o API Gateway (ej. IPs con más tráfico sospechoso, IDs de usuario con más errores HTTP 500).
 - **CloudWatch Application Insights:** Descubre y configura dashboards automatizados respaldados por modelos analíticos de SageMaker para aplicaciones corporativas (Java, .NET, bases de datos).
 
-![](./media/slide599_img1.jpeg)
-![](./media/slide599_img4.jpeg)
+![](./media/22_img13.jpg)
+![](./media/22_img14.jpg)
 
-![](./media/slide600_img1.jpeg)
+![](./media/22_img15.jpg)
 
-![](./media/slide601_img1.png)
+![](./media/22_img16.png)
 
 ---
 
@@ -111,7 +111,7 @@ Una alarma pasa por tres estados: `OK`, `ALARM` e `INSUFFICIENT_DATA`.
 - **Reglas (*Rules*):** Filtran el JSON entrante y enrutan la carga útil a más de 20 destinos compatibles (AWS Lambda, colas SQS, temas SNS, Step Functions, Kinesis, ECS Tasks).
 - **Programación Cron / Rate:** Ejecuta tareas periódicas recurrentes (reemplazo de servidores cron tradicionales).
 
-![](./media/slide594_img1.png)
+![](./media/22_img17.png)
 
 ---
 
@@ -120,10 +120,10 @@ Una alarma pasa por tres estados: `OK`, `ALARM` e `INSUFFICIENT_DATA`.
 - **Archivado y Replay de Eventos (*Archive & Replay*):** Permite retener eventos de manera indefinida o por un TTL específico y **reproducir (*replay*)** eventos históricos para depuración o recuperación ante fallos.
 - **Schema Registry:** Infiere automáticamente el esquema de los eventos JSON y genera código tipado (*bindings*) para Java, Python o TypeScript.
 
-![](./media/slide597_img1.jpeg)
+![](./media/22_img18.jpg)
 
-![](./media/slide598_img1.jpeg)
-![](./media/slide598_img2.jpeg)
+![](./media/22_img19.jpg)
+![](./media/22_img20.jpg)
 
 ---
 
@@ -136,11 +136,11 @@ Una alarma pasa por tres estados: `OK`, `ALARM` e `INSUFFICIENT_DATA`.
 2. **Data Events (Eventos de Datos):** Operaciones a nivel del plano de datos (ej. `S3:GetObject`, `S3:PutObject`, ejecuciones de funciones Lambda `Invoke`). **Deshabilitados por defecto** debido al inmenso volumen transaccional; tienen costo adicional por evento.
 3. **CloudTrail Insights:** Modela el comportamiento operativo normal de eventos de gestión y **detecta anomalías inusuales** (ej. ráfagas atípicas de llamadas IAM, picos en provisionamiento o superación de cuotas de servicio). Alerta vía Consola, S3 o EventBridge.
 
-![](./media/slide604_img1.jpeg)
+![](./media/22_img21.jpg)
 
-![](./media/slide605_img6.png)
+![](./media/22_img22.png)
 
-![](./media/slide605_img8.png)
+![](./media/22_img23.png)
 
 ---
 
@@ -149,9 +149,9 @@ Una alarma pasa por tres estados: `OK`, `ALARM` e `INSUFFICIENT_DATA`.
 - **Retención a Largo Plazo y Análisis Forense:** Configurar un **Trail Multi-Región** que entregue los logs en un bucket de **Amazon S3** (protegido con Object Lock y SSE-KMS) y consultar mediante **Amazon Athena**.
 - **Intercepción y Alertas Inmediatas:** EventBridge puede escuchar llamadas a la API registradas por CloudTrail (ej. `DeleteTable`, `AuthorizeSecurityGroupIngress`, `StopLogging`) y disparar inmediatamente alertas SNS o funciones Lambda de remediación.
 
-![](./media/slide608_img1.jpeg)
+![](./media/22_img24.jpg)
 
-![](./media/slide608_img3.jpeg)
+![](./media/22_img25.jpg)
 
 ---
 
@@ -165,11 +165,11 @@ Una alarma pasa por tres estados: `OK`, `ALARM` e `INSUFFICIENT_DATA`.
 - **Modos de Disparo:** Basado en cambios en la configuración del recurso (*trigger on configuration change*) o programado a intervalos regulares.
 - **Regla Crítica de Examen:** AWS Config **NO previene ni bloquea** que un usuario realice una configuración no permitida (no deniega llamadas a la API como lo haría una política IAM o una SCP de AWS Organizations); su función es **detectar el estado `NON_COMPLIANT` y registrar el historial**.
 
-![](./media/slide611_img1.jpeg)
+![](./media/22_img26.jpg)
 
-![](./media/slide613_img1.jpeg)
-![](./media/slide613_img2.jpeg)
-![](./media/slide613_img3.jpeg)
+![](./media/22_img27.jpg)
+![](./media/22_img28.jpg)
+![](./media/22_img29.jpg)
 
 ---
 
@@ -178,7 +178,7 @@ Cuando un recurso se marca como `NON_COMPLIANT`, AWS Config puede ejecutar accio
 - Ejemplos: Desactivar claves de acceso IAM no conformes, habilitar cifrado en un bucket S3 o revocar reglas abiertas `0.0.0.0/0` en Security Groups.
 - Permite configurar reintentos automáticos si la remediación inicial no restablece la conformidad.
 
-![](./media/slide614_img1.jpeg)
+![](./media/22_img30.jpg)
 
 ---
 

@@ -21,7 +21,7 @@ El diseño de soluciones de Big Data, almacenamiento analítico y procesamiento 
 - **Modelo de Precios:** Se factura estrictamente por el volumen de datos escaneados (típicamente **$5.00 USD por TB escaneado**).
 - **Integración con BI:** Se conecta de forma nativa con **Amazon QuickSight** para generación de paneles e informes.
 
-![](./media/slide527_img1.jpeg)
+![](./media/20_img1.jpg)
 
 ---
 
@@ -46,7 +46,7 @@ Permite ejecutar consultas SQL unificadas a través de múltiples fuentes de dat
 - Permite consultar fuentes relacionales (Amazon RDS, Aurora), NoSQL (DynamoDB, DocumentDB), cachés (ElastiCache) y bases de datos locales on-premises en una sola sentencia SQL combinada.
 - Los resultados de la consulta federada se exportan y almacenan en Amazon S3.
 
-![](./media/slide529_img1.jpeg)
+![](./media/20_img2.jpg)
 
 ---
 
@@ -59,7 +59,7 @@ Permite ejecutar consultas SQL unificadas a través de múltiples fuentes de dat
 - **Nodos de Cálculo (*Compute Nodes*):** Ejecutan los planes compilados en paralelo (MPP - *Massively Parallel Processing*) sobre almacenamiento en columnas particionado por slices.
 - **Tipos de Almacenamiento:** Instancias modernas de la familia `RA3` que desacoplan el cómputo del almacenamiento utilizando *Redshift Managed Storage (RMS)* respaldado por Amazon S3.
 
-![](./media/slide530_img1.jpeg)
+![](./media/20_img3.jpg)
 
 ---
 
@@ -68,7 +68,7 @@ Permite ejecutar consultas SQL unificadas a través de múltiples fuentes de dat
 - **Snapshots Automatizados y Manuales:** Snapshots incrementales almacenados internamente en S3 (retención de 1 a 35 días).
 - **Replicación entre Regiones (Cross-Region Snapshot Copy):** Se puede configurar la copia automática de snapshots hacia otra región para planes de Disaster Recovery (DR).
 
-![](./media/slide532_img1.png)
+![](./media/20_img4.png)
 
 ---
 
@@ -77,7 +77,7 @@ Permite ejecutar consultas SQL unificadas a través de múltiples fuentes de dat
 - **Mejor Práctica (Comando COPY):** Cargar datos masivos en paralelo desde Amazon S3, EMR o DynamoDB usando el comando `COPY`.
 - **Enhanced VPC Routing:** Obliga a que todo el tráfico de red generado por el comando `COPY` o `UNLOAD` viaje exclusivamente a través de la VPC corporativa y sus VPC Endpoints, evitando circular por la Internet pública.
 
-![](./media/slide533_img1.jpeg)
+![](./media/20_img5.jpg)
 
 ---
 
@@ -87,7 +87,7 @@ Permite consultar conjuntos de datos masivos en S3 directamente desde un clúste
 - La ejecución se distribuye entre miles de nodos efímeros de Redshift Spectrum gestionados por AWS.
 - Permite hacer JOINs en tiempo real entre tablas locales de alto rendimiento en Redshift y tablas masivas históricas almacenadas en S3.
 
-![](./media/slide534_img1.jpeg)
+![](./media/20_img6.jpg)
 
 ---
 
@@ -114,11 +114,11 @@ Permite consultar conjuntos de datos masivos en S3 directamente desde un clúste
   - *DynamoDB a OpenSearch:* Captura de mutaciones mediante **DynamoDB Streams + Lambda** para indexar registros y permitir búsqueda por cualquier campo no clave.
   - *Streaming en Vivo:* Ingesta continua desde Kinesis Data Streams o Managed Streaming for Apache Kafka (MSK).
 
-![](./media/slide535_img1.jpeg)
+![](./media/20_img7.jpg)
 
-![](./media/slide536_img1.jpeg)
+![](./media/20_img8.jpg)
 
-![](./media/slide536_img3.png)
+![](./media/20_img9.png)
 
 ---
 
@@ -131,7 +131,7 @@ Permite consultar conjuntos de datos masivos en S3 directamente desde un clúste
 2. **Core Node (Nodo Central):** Ejecuta tareas de cómputo y aloja datos en el sistema de archivos distribuido HDFS (*Hadoop Distributed File System*). Debe ser de larga duración (On-Demand) para prevenir pérdida de datos en HDFS.
 3. **Task Node (Nodo de Tareas - Opcional):** Exclusivamente ejecuta tareas de cómputo; no almacena datos de HDFS. **Caso ideal para Instancias Spot**, ya que si una instancia Spot es terminada por AWS, las tareas simplemente se replanifican en otro nodo sin riesgo de corrupción de datos.
 
-![](./media/slide539_img1.jpeg)
+![](./media/20_img10.jpg)
 
 ---
 
@@ -144,9 +144,9 @@ Servicio de BI escalable y basado en la nube con integración nativa de Machine 
   - La **Edición Enterprise** ofrece *Column-Level Security (CLS)* y *Row-Level Security (RLS)* para restringir visibilidad de datos sensibles según el perfil del usuario.
 - **Dashboards:** Instantáneas interactivas de solo lectura que se publican y comparten con usuarios y grupos.
 
-![](./media/slide541_img2.jpeg)
+![](./media/20_img11.jpg)
 
-![](./media/slide542_img1.jpeg)
+![](./media/20_img12.jpg)
 
 ---
 
@@ -159,11 +159,11 @@ Servicio administrado de extracción, transformación y carga (ETL) basado en Ap
 - **Glue Studio:** Interfaz gráfica para diseñar y orquestar flujos de trabajo ETL visualmente.
 - **Job Bookmarks:** Mecanismo de persistencia de estado para evitar reprocesar datos históricos en ejecuciones sucesivas del trabajo ETL.
 
-![](./media/slide544_img1.jpeg)
+![](./media/20_img13.jpg)
 
-![](./media/slide544_img3.jpeg)
+![](./media/20_img14.jpg)
 
-![](./media/slide545_img1.jpeg)
+![](./media/20_img15.jpg)
 
 ---
 
@@ -172,9 +172,9 @@ Construido sobre AWS Glue, permite orquestar, asegurar y gobernar un **Data Lake
 - Simplifica la recolección, limpieza y deduplicación de datos mediante algoritmos de Machine Learning (*FindMatches*).
 - **Seguridad Granular Centralizada:** Define políticas de seguridad unificadas con control de acceso a nivel de fila y columna (*Row and Column-Level Security*) aplicadas automáticamente sobre herramientas como Athena, Redshift Spectrum y EMR.
 
-![](./media/slide548_img1.jpeg)
+![](./media/20_img16.jpg)
 
-![](./media/slide549_img1.jpeg)
+![](./media/20_img17.jpg)
 
 ---
 
@@ -186,7 +186,7 @@ Servicio administrado que simplifica el despliegue y mantenimiento de clústeres
 - Almacenamiento persistente en volúmenes Amazon EBS.
 - **Amazon MSK Serverless:** Permite ejecutar Kafka ajustando dinámicamente el rendimiento y cómputo sin aprovisionar brokers individuales.
 
-![](./media/slide553_img8.jpeg)
+![](./media/20_img18.jpg)
 
 ---
 
@@ -207,7 +207,7 @@ Anteriormente conocido como *Kinesis Data Analytics for Apache Flink*. Permite e
 - Consume datos desde **Amazon Kinesis Data Streams** y **Amazon MSK**.
 - **Regla Crítica de Examen:** Apache Flink **NO puede leer directamente desde Amazon Kinesis Data Firehose** (Firehose es exclusivamente un destino de entrega o cargador).
 
-![](./media/slide552_img1.jpeg)
+![](./media/20_img19.jpg)
 
 ---
 
@@ -221,7 +221,7 @@ Una arquitectura común evalúa el ciclo de vida completo del dato desde la inge
 4. **Análisis SQL:** **Amazon Athena** consulta los datos en S3 utilizando particionado y formato Parquet generado por Glue.
 5. **Reportes y Visualización:** **Amazon QuickSight** consume las consultas de Athena aceleradas por SPICE, o bien los datos consolidados se cargan en **Amazon Redshift** para BI institucional.
 
-![](./media/slide557_img1.jpeg)
+![](./media/20_img20.jpg)
 
 ---
 

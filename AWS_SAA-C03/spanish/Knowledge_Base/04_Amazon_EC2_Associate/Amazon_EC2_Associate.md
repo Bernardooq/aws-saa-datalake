@@ -28,7 +28,7 @@ En arquitecturas de red sobre **Amazon VPC**, cada instancia EC2 interactúa med
 - **Efimeridad**: Proviene del pool de direcciones públicas de AWS. **Cuando la instancia se detiene (*stop*) y se reinicia (*start*), la IP pública se libera y se asigna una IP pública completamente nueva**.
 - Para que una instancia se comunique directamente hacia/desde internet requiere una IP pública, residir en una subred pública y contar con una ruta activa (`0.0.0.0/0`) hacia un **Internet Gateway (IGW)**.
 
-![](./media/slide80_img1.png)
+![](./media/04_img1.png)
 
 ---
 
@@ -67,7 +67,7 @@ Una **ENI** es un componente virtual lógico que representa una tarjeta de red (
 - Sin embargo, se pueden crear **ENIs secundarias (`eth1`, `eth2`)**, adjuntarlas dinámicamente (*hot-attach*) y moverlas entre instancias en la **misma Zona de Disponibilidad (AZ)**.
 - **Caso de uso SAA-C03**: Diseñar soluciones de failover de bajo costo para licencias de red o servicios de administración heredados. Si el servidor activo falla, la ENI secundaria (con su IP privada fija y Elastic IP asociada) se desprende y se asocia a la instancia de reserva.
 
-![](./media/slide89_img1.png)
+![](./media/04_img2.png)
 
 ---
 
@@ -103,7 +103,7 @@ Tradicionalmente, el ciclo de vida de una instancia EC2 comprende:
 2. Al reanudar la instancia, el sistema operativo no pasa por el proceso de arranque en frío (*cold boot*), sino que carga el archivo de hibernación directamente a la memoria física.
 3. La aplicación vuelve a estar operativa instantáneamente, manteniendo abiertas conexiones, estados en memoria y cachés precalentadas.
 
-![](./media/slide91_img1.png)
+![](./media/04_img3.png)
 ### Requisitos y Limitaciones Técnicas para el Examen
 - **Cifrado obligatorio**: El **volumen EBS raíz debe estar cifrado (KMS)** obligatoriamente para garantizar la seguridad de los datos confidenciales volcados desde la RAM.
 - **Tamaño de RAM**: La memoria RAM de la instancia debe ser **inferior a 150 GB**.

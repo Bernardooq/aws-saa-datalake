@@ -20,7 +20,7 @@ Amazon EC2 permite desplegar y administrar servidores virtuales elásticos (*ins
 - **Distribución de carga de red**: **Elastic Load Balancing (ELB)** para distribuir el tráfico uniformemente.
 - **Elasticidad y escalado dinámico**: **Auto Scaling Groups (ASG)** para ajustar automáticamente el número de instancias según métricas de demanda o programadas.
 
-![](./media/slide42_img1.jpeg)
+![](./media/03_img1.jpg)
 
 ### Parámetros de Configuración de una Instancia
 Al instanciar un servidor virtual en EC2, el arquitecto define:
@@ -55,7 +55,7 @@ AWS clasifica las instancias en familias optimizadas para cargas de trabajo espe
 
 $$\mathbf{m5.2xlarge} \implies \text{Familia: } \mathbf{m} \;|\; \text{Generación: } \mathbf{5} \;|\; \text{Tamaño: } \mathbf{2xlarge}$$
 
-![](./media/slide46_img1.jpeg)
+![](./media/03_img2.jpg)
 
 ### Comparativa de Familias de Instancias
 
@@ -66,10 +66,10 @@ $$\mathbf{m5.2xlarge} \implies \text{Familia: } \mathbf{m} \;|\; \text{Generaci�
 | **Memory Optimized (Memoria Optimizada)** | `r5`, `r6g`, `x2gd`, `u-` (High Memory) | Gran capacidad de memoria RAM respecto a la cantidad de vCPU. | Bases de datos relacionales empresariales (Oracle, SQL Server, RDS), cachés en memoria distribuidas (**Redis**, **Memcached**), analítica en tiempo real (Apache Spark). |
 | **Storage Optimized (Almacenamiento Optimizado)** | `i3`, `i4i`, `d2`, `d3` | Rendimiento masivo de lectura/escritura secuencial y aleatoria (I/O) sobre terabytes de datos en almacenamiento NVMe SSD local o HDD denso. | Almacenes de datos NoSQL distribuidos (**Cassandra**, **MongoDB**), sistemas OLTP de muy alta frecuencia, data warehouses y sistemas de archivos distribuidos (Hadoop HDFS). |
 
-![](./media/slide47_img1.jpeg)
-![](./media/slide48_img1.jpeg)
-![](./media/slide49_img1.jpeg)
-![](./media/slide50_img1.jpeg)
+![](./media/03_img3.jpg)
+![](./media/03_img4.jpg)
+![](./media/03_img5.jpg)
+![](./media/03_img6.jpg)
 
 ---
 
@@ -77,8 +77,8 @@ $$\mathbf{m5.2xlarge} \implies \text{Familia: } \mathbf{m} \;|\; \text{Generaci�
 
 Un **Security Group** opera como un firewall virtual con estado (*stateful*) que controla el tráfico entrante (*Inbound*) y saliente (*Outbound*) a nivel de la interfaz de red elástica (ENI) de la instancia EC2.
 
-![](./media/slide52_img1.png)
-![](./media/slide53_img1.jpeg)
+![](./media/03_img7.png)
+![](./media/03_img8.jpg)
 
 ### Reglas y Comportamiento Crítico
 - **Solo reglas de permiso (*Allow Rules*)**: Los grupos de seguridad **no admiten reglas de denegación explícita (*Deny*)**. Todo tráfico no autorizado por una regla de `Allow` se descarta implícitamente.
@@ -90,7 +90,7 @@ Un **Security Group** opera como un firewall virtual con estado (*stateful*) que
   - Todo el tráfico saliente (*Outbound*) está **permitido por defecto** (`0.0.0.0/0`).
 - **Ámbito**: Un Security Group está restringido estrictamente a una **única VPC** (y región). Puede vincularse simultáneamente a múltiples instancias dentro de dicha VPC.
 
-![](./media/slide58_img1.jpeg)
+![](./media/03_img9.jpg)
 
 ### Referencia Cruzada entre Security Groups
 En lugar de autorizar bloques de direcciones IP estáticas (CIDR), un Security Group puede referenciar **otro Security Group** como origen (*Source*) o destino.
@@ -129,7 +129,7 @@ Para conectarse a instancias EC2, existen tres mecanismos principales evaluados 
    - No requiere IP pública ni claves SSH locales.
    - Requiere el agente SSM instalado y un **Rol de IAM** con la política `AmazonSSMManagedInstanceCore` asignado a la instancia.
 
-![](./media/slide68_img1.png)
+![](./media/03_img10.png)
 
 ---
 
@@ -137,7 +137,7 @@ Para conectarse a instancias EC2, existen tres mecanismos principales evaluados 
 
 Seleccionar el modelo de compra adecuado es el pilar principal del pilar de **Optimización de Costos** (*Cost Optimization*) del AWS Well-Architected Framework.
 
-![](./media/slide70_img1.jpeg)
+![](./media/03_img11.jpg)
 
 ### Tabla Comparativa de Modelos de Compra
 
@@ -158,9 +158,9 @@ Seleccionar el modelo de compra adecuado es el pilar principal del pilar de **Op
 
 Las **Spot Instances** aprovechan la capacidad de cómputo ociosa de los centros de datos de AWS con descuentos de hasta el 90%.
 
-![](./media/slide75_img1.jpeg)
-![](./media/slide76_img1.jpeg)
-![](./media/slide76_img2.jpeg)
+![](./media/03_img12.jpg)
+![](./media/03_img13.jpg)
+![](./media/03_img14.jpg)
 
 ### Mecánica de Interrupción
 - Si la demanda de AWS aumenta y el precio Spot excede el precio máximo definido por el usuario (o no hay capacidad disponible), la instancia recibe un aviso de terminación a través del servicio de metadatos de la instancia (`instance metadata service - IMDS`) con **2 minutos de margen** antes de ser detenida (*stop*) o terminada (*terminate*).

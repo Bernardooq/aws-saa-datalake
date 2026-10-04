@@ -17,7 +17,7 @@ Cuando el volumen de datos alcanza decenas o cientos de terabytes (o petabytes),
 
 $$\text{Regla empírica SAA-C03}: \text{Si transferir los datos por red toma más de } \mathbf{7 \text{ días}} \implies \text{Utilizar dispositivos de la Familia Snow}.$$
 
-![](./media/slide350_img2.jpeg)
+![](./media/14_img1.jpg)
 
 ### Modelos de Dispositivos Snowball Edge
 1. **Snowball Edge Storage Optimized**:
@@ -61,11 +61,11 @@ Amazon FSx ofrece sistemas de archivos nativos y de alto rendimiento optimizados
   - Para procesamiento a largo plazo con datos sensibles.
   - Los datos se replican dentro de la misma Zona de Disponibilidad y sustituye automáticamente cualquier nodo fallido en minutos.
 
-![](./media/slide358_img1.png)
+![](./media/14_img2.png)
 
-![](./media/slide358_img3.jpeg)
+![](./media/14_img3.jpg)
 
-![](./media/slide358_img6.jpeg)
+![](./media/14_img4.jpg)
 
 ---
 
@@ -73,7 +73,7 @@ Amazon FSx ofrece sistemas de archivos nativos y de alto rendimiento optimizados
 
 **AWS Storage Gateway** conecta la infraestructura on-premises con el almacenamiento en la nube de AWS, permitiendo almacenar datos en Amazon S3 o EBS mientras proporciona acceso de baja latencia a los datos de uso frecuente en el centro de datos local mediante una máquina virtual (VMware ESXi, Hyper-V, KVM) o un appliance de hardware dedicado.
 
-![](./media/slide363_img1.jpeg)
+![](./media/14_img5.jpg)
 
 ### Comparativa de los Tipos de Storage Gateway
 
@@ -85,13 +85,13 @@ Amazon FSx ofrece sistemas de archivos nativos y de alto rendimiento optimizados
 | **Volume Gateway (Stored Volumes)** | **iSCSI** (Bloque)                   | **Amazon S3 y Snapshots de EBS**                             | **Todo el conjunto de datos completo reside localmente en el centro de datos**. Se realizan copias de seguridad asíncronas periódicas a S3 en forma de snapshots de EBS.          | Recuperación ante desastres (DR) con acceso local a velocidad de LAN y respaldos remotos protegidos en AWS.                                      |
 | **Tape Gateway (VTL)**              | **iSCSI VTL** (Virtual Tape Library) | **Amazon S3 y Amazon Glacier / Deep Archive**                | Emula una librería física de cintas magnéticas (lector y cambiador de medios) compatible con software de respaldo existente (Veeam, Commvault, Veritas, etc.).                    | **Sustitución de cintas físicas magnéticas por cintas virtuales en la nube sin cambiar los flujos de trabajo de copia de seguridad existentes**. |
 
-![](./media/slide364_img1.png)
+![](./media/14_img6.png)
 
-![](./media/slide364_img2.png)
+![](./media/14_img7.png)
 
-![](./media/slide365_img1.png)
+![](./media/14_img8.png)
 
-![](./media/slide365_img3.png)
+![](./media/14_img9.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > - Si el problema describe una empresa que realiza respaldos utilizando software corporativo y **cintas magnéticas físicas transportadas por mensajería a bodegas fuera de sitio**, y busca eliminar las cintas físicas sin cambiar su software de respaldo existente $\implies$ La respuesta es **Storage Gateway Tape Gateway (VTL)**.  
@@ -111,7 +111,7 @@ Amazon FSx ofrece sistemas de archivos nativos y de alto rendimiento optimizados
 - Permite mapear permisos mediante **Roles de IAM** para que los usuarios accedan únicamente a su prefijo asignado en S3.
 - Se integra con proveedores de identidad corporativos: **Microsoft Active Directory**, LDAP, Okta o Amazon Cognito.
 
-![](./media/slide368_img1.jpeg)
+![](./media/14_img10.jpg)
 
 ---
 
@@ -119,9 +119,9 @@ Amazon FSx ofrece sistemas de archivos nativos y de alto rendimiento optimizados
 
 **AWS DataSync** es un servicio acelerado de transferencia de datos en línea diseñado para simplificar, automatizar y acelerar la sincronización y movimiento masivo de datos entre entornos on-premises y AWS, así como entre diferentes servicios de almacenamiento dentro de AWS.
 
-![](./media/slide370_img1.jpeg)
+![](./media/14_img11.jpg)
 
-![](./media/slide371_img2.png)
+![](./media/14_img12.png)
 
 ### Características y Rendimiento de DataSync
 - **Rendimiento hasta 10 veces más rápido** que herramientas tradicionales de copia (como rsync o cp) gracias a un protocolo propietario de transferencia de red optimizado.

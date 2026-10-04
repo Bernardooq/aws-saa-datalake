@@ -37,7 +37,7 @@ Analizamos el ciclo de diseño de una aplicación que devuelve la hora actual (p
    - El ASG y el ALB se distribuyen a lo largo de **al menos 2 o 3 Zonas de Disponibilidad (AZs)**.
    - *Optimización de costos*: La capacidad base mínima permanente se cubre con **Instancias Reservadas / Savings Plans**, y los picos elásticos se atienden con instancias On-Demand o Spot.
 
-![](./media/slide240_img1.jpeg)
+![](./media/09_img1.jpg)
 
 > **💡 SAA-C03 Exam Tip:**  
 > Si una pregunta de examen describe una aplicación web que al escalar horizontalmente presenta fallas intermitentes donde algunos usuarios intentan acceder a instancias que acaban de ser terminadas por el Auto Scaling, **la causa raíz es usar registros DNS tipo A múltiples con TTL prolongado en lugar de un Application Load Balancer**. El ALB aísla a los clientes finales de los ciclos de vida efímeros de las instancias EC2 mediante Target Groups y Deregistration Delay.
@@ -48,7 +48,7 @@ Analizamos el ciclo de diseño de una aplicación que devuelve la hora actual (p
 
 Un sitio de comercio electrónico requiere persistir el carrito de compras y los perfiles de usuario, evitando que una sesión se pierda si una instancia EC2 backend se reinicia o es destruida por el Auto Scaling Group.
 
-![](./media/slide240_img2.png)
+![](./media/09_img2.png)
 
 ### Estrategias de Manejo de Estado (Pros y Contras)
 1. **Sticky Sessions (Sesiones Persistentes en el Balanceador)**:
@@ -96,11 +96,11 @@ Un CMS como WordPress requiere gestionar simultáneamente dos tipos de persisten
 | **Amazon EBS** | Los volúmenes EBS están anclados a una **única AZ** y generalmente a una sola instancia. Si una instancia en la AZ-1 recibe una imagen, las instancias en la AZ-2 no tienen acceso a ella. | **Antipatrón para CMS distribuidos**. Provoca inconsistencia inmediata entre servidores web. |
 | **Amazon EFS** | Sistema de archivos de red compatible con **POSIX montable concurrentemente en cientos de instancias EC2 a través de múltiples Zonas de Disponibilidad (Multi-AZ)**. | **Solución estándar recomendada**. Todas las instancias leen y escriben sobre el mismo directorio `/var/www/html/wp-content/uploads`. |
 
-![](./media/slide251_img1.jpeg)
+![](./media/09_img3.jpg)
 
-![](./media/slide251_img2.png)
+![](./media/09_img4.png)
 
-![](./media/slide251_img3.png)
+![](./media/09_img5.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > Cuando una pregunta plantee una flota de instancias EC2 en un Auto Scaling Group que ejecutan una aplicación web heredada que necesita **compartir y escribir archivos en un sistema de archivos común compatible con llamadas POSIX en múltiples Zonas de Disponibilidad**, la respuesta correcta es **Amazon EFS** (o Amazon S3 si la aplicación puede modificarse mediante API SDK, pero si el código espera un sistema de archivos montado tradicional, la respuesta es EFS).
@@ -126,7 +126,7 @@ Cuando un Auto Scaling Group lanza instancias en respuesta a un pico repentino d
 
 **AWS Elastic Beanstalk** es una plataforma como servicio (**PaaS**) orientada a desarrolladores que automatiza el despliegue completo de aplicaciones web en AWS.
 
-![](./media/slide261_img1.jpeg)
+![](./media/09_img6.jpg)
 
 ### Conceptos Clave
 - **Control total de la infraestructura**: A diferencia de otras soluciones PaaS cerradas, Elastic Beanstalk aprovisiona recursos nativos de AWS (EC2, ASG, ALB, CloudWatch, RDS) dentro de tu cuenta. El arquitecto conserva el acceso administrativo total para ajustar cualquier parámetro.
@@ -140,9 +140,9 @@ Cuando un Auto Scaling Group lanza instancias en respuesta a un pico repentino d
    - Diseñado para procesamiento asíncrono y tareas pesadas en segundo plano.
    - Integra de forma nativa una cola **Amazon SQS**. Las instancias EC2 ejecutan un demonio (*SQS daemon*) que extrae mensajes de la cola y escala el número de workers automáticamente en función de la métrica de mensajes acumulados en la cola SQS.
 
-![](./media/slide264_img1.png)
+![](./media/09_img7.png)
 
-![](./media/slide264_img2.jpeg)
+![](./media/09_img8.jpg)
 
 > **💡 SAA-C03 Exam Tip:**  
 > **Antipatrón crítico de base de datos en Elastic Beanstalk**:  

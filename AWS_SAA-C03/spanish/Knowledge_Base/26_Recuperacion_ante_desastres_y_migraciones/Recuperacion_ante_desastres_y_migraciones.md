@@ -24,7 +24,7 @@ La planificación ante catástrofes se fundamenta en dos métricas cuantitativas
    - Responde a la pregunta: *¿Cuánto tiempo puede estar el sistema caído antes de causar un impacto inaceptable al negocio?*
    - Define la **estrategia de arquitectura y automatización de conmutación por error (*failover*)**.
 
-![](./media/slide776_img1.jpeg)
+![](./media/26_img1.jpg)
 
 ---
 
@@ -51,30 +51,30 @@ A medida que el RTO y el RPO disminuyen (recuperación más rápida con menor p�
 - Si ocurre una catástrofe, se aprovisiona la infraestructura desde cero usando plantillas de **AWS CloudFormation**, AMIs preconfiguradas y restauración de snapshots.
 - **Caso de Uso:** Cargas no críticas donde se toleran horas de indisponibilidad para ahorrar al máximo en costos operativos.
 
-![](./media/slide777_img1.png)
+![](./media/26_img2.png)
 
 #### 2. Luz Piloto (Pilot Light)
 - Análogo a la llama piloto de una caldera: el componente más crítico (la base de datos) está **siempre encendido y sincronizado** en AWS (ej. réplica de RDS activa recibiendo cambios continuos).
 - Los servidores de aplicaciones no se están ejecutando; se mantienen como AMIs listas para instanciarse.
 - Durante un desastre, la base de datos secundaria se promueve a primaria y se disparan scripts o Auto Scaling Groups para desplegar la flota de servidores EC2 en cuestión de minutos.
 
-![](./media/slide778_img1.png)
+![](./media/26_img3.png)
 
 #### 3. Espera Caliente (Warm Standby)
 - Todos los niveles de la arquitectura (servidores web, balanceadores de carga y bases de datos) están desplegados y operativos en la región secundaria, pero dimensionados al **mínimo indispensable de capacidad** (ej. 1 o 2 instancias pequeñas en el ASG).
 - Puede manejar un tráfico mínimo de pruebas internas o monitoreo.
 - Si el sitio principal falla, **Amazon Route 53** conmuta el tráfico DNS al sitio de respaldo y el **Auto Scaling Group** escala horizontalmente hacia la capacidad completa de producción en minutos.
 
-![](./media/slide779_img1.png)
+![](./media/26_img4.png)
 
 #### 4. Multisitio Activo-Activo (Multi-Site Active-Active)
 - Entornos de producción completos y dimensionados al 100% ejecutándose simultáneamente en dos o más regiones de AWS (o híbrido on-premise y AWS).
 - El tráfico se distribuye activamente entre ambas ubicaciones utilizando políticas de enrutamiento ponderado (*Weighted*), de latencia o geolocalización en **Amazon Route 53**.
 - Emplea bases de datos globales con replicación activa o multimaestro (como **Amazon Aurora Global Database** o **Amazon DynamoDB Global Tables**).
 
-![](./media/slide780_img1.png)
+![](./media/26_img5.png)
 
-![](./media/slide780_img2.png)
+![](./media/26_img6.png)
 
 ---
 
@@ -85,7 +85,7 @@ A medida que el RTO y el RPO disminuyen (recuperación más rápida con menor p�
 - **Conmutación por Error Rápida (*Failover*):** En caso de desastre o ataque de ransomware, DRS orquesta automáticamente el lanzamiento de instancias EC2 con cómputo de producción en cuestión de minutos (RTO de minutos).
 - **Pruebas No Disruptivas:** Permite realizar simulacros frecuentes de recuperación ante desastres sin interrumpir la operación ni la replicación continua.
 
-![](./media/slide783_img1.png)
+![](./media/26_img7.png)
 
 ---
 
@@ -97,7 +97,7 @@ Servicio centralizado y totalmente gestionado para automatizar y coordinar respa
 - **Planes de Copia de Seguridad (*Backup Plans*):** Reglas basadas en etiquetas de asignación (*tag-based policies*) que definen frecuencia de ejecución, ventana de backup, transición al ciclo de vida en almacenamiento frío (*cold storage*) y retención final.
 - **Protección entre Cuentas y Regiones:** Admite copias automatizadas de backups hacia otras regiones de AWS y hacia cuentas secundarias aisladas de AWS Organizations para resguardo forense.
 
-![](./media/slide792_img1.jpeg)
+![](./media/26_img8.jpg)
 
 ---
 
@@ -106,7 +106,7 @@ Aplica un modelo de cumplimiento estricto **WORM (*Write Once, Read Many*)** a l
 - Impide que cualquier entidad (incluido el usuario `root` de la cuenta de AWS) pueda eliminar copias de seguridad o acortar los períodos de retención configurados.
 - Esencial para cumplir normativas regulatorias estrictas y proteger la organización contra ataques maliciosos internos o secuestro por **ransomware**.
 
-![](./media/slide793_img1.jpeg)
+![](./media/26_img9.jpg)
 
 ---
 
@@ -120,11 +120,11 @@ Servicio administrado que migra almacenes de datos relacionales y no relacionale
 - **Carga Completa + CDC (Change Data Capture):** Extrae el estado inicial de la base de datos y lee los logs de transacciones del motor de origen para replicar continuamente los cambios incrementales hasta el momento del corte definitivo (*cutover*).
 - **Fuentes y Destinos Soportados:** Migra desde Oracle, SQL Server, MySQL, Postgres o MongoDB hacia Amazon RDS, Aurora, DynamoDB, Redshift, S3 o DocumentDB.
 
-![](./media/slide784_img1.jpeg)
+![](./media/26_img10.jpg)
 
-![](./media/slide789_img4.jpeg)
+![](./media/26_img11.jpg)
 
-![](./media/slide789_img5.jpeg)
+![](./media/26_img12.jpg)
 
 ---
 
@@ -133,7 +133,7 @@ Herramienta que convierte esquemas de bases de datos, vistas, procedimientos alm
 - **Cuándo es Obligatorio:** En **migraciones heterogéneas** (ej. de Oracle o Microsoft SQL Server a Amazon Aurora PostgreSQL / MySQL, o de Teradata a Amazon Redshift).
 - **Cuándo NO se requiere:** En **migraciones homogéneas** (ej. PostgreSQL local a Amazon RDS PostgreSQL), ya que los esquemas son idénticos y el motor de origen coincide con el destino.
 
-![](./media/slide786_img1.jpeg)
+![](./media/26_img13.jpg)
 
 ---
 
@@ -146,9 +146,9 @@ Herramienta que convierte esquemas de bases de datos, vistas, procedimientos alm
 | **RDS PostgreSQL $\rightarrow$ Aurora PostgreSQL** | Crear una Réplica de Lectura Aurora o restaurar un snapshot de RDS PostgreSQL en Aurora PostgreSQL. |
 | **PostgreSQL Externo $\rightarrow$ Aurora PostgreSQL** | Exportar backup a Amazon S3 e importar utilizando la extensión `aws_s3` de Aurora PostgreSQL; o utilizar **AWS DMS**. |
 
-![](./media/slide789_img1.jpeg)
+![](./media/26_img14.jpg)
 
-![](./media/slide789_img2.jpeg)
+![](./media/26_img15.jpg)
 
 ---
 
@@ -160,7 +160,7 @@ Recopila inventario y métricas de rendimiento de servidores locales para planif
 - **Agent-based Discovery (Agente de software):** Instalado dentro del sistema operativo. Captura información profunda a nivel de procesos en ejecución y **mapas de dependencias de red entre servidores** (esencial para determinar qué servidores deben migrarse juntos en grupos).
 - Los datos se visualizan y gestionan en **AWS Migration Hub**.
 
-![](./media/slide796_img1.jpeg)
+![](./media/26_img16.jpg)
 
 ---
 
@@ -169,7 +169,7 @@ Solución primaria recomendada por AWS para migraciones masivas de tipo *Lift-an
 - Utiliza replicación continua a nivel de bloque en segundo plano sin interrumpir los sistemas en producción.
 - Permite realizar pruebas de lanzamiento no disruptivas antes de ejecutar la conmutación final con un tiempo de inactividad mínimo.
 
-![](./media/slide797_img1.jpeg)
+![](./media/26_img17.jpg)
 
 ---
 
@@ -177,7 +177,7 @@ Solución primaria recomendada por AWS para migraciones masivas de tipo *Lift-an
 Permite extender o migrar centros de datos locales basados en VMware vSphere directamente hacia infraestructura física bare-metal dedicada en AWS:
 - Permite operar con las mismas herramientas habituales (vCenter, vSAN, NSX-T) sin necesidad de reescribir aplicaciones ni convertir máquinas virtuales.
 
-![](./media/slide798_img1.jpeg)
+![](./media/26_img18.jpg)
 
 ---
 

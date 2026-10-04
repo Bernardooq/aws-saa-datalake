@@ -9,7 +9,7 @@ tags: [aws, arquitectura, cloud-native]
 
 El módulo de **Amazon Virtual Private Cloud (Amazon VPC)** es la columna vertebral de la infraestructura en AWS y uno de los dominios más evaluados en el examen **AWS Certified Solutions Architect - Associate (SAA-C03)**. Un arquitecto debe dominar el direccionamiento CIDR IPv4/IPv6, el diseño de subredes públicas y privadas, tablas de ruteo, componentes de salida a Internet (IGW, NAT Gateway, Egress-Only IGW), mecanismos de defensa en capas (Security Groups, NACLs, Network Firewall), interconexión y conectividad híbrida (VPC Peering, VPC Endpoints/PrivateLink, Site-to-Site VPN, Direct Connect, Transit Gateway) y optimización de costos de transferencia de red.
 
-![](./media/slide697_img1.jpeg)
+![](./media/25_img1.jpg)
 
 ---
 
@@ -28,9 +28,9 @@ Un bloque CIDR (*Classless Inter-Domain Routing*) se compone de una dirección I
 - `172.16.0.0/12` (`172.16.0.0` - `172.31.255.255`) $\rightarrow$ Rango asignado a la VPC por defecto de AWS (`172.31.0.0/16`).
 - `192.168.0.0/16` (`192.168.0.0` - `192.168.255.255`) $\rightarrow$ Redes de oficina pequeña o domésticas.
 
-![](./media/slide698_img1.jpeg)
+![](./media/25_img2.jpg)
 
-![](./media/slide700_img1.png)
+![](./media/25_img3.png)
 
 ---
 
@@ -58,7 +58,7 @@ En **cada subred** aprovisionada en AWS, **5 direcciones IP están reservadas** 
   - *Subred Pública:* Su tabla de rutas asociada tiene una ruta `0.0.0.0/0` apuntando directamente al Internet Gateway (`igw-xxxxxx`). Las instancias requieren una IP pública o Elastic IP (EIP) para navegar.
   - *Subred Privada:* No tiene ruta directa al IGW; el tráfico saliente hacia Internet se enruta hacia un **NAT Gateway** o **Instancia NAT**.
 
-![](./media/slide708_img1.jpeg)
+![](./media/25_img4.jpg)
 
 ---
 
@@ -67,7 +67,7 @@ Instancia EC2 alojada en una **subred pública** con una IP pública / EIP, util
 - El Security Group del Bastion Host solo debe permitir entrada en el puerto 22/3389 desde la IP pública corporativa del administrador.
 - Los Security Groups de las instancias privadas solo deben permitir tráfico en el puerto 22/3389 referenciando el **Security Group ID del Bastion Host**.
 
-![](./media/slide711_img1.jpeg)
+![](./media/25_img5.jpg)
 
 ---
 
@@ -83,14 +83,14 @@ Instancia EC2 alojada en una **subred pública** con una IP pública / EIP, util
 | **Rendimiento** | Escala elásticamente de 5 Gbps hasta 100 Gbps. | Limitado por el ancho de banda del tipo de instancia EC2. |
 | **Grupos de Seguridad** | No utiliza Security Groups (no se asocian a NAT Gateway). | Requiere configurar reglas de Security Group para entrada y salida. |
 
-![](./media/slide712_img1.jpeg)
+![](./media/25_img6.jpg)
 
-![](./media/slide712_img2.png)
+![](./media/25_img7.png)
 
 
-![](./media/slide712_img4.png)
+![](./media/25_img8.png)
 
-![](./media/slide712_img6.png)
+![](./media/25_img9.png)
 
 ---
 
@@ -109,13 +109,13 @@ La seguridad perimetral dentro de la VPC opera mediante un modelo de defensa en 
 | **Bloqueo de IPs**      | No puede denegar una IP específica (solo permite).                                                                                                          | **Herramienta ideal para bloquear una IP o rango CIDR malicioso**.                                                                               |
 | **Puertos Efímeros**    | No aplican (automático por ser stateful).                                                                                                                   | **Requiere abrir puertos efímeros (1024-65535)** en las reglas de salida o entrada para permitir respuestas de clientes.                         |
 
-![](./media/slide720_img1.png)
+![](./media/25_img10.png)
 
-![](./media/slide720_img2.png)
+![](./media/25_img11.png)
 
-![](./media/slide720_img3.jpeg)
+![](./media/25_img12.jpg)
 
-![](./media/slide720_img4.png)
+![](./media/25_img13.png)
 
 ---
 
@@ -129,13 +129,13 @@ Permite interconectar dos VPCs de forma privada utilizando la red troncal de AWS
 - **Tablas de Ruta:** Se debe actualizar manualmente la tabla de rutas de cada subred añadiendo el CIDR de la VPC remota apuntando al `pcx-xxxxxx`.
 - **Referencias en Security Groups:** En la misma región, un Security Group de una VPC puede referenciar por ID a un Security Group de la VPC emparejada.
 
-![](./media/slide728_img1.jpeg)
+![](./media/25_img14.jpg)
 
-![](./media/slide729_img1.jpeg)
+![](./media/25_img15.jpg)
 
-![](./media/slide730_img1.jpeg)
+![](./media/25_img16.jpg)
 
-![](./media/slide730_img3.png)
+![](./media/25_img17.png)
 
 ---
 
@@ -152,11 +152,11 @@ Aunque el Gateway Endpoint es gratuito y preferido dentro de la VPC, el **Interf
 1. Una red local (*on-premises*) a través de **AWS Direct Connect** o **Site-to-Site VPN**.
 2. Una VPC en otra región o mediante un **Transit Gateway**.
 
-![](./media/slide731_img1.jpeg)
+![](./media/25_img18.jpg)
 
-![](./media/slide731_img2.png)
+![](./media/25_img19.png)
 
-![](./media/slide731_img4.png)
+![](./media/25_img20.png)
 
 ---
 
@@ -169,17 +169,17 @@ Captura información sobre el tráfico IP que entra y sale de las interfaces de 
   - `REJECT` entrante $\rightarrow$ Bloqueado por regla de entrada de SG o NACL.
   - `ACCEPT` entrante y `REJECT` saliente $\rightarrow$ Bloqueado por regla de salida de la **NACL** (el SG es stateful, por lo que nunca bloquearía la salida).
 
-![](./media/slide735_img1.png)
+![](./media/25_img21.png)
 
 
-![](./media/slide737_img1.jpeg)
+![](./media/25_img22.jpg)
 
-![](./media/slide738_img1.png)
+![](./media/25_img23.png)
 
-![](./media/slide738_img2.png)
+![](./media/25_img24.png)
 
-![](./media/slide739_img10.jpeg)
-![](./media/slide740_img1.jpeg)
+![](./media/25_img25.jpg)
+![](./media/25_img26.jpg)
 
 ---
 
@@ -191,11 +191,11 @@ Conecta de forma segura el centro de datos local con la VPC a través de túnele
 - **Customer Gateway (CGW):** Dispositivo físico o software en el lado del cliente (requiere IP pública enrutable por Internet).
 - **Paso Crítico de Configuración:** Habilitar la **propagación de rutas (*Route Propagation*)** en las tablas de ruteo de la VPC para aprender automáticamente las rutas de la red on-premises.
 
-![](./media/slide741_img1.jpeg)
+![](./media/25_img27.jpg)
 
-![](./media/slide741_img3.jpeg)
+![](./media/25_img28.jpg)
 
-![](./media/slide741_img4.jpeg)
+![](./media/25_img29.jpg)
 
 ---
 
@@ -208,17 +208,17 @@ Proporciona una conexión de red física y privada dedicada desde el centro de d
   - *Transit VIF:* Para conectar a un **AWS Transit Gateway**.
 - **Cifrado en Direct Connect:** La conexión física es privada pero **NO está cifrada por defecto**. Para lograr cifrado IPsec en tránsito sobre Direct Connect, se debe desplegar una **VPN Site-to-Site sobre la conexión de Direct Connect**.
 
-![](./media/slide745_img1.jpeg)
+![](./media/25_img30.jpg)
 
-![](./media/slide746_img1.png)
+![](./media/25_img31.png)
 
-![](./media/slide746_img2.jpeg)
+![](./media/25_img32.jpg)
 
-![](./media/slide746_img3.png)
+![](./media/25_img33.png)
 
-![](./media/slide746_img4.png)
+![](./media/25_img34.png)
 
-![](./media/slide746_img5.jpeg)
+![](./media/25_img35.jpg)
 
 ---
 
@@ -229,13 +229,13 @@ Actúa como un router de red centralizado (*Hub-and-Spoke*) que simplifica la to
 - **ECMP (Equal-Cost Multi-Path Routing):** Permite agregar el ancho de banda de múltiples túneles VPN activos simultáneamente (cada túnel entrega 1.25 Gbps; con ECMP se escala a múltiplos de 2.5 Gbps, 5 Gbps, etc.).
 - **Compartición:** Se comparte entre múltiples cuentas de AWS Organizations usando **AWS RAM (Resource Access Manager)**.
 
-![](./media/slide752_img1.jpeg)
+![](./media/25_img36.jpg)
 
-![](./media/slide752_img2.jpeg)
+![](./media/25_img37.jpg)
 
-![](./media/slide752_img3.jpeg)
+![](./media/25_img38.jpg)
 
-![](./media/slide752_img4.jpeg)
+![](./media/25_img39.jpg)
 
 ---
 
@@ -244,7 +244,7 @@ Actúa como un router de red centralizado (*Hub-and-Spoke*) que simplifica la to
 ### 7.1 VPC Traffic Mirroring
 Permite duplicar de forma no intrusiva el tráfico de red de interfaces ENI de origen y enviarlo a dispositivos de seguridad dedicados (monitoreo IDS/IPS, analizadores de paquetes) alojados detrás de un **Network Load Balancer** u otra ENI.
 
-![](./media/slide757_img1.png)
+![](./media/25_img40.png)
 
 ---
 
@@ -253,11 +253,11 @@ Permite duplicar de forma no intrusiva el tráfico de red de interfaces ENI de o
 - **Dual-Stack:** Las VPCs y subredes operan en modo de pila dual (IPv4 privada + IPv6 pública). No se puede deshabilitar IPv4.
 - **Egress-Only Internet Gateway (EIGW):** Componente para IPv6 análogo al NAT Gateway en IPv4. Permite que las instancias de subredes privadas inicien conexiones salientes hacia Internet vía IPv6, **impidiendo que clientes externos inicien conexiones entrantes** hacia dichas instancias.
 
-![](./media/slide759_img1.png)
+![](./media/25_img41.png)
 
-![](./media/slide759_img3.png)
+![](./media/25_img42.png)
 
-![](./media/slide760_img1.jpeg)
+![](./media/25_img43.jpg)
 
 ---
 
@@ -269,13 +269,13 @@ Permite duplicar de forma no intrusiva el tráfico de red de interfaces ENI de o
 4. **Tráfico entre Regiones (*Cross-Region*):** Facturación estándar de $0.02/GB.
 5. **Gateway Endpoint vs NAT Gateway para S3:** Acceder a Amazon S3 a través de un **Gateway Endpoint es 100% gratuito** (sin costo por hora ni por GB procesado), mientras que acceder a través de un NAT Gateway incurre en $0.045/hora más $0.045 por GB procesado.
 
-![](./media/slide766_img1.png)
+![](./media/25_img44.png)
 
-![](./media/slide766_img2.png)
+![](./media/25_img45.png)
 
-![](./media/slide767_img1.png)
+![](./media/25_img46.png)
 
-![](./media/slide767_img2.png)
+![](./media/25_img47.png)
 
 ---
 
@@ -286,7 +286,7 @@ Servicio de firewall administrado de inspección profunda de paquetes (Capas 3 a
 - Inspecciona tráfico bidireccional: VPC a VPC, salida a Internet, entrada desde Internet, y conexiones Direct Connect / VPN.
 - **Reglas con Estado (*Stateful Rules*):** Filtrado por nombres de dominio (FQDN lista blanca como `*.corp.com`), firmas de detección de intrusiones (reglas compatibles con Suricata) e inspección de protocolos.
 
-![](./media/slide771_img1.jpeg)
+![](./media/25_img48.jpg)
 
 ---
 

@@ -20,11 +20,11 @@ Un contenedor empaqueta el código fuente, librerías, dependencias de tiempo de
 - **Máquinas Virtuales Tradicionales (VMs)**: Cada VM corre sobre un hipervisor de hardware e incluye un sistema operativo invitado (*Guest OS*) completo e independiente (ocupando gigabytes y tardando minutos en arrancar).
 - **Contenedores Docker**: Comparten el kernel del sistema operativo del servidor host (*Host OS*). Son ligeros (megabytes), consumen menos recursos y se inician en fracciones de segundo.
 
-![](./media/slide414_img1.png)
+![](./media/16_img1.png)
 
-![](./media/slide415_img2.png)
+![](./media/16_img2.png)
 
-![](./media/slide415_img4.png)
+![](./media/16_img3.png)
 
 ---
 
@@ -39,7 +39,7 @@ Un contenedor empaqueta el código fuente, librerías, dependencias de tiempo de
   - Integración nativa con **AWS KMS** para cifrado en reposo.
 - **Ciclo de vida de imágenes (*Lifecycle Policies*)**: Reglas para expirar y limpiar automáticamente imágenes antiguas o sin etiquetar (*untagged*), evitando costos innecesarios de almacenamiento.
 
-![](./media/slide419_img1.jpeg)
+![](./media/16_img4.jpg)
 
 ---
 
@@ -69,9 +69,9 @@ Para ejecutar tareas en Amazon ECS (y pods en Amazon EKS), el arquitecto debe el
 | **Modelo de Costos** | Se paga por las instancias EC2 aprovisionadas (corran o no contenedores). Admite Spot e Instancias Reservadas. | Se factura por segundo según la cantidad exacta de **vCPU y memoria RAM asignadas** a cada tarea. |
 | **Casos de Uso SAA-C03** | Cargas de trabajo predecibles a gran escala, instancias con hardware especializado (GPUs para ML), o cuando se requiere control estricto del host. | **Recomendado por defecto en arquitecturas modernas de microservicios**: elimina sobrecarga operativa, ideal para cargas variables o esporádicas. |
 
-![](./media/slide420_img1.jpeg)
+![](./media/16_img5.jpg)
 
-![](./media/slide422_img1.png)
+![](./media/16_img6.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > Si una pregunta de examen plantea desplegar microservicios en contenedores Docker y exige **"la menor sobrecarga de gestión operativa posible, sin administrar servidores ni parches de sistema operativo, pagando únicamente por la CPU y memoria consumida por las tareas"**, la respuesta es **Amazon ECS con tipo de lanzamiento AWS Fargate**.
@@ -82,7 +82,7 @@ Para ejecutar tareas en Amazon ECS (y pods en Amazon EKS), el arquitecto debe el
 
 Una de las preguntas clásicas y con mayor probabilidad de confusión en el examen involucra la asignación correcta de permisos de IAM en ECS:
 
-![](./media/slide422_img2.png)
+![](./media/16_img7.png)
 
 ### Comparativa: EC2 Instance Profile vs. ECS Task Role
 
@@ -103,7 +103,7 @@ Una de las preguntas clásicas y con mayor probabilidad de confusión en el exam
   - Soporta **mapeo de puertos dinámico (*Dynamic Host Port Mapping*)**: Permite ejecutar múltiples contenedores idénticos de la misma tarea sobre una única instancia EC2 asignándoles puertos efímeros aleatorios; el ALB redirige el tráfico reconociendo el Target Group automáticamente.
 - **Network Load Balancer (NLB)**: Para tráfico TCP/UDP de rendimiento extremo o integración con **AWS PrivateLink**.
 
-![](./media/slide423_img1.png)
+![](./media/16_img8.png)
 
 ### Almacenamiento Persistente con Amazon EFS
 - Por diseño, los contenedores son efímeros.
@@ -111,7 +111,7 @@ Una de las preguntas clásicas y con mayor probabilidad de confusión en el exam
 - **Compatible tanto con EC2 Launch Type como con AWS Fargate**.
 - *Nota arquitectónica*: Amazon S3 **no** se puede montar de forma nativa como un sistema de archivos en tareas ECS.
 
-![](./media/slide423_img3.png)
+![](./media/16_img9.png)
 
 ---
 
@@ -124,19 +124,19 @@ Una de las preguntas clásicas y con mayor probabilidad de confusión en el exam
   - `ALBRequestCountPerTarget`
 - Modalidades: *Target Tracking Scaling*, *Step Scaling* y *Scheduled Scaling*.
 
-![](./media/slide425_img1.png)
+![](./media/16_img10.png)
 
 ### Integración con Amazon EventBridge
 - **Ejecución basada en eventos o cron**: EventBridge puede disparar la ejecución de una tarea ECS en modo batch al ocurrir un evento en S3 o según un horario programado (*EventBridge Rule*).
 - **Monitoreo de estado de tareas**: EventBridge captura eventos cuando un contenedor se detiene (*Task State Change*), permitiendo enviar alertas automáticas vía **Amazon SNS** a los administradores.
 
-![](./media/slide428_img1.png)
+![](./media/16_img11.png)
 
-![](./media/slide428_img3.jpeg)
+![](./media/16_img12.jpg)
 
-![](./media/slide428_img5.jpeg)
+![](./media/16_img13.jpg)
 
-![](./media/slide428_img7.jpeg)
+![](./media/16_img14.jpg)
 
 ---
 
@@ -144,7 +144,7 @@ Una de las preguntas clásicas y con mayor probabilidad de confusión en el exam
 
 **Amazon EKS** es el servicio administrado de Kubernetes en AWS. Es la opción preferida por empresas que buscan estandarizar sus flujos de trabajo sobre el estándar abierto de facto de la industria (**Kubernetes**) o mantener una arquitectura híbrida multinube compatible con Google Cloud (GKE), Azure (AKS) o centros de datos on-premises.
 
-![](./media/slide433_img1.jpeg)
+![](./media/16_img15.jpg)
 
 ### Tipos de Nodos de Trabajo en EKS
 1. **Managed Node Groups**: AWS crea, actualiza y gestiona las instancias EC2 del clúster dentro de un Auto Scaling Group automatizado.
@@ -157,10 +157,10 @@ EKS requiere definir un `StorageClass` que utiliza un controlador **Container St
 - **Amazon EFS CSI Driver**: Sistema de archivos compartido multi-AZ (compatible con pods en Fargate).
 - **Amazon FSx for Lustre CSI Driver**: Computación paralela de alto rendimiento.
 
-![](./media/slide436_img1.jpeg)
-![](./media/slide436_img2.jpeg)
-![](./media/slide436_img3.jpeg)
-![](./media/slide436_img4.jpeg)
+![](./media/16_img16.jpg)
+![](./media/16_img17.jpg)
+![](./media/16_img18.jpg)
+![](./media/16_img19.jpg)
 
 > **💡 SAA-C03 Exam Tip:**  
 > **Criterio de decisión definitivo: ¿Amazon ECS o Amazon EKS?**  

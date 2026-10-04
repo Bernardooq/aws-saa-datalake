@@ -35,7 +35,7 @@ En lugar de exponer funciones AWS Lambda o bases de datos de forma directa a Int
 3. API Gateway valida el token mediante un **Cognito Authorizer** nativo (o una función Lambda Authorizer) sin necesidad de ejecutar lógica de cómputo adicional.
 4. Una vez validada la identidad, API Gateway enruta la petición hacia **AWS Lambda**, la cual interactúa con **Amazon DynamoDB** para registrar o consultar tareas.
 
-![](./media/slide492_img1.jpeg)
+![](./media/18_img1.jpg)
 
 ---
 
@@ -49,7 +49,7 @@ La solución arquitectónica recomendada por AWS consiste en delegar el intercam
 3. El cliente móvil recibe credenciales temporales con permisos estrictamente limitados para interactuar de forma directa con el bucket de Amazon S3.
 4. Mediante el uso de variables de política IAM como `${cognito-identity.amazonaws.com:sub}`, se restringe el acceso para que cada usuario únicamente pueda leer y escribir en su propio prefijo: `arn:aws:s3:::my-bucket/users/${cognito-identity.amazonaws.com:sub}/*`.
 
-![](./media/slide493_img1.jpeg)
+![](./media/18_img2.jpg)
 
 | Mecanismo de Subida | Cuándo Usarlo en SAA-C03 | Ventajas Principales | Limitaciones / Consideraciones |
 | :--- | :--- | :--- | :--- |
@@ -66,7 +66,7 @@ Cuando el tráfico de la aplicación se inclina predominantemente hacia lecturas
 1. **DynamoDB Accelerator (DAX):** Se despliega un clúster de caché en memoria (*in-memory*) administrado específicamente para DynamoDB. DAX reduce la latencia de respuesta de milisegundos a microsegundos, absorbiendo consultas repetidas de lectura (`GetItem`, `BatchGetItem`, `Query`) sin consumir RCUs de la tabla subyacente.
 2. **Caché en API Gateway:** Permite almacenar en memoria las respuestas de métodos HTTP específicos por un tiempo de vida (TTL) configurable. Evita invocar la función Lambda y no genera consultas hacia DynamoDB para solicitudes idénticas.
 
-![](./media/slide494_img1.jpeg)
+![](./media/18_img3.jpg)
 
 > **💡 SAA-C03 Exam Tip:**
 > - Si la pregunta pide reducir la latencia de lectura de DynamoDB de **milisegundos a microsegundos sin modificar el código de la aplicación**, la respuesta siempre es **DynamoDB Accelerator (DAX)** (se cambia únicamente el endpoint del SDK).
@@ -87,7 +87,7 @@ El frontend estático (HTML, CSS, JavaScript, imágenes) se aloja en un bucket d
 2. Para proteger el bucket S3 y evitar accesos directos no deseados a través de Internet, se configura **Origin Access Control (OAC)** (sucesor moderno de OAI).
 3. La política de bucket de S3 restringe el acceso de lectura exclusivamente al servicio CloudFront mediante la condición `AWS:SourceArn` apuntando al ARN de la distribución.
 
-![](./media/slide498_img1.jpeg)
+![](./media/18_img4.jpg)
 
 ---
 
@@ -98,7 +98,7 @@ Para el contenido dinámico del blog (artículos, comentarios, perfiles):
 - Debido a que el portal es de acceso público general, no requiere Cognito para lecturas anónimas, aunque puede implementarse para autenticación de escritores y administradores.
 - Para garantizar lecturas y escrituras multirregión con latencia local y alta disponibilidad activa-activa, se emplean **DynamoDB Global Tables** (con replicación bidireccional multirregión totalmente administrada).
 
-![](./media/slide500_img1.jpeg)
+![](./media/18_img5.jpg)
 
 ---
 
@@ -110,7 +110,7 @@ Al registrarse un nuevo usuario, el registro se inserta en DynamoDB. Desacoplar 
 2. El stream invoca automáticamente una función **AWS Lambda**.
 3. La función asume un **IAM Role** con permisos `ses:SendEmail` y utiliza el SDK de AWS para despachar el correo de bienvenida a través de **Amazon SES (Simple Email Service)**.
 
-![](./media/slide502_img1.jpeg)
+![](./media/18_img6.jpg)
 
 #### Flujo de Subida de Imágenes y Procesamiento de Miniaturas
 1. Los autores suben imágenes de alta resolución a un bucket de S3 utilizando **S3 Transfer Acceleration** (que aprovecha los Edge Locations de CloudFront para enrutar el tráfico sobre la red troncal optimizada de AWS).
@@ -118,7 +118,7 @@ Al registrarse un nuevo usuario, el registro se inserta en DynamoDB. Desacoplar 
 3. El evento puede invocar directamente una función Lambda o desacoplarse mediante **Amazon SQS** o **Amazon SNS** para garantizar tolerancia a fallos y amortiguar picos de carga.
 4. La función Lambda procesa la imagen, genera la miniatura (*thumbnail*) y la almacena en un bucket de S3 secundario o en un prefijo optimizado para consumo público.
 
-![](./media/slide503_img1.jpeg)
+![](./media/18_img7.jpg)
 
 > **💡 SAA-C03 Exam Tip:**
 > - Cuando una pregunta mencione **"reaccionar a cambios o mutaciones en DynamoDB"** (como registrar auditorías, enviar notificaciones o actualizar réplicas externas), el patrón canónico es **DynamoDB Streams + AWS Lambda**.
@@ -139,7 +139,7 @@ Cada microservicio puede implementar el stack tecnológico y la persistencia de 
 - **Microservicio Tradicional (ALB + EC2 Auto Scaling + Amazon RDS):** Adecuado para migraciones *lift-and-shift* o cargas que requieren motores relacionales complejos.
 - **Enrutamiento Global:** **Amazon Route 53** gestiona los registros DNS (`servicio1.ejemplo.com`, `servicio2.ejemplo.com`) permitiendo enrutar mediante políticas ponderadas (*weighted*), de latencia o basadas en geolocalización.
 
-![](./media/slide506_img1.jpeg)
+![](./media/18_img8.jpg)
 
 ---
 
@@ -177,7 +177,7 @@ Se sitúa una distribución de **Amazon CloudFront** delante del Application Loa
 2. CloudFront almacena en caché el archivo en su red de puntos de presencia mundiales (*Edge Locations*) respetando las cabeceras `Cache-Control`.
 3. Todas las solicitudes subsiguientes de los millones de clientes globales son atendidas directamente desde la caché perimetral de CloudFront (*Cache Hit*).
 
-![](./media/slide509_img1.png)
+![](./media/18_img9.png)
 
 #### Beneficios Clave:
 - **Cero cambios en la arquitectura de la aplicación:** No se requiere reescribir software ni migrar el backend.

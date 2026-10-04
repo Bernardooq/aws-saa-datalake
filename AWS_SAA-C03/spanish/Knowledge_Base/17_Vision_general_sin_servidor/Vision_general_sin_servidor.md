@@ -11,7 +11,7 @@ El paradigma **Serverless** traslada la responsabilidad de la administración, a
 
 Para el examen **AWS Certified Solutions Architect - Associate (SAA-C03)**, este módulo es crucial: aborda el diseño de arquitecturas orientadas a eventos basadas en **AWS Lambda**, computación en el borde (**CloudFront Functions vs. Lambda@Edge**), bases de datos NoSQL de escala masiva con **Amazon DynamoDB** y su acelerador **DAX**, exposición de microservicios con **Amazon API Gateway**, orquestación de flujos de trabajo con **AWS Step Functions**, y federación de identidades con **Amazon Cognito**.
 
-![](./media/slide439_img1.jpeg)
+![](./media/17_img1.jpg)
 
 ---
 
@@ -19,9 +19,9 @@ Para el examen **AWS Certified Solutions Architect - Associate (SAA-C03)**, este
 
 **AWS Lambda** es un servicio de cómputo serverless que ejecuta código en respuesta a eventos provenientes de más de 200 servicios de AWS.
 
-![](./media/slide440_img2.jpeg)
+![](./media/17_img2.jpg)
 
-![](./media/slide443_img1.jpeg)
+![](./media/17_img3.jpg)
 
 ### Límites de Configuración Críticos para el Examen
 - **Tiempo máximo de ejecución (Timeout)**: **900 segundos (15 minutos)**. Cualquier tarea que supere este tiempo colapsa; para procesos más largos se deben usar instancias EC2, contenedores ECS o AWS Step Functions.
@@ -41,13 +41,13 @@ Para el examen **AWS Certified Solutions Architect - Associate (SAA-C03)**, este
    - Invocación síncrona: Retorna un error HTTP **`429 Too Many Requests`**.
    - Invocación asíncrona: Lambda reintenta automáticamente con retroceso exponencial durante **hasta 6 horas**, enviando los eventos fallidos a una **Dead-Letter Queue (DLQ)** de SQS o SNS si está configurada.
 
-![](./media/slide449_img1.jpeg)
+![](./media/17_img4.jpg)
 
-![](./media/slide452_img1.jpeg)
-![](./media/slide452_img3.jpeg)
+![](./media/17_img5.jpg)
+![](./media/17_img6.jpg)
 
-![](./media/slide452_img2.jpeg)
-![](./media/slide452_img4.jpeg)
+![](./media/17_img7.jpg)
+![](./media/17_img8.jpg)
 
 ### Lambda en Amazon VPC
 - Por defecto, Lambda corre en una VPC administrada por AWS con salida a Internet pública, pero **sin acceso a recursos privados** (RDS privado, ElastiCache o balanceadores internos).
@@ -56,15 +56,15 @@ Para el examen **AWS Certified Solutions Architect - Associate (SAA-C03)**, este
   - Lambda utiliza interfaces de red elásticas gestionadas por AWS Nitro (**Hyperplane ENI**) que permiten arrancar en subredes privadas sin penalización de tiempo de conexión.
   - Para interactuar con bases de datos relacionales con alta concurrencia, **se debe intercalar Amazon RDS Proxy** para evitar agotar el pool de conexiones.
 
-![](./media/slide460_img1.jpeg)
+![](./media/17_img9.jpg)
 
-![](./media/slide460_img3.jpeg)
+![](./media/17_img10.jpg)
 
-![](./media/slide460_img5.png)
+![](./media/17_img11.png)
 
-![](./media/slide461_img1.png)
+![](./media/17_img12.png)
 
-![](./media/slide461_img3.png)
+![](./media/17_img13.png)
 
 ---
 
@@ -72,9 +72,9 @@ Para el examen **AWS Certified Solutions Architect - Associate (SAA-C03)**, este
 
 Para ejecutar lógica computacional lo más cerca posible de los usuarios finales a través de la CDN, AWS ofrece dos tecnologías perimetrales:
 
-![](./media/slide454_img1.jpeg)
+![](./media/17_img14.jpg)
 
-![](./media/slide456_img1.jpeg)
+![](./media/17_img15.jpg)
 
 ### Tabla Comparativa: CloudFront Functions vs. Lambda@Edge
 
@@ -99,9 +99,9 @@ Para ejecutar lógica computacional lo más cerca posible de los usuarios finale
 
 **Amazon DynamoDB** es una base de datos NoSQL clave-valor y de documentos totalmente administrada que ofrece latencias de **milisegundos de un solo dígito** a cualquier escala.
 
-![](./media/slide465_img1.jpeg)
+![](./media/17_img16.jpg)
 
-![](./media/slide466_img1.png)
+![](./media/17_img17.png)
 
 ### Conceptos Fundamentales
 - **Estructura**: Tablas formadas por Elementos (*Items*, hasta un máximo de **400 KB**) y Atributos.
@@ -123,9 +123,9 @@ Para ejecutar lógica computacional lo más cerca posible de los usuarios finale
 - Reduce la latencia de lectura de milisegundos a **microsegundos**.
 - **Transparente para la aplicación**: Compatible con las llamadas de API nativas de DynamoDB sin requerir reescribir la lógica de la aplicación (a diferencia de ElastiCache, que exige programar la lógica de Cache-Aside).
 
-![](./media/slide469_img1.jpeg)
+![](./media/17_img18.jpg)
 
-![](./media/slide469_img5.jpeg)
+![](./media/17_img19.jpg)
 
 ### Capacidades Avanzadas de DynamoDB
 - **DynamoDB Streams**: Flujo ordenado de eventos a nivel de elemento (creaciones, modificaciones, borrados) con retención de **24 horas**. Dispara funciones **AWS Lambda** de forma reactiva (patrón CDC - *Change Data Capture*).
@@ -133,13 +133,13 @@ Para ejecutar lógica computacional lo más cerca posible de los usuarios finale
 - **Time to Live (TTL)**: Marca de tiempo UNIX epoch que indica cuándo un elemento debe ser **eliminado automáticamente sin costo adicional de WCUs**. Ideal para sesiones web y datos efímeros.
 - **Respaldos y Recuperación**: Point-in-Time Recovery (**PITR**) continuo para los últimos 35 días y respaldos bajo demanda administrados por **AWS Backup**.
 
-![](./media/slide471_img1.png)
+![](./media/17_img20.png)
 
-![](./media/slide472_img2.png)
+![](./media/17_img21.png)
 
-![](./media/slide472_img4.jpeg)
+![](./media/17_img22.jpg)
 
-![](./media/slide472_img6.jpeg)
+![](./media/17_img23.jpg)
 
 > **💡 SAA-C03 Exam Tip:**  
 > - Si un sistema requiere **"latencia en microsegundos para lecturas repetitivas sobre DynamoDB sin alterar el código de la aplicación cliente"** $\implies$ La respuesta es **DynamoDB Accelerator (DAX)**.  
@@ -151,9 +151,9 @@ Para ejecutar lógica computacional lo más cerca posible de los usuarios finale
 
 **Amazon API Gateway** es un servicio totalmente administrado para crear, publicar, mantener, monitorear y proteger APIs REST, HTTP y WebSocket a cualquier escala.
 
-![](./media/slide477_img1.png)
+![](./media/17_img24.png)
 
-![](./media/slide477_img2.jpeg)
+![](./media/17_img25.jpg)
 
 ### Tipos de Endpoints de API Gateway
 1. **Edge-Optimized (Predeterminado)**: Enruta las solicitudes a través de la red global de CloudFront Edge Locations para minimizar la latencia de clientes internacionales distribuidos.
@@ -179,9 +179,9 @@ Para ejecutar lógica computacional lo más cerca posible de los usuarios finale
   - Gestión nativa de errores, reintentos con retroceso exponencial (*Retry*) y capturas de excepciones (*Catch*).
   - Soporta **aprobación humana (*Human Approval Tasks*)** deteniendo la ejecución durante días hasta recibir una señal externa vía token.
 
-![](./media/slide483_img1.jpeg)
-![](./media/slide483_img2.jpeg)
-![](./media/slide483_img3.jpeg)
+![](./media/17_img26.jpg)
+![](./media/17_img27.jpg)
+![](./media/17_img28.jpg)
 
 ---
 
@@ -199,11 +199,11 @@ Amazon Cognito proporciona autenticación, autorización y administración de us
 | **Integraciones Clave** | Integra directamente con **API Gateway** y **Application Load Balancer (ALB)** para validar tokens. | Permite que las aplicaciones cliente accedan **directamente a recursos de AWS** (ej. subir archivos a un bucket de S3 o escribir en DynamoDB) sin pasar por un servidor backend. |
 | **Proveedores Soportados** | Base de datos serverless de usuarios propia, proveedores sociales (Google, Facebook, Apple) y federación SAML 2.0 / OIDC. | Cognito User Pools, OpenID Connect, SAML, Google, Apple, etc. |
 
-![](./media/slide486_img1.jpeg)
+![](./media/17_img29.jpg)
 
-![](./media/slide486_img3.jpeg)
+![](./media/17_img30.jpg)
 
-![](./media/slide489_img1.jpeg)
+![](./media/17_img31.jpg)
 
 > **💡 SAA-C03 Exam Tip:**  
 > **Patrón de Arquitectura Serverless Móvil**:  

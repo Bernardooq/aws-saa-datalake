@@ -37,15 +37,15 @@ Una distinción crítica evaluada de forma reiterada en el examen SAA-C03 es la 
 | **Comportamiento ante Fallos** | No hay failover automático hacia la réplica a menos que se promueva manualmente o mediante scripts. | **Failover automático e inadvertido en 60-120 segundos**. AWS actualiza el registro CNAME del endpoint para que apunte a la instancia standby. |
 | **Costo de Red Inter-AZ** | **Gratis** si la réplica reside en la misma región (incluso en diferente AZ). Aplica costo si es **Cross-Region**. | El tráfico síncrono inter-AZ está incluido en el costo del servicio Multi-AZ. |
 
-![](./media/slide163_img1.png)
+![](./media/07_img1.png)
 
-![](./media/slide163_img2.png)
+![](./media/07_img2.png)
 
-![](./media/slide164_img1.png)
+![](./media/07_img3.png)
 
-![](./media/slide164_img2.png)
+![](./media/07_img4.png)
 
-![](./media/slide165_img1.png)
+![](./media/07_img5.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > - Si el problema describe: *"La base de datos de producción experimenta una sobrecarga severa debido a un reporte analítico o dashboard de BI que ejecuta consultas pesadas"* $\implies$ La solución es crear una **Read Replica** y apuntar la herramienta de reportes a su endpoint dedicado.  
@@ -58,7 +58,7 @@ Una distinción crítica evaluada de forma reiterada en el examen SAA-C03 es la 
 
 **Amazon Aurora** es un motor de base de datos relacional de nivel empresarial optimizado para la nube, compatible de forma nativa con **MySQL** (hasta 5x más rápido) y **PostgreSQL** (hasta 3x más rápido).
 
-![](./media/slide169_img1.jpeg)
+![](./media/07_img6.jpg)
 
 ### Arquitectura de Almacenamiento Compartido de Aurora
 - **Quórum y Replicación Nativa**: Aurora no utiliza volúmenes EBS individuales convencionales. En su lugar, utiliza un volumen de almacenamiento compartido virtualizado que distribuye **6 copias de los datos a lo largo de 3 Zonas de Disponibilidad (2 copias por AZ)**.
@@ -67,7 +67,7 @@ Una distinción crítica evaluada de forma reiterada en el examen SAA-C03 es la 
 - **Autocuración (*Self-Healing*)**: Los bloques de datos dañados se reparan automáticamente en segundo plano mediante replicación peer-to-peer.
 - **Autoexpansión del disco**: Crece dinámicamente en fragmentos de 10 GB hasta **256 TB** de almacenamiento sin necesidad de intervención ni aprovisionamiento previo.
 
-![](./media/slide170_img1.png)
+![](./media/07_img7.png)
 
 ### Endpoints en un Clúster de Aurora
 Un clúster de Aurora expone distintos puntos de enlace DNS para la aplicación:
@@ -75,11 +75,11 @@ Un clúster de Aurora expone distintos puntos de enlace DNS para la aplicación:
 2. **Reader Endpoint**: Balancea automáticamente las conexiones de solo lectura (SELECT) entre todas las réplicas de lectura de Aurora (hasta 15 réplicas con un retraso inferior a 10 ms).
 3. **Custom Endpoints**: Permiten agrupar un subconjunto específico de réplicas de lectura (ej. instancias más potentes como `db.r5.2xlarge`) dedicadas a cargas analíticas pesadas, aislándolas del tráfico de lectura del resto de la aplicación.
 
-![](./media/slide171_img1.png)
+![](./media/07_img8.png)
 
-![](./media/slide171_img2.png)
+![](./media/07_img9.png)
 
-![](./media/slide171_img3.png)
+![](./media/07_img10.png)
 
 ### Variantes Avanzadas de Aurora
 - **Aurora Serverless (v2)**: Escala automáticamente la capacidad de cómputo en fracciones de segundo (medida en ACUs - Aurora Capacity Units) en respuesta a la demanda real. Ideal para cargas esporádicas, intermitentes o impredecibles.
@@ -90,13 +90,13 @@ Un clúster de Aurora expone distintos puntos de enlace DNS para la aplicación:
 - **Aurora Clone**: Permite crear un clon independiente de un clúster productivo en segundos mediante el principio de *Copy-on-Write* (sin consumir almacenamiento adicional hasta que haya modificaciones), ideal para pruebas de staging o QA.
 - **Babelfish para Aurora PostgreSQL**: Interpreta comandos T-SQL de Microsoft SQL Server directamente en Aurora PostgreSQL, reduciendo la fricción al migrar aplicaciones heredadas.
 
-![](./media/slide175_img1.jpeg)
+![](./media/07_img11.jpg)
 
-![](./media/slide175_img2.png)
+![](./media/07_img12.png)
 
-![](./media/slide176_img1.jpeg)
+![](./media/07_img13.jpg)
 
-![](./media/slide176_img2.png)
+![](./media/07_img14.png)
 
 ---
 
@@ -116,7 +116,7 @@ Un clúster de Aurora expone distintos puntos de enlace DNS para la aplicación:
 
 **Amazon RDS Proxy** es un proxy de base de datos completamente administrado y serverless que optimiza el pool de conexiones hacia instancias RDS y clústeres de Aurora.
 
-![](./media/slide184_img1.png)
+![](./media/07_img15.png)
 ### Problema que Resuelve y Casos de Uso Críticos
 - En arquitecturas basadas en microservicios o computación serverless (**AWS Lambda**), miles de funciones concurrentes pueden abrir conexiones de base de datos independientes en milisegundos, agotando la memoria RAM y colapsando el pool de conexiones de la base de datos relacional.
 - RDS Proxy **mantiene y reutiliza un pool persistente de conexiones abiertas**, protegiendo a la base de datos contra sobrecargas.
@@ -133,7 +133,7 @@ Un clúster de Aurora expone distintos puntos de enlace DNS para la aplicación:
 
 **Amazon ElastiCache** es un servicio totalmente administrado de almacenamiento de datos y caché en memoria compatible con los motores **Redis (y Valkey)** y **Memcached**. Ofrece latencias de respuesta en **submilisegundos** para cargas con operaciones de lectura intensivas.
 
-![](./media/slide185_img1.jpeg)
+![](./media/07_img16.jpg)
 
 ### Patrones Arquitectónicos de Caché
 1. **Cache-Aside / Lazy Loading (Carga Perezosa)**:
@@ -146,9 +146,9 @@ Un clúster de Aurora expone distintos puntos de enlace DNS para la aplicación:
 3. **Session Store (Gestión de Sesiones)**:
    - Almacena cookies y estados de sesión de usuarios HTTP de manera centralizada en ElastiCache, permitiendo que la capa de cómputo EC2 sea completamente sin estado (*Stateless*).
 
-![](./media/slide186_img1.jpeg)
+![](./media/07_img17.jpg)
 
-![](./media/slide191_img3.jpeg)
+![](./media/07_img18.jpg)
 
 ---
 
