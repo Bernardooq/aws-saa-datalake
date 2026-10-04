@@ -38,7 +38,7 @@ Una **Hosted Zone (Zona Hospedada)** es un contenedor de registros DNS que defin
 - **Public Hosted Zone (Zona Pública)**: Registros accesibles desde la Internet pública para enrutar tráfico hacia servidores web, balanceadores o servicios SaaS.
 - **Private Hosted Zone (Zona Privada)**: Registros accesibles **exclusivamente dentro de una o varias VPCs asociadas** (ej. `db.produccion.internal`), protegiendo la topología y nombres internos de la red corporativa.
 
-![](./media/08_img3.jpg)
+![](./media/08_img3.png)
 
 ### Registros DNS Clave
 - **A**: Asocia un nombre de host a una dirección **IPv4** (ej. `app.dominio.com` $\to$ `54.22.33.44`).
@@ -94,7 +94,7 @@ $$\text{Tráfico para recurso } i = \frac{\text{Peso}_i}{\sum \text{Pesos Totale
 - Dirige al usuario hacia la **Región de AWS que proporcione la menor latencia de red estimada** calculada periódicamente entre la ubicación del usuario y los centros de datos de AWS.
 - Admite comprobaciones de salud para conmutación por error automática entre regiones.
 
-![](./media/08_img7.jpg)
+![](./media/08_img7.png)
 
 ### 4. Failover Routing (Conmutación por Error Activo-Pasivo)
 - Requiere asociar un **Health Check** obligatorio.
@@ -121,14 +121,14 @@ $$\text{Tráfico para recurso } i = \frac{\text{Peso}_i}{\sum \text{Pesos Totale
 - Resuelve consultas basándose en el bloque CIDR de la dirección IP pública del cliente (o de su resolver DNS local).
 - **Casos de uso**: Optimizar rutas para ISPs específicos o reducir costos de tránsito corporativo enrutando clientes empresariales a endpoints dedicados.
 
-![](./media/08_img11.jpg)
+![](./media/08_img11.png)
 
 ### 8. Multi-Value Answer Routing (Respuesta Multivalor)
 - Devuelve hasta **8 registros de direcciones IP saludables** seleccionadas aleatoriamente por consulta.
 - Se integra con Health Checks (a diferencia del Simple Routing), garantizando que solo se devuelvan recursos saludables al cliente.
 - **Nota arquitectónica**: No sustituye a un Elastic Load Balancer (el cliente decide cómo conectarse a la lista de IPs recibida).
 
-![](./media/08_img12.jpg)
+![](./media/08_img12.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > **No confundas Geolocation con Latency-Based Routing**:
@@ -148,9 +148,9 @@ Route 53 utiliza una red distribuida de aproximadamente 15 verificadores de salu
 
 ![](./media/08_img13.png)
 
-![](./media/08_img14.jpg)
+![](./media/08_img14.png)
 
-![](./media/08_img15.jpg)
+![](./media/08_img15.png)
 
 ![](./media/08_img16.png)
 
@@ -166,13 +166,13 @@ Es posible adquirir el registro de un dominio en un proveedor externo (como GoDa
 2. Copiar los 4 registros **NS (Name Servers)** generados por Route 53.
 3. Ingresar al panel del registrador externo y reemplazar los servidores de nombres predeterminados por los 4 servidores NS de Route 53.
 
-![](./media/08_img17.jpg)
+![](./media/08_img17.png)
 
 ![](./media/08_img18.png)
 
-![](./media/08_img19.jpg)
+![](./media/08_img19.png)
 
-![](./media/08_img20.jpg)
+![](./media/08_img20.png)
 
 
 ---
@@ -192,4 +192,4 @@ En arquitecturas híbridas (red local conectada a AWS mediante **AWS Direct Conn
 
 ![](./media/08_img22.png)
 
-![](./media/08_img23.jpg)
+![](./media/08_img23.png)

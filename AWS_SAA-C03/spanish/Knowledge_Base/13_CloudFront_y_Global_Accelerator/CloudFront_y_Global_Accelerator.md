@@ -17,7 +17,7 @@ Para resolver este desafío y garantizar alta disponibilidad, AWS proporciona do
 
 **Amazon CloudFront** es un servicio de CDN de nivel empresarial diseñado para acelerar la entrega de contenido estático y dinámico hacia usuarios de todo el mundo mediante una red perimetral distribuida de más de 400 **Edge Locations** y múltiples **Regional Edge Caches**.
 
-![](./media/13_img1.jpg)
+![](./media/13_img1.png)
 
 ![](./media/13_img2.png)
 
@@ -37,7 +37,7 @@ Un origen es la ubicación raíz donde reside la versión original definitiva de
 
 ![](./media/13_img3.png)
 
-![](./media/13_img4.jpg)
+![](./media/13_img4.png)
 
 ![](./media/13_img5.png)
 

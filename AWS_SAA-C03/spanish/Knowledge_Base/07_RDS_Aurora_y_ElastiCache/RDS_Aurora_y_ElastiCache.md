@@ -58,7 +58,7 @@ Una distinción crítica evaluada de forma reiterada en el examen SAA-C03 es la 
 
 **Amazon Aurora** es un motor de base de datos relacional de nivel empresarial optimizado para la nube, compatible de forma nativa con **MySQL** (hasta 5x más rápido) y **PostgreSQL** (hasta 3x más rápido).
 
-![](./media/07_img6.jpg)
+![](./media/07_img6.png)
 
 ### Arquitectura de Almacenamiento Compartido de Aurora
 - **Quórum y Replicación Nativa**: Aurora no utiliza volúmenes EBS individuales convencionales. En su lugar, utiliza un volumen de almacenamiento compartido virtualizado que distribuye **6 copias de los datos a lo largo de 3 Zonas de Disponibilidad (2 copias por AZ)**.
@@ -90,11 +90,11 @@ Un clúster de Aurora expone distintos puntos de enlace DNS para la aplicación:
 - **Aurora Clone**: Permite crear un clon independiente de un clúster productivo en segundos mediante el principio de *Copy-on-Write* (sin consumir almacenamiento adicional hasta que haya modificaciones), ideal para pruebas de staging o QA.
 - **Babelfish para Aurora PostgreSQL**: Interpreta comandos T-SQL de Microsoft SQL Server directamente en Aurora PostgreSQL, reduciendo la fricción al migrar aplicaciones heredadas.
 
-![](./media/07_img11.jpg)
+![](./media/07_img11.png)
 
 ![](./media/07_img12.png)
 
-![](./media/07_img13.jpg)
+![](./media/07_img13.png)
 
 ![](./media/07_img14.png)
 
@@ -133,7 +133,7 @@ Un clúster de Aurora expone distintos puntos de enlace DNS para la aplicación:
 
 **Amazon ElastiCache** es un servicio totalmente administrado de almacenamiento de datos y caché en memoria compatible con los motores **Redis (y Valkey)** y **Memcached**. Ofrece latencias de respuesta en **submilisegundos** para cargas con operaciones de lectura intensivas.
 
-![](./media/07_img16.jpg)
+![](./media/07_img16.png)
 
 ### Patrones Arquitectónicos de Caché
 1. **Cache-Aside / Lazy Loading (Carga Perezosa)**:
@@ -146,9 +146,9 @@ Un clúster de Aurora expone distintos puntos de enlace DNS para la aplicación:
 3. **Session Store (Gestión de Sesiones)**:
    - Almacena cookies y estados de sesión de usuarios HTTP de manera centralizada en ElastiCache, permitiendo que la capa de cómputo EC2 sea completamente sin estado (*Stateless*).
 
-![](./media/07_img17.jpg)
+![](./media/07_img17.png)
 
-![](./media/07_img18.jpg)
+![](./media/07_img18.png)
 
 ---
 

@@ -22,7 +22,7 @@ El desacoplamiento de componentes es uno de los principios rectores más importa
 
 **Amazon SQS** es un servicio de colas de mensajes administrado que opera bajo un modelo de extracción (*Pull model*): los consumidores sondean activamente la cola para recibir y procesar mensajes.
 
-![](./media/15_img1.jpg)
+![](./media/15_img1.png)
 
 ### Características Técnicas de las Colas Estándar
 - **Rendimiento ilimitado**: Admite un número virtualmente infinito de transacciones por segundo.
@@ -52,11 +52,11 @@ El desacoplamiento de componentes es uno de los principios rectores más importa
 - Para evitar sobrecargar bases de datos relacionales durante picos masivos de escritura, se coloca una cola SQS como **búfer intermedio**.
 - El backend en un Auto Scaling Group de instancias EC2 escala horizontalmente monitoreando la métrica de CloudWatch **`ApproximateNumberOfMessagesVisible`** dividida entre el número de instancias activas.
 
-![](./media/15_img4.jpg)
+![](./media/15_img4.png)
 
 ![](./media/15_img5.png)
 
-![](./media/15_img6.jpg)
+![](./media/15_img6.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > Si una pregunta de examen indica que las instancias EC2 que procesan mensajes de una cola SQS **están procesando el mismo mensaje múltiples veces de forma duplicada porque tardan 45 segundos en completar la tarea**, la solución **no es agregar más instancias EC2 ni cambiar a una cola FIFO**; la solución es **incrementar el `Visibility Timeout` de la cola a un valor superior a 45 segundos (ej. 60 o 120 segundos)** o invocar `ChangeMessageVisibility`.
@@ -69,7 +69,7 @@ El desacoplamiento de componentes es uno de los principios rectores más importa
 
 ![](./media/15_img7.png)
 
-![](./media/15_img8.jpg)
+![](./media/15_img8.png)
 
 - **Mecánica**: Un productor publica un mensaje en un **SNS Topic**. El servicio distribuye y empuja (*push*) de forma inmediata una copia del mensaje a todos los suscriptores suscritos al tema.
 - **Límites**: Hasta **12,500,000 suscripciones por tema** y hasta **100,000 temas por cuenta**.
@@ -83,9 +83,9 @@ El desacoplamiento de componentes es uno de los principios rectores más importa
 - **SNS Message Filtering**: Políticas JSON asignadas a suscripciones individuales que filtran qué mensajes recibe cada suscriptor basándose en los atributos del mensaje, evitando que todos procesen todo.
 - **SNS FIFO Topics**: Preservan el orden estricto y admiten deduplicación, pero **únicamente pueden tener colas SQS FIFO como suscriptores**.
 
-![](./media/15_img9.jpg)
+![](./media/15_img9.png)
 
-![](./media/15_img10.jpg)
+![](./media/15_img10.png)
 
 ---
 
@@ -110,9 +110,9 @@ El patrón **Fan-Out** es una de las soluciones arquitectónicas más evaluadas 
 
 La familia **Amazon Kinesis** está diseñada para ingerir, procesar y analizar grandes volúmenes de datos continuos de streaming en tiempo real (telemetría IoT, logs de servidores, flujos de clics web e información financiera).
 
-![](./media/15_img12.jpg)
+![](./media/15_img12.png)
 
-![](./media/15_img13.jpg)
+![](./media/15_img13.png)
 
 ### Comparativa: Kinesis Data Streams vs. Amazon Data Firehose
 
@@ -143,7 +143,7 @@ La familia **Amazon Kinesis** está diseñada para ingerir, procesar y analizar 
 
 **Amazon MQ** es un servicio administrado de agentes de mensajes (*message broker*) para **Apache ActiveMQ** y **RabbitMQ**.
 
-![](./media/15_img14.jpg)
+![](./media/15_img14.png)
 
 ### SQS/SNS vs. Amazon MQ
 - **SQS y SNS** son servicios nativos de AWS que operan sobre APIs propietarias HTTP/HTTPS. Ofrecen escala infinita sin aprovisionamiento de servidores.

@@ -42,12 +42,12 @@ La seguridad es el pilar de mayor ponderación en el examen **AWS Certified Solu
 | **Customer Managed Keys (CMK)** | Creadas explícitamente por el cliente en KMS. | $1 USD / mes. | Opcional: Automática cada **1 año** (o rotación manual). |
 | **Imported Keys (BYOK)** | Material de clave propio importado en una CMK. | $1 USD / mes. | **Solo rotación manual** mediante actualización de alias. |
 
-![](./media/24_img4.jpg)
+![](./media/24_img4.png)
 
-![](./media/24_img5.jpg)
-![](./media/24_img6.jpg)
-![](./media/24_img7.jpg)
-![](./media/24_img8.jpg)
+![](./media/24_img5.png)
+![](./media/24_img6.png)
+![](./media/24_img7.png)
+![](./media/24_img8.png)
 
 ---
 
@@ -70,7 +70,7 @@ A diferencia de S3, **en KMS las políticas de clave son obligatorias**. Si una 
 
 ![](./media/24_img10.png)
 
-![](./media/24_img11.jpg)
+![](./media/24_img11.png)
 
 ---
 
@@ -80,11 +80,11 @@ A diferencia de S3, **en KMS las políticas de clave son obligatorias**. Si una 
 - **No son claves globales:** Se gestionan como una clave primaria (*Primary Key*) y múltiples réplicas sincronizadas.
 - **Casos de Uso Principales:** Cifrado del lado del cliente en **DynamoDB Global Tables** o columnas sensibles en **Aurora Global Databases**.
 
-![](./media/24_img12.jpg)
+![](./media/24_img12.png)
 
-![](./media/24_img13.jpg)
+![](./media/24_img13.png)
 
-![](./media/24_img14.jpg)
+![](./media/24_img14.png)
 
 ---
 
@@ -100,9 +100,9 @@ A diferencia de S3, **en KMS las políticas de clave son obligatorias**. Si una 
 | **Integración con Servicios AWS** | Nativa y automática con más de 100 servicios. | Requiere configurar KMS Custom Key Store o conectores SDK dedicados. |
 | **Costo** | Económico ($1/mes por CMK + llamadas API); incluye capa gratuita. | Costoso (facturación por hora por dispositivo HSM aprovisionado); sin capa gratuita. |
 
-![](./media/24_img15.jpg)
+![](./media/24_img15.png)
 
-![](./media/24_img16.jpg)
+![](./media/24_img16.png)
 
 ![](./media/24_img17.png)
 
@@ -117,9 +117,9 @@ Almacén seguro para cadenas de configuración y credenciales estructuradas jer�
 
 ![](./media/24_img18.png)
 
-![](./media/24_img19.jpg)
-![](./media/24_img20.jpg)
-![](./media/24_img21.jpg)
+![](./media/24_img19.png)
+![](./media/24_img20.png)
+![](./media/24_img21.png)
 
 ---
 
@@ -136,7 +136,7 @@ Servicio especializado para almacenar y rotar secretos empresariales:
 | **Replicación Multi-Región** | No nativa. | **Nativa con sincronización continua**. |
 | **Propósito Principal** | Configuración de aplicaciones, rutas y variables. | Secretos críticos, contraseñas de BD y claves API de terceros. |
 
-![](./media/24_img22.jpg)
+![](./media/24_img22.png)
 
 ---
 
@@ -151,9 +151,9 @@ Servicio especializado para almacenar y rotar secretos empresariales:
 - **Regla Crítica de Examen:** Los certificados de ACM **NO se pueden exportar ni descargar en instancias EC2**; la terminación TLS debe ocurrir en el balanceador de carga o en CloudFront.
 - **Certificados Importados:** Si se importa un certificado externo a ACM, **la renovación automática NO aplica**; se debe monitorear su expiración con EventBridge o AWS Config (`acm-certificate-expiration-check`).
 
-![](./media/24_img23.jpg)
+![](./media/24_img23.png)
 
-![](./media/24_img24.jpg)
+![](./media/24_img24.png)
 
 ![](./media/24_img25.png)
 
@@ -163,7 +163,7 @@ Servicio especializado para almacenar y rotar secretos empresariales:
 - **CloudFront y API Gateway Edge-Optimized:** El certificado ACM **debe solicitarse obligatoriamente en la región `us-east-1` (N. Virginia)** debido a la distribución global en los puntos perimetrales.
 - **ALB y API Gateway Regional:** El certificado debe estar en la **misma región de AWS** donde reside el recurso.
 
-![](./media/24_img26.jpg)
+![](./media/24_img26.png)
 
 ---
 
@@ -175,7 +175,7 @@ Filtra peticiones maliciosas HTTP/HTTPS a nivel de capa de aplicación:
 - **Asociación:** Se acopla a **Application Load Balancer (ALB)**, **Amazon API Gateway**, **Amazon CloudFront**, **AWS AppSync** y **Cognito User Pools**.
 - **NLB y WAF:** WAF **NO es compatible con Network Load Balancer (NLB)** (Capa 4). Si se requiere una IP fija con WAF, el patrón es desplegar **AWS Global Accelerator (con IP estática pública) delante de un ALB con WAF**.
 
-![](./media/24_img27.jpg)
+![](./media/24_img27.png)
 
 ---
 
@@ -187,7 +187,7 @@ Filtra peticiones maliciosas HTTP/HTTPS a nivel de capa de aplicación:
   - Soporte 24/7 con el equipo especializado *AWS Shield Response Team (SRT)*.
   - Cobertura sobre EC2, ELB, CloudFront, Global Accelerator y Route 53.
 
-![](./media/24_img28.jpg)
+![](./media/24_img28.png)
 
 ---
 
@@ -195,9 +195,9 @@ Filtra peticiones maliciosas HTTP/HTTPS a nivel de capa de aplicación:
 Servicio de administración de seguridad centralizada para **AWS Organizations**:
 - Permite configurar y desplegar de manera unificada reglas de **AWS WAF**, protecciones de **Shield Advanced**, reglas de **Security Groups** y **AWS Network Firewall** en todas las cuentas actuales y futuras de la organización.
 
-![](./media/24_img29.jpg)
+![](./media/24_img29.png)
 
-![](./media/24_img30.jpg)
+![](./media/24_img30.png)
 
 ---
 
@@ -212,7 +212,7 @@ Servicio continuo de detección inteligente de amenazas basado en Machine Learni
   - Fuentes opcionales: EKS Audit Logs, RDS Login Activity, Lambda Network Activity.
 - Especializado en identificar **minería no autorizada de criptomonedas**. Alerta mediante Amazon EventBridge.
 
-![](./media/24_img31.jpg)
+![](./media/24_img31.png)
 
 ---
 
@@ -229,7 +229,7 @@ Servicio automatizado para el análisis de vulnerabilidades de software y exposi
 Servicio de seguridad de datos que utiliza Machine Learning y correspondencia de patrones para escanear y clasificar datos confidenciales almacenados en **Amazon S3**:
 - Detecta **Información de Identificación Personal (PII)** (números de pasaporte, tarjetas de crédito, números de seguridad social) y buckets S3 expuestos accidentalmente a Internet.
 
-![](./media/24_img33.jpg)
+![](./media/24_img33.png)
 
 ---
 

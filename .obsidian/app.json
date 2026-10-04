@@ -2,12 +2,7 @@
   "useMarkdownLinks": false,
   "newLinkFormat": "shortest",
   "attachmentFolderPath": "./media",
-  "userIgnoreFilters": [
-    "**/media/**",
-    "**/*.png",
-    "**/*.jpg",
-    "**/*.jpeg"
-  ],
+  "userIgnoreFilters": [],
   "livePreview": true,
   "showLineNumber": true,
   "foldHeading": true,

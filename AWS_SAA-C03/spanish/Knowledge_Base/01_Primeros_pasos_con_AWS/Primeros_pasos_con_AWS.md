@@ -21,14 +21,14 @@ La computación en la nube moderna nació de la necesidad de desacoplar y estand
 - **2006**: Relanzamiento formal de AWS como plataforma integral con **Amazon SQS**, **Amazon S3 (Simple Storage Service)** y **Amazon EC2 (Elastic Compute Cloud)**.
 - **2007**: Expansión internacional con la apertura de la primera región europea (Irlanda).
 
-![](./media/01_img1.jpg)
-![](./media/01_img2.jpg)
-![](./media/01_img3.jpg)
-![](./media/01_img4.jpg)
+![](./media/01_img1.png)
+![](./media/01_img2.png)
+![](./media/01_img3.png)
+![](./media/01_img4.png)
 
 Con una cuota de mercado sólida, más de 128 mil millones de dólares en ingresos anuales y más de 15 años consecutivos como líder en el Cuadrante Mágico de Gartner para *Strategic Cloud Platform Services*, AWS sustenta cargas de trabajo empresariales modernas, pipelines masivos de Big Data e Inteligencia Artificial generativa.
 
-![](./media/01_img5.jpg)
+![](./media/01_img5.png)
 
 ### Casos de Uso Empresariales
 - **Empresariales y Misión Crítica**: Modernización de ERPs, bases de datos transaccionales de alto rendimiento y centros de datos híbridos.
@@ -36,10 +36,10 @@ Con una cuota de mercado sólida, más de 128 mil millones de dólares en ingres
 - **Big Data, Analítica e IA**: Ingesta masiva en tiempo real, lagos de datos (Data Lakes) y entrenamiento/inferencia de modelos de Machine Learning.
 - **Aplicaciones Web, Móviles y Gaming**: Arquitecturas serverless y microservicios con escalado horizontal automático y distribución global.
 
-![](./media/01_img6.jpg)
-![](./media/01_img7.jpg)
-![](./media/01_img8.jpg)
-![](./media/01_img9.jpg)
+![](./media/01_img6.png)
+![](./media/01_img7.png)
+![](./media/01_img8.png)
+![](./media/01_img9.png)
 
 ---
 
@@ -52,7 +52,7 @@ La infraestructura global de AWS se divide jerárquicamente en entidades geográ
 3. **AWS Data Centers (Centros de Datos)**
 4. **AWS Edge Locations / Points of Presence - PoP (Puntos de Presencia)**
 
-![](./media/01_img10.jpg)
+![](./media/01_img10.png)
 
 ---
 
@@ -63,8 +63,8 @@ Una **Región de AWS** es una ubicación física en el mundo compuesta por un cl
 - **Nomenclatura estándar**: Sigue la convención `área-dirección-número` (ejemplos: `us-east-1` [N. Virginia], `eu-west-3` [París], `ap-southeast-2` [Sídney]).
 - **Aislamiento absoluto**: Cada región es completamente independiente para evitar que un incidente catastrófico en una región afecte a las demás.
 
-![](./media/01_img11.jpg)
-![](./media/01_img12.jpg)
+![](./media/01_img11.png)
+![](./media/01_img12.png)
 
 ### Criterios de Selección de una Región
 
@@ -80,7 +80,7 @@ Para el examen SAA-C03, seleccionar la región adecuada no es una decisión arbi
 4. **Estructura de Precios (Cost Optimization)**:
    - Los costos de cómputo, almacenamiento y transferencia de datos varían sustancialmente entre regiones debido a factores locales (impuestos, costos energéticos, hardware). Por ejemplo, `us-east-1` suele ser más económica que `sa-east-1` (São Paulo).
 
-![](./media/01_img13.jpg)
+![](./media/01_img13.png)
 ![](./media/01_img14.png)
 ![](./media/01_img15.png)
 ![](./media/01_img16.png)
@@ -118,7 +118,7 @@ Los **Puntos de Presencia (PoP)** constituyen la capa de entrega de contenido en
   - **Amazon Route 53**: Servicio de DNS autoritativo distribuido globalmente.
   - **AWS WAF**: Inspección y mitigación de amenazas web (inyección SQL, XSS, rate-limiting) directamente en el borde antes de alcanzar el backend.
 
-![](./media/01_img19.jpg)
+![](./media/01_img19.png)
 
 ---
 
@@ -136,8 +136,8 @@ Un principio de diseño esencial para el arquitecto de soluciones es distinguir 
 | **Estrategia SAA-C03** | Utilizados para gobernanza transversal, resolución DNS inicial y aceleraciónperimétrica. | La alta disponibilidad debe diseñarse implementando arquitecturas **Multi-AZ** o **Multi-Region**. |
 
 ![](./media/01_img20.png)
-![](./media/01_img21.jpg)
-![](./media/01_img22.jpg)
+![](./media/01_img21.png)
+![](./media/01_img22.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > **Cuidado con las sutilezas de Amazon S3 y AWS WAF en las preguntas de examen**:

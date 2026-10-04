@@ -40,7 +40,7 @@ Es mandatorio para el examen distinguir con precisión conceptual los diferentes
 
 Un **Load Balancer** es un punto de entrada gestionado que distribuye el tráfico de red de manera uniforme hacia un conjunto de servidores backend (instancias EC2, tareas de contenedores ECS, funciones Lambda o direcciones IP privadas).
 
-![](./media/06_img1.jpg)
+![](./media/06_img1.png)
 
 ### Beneficios Clave para Arquitecturas Cloud
 - **Punto único de acceso**: Expone un nombre de dominio DNS público o interno fijo (`*.elb.amazonaws.com`).
@@ -48,16 +48,16 @@ Un **Load Balancer** es un punto de entrada gestionado que distribuye el tráfic
 - **Terminación SSL/TLS**: Descarga el procesamiento criptográfico de certificados HTTPS en el balanceador.
 - **Separación de capas**: Los clientes solo interactúan con el balanceador en la subred pública; las instancias EC2 residen de forma segura en subredes privadas.
 
-![](./media/06_img2.jpg)
+![](./media/06_img2.png)
 
 ### Cadena de Seguridad con Security Groups
 Para aislar las instancias backend, se implementa una referencia cruzada estricta:
 1. **Security Group del ELB**: Permite tráfico entrante en puertos 80/443 desde `0.0.0.0/0` (Internet).
 2. **Security Group de las Instancias EC2**: Permite tráfico entrante en el puerto de la aplicación **únicamente si el origen es el Security Group del ELB**, bloqueando cualquier acceso directo desde internet.
 
-![](./media/06_img3.jpg)
-![](./media/06_img4.jpg)
-![](./media/06_img5.jpg)
+![](./media/06_img3.png)
+![](./media/06_img4.png)
+![](./media/06_img5.png)
 
 ---
 
@@ -65,7 +65,7 @@ Para aislar las instancias backend, se implementa una referencia cruzada estrict
 
 AWS ofrece cuatro familias de balanceadores gestionados. Para el examen SAA-C03, el foco evaluativo está centrado en **ALB**, **NLB** y **GWLB** (el Classic Load Balancer - CLB se considera tecnología de generación previa en desuso).
 
-![](./media/06_img6.jpg)
+![](./media/06_img6.png)
 
 ### Tabla Comparativa de Load Balancers
 
@@ -111,7 +111,7 @@ AWS ofrece cuatro familias de balanceadores gestionados. Para el examen SAA-C03,
   - **Cookies basadas en la duración**: Generadas por el balanceador con una expiración fija (nombre reservado `AWSALB`).
 - **Compromiso arquitectónico**: Puede generar un desbalanceo de carga (*hot spotting*) si un número desproporcionado de usuarios queda anclado a un único servidor.
 
-![](./media/06_img14.jpg)
+![](./media/06_img14.png)
 ### Cross-Zone Load Balancing (Balanceo entre Zonas)
 - **Con Cross-Zone**: Cada nodo del balanceador distribuye el tráfico uniformemente entre **todas** las instancias backend registradas en todas las Zonas de Disponibilidad.
 - **Sin Cross-Zone**: Cada nodo del balanceador solo envía tráfico a las instancias de su propia AZ, provocando una distribución desigual si una AZ tiene menos servidores.
@@ -119,15 +119,15 @@ AWS ofrece cuatro familias de balanceadores gestionados. Para el examen SAA-C03,
   - **ALB**: **Siempre habilitado** por defecto; no se puede desactivar y **no tiene costo adicional** por transferencia inter-AZ.
   - **NLB / GWLB**: **Deshabilitado por defecto**. Si se habilita, aplica un costo por transferencia de datos inter-AZ.
 
-![](./media/06_img15.jpg)
+![](./media/06_img15.png)
 
-![](./media/06_img16.jpg)
+![](./media/06_img16.png)
 ### Certificados SSL/TLS y Server Name Indication (SNI)
 - Los balanceadores integran certificados emitidos o importados en **AWS Certificate Manager (ACM)**.
 - **Server Name Indication (SNI)**: Extensión de TLS que permite al cliente indicar el nombre de host (*hostname*) al inicio del handshake TLS.
 - Esto permite cargar **múltiples certificados SSL/TLS en un único ALB o NLB** para servir a distintos dominios (ej. `api.empresa.com`, `tienda.empresa.com` y `portal.otrodominio.com`) sin requerir un balanceador independiente para cada dominio.
 
-![](./media/06_img17.jpg)
+![](./media/06_img17.png)
 
 ![](./media/06_img18.png)
 
@@ -142,7 +142,7 @@ AWS ofrece cuatro familias de balanceadores gestionados. Para el examen SAA-C03,
 
 Un **Auto Scaling Group (ASG)** automatiza la elasticidad horizontal de Amazon EC2, aprovisionando nuevas instancias cuando la demanda se incrementa y terminando instancias redundantes cuando la demanda cae.
 
-![](./media/06_img20.jpg)
+![](./media/06_img20.png)
 
 ### Parámetros de Capacidad de un ASG
 - **Minimum Size (Capacidad Mínima)**: Umbral mínimo de instancias en ejecución en todo momento (incluso ante fallos).
@@ -180,7 +180,7 @@ El escalado se orquesta mediante métricas agregadas recopiladas por **Amazon Cl
 4. **Predictive Scaling (Escalado Predictivo)**:
    - Utiliza modelos de Machine Learning que analizan datos históricos de tráfico de semanas previas para aprovisionar capacidad por adelantado justo antes de que inicien los picos previstos.
 
-![](./media/06_img23.jpg)
+![](./media/06_img23.png)
 
 ### Periodo de Enfriamiento (Scaling Cooldown)
 - Intervalo de espera configurable (por defecto **300 segundos**) tras un evento de escalado durante el cual el ASG ignora nuevas alarmas para permitir que las métricas de CloudWatch y las nuevas instancias se estabilicen, evitando oscilaciones destructivas (*thrashing*).

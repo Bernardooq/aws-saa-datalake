@@ -28,7 +28,7 @@ Las reglas de ciclo de vida automatizan la transición y eliminación de objetos
      - Eliminar versiones no actuales (*Noncurrent Versions*) de objetos en buckets con versionado activo.
      - **Regla crítica de optimización de costos**: **Abortar y eliminar subidas multiparte incompletas (*Incomplete Multipart Uploads*)** transcurridos $N$ días (ej. 7 días), evitando cobros invisibles por partes huérfanas acumuladas.
 
-![](./media/11_img1.jpg)
+![](./media/11_img1.png)
 
 ### Filtrado y Alcance de las Reglas
 Las reglas de ciclo de vida pueden aplicarse a:
@@ -51,14 +51,14 @@ Las reglas de ciclo de vida pueden aplicarse a:
 - Genera informes diarios exportables en formato `.csv`.
 - **Límites para el examen**: Aplica exclusivamente para transiciones hacia *Standard-IA*; no genera recomendaciones para *One Zone-IA* ni para familias *Glacier*.
 
-![](./media/11_img2.jpg)
+![](./media/11_img2.png)
 
 ### S3 Requester Pays (El Solicitante Paga)
 - Por defecto, el propietario del bucket sufraga todos los costos de almacenamiento y los costos de transferencia de red saliente (*Data Transfer Out*).
 - En buckets configurados con **Requester Pays**, **el usuario o cuenta que descarga el archivo asume los costos de la petición y del ancho de banda de red**. El propietario solo paga por el espacio de almacenamiento físico.
 - **Requisito obligatorio**: El solicitante **debe estar autenticado en AWS** (no admite solicitudes anónimas). Ideal para datasets de investigación masivos o colaboración B2B.
 
-![](./media/11_img3.jpg)
+![](./media/11_img3.png)
 
 
 ---
@@ -67,9 +67,9 @@ Las reglas de ciclo de vida pueden aplicarse a:
 
 Amazon S3 puede emitir eventos en respuesta a acciones dentro de un bucket (ej. `s3:ObjectCreated`, `s3:ObjectRemoved`, `s3:ObjectRestore:Completed`, `s3:Replication:*`).
 
-![](./media/11_img4.jpg)
+![](./media/11_img4.png)
 
-![](./media/11_img5.jpg)
+![](./media/11_img5.png)
 
 ### Comparativa: S3 Event Notifications vs. Amazon EventBridge
 
@@ -108,9 +108,9 @@ S3 escala horizontalmente de forma automática. Sin embargo, para cargas extrema
   - **Resiliencia ante caídas**: Si un rango falla, solo se reintenta ese bloque específico.
   - **Lectura parcial rápida**: Recuperar únicamente la cabecera de un archivo (primeros $N$ bytes) sin descargar gigabytes de datos completos.
 
-![](./media/11_img6.jpg)
+![](./media/11_img6.png)
 
-![](./media/11_img7.jpg)
+![](./media/11_img7.png)
 
 ---
 
@@ -137,11 +137,11 @@ S3 escala horizontalmente de forma automática. Sin embargo, para cargas extrema
 
 **Amazon S3 Storage Lens** es la primera herramienta de analítica de almacenamiento en la nube que proporciona visibilidad centralizada a nivel de toda la organización de AWS (**AWS Organizations**).
 
-![](./media/11_img9.jpg)
+![](./media/11_img9.png)
 
-![](./media/11_img10.jpg)
+![](./media/11_img10.png)
 
-![](./media/11_img11.jpg)
+![](./media/11_img11.png)
 
 ### Pilares de Métricas de Storage Lens
 - **Optimización de Costos**: Detecta buckets con cargas multiparte incompletas de más de 7 días (`IncompleteMultipartUploadStorageBytes`), identifica volúmenes masivos de versiones no actuales y señala candidatos para clases de menor costo.
@@ -159,7 +159,7 @@ S3 escala horizontalmente de forma automática. Sin embargo, para cargas extrema
 | **Historial de Consultas** | Disponible durante **14 días**. | Disponible durante **15 meses** (ideal para análisis de tendencias anuales). |
 | **Integraciones** | Consola de S3 y exportación de informes diarios a S3 (CSV / Parquet). | Publicación directa y sin costo adicional de métricas en **Amazon CloudWatch**. |
 
-![](./media/11_img12.jpg)
+![](./media/11_img12.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > Si una organización con decenas de cuentas de AWS necesita **"identificar de forma centralizada qué buckets carecen de cifrado SSE-KMS o tienen costos excesivos por cargas multiparte huérfanas sin inspeccionar bucket por bucket individualmente"**, la respuesta es **S3 Storage Lens con el panel a nivel de organización de AWS Organizations**.

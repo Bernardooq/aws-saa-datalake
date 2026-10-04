@@ -34,7 +34,7 @@ IAM opera como un **servicio global**. Las configuraciones, usuarios y política
   - Un usuario puede pertenecer a múltiples grupos (hasta un límite de 10 grupos por usuario por defecto).
   - Los grupos no son identidades autenticables (no tienen credenciales de inicio de sesión ni pueden ser identificados como `Principal` en una política de recursos).
 
-![](./media/02_img1.jpg)
+![](./media/02_img1.png)
 
 ---
 
@@ -82,7 +82,7 @@ Una **política de IAM** es un documento JSON que formaliza los permisos concedi
 ```
 
 ![](./media/02_img2.png)
-![](./media/02_img3.jpg)
+![](./media/02_img3.png)
 
 ### Tipos de Políticas y Herencia
 1. **Managed Policies (Políticas Administradas por AWS)**: Creadas y mantenidas por AWS (ej. `AdministratorAccess`, `ReadOnlyAccess`).
@@ -123,11 +123,11 @@ MFA añade una capa crítica de seguridad requiriendo un factor de conocimiento 
 | **Hardware Key Fob (Llavero Físico)** | Gemalto (SafeNet) | Generador de tokens OTP físico e independiente fuera de redes móviles o internet. | Cuentas corporativas reguladas y protección exclusiva de la **Cuenta Root**. |
 | **Hardware Token para Entornos Regulados** | SurePassID | Cumplimiento de estándares gubernamentales de alta seguridad. | Implementaciones en **AWS GovCloud (US)** y entornos militares/defensa. |
 
-![](./media/02_img6.jpg)
-![](./media/02_img7.jpg)
-![](./media/02_img8.jpg)
-![](./media/02_img9.jpg)
-![](./media/02_img10.jpg)
+![](./media/02_img6.png)
+![](./media/02_img7.png)
+![](./media/02_img8.png)
+![](./media/02_img9.png)
+![](./media/02_img10.png)
 
 ---
 
@@ -146,8 +146,8 @@ Los usuarios y servicios interactúan con los servicios de AWS a través de llam
 - **Riesgo crítico**: Si una clave de acceso se filtra en un repositorio público (ej. GitHub), la cuenta puede ser comprometida en segundos por bots maliciosos.
 
 ![](./media/02_img11.png)
-![](./media/02_img12.jpg)
-![](./media/02_img13.jpg)
+![](./media/02_img12.png)
+![](./media/02_img13.png)
 ![](./media/02_img14.png)
 
 > **💡 SAA-C03 Exam Tip:**  
@@ -191,7 +191,7 @@ El mantenimiento del principio de mínimo privilegio (*Least Privilege*) requier
 
 ## 7. Buenas Prácticas de IAM (Checklist para el Examen)
 
-![](./media/02_img16.jpg)
+![](./media/02_img16.png)
 
 1. **Aislar la Cuenta Root**: Usarla exclusivamente para crear el primer usuario/rol administrador, configurar la facturación y habilitar MFA físico; jamás para despliegues cotidianos.
 2. **Un Usuario Físico = Un Usuario IAM**: No compartir cuentas ni credenciales genéricas entre desarrolladores.

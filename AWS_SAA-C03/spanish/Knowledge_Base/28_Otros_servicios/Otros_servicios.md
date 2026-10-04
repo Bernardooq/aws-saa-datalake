@@ -21,7 +21,7 @@ En el examen **AWS Certified Solutions Architect - Associate (SAA-C03)**, es com
 - **Service Roles en CloudFormation:** Permite asociar un **IAM Service Role** a la pila para que CloudFormation cree, actualice o elimine recursos en nombre del usuario.
   - **Principio de Mínimo Privilegio:** Permite a los desarrolladores desplegar pilas sin necesidad de tener permisos directos de administración en su usuario IAM, requiriendo únicamente el permiso `iam:PassRole` sobre el rol del servicio de CloudFormation.
 
-![](./media/28_img1.jpg)
+![](./media/28_img1.png)
 ![](./media/28_img2.png)
 ![](./media/28_img3.png)
 
@@ -38,9 +38,9 @@ En el examen **AWS Certified Solutions Architect - Associate (SAA-C03)**, es com
 | **Gestión de Campañas** | Envío transaccional puro. | **Campañas de marketing completas**, pruebas A/B, plantillas visuales y flujos de automatización (*Journeys*). |
 | **Autenticación** | Soporte nativo para DKIM, SPF, DMARC e IPs dedicadas. | Construido sobre la infraestructura de entrega de SES y SNS. |
 
-![](./media/28_img5.jpg)
+![](./media/28_img5.png)
 
-![](./media/28_img6.jpg)
+![](./media/28_img6.png)
 
 ---
 
@@ -72,9 +72,9 @@ Permite abrir una terminal interactiva (Bash / PowerShell) en instancias EC2 o s
 
 ![](./media/28_img9.png)
 
-![](./media/28_img10.jpg)
+![](./media/28_img10.png)
 
-![](./media/28_img11.jpg)
+![](./media/28_img11.png)
 
 ---
 
@@ -86,15 +86,15 @@ Herramienta de análisis financiero para visualizar, desglosar y proyectar gasto
 - Granularidad mensual, diaria o por horas.
 - Genera recomendaciones de compra para **Savings Plans** e **Instancias Reservadas (RI)** y proyecta gastos hasta 12 meses hacia el futuro.
 
-![](./media/28_img12.jpg)
+![](./media/28_img12.png)
 
-![](./media/28_img13.jpg)
+![](./media/28_img13.png)
 
-![](./media/28_img14.jpg)
+![](./media/28_img14.png)
 
-![](./media/28_img15.jpg)
+![](./media/28_img15.png)
 
-![](./media/28_img16.jpg)
+![](./media/28_img16.png)
 
 ---
 
@@ -117,9 +117,9 @@ Racks físicos de hardware de AWS instalados dentro del centro de datos local de
   - **Latencia de un solo dígito de milisegundo** hacia sistemas de fabricación industrial o equipos hospitalarios locales.
   - **Residencia estricta y soberanía de datos** donde las regulaciones legales prohíben transferir datos fuera del edificio o país.
 
-![](./media/28_img18.jpg)
+![](./media/28_img18.png)
 
-![](./media/28_img19.jpg)
+![](./media/28_img19.png)
 
 ![](./media/28_img20.png)
 
@@ -143,7 +143,7 @@ Servicio de integración completamente administrado para transferir datos bidire
 - **Destinos en AWS:** Amazon S3, Amazon Redshift, Amazon DynamoDB.
 - **Seguridad en Tránsito:** Puede configurarse para transferir datos de forma privada a través de **AWS PrivateLink** sin exponer el tráfico a la Internet pública.
 
-![](./media/28_img21.jpg)
+![](./media/28_img21.png)
 
 ---
 
@@ -153,7 +153,7 @@ Servicio de integración completamente administrado para transferir datos bidire
 Plataforma completa para desarrolladores front-end web y móviles que acelera la creación y despliegue de aplicaciones full-stack:
 - Integra de forma nativa autenticación (**Cognito**), persistencia (**DynamoDB**), APIs (**AppSync GraphQL y API Gateway REST**), alojamiento estático y CI/CD global (**CloudFront + S3**).
 
-![](./media/28_img22.jpg)
+![](./media/28_img22.png)
 
 ---
 
@@ -162,7 +162,7 @@ Solución prediseñada de referencia basada en CloudFormation que inicia y detie
 - Permite ahorrar hasta un 70% en costos de desarrollo y pruebas.
 - Utiliza etiquetas de recursos y una tabla de **Amazon DynamoDB** para almacenar los horarios de apagado y encendido ejecutados por **AWS Lambda**.
 
-![](./media/28_img23.jpg)
+![](./media/28_img23.png)
 
 ---
 

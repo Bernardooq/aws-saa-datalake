@@ -39,7 +39,7 @@ Un contenedor empaqueta el código fuente, librerías, dependencias de tiempo de
   - Integración nativa con **AWS KMS** para cifrado en reposo.
 - **Ciclo de vida de imágenes (*Lifecycle Policies*)**: Reglas para expirar y limpiar automáticamente imágenes antiguas o sin etiquetar (*untagged*), evitando costos innecesarios de almacenamiento.
 
-![](./media/16_img4.jpg)
+![](./media/16_img4.png)
 
 ---
 
@@ -69,7 +69,7 @@ Para ejecutar tareas en Amazon ECS (y pods en Amazon EKS), el arquitecto debe el
 | **Modelo de Costos** | Se paga por las instancias EC2 aprovisionadas (corran o no contenedores). Admite Spot e Instancias Reservadas. | Se factura por segundo según la cantidad exacta de **vCPU y memoria RAM asignadas** a cada tarea. |
 | **Casos de Uso SAA-C03** | Cargas de trabajo predecibles a gran escala, instancias con hardware especializado (GPUs para ML), o cuando se requiere control estricto del host. | **Recomendado por defecto en arquitecturas modernas de microservicios**: elimina sobrecarga operativa, ideal para cargas variables o esporádicas. |
 
-![](./media/16_img5.jpg)
+![](./media/16_img5.png)
 
 ![](./media/16_img6.png)
 
@@ -132,11 +132,11 @@ Una de las preguntas clásicas y con mayor probabilidad de confusión en el exam
 
 ![](./media/16_img11.png)
 
-![](./media/16_img12.jpg)
+![](./media/16_img12.png)
 
-![](./media/16_img13.jpg)
+![](./media/16_img13.png)
 
-![](./media/16_img14.jpg)
+![](./media/16_img14.png)
 
 ---
 
@@ -144,7 +144,7 @@ Una de las preguntas clásicas y con mayor probabilidad de confusión en el exam
 
 **Amazon EKS** es el servicio administrado de Kubernetes en AWS. Es la opción preferida por empresas que buscan estandarizar sus flujos de trabajo sobre el estándar abierto de facto de la industria (**Kubernetes**) o mantener una arquitectura híbrida multinube compatible con Google Cloud (GKE), Azure (AKS) o centros de datos on-premises.
 
-![](./media/16_img15.jpg)
+![](./media/16_img15.png)
 
 ### Tipos de Nodos de Trabajo en EKS
 1. **Managed Node Groups**: AWS crea, actualiza y gestiona las instancias EC2 del clúster dentro de un Auto Scaling Group automatizado.
@@ -157,10 +157,10 @@ EKS requiere definir un `StorageClass` que utiliza un controlador **Container St
 - **Amazon EFS CSI Driver**: Sistema de archivos compartido multi-AZ (compatible con pods en Fargate).
 - **Amazon FSx for Lustre CSI Driver**: Computación paralela de alto rendimiento.
 
-![](./media/16_img16.jpg)
-![](./media/16_img17.jpg)
-![](./media/16_img18.jpg)
-![](./media/16_img19.jpg)
+![](./media/16_img16.png)
+![](./media/16_img17.png)
+![](./media/16_img18.png)
+![](./media/16_img19.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > **Criterio de decisión definitivo: ¿Amazon ECS o Amazon EKS?**  

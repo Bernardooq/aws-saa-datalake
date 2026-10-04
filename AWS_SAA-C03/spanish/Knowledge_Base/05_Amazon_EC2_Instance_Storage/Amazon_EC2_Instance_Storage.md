@@ -26,9 +26,9 @@ Un volumen **EBS** es un dispositivo de almacenamiento en bloque virtualizado qu
   - Para cualquier **volumen de datos adicional adjunto**, el atributo viene **deshabilitado por defecto (`false`)**, preservando los datos tras la terminación.
 - **Migración entre AZs y Regiones**: Para trasladar un volumen a otra AZ o región, se debe tomar un **Snapshot**, transferirlo (si es a otra región) y restaurarlo como un volumen nuevo en la AZ de destino.
 
-![](./media/05_img1.jpg)
+![](./media/05_img1.png)
 ![](./media/05_img2.png)
-![](./media/05_img3.jpg)
+![](./media/05_img3.png)
 
 ---
 
@@ -75,7 +75,7 @@ A diferencia de EBS (que se conecta vía red), un **EC2 Instance Store** consist
   - Si la instancia se **detiene (*stop*)**, se **termina (*terminate*)** o el hardware subyacente sufre una falla, **todos los datos del Instance Store se pierden irremediablemente**.
 - **Responsabilidad compartida**: La tolerancia a fallos y copias de seguridad corren 100% por cuenta del arquitecto (ej. replicación a nivel de software en HDFS o Cassandra).
 
-![](./media/05_img7.jpg)
+![](./media/05_img7.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > Si una pregunta de examen describe una aplicación distribuida de procesamiento en memoria o búferes de transcodificación que requiere **"el rendimiento de E/S más alto posible al menor costo, tolerando la pérdida de datos de nodos individuales"**, la respuesta correcta es **EC2 Instance Store**.  
@@ -97,8 +97,8 @@ EBS ofrece diversas familias optimizadas según balance de costo, IOPS y Through
 | **Throughput Optimized HDD** | `st1` | 125 GiB - 16 TiB | 500 IOPS | 500 MiB/s | **No** | Cargas secuenciales masivas con acceso frecuente: **Big Data, Hadoop HDFS, Kafka, Data Warehousing, procesamiento de logs**. |
 | **Cold HDD** | `sc1` | 125 GiB - 16 TiB | 250 IOPS | 250 MiB/s | **No** | Datos de acceso infrecuente donde el costo mínimo por GB es el requerimiento principal (archivos históricos y logs fríos). |
 
-![](./media/05_img8.jpg)
-![](./media/05_img9.jpg)
+![](./media/05_img8.png)
+![](./media/05_img9.png)
 
 ### EBS Multi-Attach (Familias io1 / io2)
 - Permite adjuntar un único volumen EBS de alto rendimiento de forma concurrente a **hasta 16 instancias EC2 dentro de la misma AZ**.

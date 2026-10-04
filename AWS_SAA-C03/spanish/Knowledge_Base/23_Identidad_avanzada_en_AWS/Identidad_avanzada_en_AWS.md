@@ -21,7 +21,7 @@ El diseño de una arquitectura empresarial escalable en AWS exige ir más allá 
 - **Organizational Units (OUs):** Contenedores lógicos para agrupar cuentas miembro por entorno (Dev, Test, Prod), líneas de negocio (Ventas, Finanzas) o proyectos.
 - **Facturación Consolidada (*Consolidated Billing*):** Un único método de pago centralizado con descuentos agregados por volumen en servicios como Amazon S3 y EC2, y compartición automática de Savings Plans e Instancias Reservadas entre todas las cuentas.
 
-![](./media/23_img1.jpg)
+![](./media/23_img1.png)
 
 ![](./media/23_img2.png)
 
@@ -36,10 +36,10 @@ Las **SCPs** son barreras de contención (*guardrails*) que definen los permisos
   - **Inmunidad de la Cuenta de Gestión:** Las SCPs **NUNCA aplican a la Management Account** ni a sus usuarios o roles; esta cuenta siempre conserva privilegios completos.
   - Afectan a **todos los usuarios y roles**, incluido el usuario `root` de las cuentas miembro.
 
-![](./media/23_img3.jpg)
+![](./media/23_img3.png)
 
-![](./media/23_img4.jpg)
-![](./media/23_img5.jpg)
+![](./media/23_img4.png)
+![](./media/23_img5.png)
 
 ---
 
@@ -49,7 +49,7 @@ Permiten estandarizar y hacer cumplir esquemas de etiquetado en toda la organiza
 - Previenen operaciones de etiquetado no conformes en recursos compatibles.
 - Facilitan la asignación de costos corporativos (*Cost Allocation Tags*) y la implementación de control de acceso basado en atributos (**ABAC**).
 
-![](./media/23_img6.jpg)
+![](./media/23_img6.png)
 
 ---
 
@@ -62,16 +62,16 @@ Permiten añadir capas de seguridad contextuales dentro de bloques `Condition`:
 - `aws:RequestedRegion`: Bloquea o restringe llamadas a la API fuera de regiones geográficas autorizadas.
 - `aws:MultiFactorAuthPresent`: Exige autenticación multifactor (MFA) activa para autorizar operaciones sensibles (ej. `ec2:TerminateInstances` o `s3:DeleteObject`).
 
-![](./media/23_img7.jpg)
-![](./media/23_img8.jpg)
+![](./media/23_img7.png)
+![](./media/23_img8.png)
 
-![](./media/23_img9.jpg)
-![](./media/23_img10.jpg)
+![](./media/23_img9.png)
+![](./media/23_img10.png)
 
-![](./media/23_img11.jpg)
+![](./media/23_img11.png)
 
-![](./media/23_img12.jpg)
-![](./media/23_img13.jpg)
+![](./media/23_img12.png)
+![](./media/23_img13.png)
 
 ---
 
@@ -82,7 +82,7 @@ Permiten añadir capas de seguridad contextuales dentro de bloques `Condition`:
 | **Rol IAM de Cuenta Cruzada (`sts:AssumeRole`)** | El usuario **renuncia temporalmente a sus permisos originales** y asume exclusivamente los permisos del rol de la cuenta destino. | Cargas de trabajo que requieren interactuar temporalmente con otra cuenta, o cuando el servicio destino no soporta políticas de recursos. |
 | **Política Basada en Recursos (ej. S3 Bucket Policy)** | El usuario **mantiene sus permisos originales** en la cuenta de origen mientras accede directamente al recurso en la cuenta destino. | Escenarios donde una entidad necesita combinar recursos de ambas cuentas en una misma acción (ej. leer de DynamoDB en Cuenta A y escribir en S3 de Cuenta B). |
 
-![](./media/23_img14.jpg)
+![](./media/23_img14.png)
 
 ---
 
@@ -93,14 +93,14 @@ Los **Permission Boundaries** son políticas administradas avanzadas que estable
 - **Fórmula de Evaluación:** El permiso efectivo es la **intersección lógica** entre la Política Basada en Identidad y el Permission Boundary.
 - **Caso de Uso Primario:** Delegación segura de tareas administrativas a desarrolladores o administradores junior (ej. permitirles crear nuevos usuarios o roles IAM para sus aplicaciones imponiendo un Boundary que impida que se autoasignen privilegios de `AdministratorAccess`).
 
-![](./media/23_img15.jpg)
-![](./media/23_img16.jpg)
+![](./media/23_img15.png)
+![](./media/23_img16.png)
 
-![](./media/23_img17.jpg)
+![](./media/23_img17.png)
 
-![](./media/23_img18.jpg)
+![](./media/23_img18.png)
 
-![](./media/23_img19.jpg)
+![](./media/23_img19.png)
 
 ---
 
@@ -117,13 +117,13 @@ Los **Permission Boundaries** son políticas administradas avanzadas que estable
   - Directorios corporativos locales o en la nube mediante **AWS Directory Service**.
 - **Control de Acceso Basado en Atributos (ABAC):** Utiliza atributos del perfil de usuario (ej. `CostCenter`, `Department`) para otorgar permisos dinámicos en AWS sin necesidad de actualizar políticas constantemente.
 
-![](./media/23_img20.jpg)
+![](./media/23_img20.png)
 
-![](./media/23_img21.jpg)
+![](./media/23_img21.png)
 
-![](./media/23_img22.jpg)
+![](./media/23_img22.png)
 
-![](./media/23_img23.jpg)
+![](./media/23_img23.png)
 
 ---
 
@@ -151,7 +151,7 @@ Para empresas con infraestructura basada en Windows y Active Directory local, AW
   - *Preventive Guardrails (Preventivos):* Implementados mediante **SCPs de AWS Organizations** para bloquear acciones que violen políticas (ej. impedir que las cuentas miembro desactiven CloudTrail o bloqueen el acceso a S3).
   - *Detective Guardrails (Detectivos):* Implementados mediante **AWS Config** para monitorear el cumplimiento de recursos y alertar/remediar automáticamente violaciones (ej. identificar y reportar volúmenes EBS sin cifrar o recursos sin etiquetas requeridas).
 
-![](./media/23_img25.jpg)
+![](./media/23_img25.png)
 
 ---
 

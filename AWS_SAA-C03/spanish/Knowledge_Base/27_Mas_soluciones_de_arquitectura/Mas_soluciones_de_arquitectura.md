@@ -18,11 +18,11 @@ El examen **AWS Certified Solutions Architect - Associate (SAA-C03)** incluye co
 - **Procesamiento de Colas Estándar con Lambda:** Lambda realiza un sondeo continuo (*polling*) de la cola. Si una invocación falla, el mensaje vuelve a estar visible en la cola tras el tiempo de visibilidad (*Visibility Timeout*). Tras alcanzar el número máximo de reintentos (*maxReceiveCount*), el mensaje se desvía a una **Dead Letter Queue (DLQ)** de SQS para su posterior depuración.
 - **SQS FIFO + Lambda:** Los mensajes se procesan en estricto orden por grupo de mensajes (*MessageGroupID*). Si un mensaje falla, el procesamiento de ese grupo se bloquea (*head-of-line blocking*) hasta que se resuelva o el mensaje se envíe a la DLQ.
 
-![](./media/27_img1.jpg)
+![](./media/27_img1.png)
 
-![](./media/27_img2.jpg)
+![](./media/27_img2.png)
 
-![](./media/27_img3.jpg)
+![](./media/27_img3.png)
 
 ---
 
@@ -35,7 +35,7 @@ Amazon S3 puede emitir notificaciones ante mutaciones de objetos (`s3:ObjectCrea
 | **Capacidades de Filtrado** | Básico: únicamente por prefijo y sufijo del nombre de la clave (ej. `.jpg`). | **Filtrado JSON avanzado** (por tamaño de objeto, metadatos, tipo de operación, cabeceras). |
 | **Gobernanza y Confiabilidad** | Sin capacidades de archivo ni repetición. | **Archive & Replay**, entrega confiable y auditoría de eventos. |
 
-![](./media/27_img4.jpg)
+![](./media/27_img4.png)
 
 ---
 
@@ -44,7 +44,7 @@ Un patrón recurrente de seguridad consiste en reaccionar ante acciones destruct
 - CloudTrail registra el evento de gestión.
 - **Amazon EventBridge** captura la regla del evento y activa una alerta inmediata a un tema de **Amazon SNS** o dispara una función **AWS Lambda** para revertir el cambio.
 
-![](./media/27_img5.jpg)
+![](./media/27_img5.png)
 
 ---
 
@@ -53,7 +53,7 @@ Para ingestar datos masivos en tiempo real (ej. streaming de telemetría IoT o c
 - **API Gateway** puede configurarse con una **Integración Directa de Servicio de AWS (*AWS Service Integration*)** hacia **Amazon Kinesis Data Streams** o **Amazon Kinesis Data Firehose**.
 - Elimina capas innecesarias de cómputo, reduce la latencia de ingestión y minimiza costos operativos.
 
-![](./media/27_img6.jpg)
+![](./media/27_img6.png)
 
 ---
 
@@ -66,7 +66,7 @@ El examen evalúa con frecuencia la optimización de latencia, cómputo y costos
 3. **Capa de Aplicación en Memoria (Amazon ElastiCache Redis / Memcached):** Almacena estructuras de datos complejas, sesiones web distribuidas y resultados computados pesados con latencia de submilisegundos.
 4. **Capa de Base de Datos NoSQL (DynamoDB Accelerator - DAX):** Clúster de caché en memoria transparente frente a tablas DynamoDB que reduce la latencia de lectura de milisegundos a microsegundos.
 
-![](./media/27_img7.jpg)
+![](./media/27_img7.png)
 
 ---
 
@@ -92,15 +92,15 @@ Una de las preguntas clásicas del examen SAA-C03 presenta un ataque proveniente
    - Si una distribución de CloudFront está situada frente al ALB, la NACL del ALB solo ve las direcciones IP públicas de los Edge Locations de CloudFront (**bloquear IPs en la NACL del ALB bloquearía a CloudFront entero**).
    - **Solución Obligatoria:** Implementar **AWS WAF acoplado a la distribución de CloudFront** (o usar la función de restricción geográfica de CloudFront) para descartar el tráfico malicioso en el borde antes de que ingrese a la red de AWS.
 
-![](./media/27_img8.jpg)
+![](./media/27_img8.png)
 
 ![](./media/27_img9.png)
 
-![](./media/27_img10.jpg)
+![](./media/27_img10.png)
 
-![](./media/27_img11.jpg)
+![](./media/27_img11.png)
 
-![](./media/27_img12.jpg)
+![](./media/27_img12.png)
 
 ---
 

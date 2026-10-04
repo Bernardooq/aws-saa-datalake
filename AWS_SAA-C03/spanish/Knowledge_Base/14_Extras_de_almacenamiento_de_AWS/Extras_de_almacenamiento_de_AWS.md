@@ -17,7 +17,7 @@ Cuando el volumen de datos alcanza decenas o cientos de terabytes (o petabytes),
 
 $$\text{Regla empírica SAA-C03}: \text{Si transferir los datos por red toma más de } \mathbf{7 \text{ días}} \implies \text{Utilizar dispositivos de la Familia Snow}.$$
 
-![](./media/14_img1.jpg)
+![](./media/14_img1.png)
 
 ### Modelos de Dispositivos Snowball Edge
 1. **Snowball Edge Storage Optimized**:
@@ -63,9 +63,9 @@ Amazon FSx ofrece sistemas de archivos nativos y de alto rendimiento optimizados
 
 ![](./media/14_img2.png)
 
-![](./media/14_img3.jpg)
+![](./media/14_img3.png)
 
-![](./media/14_img4.jpg)
+![](./media/14_img4.png)
 
 ---
 
@@ -73,7 +73,7 @@ Amazon FSx ofrece sistemas de archivos nativos y de alto rendimiento optimizados
 
 **AWS Storage Gateway** conecta la infraestructura on-premises con el almacenamiento en la nube de AWS, permitiendo almacenar datos en Amazon S3 o EBS mientras proporciona acceso de baja latencia a los datos de uso frecuente en el centro de datos local mediante una máquina virtual (VMware ESXi, Hyper-V, KVM) o un appliance de hardware dedicado.
 
-![](./media/14_img5.jpg)
+![](./media/14_img5.png)
 
 ### Comparativa de los Tipos de Storage Gateway
 
@@ -111,7 +111,7 @@ Amazon FSx ofrece sistemas de archivos nativos y de alto rendimiento optimizados
 - Permite mapear permisos mediante **Roles de IAM** para que los usuarios accedan únicamente a su prefijo asignado en S3.
 - Se integra con proveedores de identidad corporativos: **Microsoft Active Directory**, LDAP, Okta o Amazon Cognito.
 
-![](./media/14_img10.jpg)
+![](./media/14_img10.png)
 
 ---
 
@@ -119,7 +119,7 @@ Amazon FSx ofrece sistemas de archivos nativos y de alto rendimiento optimizados
 
 **AWS DataSync** es un servicio acelerado de transferencia de datos en línea diseñado para simplificar, automatizar y acelerar la sincronización y movimiento masivo de datos entre entornos on-premises y AWS, así como entre diferentes servicios de almacenamiento dentro de AWS.
 
-![](./media/14_img11.jpg)
+![](./media/14_img11.png)
 
 ![](./media/14_img12.png)
 

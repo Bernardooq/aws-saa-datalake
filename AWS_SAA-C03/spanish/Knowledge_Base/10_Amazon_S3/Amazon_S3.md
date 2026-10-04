@@ -53,17 +53,17 @@ La autorización en Amazon S3 se evalúa mediante una combinación de políticas
   - Imponer políticas de seguridad obligatorias (como forzar conexiones cifradas mediante HTTPS/TLS con `"aws:SecureTransport": "false"`).
 - **S3 Block Public Access**: Protección a nivel de cuenta o de bucket que anula cualquier configuración o política permisiva, bloqueando accidentalmente la exposición pública de datos sensibles.
 
-![](./media/10_img1.jpg)
+![](./media/10_img1.png)
 
 ![](./media/10_img2.png)
 
-![](./media/10_img3.jpg)
+![](./media/10_img3.png)
 
 ![](./media/10_img4.png)
 
 ![](./media/10_img5.png)
 
-![](./media/10_img6.jpg)
+![](./media/10_img6.png)
 
 ### Alojamiento de Sitios Web Estáticos
 - S3 puede hospedar sitios web estáticos (HTML, CSS, JS, imágenes).
@@ -86,7 +86,7 @@ El versionado se activa a nivel de bucket y preserva todas las iteraciones hist�
 - **Eliminación permanente**: Solo se destruye un objeto si se ejecuta un borrado especificando el `Version ID` exacto (acción que puede protegerse mediante **MFA Delete**).
 - **Irreversibilidad**: Una vez habilitado, el versionado **no se puede deshabilitar**; únicamente se puede **suspender** (los objetos nuevos tendrán versión `null`, pero las versiones previas permanecen).
 
-![](./media/10_img7.jpg)
+![](./media/10_img7.png)
 
 ---
 
@@ -109,7 +109,7 @@ Permite copiar objetos de forma asíncrona entre diferentes buckets de S3.
 - **No existe replicación encadenada**: Si el Bucket A replica en B, y B replica en C, los objetos creados en A **no** se replicarán en C.
 - Los borrados que especifican un `Version ID` no se replican al destino para evitar ataques maliciosos en cascada.
 
-![](./media/10_img8.jpg)
+![](./media/10_img8.png)
 
 ---
 

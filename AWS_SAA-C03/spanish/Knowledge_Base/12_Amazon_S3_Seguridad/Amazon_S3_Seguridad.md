@@ -28,13 +28,13 @@ S3 ofrece cuatro métodos de cifrado para proteger los datos en reposo:
 | **SSE-C** *(Cifrado con claves provistas por el cliente)*                  | El cliente administra la clave fuera de AWS. **AWS jamás almacena la clave**.    | Clave provista por el cliente en cada petición.                       | `"x-amz-server-side-encryption-customer-algorithm"` y `"x-amz-server-side-encryption-customer-key"` | **Obligatorio el uso estricto de HTTPS**. Si el cliente pierde la clave criptográfica, los datos almacenados en S3 son irrecuperables.                                                                                                |
 | **Client-Side Encryption**                                                 | El cliente cifra los datos localmente en su entorno **antes** de enviarlos a S3. | Gestionado por bibliotecas del cliente (Amazon S3 Encryption Client). | Ninguna en S3 (S3 solo recibe un archivo de bytes ya cifrado).                                      | Control absoluto del ciclo criptográfico de extremo a extremo. S3 actúa como almacenamiento ciego.                                                                                                                                    |
 
-![](./media/12_img2.jpg)
+![](./media/12_img2.png)
 
-![](./media/12_img3.jpg)
+![](./media/12_img3.png)
 
 ![](./media/12_img4.png)
 
-![](./media/12_img5.jpg)
+![](./media/12_img5.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > **Cuotas de API y cuellos de botella con SSE-KMS**:  
@@ -72,13 +72,13 @@ S3 expone endpoints seguros bajo TLS/HTTPS y endpoints en texto claro bajo HTTP.
 }
 ```
 
-![](./media/12_img6.jpg)
+![](./media/12_img6.png)
 
-![](./media/12_img7.jpg)
+![](./media/12_img7.png)
 
-![](./media/12_img8.jpg)
+![](./media/12_img8.png)
 
-![](./media/12_img9.jpg)
+![](./media/12_img9.png)
 
 ---
 
@@ -101,16 +101,16 @@ Un navegador web bloquea las solicitudes HTTP que intentan cargar recursos desde
 - Registra de forma detallada cada petición realizada al bucket (autorizada o denegada), identificando el solicitante, IP, tipo de acción y códigos de respuesta.
 - **Regla crítica de arquitectura**: **El bucket de destino donde se guardan los logs DEBE ser diferente al bucket monitorizado**, y residir en la misma región. Si se utiliza el mismo bucket, se genera un bucle recursivo infinito (*log loop*) que disparará el almacenamiento y los costos exponencialmente.
 
-![](./media/12_img12.jpg)
+![](./media/12_img12.png)
 
-![](./media/12_img13.jpg)
+![](./media/12_img13.png)
 
 ### URLs Pre-firmadas (Pre-Signed URLs)
 - Permite al propietario de un objeto privado generar un enlace temporal que hereda sus propios permisos para conceder acceso de lectura (`GET`) o subida (`PUT`) a un usuario no autenticado.
 - Caducidad: Configurable desde segundos hasta un máximo de 12 horas (vía consola) o 168 horas / 7 días (vía AWS CLI / SDK con credenciales de IAM de larga duración).
 - Casos de uso: Permitir descargas de videos de pago a usuarios autenticados en una web o subida directa de archivos desde el navegador a S3 sin pasar por el servidor web backend.
 
-![](./media/12_img14.jpg)
+![](./media/12_img14.png)
 
 ### MFA Delete
 - Exige ingresar un token físico o virtual de autenticación multifactor (MFA) para dos operaciones destructivas críticas:
@@ -155,7 +155,7 @@ A medida que los data lakes crecen, una única Bucket Policy puede superar el l�
 - **Puntos de acceso originados en VPC (*VPC Origin*)**: Se configuran para restringir el acceso al bucket exclusivamente a instancias dentro de una VPC privada a través de un **VPC Endpoint (Gateway o Interface)**, garantizando que el tráfico jamás transite por la internet pública.
 
 ![](./media/12_img19.png)
-![](./media/12_img20.jpg)
+![](./media/12_img20.png)
 
 ### S3 Object Lambda
 - Permite insertar código personalizado de **AWS Lambda** para procesar, transformar o filtrar los datos devueltos por una llamada estándar `s3:GetObject` **antes de que los datos alcancen a la aplicación cliente**.
@@ -165,7 +165,7 @@ A medida que los data lakes crecen, una única Bucket Policy puede superar el l�
   - **Conversión de formatos en vuelo**: Transformar dinámicamente archivos XML en JSON.
   - **Marcas de agua e imágenes**: Insertar marcas de agua personalizadas o redimensionar fotos según el usuario solicitante.
 
-![](./media/12_img21.jpg)
+![](./media/12_img21.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > Cuando una empresa solicita almacenar una única versión de archivos confidenciales en S3, pero exige que **"los analistas de datos reciban los archivos con los campos de tarjetas de crédito redactados/anonimizados, mientras que el departamento de auditoría legal debe recibir el archivo original intacto, sin crear buckets duplicados"**, la arquitectura óptima es utilizar **S3 Object Lambda**.

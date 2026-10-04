@@ -46,7 +46,7 @@ Servicio de auditoría gratuito disponible en la consola de AWS que permite a lo
 - **Flujo de Trabajo:** Se define la carga de trabajo (*Workload*), se responden cuestionarios específicos sobre cada pilar y se genera un reporte con planes de acción correctiva y recomendaciones guiadas por video y documentación.
 - **Hitos (*Milestones*):** Permite registrar instantáneas en el tiempo para rastrear cómo madura la arquitectura a medida que se mitigan los riesgos altos (*High Risk Issues - HRIs*).
 
-![](./media/29_img1.jpg)
+![](./media/29_img1.png)
 
 ---
 
@@ -59,7 +59,7 @@ Herramienta automatizada de inspección en tiempo real que evalúa la cuenta de 
 4. **Tolerancia a Fallos (*Fault Tolerance*):** Verifica si las bases de datos RDS están desplegadas en Multi-AZ, si los respaldos de EBS/RDS están activos y si las zonas de disponibilidad están distribuidas en los balanceadores de carga.
 5. **Límites de Servicio (*Service Quotas*):** Monitorea el uso de recursos frente a las cuotas máximas de la cuenta (ej. número de VPCs, instancias EC2 o certificados ACM), alertando cuando el consumo supera el 80% del límite permitido.
 
-![](./media/29_img2.jpg)
+![](./media/29_img2.png)
 
 ---
 

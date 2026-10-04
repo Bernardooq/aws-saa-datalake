@@ -11,7 +11,7 @@ Una de las competencias nodales evaluadas en el examen **AWS Certified Solutions
 
 En AWS rige el principio del **diseño políglota de persistencia** (*Purpose-Built Databases*): en lugar de forzar un único motor relacional para todos los casos de uso, se implementa el motor especializado idóneo para cada carga de trabajo.
 
-![](./media/19_img1.jpg)
+![](./media/19_img1.png)
 
 ---
 
@@ -38,7 +38,7 @@ Servicio administrado para motores relacionales estándar: PostgreSQL, MySQL, Ma
 - **Copias de Seguridad:** Backups automatizados continuos con retención configurable de 1 a 35 días, soportando Point-in-Time Recovery (PITR) con granularidad de segundos. Snapshots manuales que persisten independientemente de la instancia.
 - **RDS Custom:** Opción especializada para Oracle y Microsoft SQL Server que brinda acceso privilegiado al sistema operativo subyacente (SSH / RDP) y personalización del motor para software empresarial empaquetado.
 
-![](./media/19_img2.jpg)
+![](./media/19_img2.png)
 
 ---
 
@@ -54,7 +54,7 @@ Motor relacional nativo de la nube de AWS, compatible a nivel de API y binarios 
 - **Aurora Global Databases:** Replicación de almacenamiento física entre regiones con latencia típicamente inferior a 1 segundo y RPO cercano a 0; permite recuperación ante desastres (*DR*) con conmutación en menos de 1 minuto y hasta 16 réplicas por región secundaria.
 - **Aurora Database Cloning:** Crea nuevos clústeres a partir de un clúster existente mediante punteros *copy-on-write*, siendo instantáneo y sin costo adicional de almacenamiento hasta que se modifican datos.
 
-![](./media/19_img3.jpg)
+![](./media/19_img3.png)
 
 ---
 
@@ -72,7 +72,7 @@ Base de datos NoSQL propietaria de AWS, 100% Serverless, diseñada para ofrecer 
 - **Caché con DAX:** **DynamoDB Accelerator (DAX)** es una caché en memoria administrada que reduce la latencia de lectura de milisegundos a microsegundos sin modificar la lógica del código de la aplicación.
 - **Respaldo y Exportación:** Point-in-Time Recovery (PITR) hasta 35 días. Exportación nativa hacia Amazon S3 en formato JSON/Parquet sin consumir RCUs.
 
-![](./media/19_img4.jpg)
+![](./media/19_img4.png)
 
 ---
 
@@ -84,7 +84,7 @@ Servicio administrado de almacenamiento en memoria (*in-memory*) que ofrece late
   - *Memcached:* Almacén puro de clave-valor multihilo, sin persistencia ni soporte nativo de replicación o failover; ideal para caché simple de fragmentos de HTML u objetos serializados.
 - **Casos de Uso Típicos:** Almacenamiento de sesiones web distribuidas, tablas de clasificación (*leaderboards*), mitigación de cuellos de botella en bases de datos relacionales (*caching layer*).
 
-![](./media/19_img5.jpg)
+![](./media/19_img5.png)
 
 ---
 
@@ -95,7 +95,7 @@ Base de datos de documentos JSON no relacional, totalmente administrada, que imp
 - Compatible con las herramientas y controladores cliente nativos de MongoDB.
 - Soporta millones de solicitudes de lectura por segundo con hasta 15 réplicas de lectura.
 
-![](./media/19_img6.jpg)
+![](./media/19_img6.png)
 
 ---
 
@@ -106,7 +106,7 @@ Servicio de base de datos administrado y Serverless compatible con la API y el l
 - Capacidad provisionada o bajo demanda; soporte para PITR de hasta 35 días y cifrado por defecto.
 - Ideal para cargas de trabajo IoT, telemetría y perfiles de dispositivos que ya utilicen CQL.
 
-![](./media/19_img7.jpg)
+![](./media/19_img7.png)
 
 ---
 
@@ -120,7 +120,7 @@ Motor de base de datos de grafos altamente disponible y administrado, optimizado
 - **Compatibilidad:** Soporta marcos de grafos populares como Apache TinkerPop Gremlin y RDF / SPARQL de W3C.
 - **Neptune Streams:** Secuencia ordenada en tiempo real de cada mutación en los datos del grafo. Expone una API REST HTTP para sincronizar cambios hacia otros almacenes de datos como OpenSearch, S3 o ElastiCache.
 
-![](./media/19_img8.jpg)
+![](./media/19_img8.png)
 
 ---
 
@@ -134,10 +134,10 @@ Motor Serverless diseñado específicamente para ingerir y procesar datos indexa
 - **Análisis y Consultas:** Compatibilidad con sintaxis SQL extendida para análisis de series temporales (interpolaciones, aproximaciones, funciones de ventana).
 - **Integraciones:** Ingesta nativa desde AWS IoT Core, Amazon Kinesis Data Streams, Apache Flink y visualización con Amazon QuickSight y Grafana.
 
-![](./media/19_img9.jpg)
-![](./media/19_img10.jpg)
+![](./media/19_img9.png)
+![](./media/19_img10.png)
 
-![](./media/19_img11.jpg)
+![](./media/19_img11.png)
 
 ---
 
@@ -146,7 +146,7 @@ Aunque es un servicio de almacenamiento de objetos, para el diseño de arquitect
 - Excelente para archivos estáticos, data lakes, backups y contenido multimedia.
 - Antipatrón si se intenta usar como base de datos transaccional con actualizaciones frecuentes de pequeños registros (para documentos JSON pequeños < 400 KB, la solución es DynamoDB).
 
-![](./media/19_img12.jpg)
+![](./media/19_img12.png)
 
 ---
 

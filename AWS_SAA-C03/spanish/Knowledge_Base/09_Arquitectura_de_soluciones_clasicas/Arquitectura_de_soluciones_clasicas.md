@@ -37,7 +37,7 @@ Analizamos el ciclo de diseño de una aplicación que devuelve la hora actual (p
    - El ASG y el ALB se distribuyen a lo largo de **al menos 2 o 3 Zonas de Disponibilidad (AZs)**.
    - *Optimización de costos*: La capacidad base mínima permanente se cubre con **Instancias Reservadas / Savings Plans**, y los picos elásticos se atienden con instancias On-Demand o Spot.
 
-![](./media/09_img1.jpg)
+![](./media/09_img1.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > Si una pregunta de examen describe una aplicación web que al escalar horizontalmente presenta fallas intermitentes donde algunos usuarios intentan acceder a instancias que acaban de ser terminadas por el Auto Scaling, **la causa raíz es usar registros DNS tipo A múltiples con TTL prolongado en lugar de un Application Load Balancer**. El ALB aísla a los clientes finales de los ciclos de vida efímeros de las instancias EC2 mediante Target Groups y Deregistration Delay.
@@ -96,7 +96,7 @@ Un CMS como WordPress requiere gestionar simultáneamente dos tipos de persisten
 | **Amazon EBS** | Los volúmenes EBS están anclados a una **única AZ** y generalmente a una sola instancia. Si una instancia en la AZ-1 recibe una imagen, las instancias en la AZ-2 no tienen acceso a ella. | **Antipatrón para CMS distribuidos**. Provoca inconsistencia inmediata entre servidores web. |
 | **Amazon EFS** | Sistema de archivos de red compatible con **POSIX montable concurrentemente en cientos de instancias EC2 a través de múltiples Zonas de Disponibilidad (Multi-AZ)**. | **Solución estándar recomendada**. Todas las instancias leen y escriben sobre el mismo directorio `/var/www/html/wp-content/uploads`. |
 
-![](./media/09_img3.jpg)
+![](./media/09_img3.png)
 
 ![](./media/09_img4.png)
 
@@ -126,7 +126,7 @@ Cuando un Auto Scaling Group lanza instancias en respuesta a un pico repentino d
 
 **AWS Elastic Beanstalk** es una plataforma como servicio (**PaaS**) orientada a desarrolladores que automatiza el despliegue completo de aplicaciones web en AWS.
 
-![](./media/09_img6.jpg)
+![](./media/09_img6.png)
 
 ### Conceptos Clave
 - **Control total de la infraestructura**: A diferencia de otras soluciones PaaS cerradas, Elastic Beanstalk aprovisiona recursos nativos de AWS (EC2, ASG, ALB, CloudWatch, RDS) dentro de tu cuenta. El arquitecto conserva el acceso administrativo total para ajustar cualquier parámetro.
@@ -142,7 +142,7 @@ Cuando un Auto Scaling Group lanza instancias en respuesta a un pico repentino d
 
 ![](./media/09_img7.png)
 
-![](./media/09_img8.jpg)
+![](./media/09_img8.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > **Antipatrón crítico de base de datos en Elastic Beanstalk**:  
