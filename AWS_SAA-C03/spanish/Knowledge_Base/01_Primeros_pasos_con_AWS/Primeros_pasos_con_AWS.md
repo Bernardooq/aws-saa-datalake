@@ -36,9 +36,9 @@ Con una cuota de mercado sólida, más de 128 mil millones de dólares en ingres
 - **Big Data, Analítica e IA**: Ingesta masiva en tiempo real, lagos de datos (Data Lakes) y entrenamiento/inferencia de modelos de Machine Learning.
 - **Aplicaciones Web, Móviles y Gaming**: Arquitecturas serverless y microservicios con escalado horizontal automático y distribución global.
 
+![](./media/01_img6.png)
 ![](./media/01_img7.png)
 ![](./media/01_img8.png)
-![](./media/01_img9.png)
 
 ---
 
@@ -51,7 +51,7 @@ La infraestructura global de AWS se divide jerárquicamente en entidades geográ
 3. **AWS Data Centers (Centros de Datos)**
 4. **AWS Edge Locations / Points of Presence - PoP (Puntos de Presencia)**
 
-![](./media/01_img10.png)
+![](./media/01_img9.png)
 
 ---
 
@@ -62,8 +62,8 @@ Una **Región de AWS** es una ubicación física en el mundo compuesta por un cl
 - **Nomenclatura estándar**: Sigue la convención `área-dirección-número` (ejemplos: `us-east-1` [N. Virginia], `eu-west-3` [París], `ap-southeast-2` [Sídney]).
 - **Aislamiento absoluto**: Cada región es completamente independiente para evitar que un incidente catastrófico en una región afecte a las demás.
 
+![](./media/01_img10.png)
 ![](./media/01_img11.png)
-![](./media/01_img12.png)
 
 ### Criterios de Selección de una Región
 
@@ -79,7 +79,7 @@ Para el examen SAA-C03, seleccionar la región adecuada no es una decisión arbi
 4. **Estructura de Precios (Cost Optimization)**:
    - Los costos de cómputo, almacenamiento y transferencia de datos varían sustancialmente entre regiones debido a factores locales (impuestos, costos energéticos, hardware). Por ejemplo, `us-east-1` suele ser más económica que `sa-east-1` (São Paulo).
 
-![](./media/01_img13.png)
+![](./media/01_img12.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > Si una pregunta de examen plantea que una empresa financiera o de salud exige que ningún registro o respaldo salga de una frontera nacional específica por motivos de auditoría, **el requerimiento de gobernanza y soberanía de datos (Compliance) anula cualquier consideración de costo o latencia**. Además, recuerda: AWS **jamás** mueve tus datos entre regiones de forma automática.
@@ -95,7 +95,7 @@ Una **Zona de Disponibilidad (AZ)** está compuesta por uno o varios centros de 
 - **Distancia física balanceada**: Las AZs de una misma región se encuentran a decenas de kilómetros de distancia entre sí (suficientemente separadas para aislarse de desastres naturales como inundaciones, incendios o apagones de red eléctrica), pero a menos de 100 km (~60 millas) para mantener una latencia de red ultrabaja en un solo dígito de milisegundos (< 1-2 ms).
 - **Interconexión privada**: Se comunican mediante una red de fibra óptica dedicada, redundante y de gran ancho de banda propiedad de AWS.
 
-![](./media/01_img18.png)
+![](./media/01_img13.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > Recuerda que los nombres lógicos de las AZs (ej. `us-east-1a`) están asignados de manera aleatoria e independiente a cada cuenta de AWS para equilibrar la carga física de los centros de datos. Si dos cuentas de AWS necesitan coordinar recursos dentro del mismo centro de datos físico exacto (por ejemplo, para instancias EC2 en un clúster de HPC con latencia extremadamente baja), debes utilizar el **AZ ID** inmutable (ej. `use1-az1`) y no el nombre lógico de la AZ.
@@ -113,7 +113,7 @@ Los **Puntos de Presencia (PoP)** constituyen la capa de entrega de contenido en
   - **Amazon Route 53**: Servicio de DNS autoritativo distribuido globalmente.
   - **AWS WAF**: Inspección y mitigación de amenazas web (inyección SQL, XSS, rate-limiting) directamente en el borde antes de alcanzar el backend.
 
-![](./media/01_img19.png)
+![](./media/01_img14.png)
 
 ---
 
@@ -130,9 +130,9 @@ Un principio de diseño esencial para el arquitecto de soluciones es distinguir 
 | **Radio de impacto (Blast Radius)** | Un problema global podría impactar a todas las regiones, aunque AWS diseña particiones aisladas para mitigar esto. | Aislado a la región. Una falla en `us-east-1` no afecta a los recursos en `eu-west-1`. |
 | **Estrategia SAA-C03** | Utilizados para gobernanza transversal, resolución DNS inicial y aceleraciónperimétrica. | La alta disponibilidad debe diseñarse implementando arquitecturas **Multi-AZ** o **Multi-Region**. |
 
-![](./media/01_img20.png)
-![](./media/01_img21.png)
-![](./media/01_img22.png)
+![](./media/01_img15.png)
+![](./media/01_img16.png)
+![](./media/01_img17.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > **Cuidado con las sutilezas de Amazon S3 y AWS WAF en las preguntas de examen**:
