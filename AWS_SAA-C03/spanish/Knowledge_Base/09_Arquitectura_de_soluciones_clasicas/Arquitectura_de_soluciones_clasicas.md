@@ -37,40 +37,7 @@ Analizamos el ciclo de diseño de una aplicación que devuelve la hora actual (p
    - El ASG y el ALB se distribuyen a lo largo de **al menos 2 o 3 Zonas de Disponibilidad (AZs)**.
    - *Optimización de costos*: La capacidad base mínima permanente se cubre con **Instancias Reservadas / Savings Plans**, y los picos elásticos se atienden con instancias On-Demand o Spot.
 
-![](./media/slide229_img1.png)
-![](./media/slide229_img2.jpeg)
-![](./media/slide229_img3.png)
-![](./media/slide230_img1.png)
-![](./media/slide230_img2.jpeg)
-![](./media/slide230_img3.png)
-![](./media/slide231_img1.png)
-![](./media/slide231_img2.png)
-![](./media/slide231_img3.jpeg)
-![](./media/slide232_img1.png)
-![](./media/slide232_img2.jpeg)
-![](./media/slide232_img3.jpeg)
-![](./media/slide233_img1.png)
-![](./media/slide233_img2.jpeg)
-![](./media/slide233_img3.jpeg)
-![](./media/slide234_img1.png)
-![](./media/slide234_img2.jpeg)
-![](./media/slide234_img3.jpeg)
-![](./media/slide234_img4.jpeg)
-![](./media/slide235_img1.png)
-![](./media/slide235_img2.jpeg)
-![](./media/slide235_img3.jpeg)
-![](./media/slide235_img4.jpeg)
-![](./media/slide235_img5.png)
-![](./media/slide236_img1.png)
-![](./media/slide236_img2.jpeg)
-![](./media/slide236_img3.jpeg)
-![](./media/slide236_img4.jpeg)
-![](./media/slide236_img5.png)
-![](./media/slide237_img1.png)
-![](./media/slide237_img2.jpeg)
-![](./media/slide237_img3.jpeg)
-![](./media/slide237_img4.jpeg)
-![](./media/slide237_img5.png)
+![](./media/slide240_img1.jpeg)
 
 > **💡 SAA-C03 Exam Tip:**  
 > Si una pregunta de examen describe una aplicación web que al escalar horizontalmente presenta fallas intermitentes donde algunos usuarios intentan acceder a instancias que acaban de ser terminadas por el Auto Scaling, **la causa raíz es usar registros DNS tipo A múltiples con TTL prolongado en lugar de un Application Load Balancer**. El ALB aísla a los clientes finales de los ciclos de vida efímeros de las instancias EC2 mediante Target Groups y Deregistration Delay.
@@ -81,11 +48,7 @@ Analizamos el ciclo de diseño de una aplicación que devuelve la hora actual (p
 
 Un sitio de comercio electrónico requiere persistir el carrito de compras y los perfiles de usuario, evitando que una sesión se pierda si una instancia EC2 backend se reinicia o es destruida por el Auto Scaling Group.
 
-![](./media/slide240_img1.jpeg)
 ![](./media/slide240_img2.png)
-![](./media/slide240_img3.png)
-![](./media/slide240_img4.jpeg)
-![](./media/slide240_img5.jpeg)
 
 ### Estrategias de Manejo de Estado (Pros y Contras)
 1. **Sticky Sessions (Sesiones Persistentes en el Balanceador)**:
@@ -98,81 +61,17 @@ Un sitio de comercio electrónico requiere persistir el carrito de compras y los
    - Las instancias EC2 se vuelven **completamente sin estado (*Stateless*)**.
    - Solo viaja una cookie con un `session_id` ligero. Las instancias leen y escriben el carrito y estado de sesión directamente en un clúster de **Amazon ElastiCache for Redis** (o Amazon DynamoDB).
    - Cualquier instancia EC2 en cualquier AZ puede atender a cualquier usuario en cualquier momento.
-
-![](./media/slide241_img1.jpeg)
-![](./media/slide241_img2.png)
-![](./media/slide241_img3.png)
-![](./media/slide241_img4.jpeg)
-![](./media/slide241_img5.jpeg)
-![](./media/slide242_img1.jpeg)
-![](./media/slide242_img2.png)
-![](./media/slide242_img3.png)
-![](./media/slide242_img4.jpeg)
-![](./media/slide242_img5.jpeg)
-![](./media/slide243_img1.jpeg)
-![](./media/slide243_img2.png)
-![](./media/slide243_img3.png)
-![](./media/slide243_img4.jpeg)
-![](./media/slide243_img5.jpeg)
-![](./media/slide243_img6.jpeg)
-![](./media/slide243_img7.jpeg)
-
 ### Escalabilidad de la Capa de Datos
 - **Almacenamiento de Perfiles de Usuario**: Base de datos relacional administrada en **Amazon RDS Multi-AZ** para garantizar tolerancia a fallos.
 - **Escalado de Lecturas**:
   - Implementar **RDS Read Replicas** para separar consultas analíticas y de catálogo.
   - Implementar un patrón de caché **Cache-Aside / Write-Through** con **Amazon ElastiCache** frente a RDS para servir consultas repetitivas con latencia en submilisegundos.
 
-![](./media/slide244_img1.jpeg)
-![](./media/slide244_img2.png)
-![](./media/slide244_img3.png)
-![](./media/slide244_img4.jpeg)
-![](./media/slide244_img5.jpeg)
-![](./media/slide244_img6.jpeg)
-![](./media/slide244_img7.jpeg)
-![](./media/slide245_img1.jpeg)
-![](./media/slide245_img2.png)
-![](./media/slide245_img3.png)
-![](./media/slide245_img4.jpeg)
-![](./media/slide245_img5.jpeg)
-![](./media/slide245_img6.jpeg)
-![](./media/slide245_img7.jpeg)
-![](./media/slide246_img1.jpeg)
-![](./media/slide246_img2.png)
-![](./media/slide246_img3.png)
-![](./media/slide246_img4.jpeg)
-![](./media/slide246_img5.jpeg)
-![](./media/slide246_img6.jpeg)
-![](./media/slide246_img7.jpeg)
-![](./media/slide247_img1.jpeg)
-![](./media/slide247_img2.png)
-![](./media/slide247_img3.png)
-![](./media/slide247_img4.jpeg)
-![](./media/slide247_img5.jpeg)
-![](./media/slide247_img6.jpeg)
-![](./media/slide247_img7.jpeg)
-
 ---
 
 ## 3. Seguridad Perimetral: Arquitectura de 3 Capas (3-Tier Web App)
 
 El aislamiento de red de una arquitectura web clásica de 3 capas se formaliza mediante subredes y **referencias cruzadas entre Security Groups**:
-
-![](./media/slide248_img1.jpeg)
-![](./media/slide248_img2.png)
-![](./media/slide248_img3.png)
-![](./media/slide248_img4.jpeg)
-![](./media/slide248_img5.jpeg)
-![](./media/slide248_img6.jpeg)
-![](./media/slide248_img7.jpeg)
-![](./media/slide259_img1.jpeg)
-![](./media/slide259_img2.png)
-![](./media/slide259_img3.png)
-![](./media/slide259_img4.jpeg)
-![](./media/slide259_img5.jpeg)
-![](./media/slide259_img6.jpeg)
-![](./media/slide259_img7.jpeg)
-
 ### Matriz de Seguridad de Security Groups (Examen SAA-C03)
 
 | Capa de Arquitectura | Tipo de Subred | Reglas de Entrada (Inbound Rules) | Origen Permitido (Source) |
@@ -198,33 +97,10 @@ Un CMS como WordPress requiere gestionar simultáneamente dos tipos de persisten
 | **Amazon EFS** | Sistema de archivos de red compatible con **POSIX montable concurrentemente en cientos de instancias EC2 a través de múltiples Zonas de Disponibilidad (Multi-AZ)**. | **Solución estándar recomendada**. Todas las instancias leen y escriben sobre el mismo directorio `/var/www/html/wp-content/uploads`. |
 
 ![](./media/slide251_img1.jpeg)
+
 ![](./media/slide251_img2.png)
+
 ![](./media/slide251_img3.png)
-![](./media/slide251_img4.jpeg)
-![](./media/slide251_img5.jpeg)
-![](./media/slide251_img6.jpeg)
-![](./media/slide252_img1.jpeg)
-![](./media/slide252_img2.png)
-![](./media/slide252_img3.png)
-![](./media/slide252_img4.jpeg)
-![](./media/slide252_img5.jpeg)
-![](./media/slide252_img6.jpeg)
-![](./media/slide253_img1.jpeg)
-![](./media/slide253_img2.png)
-![](./media/slide253_img3.jpeg)
-![](./media/slide253_img4.jpeg)
-![](./media/slide253_img5.png)
-![](./media/slide254_img1.jpeg)
-![](./media/slide254_img2.png)
-![](./media/slide254_img3.jpeg)
-![](./media/slide254_img4.jpeg)
-![](./media/slide254_img5.png)
-![](./media/slide255_img1.jpeg)
-![](./media/slide255_img2.png)
-![](./media/slide255_img3.jpeg)
-![](./media/slide255_img4.jpeg)
-![](./media/slide255_img5.jpeg)
-![](./media/slide255_img6.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > Cuando una pregunta plantee una flota de instancias EC2 en un Auto Scaling Group que ejecutan una aplicación web heredada que necesita **compartir y escribir archivos en un sistema de archivos común compatible con llamadas POSIX en múltiples Zonas de Disponibilidad**, la respuesta correcta es **Amazon EFS** (o Amazon S3 si la aplicación puede modificarse mediante API SDK, pero si el código espera un sistema de archivos montado tradicional, la respuesta es EFS).
@@ -265,15 +141,8 @@ Cuando un Auto Scaling Group lanza instancias en respuesta a un pico repentino d
    - Integra de forma nativa una cola **Amazon SQS**. Las instancias EC2 ejecutan un demonio (*SQS daemon*) que extrae mensajes de la cola y escala el número de workers automáticamente en función de la métrica de mensajes acumulados en la cola SQS.
 
 ![](./media/slide264_img1.png)
+
 ![](./media/slide264_img2.jpeg)
-![](./media/slide264_img3.png)
-![](./media/slide264_img4.png)
-![](./media/slide264_img5.png)
-![](./media/slide265_img1.png)
-![](./media/slide265_img2.jpeg)
-![](./media/slide265_img3.png)
-![](./media/slide265_img4.jpeg)
-![](./media/slide265_img5.jpeg)
 
 > **💡 SAA-C03 Exam Tip:**  
 > **Antipatrón crítico de base de datos en Elastic Beanstalk**:  

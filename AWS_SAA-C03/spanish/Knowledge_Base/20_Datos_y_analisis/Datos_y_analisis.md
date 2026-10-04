@@ -22,9 +22,6 @@ El diseño de soluciones de Big Data, almacenamiento analítico y procesamiento 
 - **Integración con BI:** Se conecta de forma nativa con **Amazon QuickSight** para generación de paneles e informes.
 
 ![](./media/slide527_img1.jpeg)
-![](./media/slide527_img2.jpeg)
-![](./media/slide527_img3.jpeg)
-![](./media/slide527_img4.jpeg)
 
 ---
 
@@ -50,17 +47,6 @@ Permite ejecutar consultas SQL unificadas a través de múltiples fuentes de dat
 - Los resultados de la consulta federada se exportan y almacenan en Amazon S3.
 
 ![](./media/slide529_img1.jpeg)
-![](./media/slide529_img2.jpeg)
-![](./media/slide529_img3.png)
-![](./media/slide529_img4.jpeg)
-![](./media/slide529_img5.jpeg)
-![](./media/slide529_img6.jpeg)
-![](./media/slide529_img7.jpeg)
-![](./media/slide529_img8.jpeg)
-![](./media/slide529_img9.jpeg)
-![](./media/slide529_img10.jpeg)
-![](./media/slide529_img11.jpeg)
-![](./media/slide529_img12.jpeg)
 
 ---
 
@@ -75,12 +61,6 @@ Permite ejecutar consultas SQL unificadas a través de múltiples fuentes de dat
 
 ![](./media/slide530_img1.jpeg)
 
-![](./media/slide531_img1.jpeg)
-![](./media/slide531_img2.jpeg)
-![](./media/slide531_img3.png)
-![](./media/slide531_img4.png)
-![](./media/slide531_img5.png)
-
 ---
 
 ### 2.2 Respaldo, Recuperación y Alta Disponibilidad
@@ -89,8 +69,6 @@ Permite ejecutar consultas SQL unificadas a través de múltiples fuentes de dat
 - **Replicación entre Regiones (Cross-Region Snapshot Copy):** Se puede configurar la copia automática de snapshots hacia otra región para planes de Disaster Recovery (DR).
 
 ![](./media/slide532_img1.png)
-![](./media/slide532_img2.jpeg)
-![](./media/slide532_img3.png)
 
 ---
 
@@ -100,10 +78,6 @@ Permite ejecutar consultas SQL unificadas a través de múltiples fuentes de dat
 - **Enhanced VPC Routing:** Obliga a que todo el tráfico de red generado por el comando `COPY` o `UNLOAD` viaje exclusivamente a través de la VPC corporativa y sus VPC Endpoints, evitando circular por la Internet pública.
 
 ![](./media/slide533_img1.jpeg)
-![](./media/slide533_img2.jpeg)
-![](./media/slide533_img3.jpeg)
-![](./media/slide533_img4.png)
-![](./media/slide533_img5.png)
 
 ---
 
@@ -114,10 +88,6 @@ Permite consultar conjuntos de datos masivos en S3 directamente desde un clúste
 - Permite hacer JOINs en tiempo real entre tablas locales de alto rendimiento en Redshift y tablas masivas históricas almacenadas en S3.
 
 ![](./media/slide534_img1.jpeg)
-![](./media/slide534_img2.png)
-![](./media/slide534_img3.png)
-![](./media/slide534_img4.png)
-![](./media/slide534_img5.jpeg)
 
 ---
 
@@ -147,20 +117,8 @@ Permite consultar conjuntos de datos masivos en S3 directamente desde un clúste
 ![](./media/slide535_img1.jpeg)
 
 ![](./media/slide536_img1.jpeg)
-![](./media/slide536_img2.jpeg)
+
 ![](./media/slide536_img3.png)
-![](./media/slide536_img4.jpeg)
-![](./media/slide536_img5.jpeg)
-
-![](./media/slide537_img1.jpeg)
-![](./media/slide537_img2.jpeg)
-![](./media/slide537_img3.jpeg)
-![](./media/slide537_img4.jpeg)
-
-![](./media/slide538_img1.jpeg)
-![](./media/slide538_img2.jpeg)
-![](./media/slide538_img3.jpeg)
-![](./media/slide538_img4.jpeg)
 
 ---
 
@@ -186,26 +144,9 @@ Servicio de BI escalable y basado en la nube con integración nativa de Machine 
   - La **Edición Enterprise** ofrece *Column-Level Security (CLS)* y *Row-Level Security (RLS)* para restringir visibilidad de datos sensibles según el perfil del usuario.
 - **Dashboards:** Instantáneas interactivas de solo lectura que se publican y comparten con usuarios y grupos.
 
-![](./media/slide541_img1.jpeg)
 ![](./media/slide541_img2.jpeg)
 
 ![](./media/slide542_img1.jpeg)
-![](./media/slide542_img2.jpeg)
-![](./media/slide542_img3.jpeg)
-![](./media/slide542_img4.jpeg)
-![](./media/slide542_img5.jpeg)
-![](./media/slide542_img6.jpeg)
-![](./media/slide542_img7.jpeg)
-![](./media/slide542_img8.jpeg)
-![](./media/slide542_img9.jpeg)
-![](./media/slide542_img10.jpeg)
-![](./media/slide542_img11.png)
-![](./media/slide542_img12.png)
-![](./media/slide542_img13.png)
-![](./media/slide542_img14.png)
-![](./media/slide542_img15.png)
-![](./media/slide542_img16.jpeg)
-![](./media/slide542_img17.png)
 
 ---
 
@@ -219,27 +160,10 @@ Servicio administrado de extracción, transformación y carga (ETL) basado en Ap
 - **Job Bookmarks:** Mecanismo de persistencia de estado para evitar reprocesar datos históricos en ejecuciones sucesivas del trabajo ETL.
 
 ![](./media/slide544_img1.jpeg)
-![](./media/slide544_img2.jpeg)
+
 ![](./media/slide544_img3.jpeg)
-![](./media/slide544_img4.jpeg)
 
 ![](./media/slide545_img1.jpeg)
-![](./media/slide545_img2.jpeg)
-![](./media/slide545_img3.jpeg)
-![](./media/slide545_img4.jpeg)
-
-![](./media/slide546_img1.png)
-![](./media/slide546_img2.png)
-![](./media/slide546_img3.jpeg)
-![](./media/slide546_img4.jpeg)
-![](./media/slide546_img5.jpeg)
-![](./media/slide546_img6.png)
-![](./media/slide546_img7.png)
-![](./media/slide546_img8.jpeg)
-![](./media/slide546_img9.jpeg)
-![](./media/slide546_img10.jpeg)
-![](./media/slide546_img11.png)
-![](./media/slide546_img12.jpeg)
 
 ---
 
@@ -251,31 +175,6 @@ Construido sobre AWS Glue, permite orquestar, asegurar y gobernar un **Data Lake
 ![](./media/slide548_img1.jpeg)
 
 ![](./media/slide549_img1.jpeg)
-![](./media/slide549_img2.jpeg)
-![](./media/slide549_img3.png)
-![](./media/slide549_img4.jpeg)
-![](./media/slide549_img5.jpeg)
-![](./media/slide549_img6.jpeg)
-![](./media/slide549_img7.jpeg)
-![](./media/slide549_img8.jpeg)
-![](./media/slide549_img9.jpeg)
-![](./media/slide549_img10.jpeg)
-![](./media/slide549_img11.jpeg)
-![](./media/slide549_img12.jpeg)
-![](./media/slide549_img13.jpeg)
-![](./media/slide549_img14.jpeg)
-![](./media/slide549_img15.jpeg)
-![](./media/slide549_img16.jpeg)
-
-![](./media/slide550_img1.jpeg)
-![](./media/slide550_img2.jpeg)
-![](./media/slide550_img3.jpeg)
-![](./media/slide550_img4.jpeg)
-![](./media/slide550_img5.jpeg)
-![](./media/slide550_img6.jpeg)
-![](./media/slide550_img7.jpeg)
-![](./media/slide550_img8.jpeg)
-![](./media/slide550_img9.jpeg)
 
 ---
 
@@ -287,24 +186,7 @@ Servicio administrado que simplifica el despliegue y mantenimiento de clústeres
 - Almacenamiento persistente en volúmenes Amazon EBS.
 - **Amazon MSK Serverless:** Permite ejecutar Kafka ajustando dinámicamente el rendimiento y cómputo sin aprovisionar brokers individuales.
 
-![](./media/slide552_img1.jpeg)
-
-![](./media/slide553_img1.jpeg)
-![](./media/slide553_img2.jpeg)
-![](./media/slide553_img3.jpeg)
-![](./media/slide553_img4.jpeg)
-![](./media/slide553_img5.jpeg)
-![](./media/slide553_img6.jpeg)
-![](./media/slide553_img7.png)
 ![](./media/slide553_img8.jpeg)
-
-![](./media/slide555_img1.jpeg)
-![](./media/slide555_img2.jpeg)
-![](./media/slide555_img3.jpeg)
-![](./media/slide555_img4.jpeg)
-![](./media/slide555_img5.jpeg)
-![](./media/slide555_img6.jpeg)
-![](./media/slide555_img7.jpeg)
 
 ---
 
@@ -318,9 +200,6 @@ Servicio administrado que simplifica el despliegue y mantenimiento de clústeres
 | **Compatibilidad Open Source** | Exclusivo de AWS (KCL / AWS SDK). | Estándar de la industria (ecosistema Kafka, conectores Kafka Connect). |
 | **Cifrado en Tránsito** | TLS obligatorio por defecto. | TLS o PLAINTEXT configurable. |
 
-![](./media/slide554_img1.jpeg)
-![](./media/slide554_img2.jpeg)
-
 ---
 
 ### 8.3 Amazon Managed Service for Apache Flink
@@ -328,10 +207,7 @@ Anteriormente conocido como *Kinesis Data Analytics for Apache Flink*. Permite e
 - Consume datos desde **Amazon Kinesis Data Streams** y **Amazon MSK**.
 - **Regla Crítica de Examen:** Apache Flink **NO puede leer directamente desde Amazon Kinesis Data Firehose** (Firehose es exclusivamente un destino de entrega o cargador).
 
-![](./media/slide551_img1.jpeg)
-![](./media/slide551_img2.jpeg)
-![](./media/slide551_img3.jpeg)
-![](./media/slide551_img4.jpeg)
+![](./media/slide552_img1.jpeg)
 
 ---
 
@@ -346,14 +222,6 @@ Una arquitectura común evalúa el ciclo de vida completo del dato desde la inge
 5. **Reportes y Visualización:** **Amazon QuickSight** consume las consultas de Athena aceleradas por SPICE, o bien los datos consolidados se cargan en **Amazon Redshift** para BI institucional.
 
 ![](./media/slide557_img1.jpeg)
-![](./media/slide557_img2.jpeg)
-![](./media/slide557_img3.jpeg)
-![](./media/slide557_img4.jpeg)
-![](./media/slide557_img5.jpeg)
-![](./media/slide557_img6.jpeg)
-![](./media/slide557_img7.png)
-![](./media/slide557_img8.jpeg)
-![](./media/slide557_img9.jpeg)
 
 ---
 

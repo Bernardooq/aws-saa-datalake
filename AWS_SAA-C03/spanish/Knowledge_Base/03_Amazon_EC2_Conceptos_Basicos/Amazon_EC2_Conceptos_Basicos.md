@@ -100,9 +100,6 @@ En lugar de autorizar bloques de direcciones IP estáticas (CIDR), un Security G
   - Capa de Aplicación (EC2): Su Security Group solo autoriza tráfico HTTP/TCP si el origen es el **Security Group del ALB**.
   - Capa de Base de Datos (RDS): Su Security Group solo autoriza tráfico en el puerto 3306 (MySQL) o 5432 (PostgreSQL) si el origen es el **Security Group de la Capa de Aplicación**.
 
-![](./media/slide61_img1.png)
-![](./media/slide62_img1.png)
-
 ### Puertos de Red Comunes en el Examen SAA-C03
 - **Puerto 22**: SSH (Secure Shell) para administración remota de Linux / SFTP.
 - **Puerto 80**: HTTP (tráfico web sin cifrar).
@@ -132,16 +129,15 @@ Para conectarse a instancias EC2, existen tres mecanismos principales evaluados 
    - No requiere IP pública ni claves SSH locales.
    - Requiere el agente SSM instalado y un **Rol de IAM** con la política `AmazonSSMManagedInstanceCore` asignado a la instancia.
 
+![](./media/slide68_img1.png)
+
 ---
 
 ## 6. Modelos de Compra de Instancias EC2
 
 Seleccionar el modelo de compra adecuado es el pilar principal del pilar de **Optimización de Costos** (*Cost Optimization*) del AWS Well-Architected Framework.
 
-![](./media/slide66_img1.png)
-![](./media/slide68_img1.png)
 ![](./media/slide70_img1.jpeg)
-![](./media/slide72_img1.jpeg)
 
 ### Tabla Comparativa de Modelos de Compra
 

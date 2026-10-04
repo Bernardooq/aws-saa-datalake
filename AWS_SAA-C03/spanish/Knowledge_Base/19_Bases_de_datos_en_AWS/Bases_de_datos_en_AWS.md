@@ -121,15 +121,6 @@ Motor de base de datos de grafos altamente disponible y administrado, optimizado
 - **Neptune Streams:** Secuencia ordenada en tiempo real de cada mutación en los datos del grafo. Expone una API REST HTTP para sincronizar cambios hacia otros almacenes de datos como OpenSearch, S3 o ElastiCache.
 
 ![](./media/slide521_img1.jpeg)
-![](./media/slide521_img2.jpeg)
-
-![](./media/slide522_img1.jpeg)
-![](./media/slide522_img2.png)
-![](./media/slide522_img3.jpeg)
-![](./media/slide522_img4.png)
-![](./media/slide522_img5.png)
-![](./media/slide522_img6.png)
-![](./media/slide522_img7.png)
 
 ---
 
@@ -147,16 +138,6 @@ Motor Serverless diseñado específicamente para ingerir y procesar datos indexa
 ![](./media/slide524_img2.jpeg)
 
 ![](./media/slide525_img1.jpeg)
-![](./media/slide525_img2.jpeg)
-![](./media/slide525_img3.jpeg)
-![](./media/slide525_img4.jpeg)
-![](./media/slide525_img5.jpeg)
-![](./media/slide525_img6.png)
-![](./media/slide525_img7.jpeg)
-![](./media/slide525_img8.jpeg)
-![](./media/slide525_img9.jpeg)
-![](./media/slide525_img10.jpeg)
-![](./media/slide525_img11.png)
 
 ---
 

@@ -21,17 +21,11 @@ En el examen **AWS Certified Solutions Architect - Associate (SAA-C03)**, es com
 - **Service Roles en CloudFormation:** Permite asociar un **IAM Service Role** a la pila para que CloudFormation cree, actualice o elimine recursos en nombre del usuario.
   - **Principio de Mínimo Privilegio:** Permite a los desarrolladores desplegar pilas sin necesidad de tener permisos directos de administración en su usuario IAM, requiriendo únicamente el permiso `iam:PassRole` sobre el rol del servicio de CloudFormation.
 
-![](./media/slide823_img1.jpeg)
-
 ![](./media/slide826_img1.jpeg)
 ![](./media/slide826_img2.png)
 ![](./media/slide826_img3.png)
 
 ![](./media/slide827_img1.png)
-![](./media/slide827_img2.jpeg)
-![](./media/slide827_img3.jpeg)
-![](./media/slide827_img4.jpeg)
-![](./media/slide827_img5.jpeg)
 
 ---
 
@@ -45,15 +39,8 @@ En el examen **AWS Certified Solutions Architect - Associate (SAA-C03)**, es com
 | **Autenticación** | Soporte nativo para DKIM, SPF, DMARC e IPs dedicadas. | Construido sobre la infraestructura de entrega de SES y SNS. |
 
 ![](./media/slide828_img1.jpeg)
-![](./media/slide828_img2.png)
-![](./media/slide828_img3.jpeg)
 
-![](./media/slide829_img1.jpeg)
-![](./media/slide829_img2.jpeg)
-![](./media/slide829_img3.jpeg)
-![](./media/slide829_img4.jpeg)
-![](./media/slide829_img5.jpeg)
-![](./media/slide829_img6.png)
+![](./media/slide828_img3.jpeg)
 
 ---
 
@@ -68,9 +55,6 @@ Permite abrir una terminal interactiva (Bash / PowerShell) en instancias EC2 o s
 - **Auditoría Forense:** Registra cada comando ejecutado en la sesión y retransmite los logs completos hacia **Amazon S3** o **Amazon CloudWatch Logs**.
 
 ![](./media/slide830_img1.png)
-![](./media/slide830_img2.jpeg)
-![](./media/slide830_img3.png)
-![](./media/slide830_img4.jpeg)
 
 ---
 
@@ -78,17 +62,7 @@ Permite abrir una terminal interactiva (Bash / PowerShell) en instancias EC2 o s
 - **Run Command:** Ejecuta scripts o comandos de configuración de manera controlada y a escala masiva sobre flotas completas de instancias (agrupadas por etiquetas o Resource Groups) sin iniciar sesión interactiva en cada una. Emite el estado a CloudWatch, S3 y SNS.
 - **Maintenance Windows (Ventanas de Mantenimiento):** Define calendarios recurrentes (expresiones cron o rate) para ejecutar tareas de mantenimiento programadas (ej. reinicios, instalación de software o parches) limitando el impacto en la disponibilidad mediante umbrales de concurrencia y tolerancia a errores (*Concurrency and Error Thresholds*).
 
-![](./media/slide831_img1.jpeg)
-![](./media/slide831_img2.png)
-![](./media/slide831_img3.jpeg)
-![](./media/slide831_img4.jpeg)
-![](./media/slide831_img5.jpeg)
-![](./media/slide831_img6.png)
-
-![](./media/slide833_img1.jpeg)
-![](./media/slide833_img2.png)
-![](./media/slide833_img3.png)
-![](./media/slide833_img4.jpeg)
+![](./media/slide830_img3.png)
 
 ---
 
@@ -97,23 +71,10 @@ Permite abrir una terminal interactiva (Bash / PowerShell) en instancias EC2 o s
 - **SSM Automation:** Orquesta flujos de trabajo operativos complejos definidos en **Automation Runbooks** (documentos JSON/YAML). Puede ejecutarse manualmente, programado, mediante eventos de EventBridge, o como acción de remediación automática desde **AWS Config**.
 
 ![](./media/slide832_img1.png)
-![](./media/slide832_img2.jpeg)
-![](./media/slide832_img3.jpeg)
-![](./media/slide832_img4.jpeg)
-![](./media/slide832_img5.png)
-![](./media/slide832_img6.png)
 
-![](./media/slide834_img1.jpeg)
-![](./media/slide834_img2.jpeg)
-![](./media/slide834_img3.jpeg)
-![](./media/slide834_img4.jpeg)
-![](./media/slide834_img5.png)
-![](./media/slide834_img6.jpeg)
-![](./media/slide834_img7.png)
-![](./media/slide834_img8.jpeg)
-![](./media/slide834_img9.png)
-![](./media/slide834_img10.jpeg)
-![](./media/slide834_img11.jpeg)
+![](./media/slide832_img3.jpeg)
+
+![](./media/slide832_img4.jpeg)
 
 ---
 
@@ -144,9 +105,6 @@ Servicio basado en modelos de Machine Learning avanzados que monitorea continuam
 - Envía alertas inmediatas a través de **Amazon SNS** o resúmenes periódicos por correo electrónico.
 
 ![](./media/slide840_img1.png)
-![](./media/slide840_img2.jpeg)
-![](./media/slide840_img3.jpeg)
-![](./media/slide840_img4.jpeg)
 
 ---
 
@@ -159,19 +117,11 @@ Racks físicos de hardware de AWS instalados dentro del centro de datos local de
   - **Latencia de un solo dígito de milisegundo** hacia sistemas de fabricación industrial o equipos hospitalarios locales.
   - **Residencia estricta y soberanía de datos** donde las regulaciones legales prohíben transferir datos fuera del edificio o país.
 
-![](./media/slide841_img1.jpeg)
-![](./media/slide841_img2.png)
-![](./media/slide841_img3.jpeg)
 ![](./media/slide841_img4.jpeg)
 
-![](./media/slide842_img1.jpeg)
-![](./media/slide842_img2.png)
-![](./media/slide842_img3.png)
-![](./media/slide842_img4.jpeg)
-![](./media/slide842_img5.jpeg)
-![](./media/slide842_img6.jpeg)
-![](./media/slide842_img7.png)
-![](./media/slide842_img8.jpeg)
+![](./media/slide841_img1.jpeg)
+
+![](./media/slide841_img2.png)
 
 ---
 
@@ -185,19 +135,6 @@ Racks físicos de hardware de AWS instalados dentro del centro de datos local de
 | **Almacenamiento Temporal** | Disco efímero `/tmp` de 512 MB a 10 GB. | Espacio elástico con volúmenes **EBS** o **Instance Store** masivos. |
 | **Optimización de Costos** | Pago por milisegundo de ejecución y memoria. | Puede aprovisionar automáticamente **Instancias Spot** para reducir costos hasta un 90%. |
 
-![](./media/slide843_img1.jpeg)
-
-![](./media/slide844_img1.jpeg)
-![](./media/slide844_img2.jpeg)
-![](./media/slide844_img3.png)
-![](./media/slide844_img4.png)
-![](./media/slide844_img5.jpeg)
-![](./media/slide844_img6.jpeg)
-![](./media/slide844_img7.jpeg)
-
-![](./media/slide845_img1.jpeg)
-![](./media/slide845_img2.jpeg)
-
 ---
 
 ### 5.3 Amazon AppFlow: Integración Sin Servidor con Plataformas SaaS
@@ -208,10 +145,6 @@ Servicio de integración completamente administrado para transferir datos bidire
 
 ![](./media/slide846_img1.jpeg)
 
-![](./media/slide847_img1.jpeg)
-![](./media/slide847_img2.jpeg)
-![](./media/slide847_img3.jpeg)
-
 ---
 
 ## 6. AWS Amplify e Instance Scheduler
@@ -221,17 +154,6 @@ Plataforma completa para desarrolladores front-end web y móviles que acelera la
 - Integra de forma nativa autenticación (**Cognito**), persistencia (**DynamoDB**), APIs (**AppSync GraphQL y API Gateway REST**), alojamiento estático y CI/CD global (**CloudFront + S3**).
 
 ![](./media/slide848_img1.jpeg)
-![](./media/slide848_img2.jpeg)
-![](./media/slide848_img3.png)
-![](./media/slide848_img4.jpeg)
-![](./media/slide848_img5.jpeg)
-![](./media/slide848_img6.jpeg)
-![](./media/slide848_img7.jpeg)
-![](./media/slide848_img8.png)
-![](./media/slide848_img9.png)
-![](./media/slide848_img10.png)
-![](./media/slide848_img11.jpeg)
-![](./media/slide848_img12.jpeg)
 
 ---
 

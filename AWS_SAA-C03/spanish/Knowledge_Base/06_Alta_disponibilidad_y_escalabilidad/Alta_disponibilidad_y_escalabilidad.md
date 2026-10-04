@@ -22,15 +22,10 @@ Es mandatorio para el examen distinguir con precisión conceptual los diferentes
 - Ejemplo: Migrar de una instancia `t2.micro` (1 vCPU, 1 GiB RAM) a una `m5.4xlarge` (16 vCPU, 64 GiB RAM).
 - **Limitaciones**: Posee un techo físico insuperable (*límite de hardware*) y casi siempre requiere una ventana de inactividad (*downtime*) para redimensionar la máquina. Común en bases de datos relacionales no distribuidas tradicionales.
 
-![](./media/slide120_img1.png)
-![](./media/slide120_img2.jpeg)
-
 ### Escalabilidad Horizontal (*Scale Out / Scale In* = Elasticidad)
 - Consiste en aumentar o reducir el **número total de instancias o nodos** que ejecutan la aplicación en paralelo.
 - Ejemplo: Pasar de 2 instancias a 20 instancias EC2 idénticas detrás de un balanceador de carga durante un pico de tráfico.
 - **Ventajas**: Sin límite teórico estricto; ideal para sistemas distribuidos y aplicaciones web sin estado (*Stateless*).
-
-![](./media/slide121_img1.png)
 
 ### Alta Disponibilidad (High Availability - HA)
 - Consiste en garantizar que el sistema permanezca operativo y accesible ante la falla imprevista de un componente de infraestructura.
@@ -39,19 +34,13 @@ Es mandatorio para el examen distinguir con precisión conceptual los diferentes
   - **HA Activa**: Múltiples instancias procesando tráfico simultáneamente en distintas AZs (balanceadas por un ELB).
   - **HA Pasiva (Standby/Failover)**: Una instancia primaria activa en la AZ 1 y una instancia réplica pasiva en la AZ 2 lista para tomar el control en segundos (ej. Amazon RDS Multi-AZ).
 
-![](./media/slide122_img1.png)
-
 ---
 
 ## 2. Elastic Load Balancing (ELB)
 
 Un **Load Balancer** es un punto de entrada gestionado que distribuye el tráfico de red de manera uniforme hacia un conjunto de servidores backend (instancias EC2, tareas de contenedores ECS, funciones Lambda o direcciones IP privadas).
 
-![](./media/slide124_img1.jpeg)
 ![](./media/slide124_img2.jpeg)
-![](./media/slide124_img3.png)
-![](./media/slide124_img4.jpeg)
-![](./media/slide124_img5.png)
 
 ### Beneficios Clave para Arquitecturas Cloud
 - **Punto único de acceso**: Expone un nombre de dominio DNS público o interno fijo (`*.elb.amazonaws.com`).
@@ -60,8 +49,6 @@ Un **Load Balancer** es un punto de entrada gestionado que distribuye el tráfic
 - **Separación de capas**: Los clientes solo interactúan con el balanceador en la subred pública; las instancias EC2 residen de forma segura en subredes privadas.
 
 ![](./media/slide127_img1.jpeg)
-![](./media/slide127_img2.png)
-![](./media/slide127_img3.jpeg)
 
 ### Cadena de Seguridad con Security Groups
 Para aislar las instancias backend, se implementa una referencia cruzada estricta:
@@ -71,7 +58,6 @@ Para aislar las instancias backend, se implementa una referencia cruzada estrict
 ![](./media/slide129_img1.jpeg)
 ![](./media/slide129_img2.jpeg)
 ![](./media/slide129_img3.jpeg)
-![](./media/slide129_img4.png)
 
 ---
 
@@ -83,39 +69,30 @@ AWS ofrece cuatro familias de balanceadores gestionados. Para el examen SAA-C03,
 
 ### Tabla Comparativa de Load Balancers
 
-| Característica | Application Load Balancer (ALB) | Network Load Balancer (NLB) | Gateway Load Balancer (GWLB) | Classic Load Balancer (CLB) |
-| :--- | :--- | :--- | :--- | :--- |
-| **Capa OSI** | **Capa 7 (Aplicación)** | **Capa 4 (Transporte)** | **Capa 3 (Red)** | Capa 4 y Capa 7 (Legacy) |
-| **Protocolos Soportados** | HTTP, HTTPS, WebSocket, gRPC, HTTP/2 | TCP, UDP, TLS | Paquetes IP puros (Protocolo **GENEVE** puerto 6081) | HTTP, HTTPS, TCP, SSL |
-| **Rendimiento / Latencia** | Latencia en milisegundos (~10-20 ms). Millones de solicitudes. | **Rendimiento extremo**, millones de peticiones por segundo con **latencia en microsegundos**. | Inspección en línea de alto throughput transparente. | Moderado (Generación previa). |
-| **Direccionamiento IP** | Nombre DNS dinámico (las IPs del ALB cambian elásticamente). | **Dirección IP estática por AZ** y soporte para **Elastic IP**. | Dirección IP privada interna. | Nombre DNS dinámico. |
-| **Tipos de Target Groups** | • Instancias EC2<br>• Tareas ECS<br>• Funciones AWS Lambda<br>• IPs Privadas | • Instancias EC2<br>• IPs Privadas<br>• **Application Load Balancer** | • Instancias EC2<br>• IPs Privadas (Appliances virtuales de seguridad) | Solo instancias EC2 directas. |
-| **Capacidades de Enrutamiento** | Basado en URL Path (`/api`, `/users`), Hostname (`app1.domain.com`), Query Strings y HTTP Headers. | Enrutamiento puro a nivel de capa de transporte (puerto y protocolo). | Inspección y desvío de tráfico de red a appliances de firewall/IDS/IPS. | Solo balanceo básico por puerto. |
-| **Cabeceras de Rastreo** | Inyecta `X-Forwarded-For`, `X-Forwarded-Port`, `X-Forwarded-Proto`. | Preserva la IP de origen del cliente a nivel de paquete de forma nativa. | Encapsula el paquete original dentro de un túnel GENEVE. | `X-Forwarded-For`. |
+| Característica                  | Application Load Balancer (ALB)                                                                    | Network Load Balancer (NLB)                                                                    | Gateway Load Balancer (GWLB)                                            | Classic Load Balancer (CLB)      |
+| :------------------------------ | :------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------- | :------------------------------- |
+| **Capa OSI**                    | **Capa 7 (Aplicación)**                                                                            | **Capa 4 (Transporte)**                                                                        | **Capa 3 (Red)**                                                        | Capa 4 y Capa 7 (Legacy)         |
+| **Protocolos Soportados**       | HTTP, HTTPS, WebSocket, gRPC, HTTP/2                                                               | TCP, UDP, TLS                                                                                  | Paquetes IP puros (Protocolo **GENEVE** puerto 6081)                    | HTTP, HTTPS, TCP, SSL            |
+| **Rendimiento / Latencia**      | Latencia en milisegundos (~10-20 ms). Millones de solicitudes.                                     | **Rendimiento extremo**, millones de peticiones por segundo con **latencia en microsegundos**. | Inspección en línea de alto throughput transparente.                    | Moderado (Generación previa).    |
+| **Direccionamiento IP**         | Nombre DNS dinámico (las IPs del ALB cambian elásticamente).                                       | **Dirección IP estática por AZ** y soporte para **Elastic IP**.                                | Dirección IP privada interna.                                           | Nombre DNS dinámico.             |
+| **Tipos de Target Groups**      | • Instancias EC2<br>• Tareas ECS<br>• Funciones AWS Lambda<br>• IPs Privadas                       | • Instancias EC2<br>• IPs Privadas<br>• **Application Load Balancer**                          | • Instancias EC2<br>• IPs Privadas (Appliances virtuales de seguridad)  | Solo instancias EC2 directas.    |
+| **Capacidades de Enrutamiento** | Basado en URL Path (`/api`, `/users`), Hostname (`app1.domain.com`), Query Strings y HTTP Headers. | Enrutamiento puro a nivel de capa de transporte (puerto y protocolo).                          | Inspección y desvío de tráfico de red a appliances de firewall/IDS/IPS. | Solo balanceo básico por puerto. |
+| **Cabeceras de Rastreo**        | Inyecta `X-Forwarded-For`, `X-Forwarded-Port`, `X-Forwarded-Proto`.                                | Preserva la IP de origen del cliente a nivel de paquete de forma nativa.                       | Encapsula el paquete original dentro de un túnel GENEVE.                | `X-Forwarded-For`.               |
 
 ![](./media/slide130_img1.png)
+
 ![](./media/slide131_img1.png)
+
 ![](./media/slide132_img1.png)
+
 ![](./media/slide132_img2.png)
+
 ![](./media/slide134_img1.png)
+
 ![](./media/slide134_img2.png)
+
 ![](./media/slide134_img3.png)
-![](./media/slide135_img1.png)
-![](./media/slide136_img1.jpeg)
-![](./media/slide137_img1.png)
-![](./media/slide137_img2.jpeg)
-![](./media/slide138_img1.png)
-![](./media/slide138_img2.jpeg)
-![](./media/slide138_img3.jpeg)
-![](./media/slide138_img4.png)
-![](./media/slide139_img1.png)
-![](./media/slide139_img2.png)
-![](./media/slide139_img3.png)
-![](./media/slide139_img4.jpeg)
-![](./media/slide139_img5.jpeg)
-![](./media/slide140_img1.png)
-![](./media/slide140_img2.png)
-![](./media/slide140_img3.png)
+
 
 > **💡 SAA-C03 Exam Tip:**  
 > **Palabras clave para identificar el Load Balancer correcto**:
@@ -135,11 +112,6 @@ AWS ofrece cuatro familias de balanceadores gestionados. Para el examen SAA-C03,
 - **Compromiso arquitectónico**: Puede generar un desbalanceo de carga (*hot spotting*) si un número desproporcionado de usuarios queda anclado a un único servidor.
 
 ![](./media/slide141_img1.jpeg)
-![](./media/slide141_img2.jpeg)
-![](./media/slide141_img3.jpeg)
-![](./media/slide141_img4.png)
-![](./media/slide141_img5.jpeg)
-
 ### Cross-Zone Load Balancing (Balanceo entre Zonas)
 - **Con Cross-Zone**: Cada nodo del balanceador distribuye el tráfico uniformemente entre **todas** las instancias backend registradas en todas las Zonas de Disponibilidad.
 - **Sin Cross-Zone**: Cada nodo del balanceador solo envía tráfico a las instancias de su propia AZ, provocando una distribución desigual si una AZ tiene menos servidores.
@@ -148,25 +120,21 @@ AWS ofrece cuatro familias de balanceadores gestionados. Para el examen SAA-C03,
   - **NLB / GWLB**: **Deshabilitado por defecto**. Si se habilita, aplica un costo por transferencia de datos inter-AZ.
 
 ![](./media/slide143_img1.jpeg)
-![](./media/slide143_img2.jpeg)
 
+![](./media/slide143_img2.jpeg)
 ### Certificados SSL/TLS y Server Name Indication (SNI)
 - Los balanceadores integran certificados emitidos o importados en **AWS Certificate Manager (ACM)**.
 - **Server Name Indication (SNI)**: Extensión de TLS que permite al cliente indicar el nombre de host (*hostname*) al inicio del handshake TLS.
 - Esto permite cargar **múltiples certificados SSL/TLS en un único ALB o NLB** para servir a distintos dominios (ej. `api.empresa.com`, `tienda.empresa.com` y `portal.otrodominio.com`) sin requerir un balanceador independiente para cada dominio.
 
 ![](./media/slide146_img1.jpeg)
+
 ![](./media/slide147_img1.png)
-![](./media/slide147_img2.png)
-![](./media/slide147_img3.png)
-![](./media/slide147_img4.png)
 
 ### Connection Draining / Deregistration Delay
 - Tiempo de gracia (configurable entre 1 y 3600 segundos; por defecto **300 segundos**) concedido a las instancias que están pasando a estado de desregistro (*deregistering*) o no saludables para que **completen las solicitudes en vuelo** antes de cortar abruptamente la conexión.
 
 ![](./media/slide149_img1.png)
-![](./media/slide149_img2.jpeg)
-![](./media/slide149_img3.jpeg)
 
 ---
 
@@ -175,14 +143,6 @@ AWS ofrece cuatro familias de balanceadores gestionados. Para el examen SAA-C03,
 Un **Auto Scaling Group (ASG)** automatiza la elasticidad horizontal de Amazon EC2, aprovisionando nuevas instancias cuando la demanda se incrementa y terminando instancias redundantes cuando la demanda cae.
 
 ![](./media/slide150_img1.jpeg)
-![](./media/slide150_img2.png)
-![](./media/slide150_img3.png)
-![](./media/slide151_img1.png)
-![](./media/slide151_img2.png)
-![](./media/slide152_img1.jpeg)
-![](./media/slide152_img2.jpeg)
-![](./media/slide152_img3.png)
-![](./media/slide152_img4.png)
 
 ### Parámetros de Capacidad de un ASG
 - **Minimum Size (Capacidad Mínima)**: Umbral mínimo de instancias en ejecución en todo momento (incluso ante fallos).
@@ -198,24 +158,14 @@ Las antiguas *Launch Configurations* están obsoletas. Los ASG modernos exigen *
 - Parámetros completos de cómputo: AMI, tipo de instancia, pares de claves SSH, Security Groups y volumen EBS.
 - **Estrategias de compra combinadas**: Capacidad base con instancias On-Demand / Savings Plans y escalado de picos con **Spot Instances**.
 
-![](./media/slide153_img1.png)
-![](./media/slide153_img2.png)
-![](./media/slide153_img3.png)
-![](./media/slide153_img4.png)
-![](./media/slide153_img5.jpeg)
-![](./media/slide153_img6.jpeg)
-![](./media/slide153_img7.jpeg)
-![](./media/slide153_img8.jpeg)
+![](./media/slide150_img3.png)
 
 ---
 
 ## 6. Políticas de Escalado Dinámico y Predictivo
 
 El escalado se orquesta mediante métricas agregadas recopiladas por **Amazon CloudWatch**.
-
-![](./media/slide154_img1.png)
-![](./media/slide154_img2.png)
-![](./media/slide154_img3.png)
+![](./media/slide151_img2.png)
 
 ### Modalidades de Políticas de Escalado
 1. **Target Tracking Scaling (Seguimiento de Objetivos)**:
@@ -231,10 +181,6 @@ El escalado se orquesta mediante métricas agregadas recopiladas por **Amazon Cl
    - Utiliza modelos de Machine Learning que analizan datos históricos de tráfico de semanas previas para aprovisionar capacidad por adelantado justo antes de que inicien los picos previstos.
 
 ![](./media/slide156_img1.jpeg)
-![](./media/slide157_img1.jpeg)
-![](./media/slide157_img2.png)
-![](./media/slide157_img3.png)
-![](./media/slide157_img4.jpeg)
 
 ### Periodo de Enfriamiento (Scaling Cooldown)
 - Intervalo de espera configurable (por defecto **300 segundos**) tras un evento de escalado durante el cual el ASG ignora nuevas alarmas para permitir que las métricas de CloudWatch y las nuevas instancias se estabilicen, evitando oscilaciones destructivas (*thrashing*).

@@ -28,7 +28,6 @@ Un volumen **EBS** es un dispositivo de almacenamiento en bloque virtualizado qu
 
 ![](./media/slide94_img1.jpeg)
 ![](./media/slide96_img1.png)
-![](./media/slide96_img2.png)
 ![](./media/slide97_img1.jpeg)
 
 ---
@@ -50,11 +49,8 @@ Un **EBS Snapshot** es una copia de respaldo point-in-time incremental almacenad
    - Elimina la latencia de inicialización (*pre-warming*) al restaurar instantáneas en nuevos volúmenes, garantizando rendimiento máximo inmediato de IOPS.
 
 ![](./media/slide98_img1.png)
+
 ![](./media/slide98_img2.png)
-![](./media/slide98_img3.png)
-![](./media/slide99_img1.png)
-![](./media/slide99_img2.jpeg)
-![](./media/slide99_img3.jpeg)
 
 ---
 
@@ -66,8 +62,6 @@ Una **AMI** empaqueta el sistema operativo, configuraciones, parches y software 
 - **Proceso de creación**: Genera automáticamente snapshots subyacentes de todos los volúmenes EBS adjuntos. Se recomienda detener la instancia antes de generar la AMI para garantizar consistencia del sistema de archivos.
 
 ![](./media/slide100_img1.png)
-![](./media/slide101_img1.png)
-![](./media/slide101_img2.png)
 
 ---
 
@@ -81,7 +75,6 @@ A diferencia de EBS (que se conecta vía red), un **EC2 Instance Store** consist
   - Si la instancia se **detiene (*stop*)**, se **termina (*terminate*)** o el hardware subyacente sufre una falla, **todos los datos del Instance Store se pierden irremediablemente**.
 - **Responsabilidad compartida**: La tolerancia a fallos y copias de seguridad corren 100% por cuenta del arquitecto (ej. replicación a nivel de software en HDFS o Cassandra).
 
-![](./media/slide102_img1.png)
 ![](./media/slide103_img1.jpeg)
 
 > **💡 SAA-C03 Exam Tip:**  
@@ -112,7 +105,6 @@ EBS ofrece diversas familias optimizadas según balance de costo, IOPS y Through
 - **Requisito arquitectónico**: La aplicación o el sistema de archivos debe ser consciente del clúster (*Cluster-Aware Filesystem* como GFS2 u OCFS2) para evitar corrupción de datos por escrituras simultáneas (antipatrón: usar sistemas de archivos estándar como EXT4 o XFS).
 
 ![](./media/slide109_img1.png)
-![](./media/slide109_img2.png)
 
 ---
 
@@ -144,7 +136,6 @@ No es posible cifrar directamente un volumen EBS existente *in situ*. Para cifra
 - **Compatibilidad**: Diseñado exclusivamente para sistemas operativos basados en Linux (no compatible con Windows; para Windows el equivalente es **Amazon FSx for Windows File Server**).
 
 ![](./media/slide112_img1.png)
-![](./media/slide112_img2.jpeg)
 
 ### Modos de Rendimiento y Clases de Almacenamiento en EFS
 - **Modos de Rendimiento (Performance Modes)**:
@@ -156,18 +147,13 @@ No es posible cifrar directamente un volumen EBS existente *in situ*. Para cifra
   - **EFS One Zone / One Zone-IA**: Almacenamiento confinado a una única AZ para entornos de desarrollo y ahorro adicional de costos.
 
 ![](./media/slide115_img1.png)
-![](./media/slide115_img2.jpeg)
-![](./media/slide115_img3.png)
-![](./media/slide115_img4.png)
 
 ---
 
 ## 8. Comparativa Maestra: EBS vs. Instance Store vs. EFS
 
 ![](./media/slide116_img1.png)
-![](./media/slide116_img2.png)
-![](./media/slide117_img1.png)
-![](./media/slide117_img2.png)
+
 ![](./media/slide117_img3.png)
 
 | Característica | Amazon EBS | EC2 Instance Store | Amazon EFS |

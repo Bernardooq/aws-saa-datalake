@@ -29,8 +29,6 @@ En arquitecturas de red sobre **Amazon VPC**, cada instancia EC2 interactúa med
 - Para que una instancia se comunique directamente hacia/desde internet requiere una IP pública, residir en una subred pública y contar con una ruta activa (`0.0.0.0/0`) hacia un **Internet Gateway (IGW)**.
 
 ![](./media/slide80_img1.png)
-![](./media/slide80_img2.jpeg)
-![](./media/slide80_img3.jpeg)
 
 ---
 
@@ -70,7 +68,6 @@ Una **ENI** es un componente virtual lógico que representa una tarjeta de red (
 - **Caso de uso SAA-C03**: Diseñar soluciones de failover de bajo costo para licencias de red o servicios de administración heredados. Si el servidor activo falla, la ENI secundaria (con su IP privada fija y Elastic IP asociada) se desprende y se asocia a la instancia de reserva.
 
 ![](./media/slide89_img1.png)
-![](./media/slide89_img2.png)
 
 ---
 
@@ -107,8 +104,6 @@ Tradicionalmente, el ciclo de vida de una instancia EC2 comprende:
 3. La aplicación vuelve a estar operativa instantáneamente, manteniendo abiertas conexiones, estados en memoria y cachés precalentadas.
 
 ![](./media/slide91_img1.png)
-![](./media/slide92_img2.png)
-
 ### Requisitos y Limitaciones Técnicas para el Examen
 - **Cifrado obligatorio**: El **volumen EBS raíz debe estar cifrado (KMS)** obligatoriamente para garantizar la seguridad de los datos confidenciales volcados desde la RAM.
 - **Tamaño de RAM**: La memoria RAM de la instancia debe ser **inferior a 150 GB**.

@@ -29,13 +29,6 @@ Las reglas de ciclo de vida automatizan la transición y eliminación de objetos
      - **Regla crítica de optimización de costos**: **Abortar y eliminar subidas multiparte incompletas (*Incomplete Multipart Uploads*)** transcurridos $N$ días (ej. 7 días), evitando cobros invisibles por partes huérfanas acumuladas.
 
 ![](./media/slide293_img1.jpeg)
-![](./media/slide293_img2.jpeg)
-![](./media/slide293_img3.jpeg)
-![](./media/slide293_img4.jpeg)
-![](./media/slide293_img5.jpeg)
-![](./media/slide293_img6.jpeg)
-![](./media/slide293_img7.jpeg)
-![](./media/slide294_img1.jpeg)
 
 ### Filtrado y Alcance de las Reglas
 Las reglas de ciclo de vida pueden aplicarse a:
@@ -66,8 +59,7 @@ Las reglas de ciclo de vida pueden aplicarse a:
 - **Requisito obligatorio**: El solicitante **debe estar autenticado en AWS** (no admite solicitudes anónimas). Ideal para datasets de investigación masivos o colaboración B2B.
 
 ![](./media/slide298_img1.jpeg)
-![](./media/slide298_img2.jpeg)
-![](./media/slide298_img3.jpeg)
+
 
 ---
 
@@ -76,29 +68,18 @@ Las reglas de ciclo de vida pueden aplicarse a:
 Amazon S3 puede emitir eventos en respuesta a acciones dentro de un bucket (ej. `s3:ObjectCreated`, `s3:ObjectRemoved`, `s3:ObjectRestore:Completed`, `s3:Replication:*`).
 
 ![](./media/slide299_img1.jpeg)
-![](./media/slide299_img2.jpeg)
-![](./media/slide299_img3.jpeg)
-![](./media/slide299_img4.jpeg)
-![](./media/slide300_img1.jpeg)
-![](./media/slide300_img2.jpeg)
-![](./media/slide300_img3.jpeg)
+
 ![](./media/slide300_img4.jpeg)
-![](./media/slide300_img5.jpeg)
-![](./media/slide300_img6.jpeg)
-![](./media/slide300_img7.jpeg)
-![](./media/slide300_img8.jpeg)
 
 ### Comparativa: S3 Event Notifications vs. Amazon EventBridge
 
-| Criterio | S3 Event Notifications (Nativas) | S3 con Amazon EventBridge |
-| :--- | :--- | :--- |
-| **Destinos Soportados** | Exclusivamente 3 servicios directos: **Amazon SNS**, **Amazon SQS** y **AWS Lambda**. | **Más de 18 destinos de AWS** (Step Functions, Kinesis Data Streams, Kinesis Firehose, Lambda, Event Buses externos, etc.). |
-| **Capacidades de Filtrado** | Filtrado básico por nombre de objeto (prefijo y sufijo, ej. `*.jpg`). | **Filtrado avanzado con reglas JSON** (por tamaño de objeto, metadatos, tipo de operación, tags, etc.). |
-| **Gobernanza y Confiabilidad** | Entrega estándar basada en políticas de acceso del recurso de destino. | Soporta **repetición de eventos (*Event Replay*)**, archivado de eventos y desacoplamiento enterprise. |
-| **Permisos Requeridos** | Requiere adjuntar una **Resource-Based Policy** en el destino (SNS Topic Policy, SQS Queue Policy o Lambda Resource Policy) autorizando al principal `s3.amazonaws.com`. | Gestionado a través de roles de ejecución de EventBridge y buses de eventos. |
+| Criterio                       | S3 Event Notifications (Nativas)                                                                                                                                         | S3 con Amazon EventBridge                                                                                                   |
+| :----------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------- |
+| **Destinos Soportados**        | Exclusivamente 3 servicios directos: **Amazon SNS**, **Amazon SQS** y **AWS Lambda**.                                                                                    | **Más de 18 destinos de AWS** (Step Functions, Kinesis Data Streams, Kinesis Firehose, Lambda, Event Buses externos, etc.). |
+| **Capacidades de Filtrado**    | Filtrado básico por nombre de objeto (prefijo y sufijo, ej. `*.jpg`).                                                                                                    | **Filtrado avanzado con reglas JSON** (por tamaño de objeto, metadatos, tipo de operación, tags, etc.).                     |
+| **Gobernanza y Confiabilidad** | Entrega estándar basada en políticas de acceso del recurso de destino.                                                                                                   | Soporta **repetición de eventos (*Event Replay*)**, archivado de eventos y desacoplamiento enterprise.                      |
+| **Permisos Requeridos**        | Requiere adjuntar una **Resource-Based Policy** en el destino (SNS Topic Policy, SQS Queue Policy o Lambda Resource Policy) autorizando al principal `s3.amazonaws.com`. | Gestionado a través de roles de ejecución de EventBridge y buses de eventos.                                                |
 
-![](./media/slide301_img1.jpeg)
-![](./media/slide301_img2.jpeg)
 
 > **💡 SAA-C03 Exam Tip:**  
 > Si una pregunta exige enviar notificaciones de S3 a **múltiples destinos heterogéneos (como un flujo de AWS Step Functions y un stream de Amazon Kinesis Firehose)** o requiere **filtrar eventos por el tamaño exacto del archivo subido**, la opción correcta es **habilitar la integración de Amazon EventBridge en el bucket de S3**, ya que las notificaciones nativas de S3 carecen de ese nivel de filtrado y destinos.
@@ -128,9 +109,8 @@ S3 escala horizontalmente de forma automática. Sin embargo, para cargas extrema
   - **Lectura parcial rápida**: Recuperar únicamente la cabecera de un archivo (primeros $N$ bytes) sin descargar gigabytes de datos completos.
 
 ![](./media/slide303_img1.jpeg)
+
 ![](./media/slide303_img2.jpeg)
-![](./media/slide303_img3.jpeg)
-![](./media/slide303_img4.png)
 
 ---
 
@@ -150,9 +130,6 @@ S3 escala horizontalmente de forma automática. Sin embargo, para cargas extrema
   3. Crear el Job de S3 Batch Operations definiendo la acción, el rol de IAM correspondiente y los parámetros de ejecución. S3 se encarga de reintentos, seguimiento del progreso y generación de informes de auditoría.
 
 ![](./media/slide305_img1.png)
-![](./media/slide305_img2.png)
-![](./media/slide305_img3.jpeg)
-![](./media/slide305_img4.jpeg)
 
 ---
 
@@ -161,15 +138,10 @@ S3 escala horizontalmente de forma automática. Sin embargo, para cargas extrema
 **Amazon S3 Storage Lens** es la primera herramienta de analítica de almacenamiento en la nube que proporciona visibilidad centralizada a nivel de toda la organización de AWS (**AWS Organizations**).
 
 ![](./media/slide306_img1.jpeg)
-![](./media/slide306_img2.png)
-![](./media/slide306_img3.jpeg)
-![](./media/slide306_img4.png)
-![](./media/slide306_img5.png)
-![](./media/slide306_img6.png)
-![](./media/slide306_img7.png)
+
 ![](./media/slide307_img1.jpeg)
+
 ![](./media/slide307_img2.jpeg)
-![](./media/slide307_img3.jpeg)
 
 ### Pilares de Métricas de Storage Lens
 - **Optimización de Costos**: Detecta buckets con cargas multiparte incompletas de más de 7 días (`IncompleteMultipartUploadStorageBytes`), identifica volúmenes masivos de versiones no actuales y señala candidatos para clases de menor costo.
@@ -187,10 +159,6 @@ S3 escala horizontalmente de forma automática. Sin embargo, para cargas extrema
 | **Historial de Consultas** | Disponible durante **14 días**. | Disponible durante **15 meses** (ideal para análisis de tendencias anuales). |
 | **Integraciones** | Consola de S3 y exportación de informes diarios a S3 (CSV / Parquet). | Publicación directa y sin costo adicional de métricas en **Amazon CloudWatch**. |
 
-![](./media/slide308_img1.jpeg)
-![](./media/slide309_img1.jpeg)
-![](./media/slide310_img1.jpeg)
-![](./media/slide311_img1.jpeg)
 ![](./media/slide311_img2.jpeg)
 
 > **💡 SAA-C03 Exam Tip:**  

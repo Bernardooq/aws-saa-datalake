@@ -20,13 +20,6 @@ En el examen **AWS Certified Solutions Architect - Associate (SAA-C03)**, el dis
 - **Limitación intencional**: **No hay acceso SSH ni privilegios de administrador del sistema operativo (root)** a la instancia subyacente.
 - **RDS Custom**: Opción especializada exclusivamente para **Oracle** y **Microsoft SQL Server** que permite acceso por SSH o AWS Systems Manager (SSM) al sistema operativo subyacente para instalar software de terceros o parches específicos del SO, permitiendo pausar temporalmente el modo de automatización de AWS.
 
-![](./media/slide160_img1.jpeg)
-![](./media/slide162_img1.jpeg)
-![](./media/slide162_img2.jpeg)
-![](./media/slide168_img1.png)
-![](./media/slide168_img2.jpeg)
-![](./media/slide168_img3.jpeg)
-
 ---
 
 ## 2. Estrategias de Resiliencia y Escalado: Multi-AZ vs. Read Replicas
@@ -45,16 +38,14 @@ Una distinción crítica evaluada de forma reiterada en el examen SAA-C03 es la 
 | **Costo de Red Inter-AZ** | **Gratis** si la réplica reside en la misma región (incluso en diferente AZ). Aplica costo si es **Cross-Region**. | El tráfico síncrono inter-AZ está incluido en el costo del servicio Multi-AZ. |
 
 ![](./media/slide163_img1.png)
+
 ![](./media/slide163_img2.png)
+
 ![](./media/slide164_img1.png)
+
 ![](./media/slide164_img2.png)
+
 ![](./media/slide165_img1.png)
-![](./media/slide165_img2.png)
-![](./media/slide166_img1.png)
-![](./media/slide166_img2.png)
-![](./media/slide167_img1.png)
-![](./media/slide167_img2.png)
-![](./media/slide167_img3.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > - Si el problema describe: *"La base de datos de producción experimenta una sobrecarga severa debido a un reporte analítico o dashboard de BI que ejecuta consultas pesadas"* $\implies$ La solución es crear una **Read Replica** y apuntar la herramienta de reportes a su endpoint dedicado.  
@@ -77,7 +68,6 @@ Una distinción crítica evaluada de forma reiterada en el examen SAA-C03 es la 
 - **Autoexpansión del disco**: Crece dinámicamente en fragmentos de 10 GB hasta **256 TB** de almacenamiento sin necesidad de intervención ni aprovisionamiento previo.
 
 ![](./media/slide170_img1.png)
-![](./media/slide170_img2.png)
 
 ### Endpoints en un Clúster de Aurora
 Un clúster de Aurora expone distintos puntos de enlace DNS para la aplicación:
@@ -86,14 +76,10 @@ Un clúster de Aurora expone distintos puntos de enlace DNS para la aplicación:
 3. **Custom Endpoints**: Permiten agrupar un subconjunto específico de réplicas de lectura (ej. instancias más potentes como `db.r5.2xlarge`) dedicadas a cargas analíticas pesadas, aislándolas del tráfico de lectura del resto de la aplicación.
 
 ![](./media/slide171_img1.png)
+
 ![](./media/slide171_img2.png)
+
 ![](./media/slide171_img3.png)
-![](./media/slide173_img1.png)
-![](./media/slide173_img2.jpeg)
-![](./media/slide173_img3.jpeg)
-![](./media/slide174_img1.jpeg)
-![](./media/slide174_img2.png)
-![](./media/slide174_img3.jpeg)
 
 ### Variantes Avanzadas de Aurora
 - **Aurora Serverless (v2)**: Escala automáticamente la capacidad de cómputo en fracciones de segundo (medida en ACUs - Aurora Capacity Units) en respuesta a la demanda real. Ideal para cargas esporádicas, intermitentes o impredecibles.
@@ -105,17 +91,12 @@ Un clúster de Aurora expone distintos puntos de enlace DNS para la aplicación:
 - **Babelfish para Aurora PostgreSQL**: Interpreta comandos T-SQL de Microsoft SQL Server directamente en Aurora PostgreSQL, reduciendo la fricción al migrar aplicaciones heredadas.
 
 ![](./media/slide175_img1.jpeg)
+
 ![](./media/slide175_img2.png)
+
 ![](./media/slide176_img1.jpeg)
+
 ![](./media/slide176_img2.png)
-![](./media/slide176_img3.png)
-![](./media/slide177_img1.png)
-![](./media/slide177_img2.jpeg)
-![](./media/slide178_img1.jpeg)
-![](./media/slide178_img2.jpeg)
-![](./media/slide178_img3.png)
-![](./media/slide178_img4.jpeg)
-![](./media/slide182_img1.jpeg)
 
 ---
 
@@ -129,14 +110,6 @@ Un clúster de Aurora expone distintos puntos de enlace DNS para la aplicación:
   - Disparadas manualmente por el administrador y persisten indefinidamente hasta ser borradas explícitamente.
 - **Regla de Oro de Restauración**: **Restaurar un respaldo o snapshot siempre crea una instancia de base de datos COMPLETAMENTE NUEVA** con su propio endpoint DNS.
 
-![](./media/slide179_img1.png)
-![](./media/slide179_img2.jpeg)
-![](./media/slide180_img1.png)
-![](./media/slide180_img2.jpeg)
-![](./media/slide181_img1.png)
-![](./media/slide181_img2.jpeg)
-![](./media/slide181_img3.jpeg)
-
 ---
 
 ## 5. Amazon RDS Proxy
@@ -144,12 +117,6 @@ Un clúster de Aurora expone distintos puntos de enlace DNS para la aplicación:
 **Amazon RDS Proxy** es un proxy de base de datos completamente administrado y serverless que optimiza el pool de conexiones hacia instancias RDS y clústeres de Aurora.
 
 ![](./media/slide184_img1.png)
-![](./media/slide184_img2.png)
-![](./media/slide184_img3.jpeg)
-![](./media/slide184_img4.jpeg)
-![](./media/slide184_img5.jpeg)
-![](./media/slide184_img6.png)
-
 ### Problema que Resuelve y Casos de Uso Críticos
 - En arquitecturas basadas en microservicios o computación serverless (**AWS Lambda**), miles de funciones concurrentes pueden abrir conexiones de base de datos independientes en milisegundos, agotando la memoria RAM y colapsando el pool de conexiones de la base de datos relacional.
 - RDS Proxy **mantiene y reutiliza un pool persistente de conexiones abiertas**, protegiendo a la base de datos contra sobrecargas.
@@ -180,23 +147,12 @@ Un clúster de Aurora expone distintos puntos de enlace DNS para la aplicación:
    - Almacena cookies y estados de sesión de usuarios HTTP de manera centralizada en ElastiCache, permitiendo que la capa de cómputo EC2 sea completamente sin estado (*Stateless*).
 
 ![](./media/slide186_img1.jpeg)
-![](./media/slide186_img2.jpeg)
-![](./media/slide187_img1.jpeg)
-![](./media/slide190_img1.jpeg)
-![](./media/slide190_img2.jpeg)
+
+![](./media/slide191_img3.jpeg)
 
 ---
 
 ## 7. Comparativa Maestra: ElastiCache Redis vs. Memcached
-
-![](./media/slide188_img1.png)
-![](./media/slide188_img2.png)
-![](./media/slide189_img1.png)
-![](./media/slide189_img2.png)
-![](./media/slide189_img3.jpeg)
-![](./media/slide191_img1.jpeg)
-![](./media/slide191_img2.jpeg)
-![](./media/slide191_img3.jpeg)
 
 | Característica | Amazon ElastiCache for Redis | Amazon ElastiCache for Memcached |
 | :--- | :--- | :--- |

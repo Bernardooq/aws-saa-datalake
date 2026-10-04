@@ -17,12 +17,7 @@ Cuando el volumen de datos alcanza decenas o cientos de terabytes (o petabytes),
 
 $$\text{Regla empírica SAA-C03}: \text{Si transferir los datos por red toma más de } \mathbf{7 \text{ días}} \implies \text{Utilizar dispositivos de la Familia Snow}.$$
 
-![](./media/slide350_img1.png)
 ![](./media/slide350_img2.jpeg)
-![](./media/slide352_img1.png)
-![](./media/slide352_img2.png)
-![](./media/slide352_img3.png)
-![](./media/slide352_img4.jpeg)
 
 ### Modelos de Dispositivos Snowball Edge
 1. **Snowball Edge Storage Optimized**:
@@ -35,9 +30,6 @@ $$\text{Regla empírica SAA-C03}: \text{Si transferir los datos por red toma má
 - Permite ejecutar cómputo local en entornos remotos desconectados o con conectividad intermitente (barcos en alta mar, minas, zonas de desastre o transporte terrestre).
 - Soporta instancias **Amazon EC2 compatibles** y funciones de **AWS Lambda** para preprocesamiento de datos, inferencia de Machine Learning y transcodificación de medios antes de enviar el dispositivo físico a AWS.
 
-![](./media/slide353_img1.png)
-![](./media/slide353_img2.png)
-![](./media/slide353_img3.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > **Limitación crítica de importación**: Un dispositivo AWS Snowball **no puede importar datos directamente hacia Amazon S3 Glacier**.  
@@ -45,21 +37,11 @@ $$\text{Regla empírica SAA-C03}: \text{Si transferir los datos por red toma má
 > 1. Los datos se importan primero a **Amazon S3 Standard**.
 > 2. Se configura una **S3 Lifecycle Rule** para realizar la transición inmediata de los objetos hacia *S3 Glacier Flexible Retrieval* o *Deep Archive*.
 
-![](./media/slide354_img1.jpeg)
-![](./media/slide354_img2.jpeg)
-![](./media/slide354_img3.jpeg)
-
 ---
 
 ## 2. Amazon FSx: Sistemas de Archivos Administrados de Terceros
 
 Amazon FSx ofrece sistemas de archivos nativos y de alto rendimiento optimizados para aplicaciones comerciales que dependen de características avanzadas de almacenamiento que Amazon EFS no cubre (como protocolos SMB, iSCSI, clustering Lustre o sistemas ZFS).
-
-![](./media/slide355_img1.jpeg)
-![](./media/slide355_img2.jpeg)
-![](./media/slide355_img3.jpeg)
-![](./media/slide355_img4.jpeg)
-![](./media/slide355_img5.jpeg)
 
 ### Tabla Comparativa de Familias Amazon FSx
 
@@ -69,18 +51,6 @@ Amazon FSx ofrece sistemas de archivos nativos y de alto rendimiento optimizados
 | **FSx for Lustre** | Protocolo de archivos en paralelo Lustre | Linux (POSIX) | Millones de IOPS, cientos de GB/s con latencias en microsegundos. **Lectura y escritura bidireccional directa sobre Amazon S3**. | **Computación de Alto Rendimiento (HPC)**, modelado financiero, renderizado de vídeo, inferencia y entrenamiento masivo de Machine Learning. |
 | **FSx for NetApp ONTAP** | **NFS, SMB e iSCSI** | Linux, Windows, macOS, VMware Cloud. | Desduplicación, compresión de bloques, snapshots instantáneos y niveles de almacenamiento automático (*Storage Tiering*). | Migración de arquitecturas de almacenamiento NAS o entornos locales basados en NetApp ONTAP hacia AWS sin reescribir código. |
 | **FSx for OpenZFS** | NFS (v3, v4, v4.1, v4.2) | Linux, Windows, macOS, VMware Cloud. | Hasta 1,000,000 IOPS con latencia < 0.5 ms, snapshots y clonación instantánea puntual con tecnología *Copy-on-Write*. | Cargas de trabajo de análisis y desarrollo que requieren mover sistemas de archivos basados en ZFS hacia AWS con clonación ultrarrápida. |
-
-![](./media/slide356_img1.jpeg)
-![](./media/slide357_img1.jpeg)
-![](./media/slide359_img1.jpeg)
-![](./media/slide359_img2.jpeg)
-![](./media/slide359_img3.png)
-![](./media/slide359_img4.png)
-![](./media/slide359_img5.jpeg)
-![](./media/slide360_img1.jpeg)
-![](./media/slide360_img2.jpeg)
-![](./media/slide360_img3.png)
-![](./media/slide360_img4.png)
 
 ### FSx for Lustre: Opciones de Despliegue
 - **Scratch File System (Sistema Temporal)**:
@@ -92,10 +62,9 @@ Amazon FSx ofrece sistemas de archivos nativos y de alto rendimiento optimizados
   - Los datos se replican dentro de la misma Zona de Disponibilidad y sustituye automáticamente cualquier nodo fallido en minutos.
 
 ![](./media/slide358_img1.png)
-![](./media/slide358_img2.png)
+
 ![](./media/slide358_img3.jpeg)
-![](./media/slide358_img4.jpeg)
-![](./media/slide358_img5.jpeg)
+
 ![](./media/slide358_img6.jpeg)
 
 ---
@@ -105,31 +74,24 @@ Amazon FSx ofrece sistemas de archivos nativos y de alto rendimiento optimizados
 **AWS Storage Gateway** conecta la infraestructura on-premises con el almacenamiento en la nube de AWS, permitiendo almacenar datos en Amazon S3 o EBS mientras proporciona acceso de baja latencia a los datos de uso frecuente en el centro de datos local mediante una máquina virtual (VMware ESXi, Hyper-V, KVM) o un appliance de hardware dedicado.
 
 ![](./media/slide363_img1.jpeg)
-![](./media/slide363_img2.png)
-![](./media/slide363_img3.jpeg)
-![](./media/slide367_img1.jpeg)
-![](./media/slide367_img2.png)
-![](./media/slide367_img3.jpeg)
 
 ### Comparativa de los Tipos de Storage Gateway
 
-| Tipo de Gateway | Protocolo Local | Backend de Almacenamiento en AWS | Funcionamiento Arquitectónico | Casos de Uso SAA-C03 |
-| :--- | :--- | :--- | :--- | :--- |
-| **S3 File Gateway** | **NFS y SMB** | **Amazon S3** (Standard, IA, One Zone, Intelligent-Tiering). | Mapea un recurso compartido de archivos local (share) directamente a un bucket de S3. Mantiene en caché local los archivos leídos y escritos recientemente. | Reemplazo de NAS local, respaldos directos a S3 sin cambiar protocolos de cliente corporativos e integración con Active Directory. |
-| **FSx File Gateway** | **SMB** | **Amazon FSx for Windows File Server** | Proporciona una caché local en las instalaciones para acceder a recursos compartidos alojados en FSx for Windows en AWS con baja latencia. | Sucursales u oficinas remotas que necesitan acceso ultrarrápido a un servidor de archivos FSx Windows centralizado en la nube. |
-| **Volume Gateway (Cached Volumes)** | **iSCSI** (Bloque) | **Amazon S3 y Snapshots de EBS** | **El almacenamiento primario reside en Amazon S3**. Mantiene en la caché local únicamente los datos de lectura/escritura más recientes. Permite ahorrar espacio local sustancial. | Almacenamiento en bloque escalable para servidores de aplicaciones donde el almacenamiento local es limitado. |
-| **Volume Gateway (Stored Volumes)** | **iSCSI** (Bloque) | **Amazon S3 y Snapshots de EBS** | **Todo el conjunto de datos completo reside localmente en el centro de datos**. Se realizan copias de seguridad asíncronas periódicas a S3 en forma de snapshots de EBS. | Recuperación ante desastres (DR) con acceso local a velocidad de LAN y respaldos remotos protegidos en AWS. |
-| **Tape Gateway (VTL)** | **iSCSI VTL** (Virtual Tape Library) | **Amazon S3 y Amazon Glacier / Deep Archive** | Emula una librería física de cintas magnéticas (lector y cambiador de medios) compatible con software de respaldo existente (Veeam, Commvault, Veritas, etc.). | **Sustitución de cintas físicas magnéticas por cintas virtuales en la nube sin cambiar los flujos de trabajo de copia de seguridad existentes**. |
+| Tipo de Gateway                     | Protocolo Local                      | Backend de Almacenamiento en AWS                             | Funcionamiento Arquitectónico                                                                                                                                                     | Casos de Uso SAA-C03                                                                                                                             |
+| :---------------------------------- | :----------------------------------- | :----------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------- |
+| **S3 File Gateway**                 | **NFS y SMB**                        | **Amazon S3** (Standard, IA, One Zone, Intelligent-Tiering). | Mapea un recurso compartido de archivos local (share) directamente a un bucket de S3. Mantiene en caché local los archivos leídos y escritos recientemente.                       | Reemplazo de NAS local, respaldos directos a S3 sin cambiar protocolos de cliente corporativos e integración con Active Directory.               |
+| **FSx File Gateway**                | **SMB**                              | **Amazon FSx for Windows File Server**                       | Proporciona una caché local en las instalaciones para acceder a recursos compartidos alojados en FSx for Windows en AWS con baja latencia.                                        | Sucursales u oficinas remotas que necesitan acceso ultrarrápido a un servidor de archivos FSx Windows centralizado en la nube.                   |
+| **Volume Gateway (Cached Volumes)** | **iSCSI** (Bloque)                   | **Amazon S3 y Snapshots de EBS**                             | **El almacenamiento primario reside en Amazon S3**. Mantiene en la caché local únicamente los datos de lectura/escritura más recientes. Permite ahorrar espacio local sustancial. | Almacenamiento en bloque escalable para servidores de aplicaciones donde el almacenamiento local es limitado.                                    |
+| **Volume Gateway (Stored Volumes)** | **iSCSI** (Bloque)                   | **Amazon S3 y Snapshots de EBS**                             | **Todo el conjunto de datos completo reside localmente en el centro de datos**. Se realizan copias de seguridad asíncronas periódicas a S3 en forma de snapshots de EBS.          | Recuperación ante desastres (DR) con acceso local a velocidad de LAN y respaldos remotos protegidos en AWS.                                      |
+| **Tape Gateway (VTL)**              | **iSCSI VTL** (Virtual Tape Library) | **Amazon S3 y Amazon Glacier / Deep Archive**                | Emula una librería física de cintas magnéticas (lector y cambiador de medios) compatible con software de respaldo existente (Veeam, Commvault, Veritas, etc.).                    | **Sustitución de cintas físicas magnéticas por cintas virtuales en la nube sin cambiar los flujos de trabajo de copia de seguridad existentes**. |
 
 ![](./media/slide364_img1.png)
+
 ![](./media/slide364_img2.png)
-![](./media/slide364_img3.jpeg)
+
 ![](./media/slide365_img1.png)
-![](./media/slide365_img2.jpeg)
+
 ![](./media/slide365_img3.png)
-![](./media/slide366_img1.png)
-![](./media/slide366_img2.jpeg)
-![](./media/slide366_img3.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > - Si el problema describe una empresa que realiza respaldos utilizando software corporativo y **cintas magnéticas físicas transportadas por mensajería a bodegas fuera de sitio**, y busca eliminar las cintas físicas sin cambiar su software de respaldo existente $\implies$ La respuesta es **Storage Gateway Tape Gateway (VTL)**.  
@@ -150,11 +112,6 @@ Amazon FSx ofrece sistemas de archivos nativos y de alto rendimiento optimizados
 - Se integra con proveedores de identidad corporativos: **Microsoft Active Directory**, LDAP, Okta o Amazon Cognito.
 
 ![](./media/slide368_img1.jpeg)
-![](./media/slide369_img1.png)
-![](./media/slide369_img2.png)
-![](./media/slide369_img3.png)
-![](./media/slide369_img4.jpeg)
-![](./media/slide369_img5.jpeg)
 
 ---
 
@@ -163,13 +120,8 @@ Amazon FSx ofrece sistemas de archivos nativos y de alto rendimiento optimizados
 **AWS DataSync** es un servicio acelerado de transferencia de datos en línea diseñado para simplificar, automatizar y acelerar la sincronización y movimiento masivo de datos entre entornos on-premises y AWS, así como entre diferentes servicios de almacenamiento dentro de AWS.
 
 ![](./media/slide370_img1.jpeg)
-![](./media/slide371_img1.png)
+
 ![](./media/slide371_img2.png)
-![](./media/slide371_img3.png)
-![](./media/slide371_img4.png)
-![](./media/slide372_img1.jpeg)
-![](./media/slide372_img2.jpeg)
-![](./media/slide372_img3.jpeg)
 
 ### Características y Rendimiento de DataSync
 - **Rendimiento hasta 10 veces más rápido** que herramientas tradicionales de copia (como rsync o cp) gracias a un protocolo propietario de transferencia de red optimizado.

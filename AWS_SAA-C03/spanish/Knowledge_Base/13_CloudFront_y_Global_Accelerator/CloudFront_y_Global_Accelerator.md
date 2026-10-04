@@ -18,13 +18,7 @@ Para resolver este desafío y garantizar alta disponibilidad, AWS proporciona do
 **Amazon CloudFront** es un servicio de CDN de nivel empresarial diseñado para acelerar la entrega de contenido estático y dinámico hacia usuarios de todo el mundo mediante una red perimetral distribuida de más de 400 **Edge Locations** y múltiples **Regional Edge Caches**.
 
 ![](./media/slide335_img1.jpeg)
-![](./media/slide335_img2.png)
-![](./media/slide335_img3.jpeg)
-![](./media/slide335_img4.jpeg)
-![](./media/slide337_img1.png)
-![](./media/slide337_img2.png)
-![](./media/slide337_img3.jpeg)
-![](./media/slide337_img4.png)
+
 ![](./media/slide337_img5.png)
 
 ### Tipos de Orígenes Soportados por CloudFront
@@ -42,23 +36,10 @@ Un origen es la ubicación raíz donde reside la versión original definitiva de
    - Permite que CloudFront enrute tráfico directamente a recursos alojados en **subredes privadas dentro de una VPC** (Application Load Balancer interno, Network Load Balancer o instancias EC2 privadas) sin necesidad de exponerlos a Internet ni asignarles IPs públicas.
 
 ![](./media/slide338_img1.png)
-![](./media/slide338_img2.jpeg)
+
 ![](./media/slide338_img3.jpeg)
-![](./media/slide338_img4.jpeg)
+
 ![](./media/slide338_img5.png)
-![](./media/slide338_img6.jpeg)
-![](./media/slide340_img1.jpeg)
-![](./media/slide340_img2.png)
-![](./media/slide340_img3.png)
-![](./media/slide340_img4.jpeg)
-![](./media/slide340_img5.jpeg)
-![](./media/slide340_img6.jpeg)
-![](./media/slide340_img7.png)
-![](./media/slide341_img1.png)
-![](./media/slide341_img2.png)
-![](./media/slide341_img3.png)
-![](./media/slide341_img4.jpeg)
-![](./media/slide341_img5.png)
 
 ---
 
@@ -88,13 +69,6 @@ Ambas soluciones mejoran la accesibilidad geográfica de los datos, pero respond
 - *Nota FinOps*: Las primeras 1,000 rutas invalidadas al mes son gratuitas; después aplican un pequeño costo por ruta.
 
 ![](./media/slide343_img1.png)
-![](./media/slide343_img2.png)
-![](./media/slide343_img3.png)
-![](./media/slide343_img4.png)
-![](./media/slide343_img5.png)
-![](./media/slide343_img6.png)
-![](./media/slide343_img7.jpeg)
-![](./media/slide343_img8.jpeg)
 
 ### Restricciones Geográficas (Geo Restriction)
 - Permite crear una **Allowlist (Lista de permitidos)** o una **Blocklist (Lista de bloqueados)** a nivel de país para restringir el acceso a la distribución.
@@ -111,16 +85,11 @@ Ambas soluciones mejoran la accesibilidad geográfica de los datos, pero respond
 
 **AWS Global Accelerator** es un servicio de red que enruta el tráfico de los usuarios a través de la **red troncal privada de alta velocidad y libre de congestión de AWS**, optimizando la ruta hacia las aplicaciones para protocolos **TCP y UDP**.
 
-![](./media/slide344_img1.png)
-![](./media/slide344_img2.png)
-![](./media/slide344_img3.png)
-
 ### Arquitectura de Enrutamiento: Unicast vs. Anycast IP
 - **IP Unicast**: Cada servidor posee una dirección IP única y distinta. El tráfico viaja por múltiples routers públicos hasta llegar a esa dirección específica.
 - **IP Anycast**: Una misma dirección IP pública es anunciada globalmente desde múltiples ubicaciones geográficas simultáneamente. El cliente es dirigido a la **Edge Location físicamente más cercana** a través del protocolo BGP.
 
 ![](./media/slide345_img1.png)
-![](./media/slide345_img2.png)
 
 ### Cómo Opera AWS Global Accelerator
 1. Suministra **2 direcciones IP Anycast estáticas** que sirven como punto de entrada fijo para la aplicación a nivel mundial.
@@ -128,10 +97,8 @@ Ambas soluciones mejoran la accesibilidad geográfica de los datos, pero respond
 3. Desde el Edge Location, el tráfico ingresa de inmediato a la **red troncal privada de AWS** y transita directo hacia el endpoint de destino en la región correspondiente (ALB, NLB, EC2 o Elastic IP).
 4. Realiza **Health Checks continuos** hacia los endpoints. Si una región completa o un balanceador falla, Global Accelerator ejecuta un **failover automático e inadvertido en menos de 1 minuto** hacia la región saludable más cercana.
 
-![](./media/slide346_img1.jpeg)
-![](./media/slide346_img2.png)
-![](./media/slide346_img3.png)
-![](./media/slide346_img4.png)
+![](./media/slide344_img1.png)
+
 
 > **💡 SAA-C03 Exam Tip:**  
 > Si una pregunta de examen plantea una empresa corporativa cuyos clientes tienen firewalls estrictos que **solo permiten autorizar un par de direcciones IP estáticas en su lista blanca (allowlist)** y requieren **alta disponibilidad multirregional con conmutación rápida por error ante desastres**, la respuesta definitiva es **AWS Global Accelerator**. (CloudFront no asigna IPs estáticas fijas en el borde para listas blancas).

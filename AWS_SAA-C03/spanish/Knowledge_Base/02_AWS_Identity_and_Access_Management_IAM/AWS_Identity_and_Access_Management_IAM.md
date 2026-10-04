@@ -35,7 +35,6 @@ IAM opera como un **servicio global**. Las configuraciones, usuarios y política
   - Los grupos no son identidades autenticables (no tienen credenciales de inicio de sesión ni pueden ser identificados como `Principal` en una política de recursos).
 
 ![](./media/slide25_img1.jpeg)
-![](./media/slide25_img2.jpeg)
 
 ---
 
@@ -90,7 +89,6 @@ Una **política de IAM** es un documento JSON que formaliza los permisos concedi
 2. **Customer Managed Policies (Políticas Administradas por el Cliente)**: Creadas por el usuario en su cuenta, reutilizables y con control de versiones.
 3. **Inline Policies (Políticas en Línea)**: Documentos JSON incrustados directamente y de forma estricta en un único usuario, grupo o rol. Si se elimina la identidad, la política se destruye. (Antipatrón: usar administradas siempre que sea posible).
 
-![](./media/slide27_img1.jpeg)
 ![](./media/slide27_img2.png)
 
 > **💡 SAA-C03 Exam Tip:**  
@@ -115,7 +113,6 @@ AWS permite aplicar parámetros estrictos de higiene de seguridad para contrase�
 MFA añade una capa crítica de seguridad requiriendo un factor de conocimiento (*password*) y un factor de posesión (*token o dispositivo*).
 
 ![](./media/slide30_img1.png)
-![](./media/slide30_img2.jpeg)
 
 ### Comparativa de Métodos MFA en AWS
 
@@ -152,8 +149,6 @@ Los usuarios y servicios interactúan con los servicios de AWS a través de llam
 ![](./media/slide34_img1.jpeg)
 ![](./media/slide35_img1.jpeg)
 ![](./media/slide36_img1.png)
-![](./media/slide36_img2.png)
-![](./media/slide36_img3.jpeg)
 
 > **💡 SAA-C03 Exam Tip:**  
 > **Antipatrón clásico de examen**: Guardar credenciales estáticas (`Access Key ID` y `Secret Access Key`) en el código fuente de una aplicación o codificarlas en el archivo de configuración de una instancia EC2.  
@@ -176,9 +171,6 @@ Un **IAM Role** es una identidad de AWS que no tiene credenciales a largo plazo 
 - **Federación de Identidades**: Delegar autenticación a proveedores externos mediante SAML 2.0 u OpenID Connect (OIDC) (ej. Microsoft Entra ID / Active Directory, Google, Okta).
 
 ![](./media/slide37_img1.png)
-![](./media/slide37_img2.png)
-![](./media/slide37_img3.jpeg)
-![](./media/slide37_img4.png)
 
 ---
 
@@ -200,7 +192,6 @@ El mantenimiento del principio de mínimo privilegio (*Least Privilege*) requier
 ## 7. Buenas Prácticas de IAM (Checklist para el Examen)
 
 ![](./media/slide39_img1.jpeg)
-![](./media/slide40_img1.jpeg)
 
 1. **Aislar la Cuenta Root**: Usarla exclusivamente para crear el primer usuario/rol administrador, configurar la facturación y habilitar MFA físico; jamás para despliegues cotidianos.
 2. **Un Usuario Físico = Un Usuario IAM**: No compartir cuentas ni credenciales genéricas entre desarrolladores.

@@ -12,11 +12,6 @@ El paradigma **Serverless** traslada la responsabilidad de la administración, a
 Para el examen **AWS Certified Solutions Architect - Associate (SAA-C03)**, este módulo es crucial: aborda el diseño de arquitecturas orientadas a eventos basadas en **AWS Lambda**, computación en el borde (**CloudFront Functions vs. Lambda@Edge**), bases de datos NoSQL de escala masiva con **Amazon DynamoDB** y su acelerador **DAX**, exposición de microservicios con **Amazon API Gateway**, orquestación de flujos de trabajo con **AWS Step Functions**, y federación de identidades con **Amazon Cognito**.
 
 ![](./media/slide439_img1.jpeg)
-![](./media/slide439_img2.jpeg)
-![](./media/slide439_img3.jpeg)
-![](./media/slide439_img4.jpeg)
-![](./media/slide439_img5.jpeg)
-![](./media/slide439_img6.jpeg)
 
 ---
 
@@ -24,21 +19,9 @@ Para el examen **AWS Certified Solutions Architect - Associate (SAA-C03)**, este
 
 **AWS Lambda** es un servicio de cómputo serverless que ejecuta código en respuesta a eventos provenientes de más de 200 servicios de AWS.
 
-![](./media/slide440_img1.png)
 ![](./media/slide440_img2.jpeg)
+
 ![](./media/slide443_img1.jpeg)
-![](./media/slide443_img2.jpeg)
-![](./media/slide443_img3.jpeg)
-![](./media/slide443_img4.jpeg)
-![](./media/slide443_img5.jpeg)
-![](./media/slide443_img6.jpeg)
-![](./media/slide443_img7.jpeg)
-![](./media/slide444_img1.jpeg)
-![](./media/slide444_img2.jpeg)
-![](./media/slide444_img3.jpeg)
-![](./media/slide444_img4.jpeg)
-![](./media/slide445_img1.jpeg)
-![](./media/slide445_img2.jpeg)
 
 ### Límites de Configuración Críticos para el Examen
 - **Tiempo máximo de ejecución (Timeout)**: **900 segundos (15 minutos)**. Cualquier tarea que supere este tiempo colapsa; para procesos más largos se deben usar instancias EC2, contenedores ECS o AWS Step Functions.
@@ -58,19 +41,13 @@ Para el examen **AWS Certified Solutions Architect - Associate (SAA-C03)**, este
    - Invocación síncrona: Retorna un error HTTP **`429 Too Many Requests`**.
    - Invocación asíncrona: Lambda reintenta automáticamente con retroceso exponencial durante **hasta 6 horas**, enviando los eventos fallidos a una **Dead-Letter Queue (DLQ)** de SQS o SNS si está configurada.
 
-![](./media/slide448_img1.jpeg)
 ![](./media/slide449_img1.jpeg)
-![](./media/slide449_img2.jpeg)
-![](./media/slide449_img3.jpeg)
-![](./media/slide449_img4.jpeg)
-![](./media/slide449_img5.jpeg)
-![](./media/slide450_img1.jpeg)
-![](./media/slide450_img2.jpeg)
+
 ![](./media/slide452_img1.jpeg)
-![](./media/slide452_img2.jpeg)
 ![](./media/slide452_img3.jpeg)
+
+![](./media/slide452_img2.jpeg)
 ![](./media/slide452_img4.jpeg)
-![](./media/slide453_img1.jpeg)
 
 ### Lambda en Amazon VPC
 - Por defecto, Lambda corre en una VPC administrada por AWS con salida a Internet pública, pero **sin acceso a recursos privados** (RDS privado, ElastiCache o balanceadores internos).
@@ -80,30 +57,14 @@ Para el examen **AWS Certified Solutions Architect - Associate (SAA-C03)**, este
   - Para interactuar con bases de datos relacionales con alta concurrencia, **se debe intercalar Amazon RDS Proxy** para evitar agotar el pool de conexiones.
 
 ![](./media/slide460_img1.jpeg)
-![](./media/slide460_img2.jpeg)
+
 ![](./media/slide460_img3.jpeg)
-![](./media/slide460_img4.jpeg)
+
 ![](./media/slide460_img5.png)
-![](./media/slide460_img6.jpeg)
+
 ![](./media/slide461_img1.png)
-![](./media/slide461_img2.jpeg)
+
 ![](./media/slide461_img3.png)
-![](./media/slide461_img4.png)
-![](./media/slide462_img1.png)
-![](./media/slide462_img2.png)
-![](./media/slide462_img3.jpeg)
-![](./media/slide462_img4.jpeg)
-![](./media/slide462_img5.jpeg)
-![](./media/slide463_img1.jpeg)
-![](./media/slide463_img2.jpeg)
-![](./media/slide463_img3.jpeg)
-![](./media/slide463_img4.png)
-![](./media/slide463_img5.png)
-![](./media/slide464_img1.jpeg)
-![](./media/slide464_img2.png)
-![](./media/slide464_img3.jpeg)
-![](./media/slide464_img4.jpeg)
-![](./media/slide464_img5.jpeg)
 
 ---
 
@@ -112,13 +73,8 @@ Para el examen **AWS Certified Solutions Architect - Associate (SAA-C03)**, este
 Para ejecutar lógica computacional lo más cerca posible de los usuarios finales a través de la CDN, AWS ofrece dos tecnologías perimetrales:
 
 ![](./media/slide454_img1.jpeg)
-![](./media/slide455_img1.jpeg)
+
 ![](./media/slide456_img1.jpeg)
-![](./media/slide456_img2.png)
-![](./media/slide456_img3.png)
-![](./media/slide457_img1.jpeg)
-![](./media/slide457_img2.png)
-![](./media/slide457_img3.png)
 
 ### Tabla Comparativa: CloudFront Functions vs. Lambda@Edge
 
@@ -144,7 +100,7 @@ Para ejecutar lógica computacional lo más cerca posible de los usuarios finale
 **Amazon DynamoDB** es una base de datos NoSQL clave-valor y de documentos totalmente administrada que ofrece latencias de **milisegundos de un solo dígito** a cualquier escala.
 
 ![](./media/slide465_img1.jpeg)
-![](./media/slide465_img2.jpeg)
+
 ![](./media/slide466_img1.png)
 
 ### Conceptos Fundamentales
@@ -168,14 +124,8 @@ Para ejecutar lógica computacional lo más cerca posible de los usuarios finale
 - **Transparente para la aplicación**: Compatible con las llamadas de API nativas de DynamoDB sin requerir reescribir la lógica de la aplicación (a diferencia de ElastiCache, que exige programar la lógica de Cache-Aside).
 
 ![](./media/slide469_img1.jpeg)
-![](./media/slide469_img2.png)
-![](./media/slide469_img3.png)
-![](./media/slide469_img4.jpeg)
+
 ![](./media/slide469_img5.jpeg)
-![](./media/slide470_img1.png)
-![](./media/slide470_img2.jpeg)
-![](./media/slide470_img3.jpeg)
-![](./media/slide470_img4.jpeg)
 
 ### Capacidades Avanzadas de DynamoDB
 - **DynamoDB Streams**: Flujo ordenado de eventos a nivel de elemento (creaciones, modificaciones, borrados) con retención de **24 horas**. Dispara funciones **AWS Lambda** de forma reactiva (patrón CDC - *Change Data Capture*).
@@ -184,25 +134,12 @@ Para ejecutar lógica computacional lo más cerca posible de los usuarios finale
 - **Respaldos y Recuperación**: Point-in-Time Recovery (**PITR**) continuo para los últimos 35 días y respaldos bajo demanda administrados por **AWS Backup**.
 
 ![](./media/slide471_img1.png)
-![](./media/slide472_img1.png)
+
 ![](./media/slide472_img2.png)
-![](./media/slide472_img3.jpeg)
+
 ![](./media/slide472_img4.jpeg)
-![](./media/slide472_img5.png)
+
 ![](./media/slide472_img6.jpeg)
-![](./media/slide472_img7.jpeg)
-![](./media/slide472_img8.jpeg)
-![](./media/slide472_img9.jpeg)
-![](./media/slide472_img10.jpeg)
-![](./media/slide472_img11.png)
-![](./media/slide473_img1.png)
-![](./media/slide474_img1.png)
-![](./media/slide474_img2.jpeg)
-![](./media/slide474_img3.jpeg)
-![](./media/slide474_img4.png)
-![](./media/slide476_img1.jpeg)
-![](./media/slide476_img2.jpeg)
-![](./media/slide476_img3.jpeg)
 
 > **💡 SAA-C03 Exam Tip:**  
 > - Si un sistema requiere **"latencia en microsegundos para lecturas repetitivas sobre DynamoDB sin alterar el código de la aplicación cliente"** $\implies$ La respuesta es **DynamoDB Accelerator (DAX)**.  
@@ -215,15 +152,8 @@ Para ejecutar lógica computacional lo más cerca posible de los usuarios finale
 **Amazon API Gateway** es un servicio totalmente administrado para crear, publicar, mantener, monitorear y proteger APIs REST, HTTP y WebSocket a cualquier escala.
 
 ![](./media/slide477_img1.png)
+
 ![](./media/slide477_img2.jpeg)
-![](./media/slide477_img3.jpeg)
-![](./media/slide477_img4.png)
-![](./media/slide478_img1.jpeg)
-![](./media/slide480_img1.jpeg)
-![](./media/slide480_img2.jpeg)
-![](./media/slide480_img3.jpeg)
-![](./media/slide480_img4.jpeg)
-![](./media/slide480_img5.png)
 
 ### Tipos de Endpoints de API Gateway
 1. **Edge-Optimized (Predeterminado)**: Enruta las solicitudes a través de la red global de CloudFront Edge Locations para minimizar la latencia de clientes internacionales distribuidos.
@@ -259,8 +189,6 @@ Para ejecutar lógica computacional lo más cerca posible de los usuarios finale
 
 Amazon Cognito proporciona autenticación, autorización y administración de usuarios para aplicaciones web y móviles a escala de millones de usuarios.
 
-![](./media/slide484_img1.jpeg)
-
 ### Comparativa: Cognito User Pools vs. Cognito Identity Pools
 
 | Característica | Cognito User Pools (CUP) | Cognito Identity Pools (Federated Identities) |
@@ -272,20 +200,9 @@ Amazon Cognito proporciona autenticación, autorización y administración de us
 | **Proveedores Soportados** | Base de datos serverless de usuarios propia, proveedores sociales (Google, Facebook, Apple) y federación SAML 2.0 / OIDC. | Cognito User Pools, OpenID Connect, SAML, Google, Apple, etc. |
 
 ![](./media/slide486_img1.jpeg)
-![](./media/slide486_img2.jpeg)
+
 ![](./media/slide486_img3.jpeg)
-![](./media/slide486_img4.png)
-![](./media/slide486_img5.jpeg)
-![](./media/slide486_img6.jpeg)
-![](./media/slide488_img1.jpeg)
-![](./media/slide488_img2.png)
-![](./media/slide488_img3.jpeg)
-![](./media/slide488_img4.jpeg)
-![](./media/slide488_img5.jpeg)
-![](./media/slide488_img6.jpeg)
-![](./media/slide488_img7.jpeg)
-![](./media/slide488_img8.jpeg)
-![](./media/slide488_img9.png)
+
 ![](./media/slide489_img1.jpeg)
 
 > **💡 SAA-C03 Exam Tip:**  

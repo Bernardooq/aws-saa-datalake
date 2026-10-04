@@ -28,11 +28,6 @@ Amazon S3 almacena datos como **objetos** dentro de contenedores lógicos denomi
   - Debe comenzar y terminar con una letra minúscula o un número.
   - No debe comenzar con `xn--` ni terminar con `-s3alias`.
 
-![](./media/slide267_img1.jpeg)
-![](./media/slide268_img1.jpeg)
-![](./media/slide268_img2.png)
-![](./media/slide269_img1.png)
-
 ### Anatomía de los Objetos en S3
 - **Clave del Objeto (*Key*)**: Es la ruta completa del archivo dentro del bucket. En S3 **no existen directorios físicos reales**; la apariencia de carpetas en la consola es una abstracción visual basada en prefijos separados por barras oblicuas (`/`).
   - Ejemplo: en `s3://mi-data-lake/logs/2026/enero/app.log`, la clave completa es `logs/2026/enero/app.log` y el prefijo es `logs/2026/enero/`.
@@ -41,10 +36,6 @@ Amazon S3 almacena datos como **objetos** dentro de contenedores lógicos denomi
   - **Límite de subida en un solo PUT**: **5 GB**.
   - **Multipart Upload (Subida Multiparte)**: **Obligatoria para cualquier archivo superior a 5 GB** (y recomendada para cualquier archivo mayor a 100 MB para paralelizar transferencias y tolerar fallos de red).
 - **Metadatos y Etiquetas**: Pares clave-valor asignados al objeto (del sistema o definidos por el usuario) y hasta 10 etiquetas (*tags*) por objeto utilizadas para políticas de ciclo de vida y control de acceso.
-
-![](./media/slide270_img1.png)
-![](./media/slide270_img2.jpeg)
-![](./media/slide271_img1.jpeg)
 
 ---
 
@@ -63,19 +54,15 @@ La autorización en Amazon S3 se evalúa mediante una combinación de políticas
 - **S3 Block Public Access**: Protección a nivel de cuenta o de bucket que anula cualquier configuración o política permisiva, bloqueando accidentalmente la exposición pública de datos sensibles.
 
 ![](./media/slide273_img1.jpeg)
+
 ![](./media/slide274_img1.png)
+
 ![](./media/slide274_img2.jpeg)
+
 ![](./media/slide274_img3.png)
+
 ![](./media/slide275_img1.png)
-![](./media/slide275_img2.png)
-![](./media/slide275_img3.jpeg)
-![](./media/slide276_img1.png)
-![](./media/slide276_img2.png)
-![](./media/slide276_img3.png)
-![](./media/slide276_img4.png)
-![](./media/slide277_img1.png)
-![](./media/slide277_img2.jpeg)
-![](./media/slide277_img3.png)
+
 ![](./media/slide278_img1.jpeg)
 
 ### Alojamiento de Sitios Web Estáticos
@@ -84,10 +71,6 @@ La autorización en Amazon S3 se evalúa mediante una combinación de políticas
   - `http://<bucket-name>.s3-website-<region>.amazonaws.com` o
   - `http://<bucket-name>.s3-website.<region>.amazonaws.com`
 - **Requisito**: Si un usuario recibe un error **`403 Forbidden`**, se debe deshabilitar *S3 Block Public Access* y adjuntar una Bucket Policy que otorgue permiso explícito `s3:GetObject` a cualquier principal (`*`).
-
-![](./media/slide279_img1.jpeg)
-![](./media/slide279_img2.jpeg)
-![](./media/slide279_img3.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > Si una pregunta de examen plantea que una compañía exige por auditoría que **"ningún objeto subido a un bucket de S3 viaje sin cifrado en tránsito"**, la solución consiste en agregar una **Bucket Policy con un `Effect: Deny`** para la acción `s3:*` condicionado a la clave `"Bool": { "aws:SecureTransport": "false" }`. Cualquier solicitud sobre HTTP sin TLS será rechazada de inmediato.
@@ -104,11 +87,6 @@ El versionado se activa a nivel de bucket y preserva todas las iteraciones hist�
 - **Irreversibilidad**: Una vez habilitado, el versionado **no se puede deshabilitar**; únicamente se puede **suspender** (los objetos nuevos tendrán versión `null`, pero las versiones previas permanecen).
 
 ![](./media/slide280_img1.jpeg)
-![](./media/slide280_img2.jpeg)
-![](./media/slide280_img3.png)
-![](./media/slide280_img4.png)
-![](./media/slide280_img5.png)
-![](./media/slide280_img6.png)
 
 ---
 
@@ -132,23 +110,12 @@ Permite copiar objetos de forma asíncrona entre diferentes buckets de S3.
 - Los borrados que especifican un `Version ID` no se replican al destino para evitar ataques maliciosos en cascada.
 
 ![](./media/slide281_img1.jpeg)
-![](./media/slide281_img2.png)
 
 ---
 
 ## 5. Clases de Almacenamiento de Amazon S3
 
 AWS ofrece diversas clases diseñadas para optimizar el gasto de almacenamiento en función de los patrones de acceso de los datos.
-
-![](./media/slide285_img1.jpeg)
-![](./media/slide286_img1.jpeg)
-![](./media/slide286_img2.jpeg)
-![](./media/slide287_img1.jpeg)
-![](./media/slide287_img2.jpeg)
-![](./media/slide287_img3.jpeg)
-![](./media/slide288_img1.jpeg)
-![](./media/slide291_img1.png)
-![](./media/slide291_img2.jpeg)
 
 ### Tabla Comparativa Maestra de Clases de Almacenamiento en S3
 

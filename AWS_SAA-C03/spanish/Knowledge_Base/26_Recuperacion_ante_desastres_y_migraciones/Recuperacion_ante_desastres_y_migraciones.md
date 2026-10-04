@@ -52,19 +52,6 @@ A medida que el RTO y el RPO disminuyen (recuperación más rápida con menor p�
 - **Caso de Uso:** Cargas no críticas donde se toleran horas de indisponibilidad para ahorrar al máximo en costos operativos.
 
 ![](./media/slide777_img1.png)
-![](./media/slide777_img2.jpeg)
-![](./media/slide777_img3.jpeg)
-![](./media/slide777_img4.jpeg)
-![](./media/slide777_img5.jpeg)
-![](./media/slide777_img6.jpeg)
-![](./media/slide777_img7.jpeg)
-![](./media/slide777_img8.png)
-![](./media/slide777_img9.jpeg)
-![](./media/slide777_img10.jpeg)
-![](./media/slide777_img11.png)
-![](./media/slide777_img12.jpeg)
-![](./media/slide777_img13.jpeg)
-![](./media/slide777_img14.png)
 
 #### 2. Luz Piloto (Pilot Light)
 - Análogo a la llama piloto de una caldera: el componente más crítico (la base de datos) está **siempre encendido y sincronizado** en AWS (ej. réplica de RDS activa recibiendo cambios continuos).
@@ -72,12 +59,6 @@ A medida que el RTO y el RPO disminuyen (recuperación más rápida con menor p�
 - Durante un desastre, la base de datos secundaria se promueve a primaria y se disparan scripts o Auto Scaling Groups para desplegar la flota de servidores EC2 en cuestión de minutos.
 
 ![](./media/slide778_img1.png)
-![](./media/slide778_img2.png)
-![](./media/slide778_img3.jpeg)
-![](./media/slide778_img4.jpeg)
-![](./media/slide778_img5.jpeg)
-![](./media/slide778_img6.jpeg)
-![](./media/slide778_img7.jpeg)
 
 #### 3. Espera Caliente (Warm Standby)
 - Todos los niveles de la arquitectura (servidores web, balanceadores de carga y bases de datos) están desplegados y operativos en la región secundaria, pero dimensionados al **mínimo indispensable de capacidad** (ej. 1 o 2 instancias pequeñas en el ASG).
@@ -85,14 +66,6 @@ A medida que el RTO y el RPO disminuyen (recuperación más rápida con menor p�
 - Si el sitio principal falla, **Amazon Route 53** conmuta el tráfico DNS al sitio de respaldo y el **Auto Scaling Group** escala horizontalmente hacia la capacidad completa de producción en minutos.
 
 ![](./media/slide779_img1.png)
-![](./media/slide779_img2.png)
-![](./media/slide779_img3.jpeg)
-![](./media/slide779_img4.jpeg)
-![](./media/slide779_img5.jpeg)
-![](./media/slide779_img6.jpeg)
-![](./media/slide779_img7.jpeg)
-![](./media/slide779_img8.jpeg)
-![](./media/slide779_img9.png)
 
 #### 4. Multisitio Activo-Activo (Multi-Site Active-Active)
 - Entornos de producción completos y dimensionados al 100% ejecutándose simultáneamente en dos o más regiones de AWS (o híbrido on-premise y AWS).
@@ -100,22 +73,8 @@ A medida que el RTO y el RPO disminuyen (recuperación más rápida con menor p�
 - Emplea bases de datos globales con replicación activa o multimaestro (como **Amazon Aurora Global Database** o **Amazon DynamoDB Global Tables**).
 
 ![](./media/slide780_img1.png)
-![](./media/slide780_img2.png)
-![](./media/slide780_img3.jpeg)
-![](./media/slide780_img4.jpeg)
-![](./media/slide780_img5.jpeg)
-![](./media/slide780_img6.jpeg)
-![](./media/slide780_img7.jpeg)
-![](./media/slide780_img8.jpeg)
-![](./media/slide780_img9.png)
 
-![](./media/slide781_img1.jpeg)
-![](./media/slide781_img2.jpeg)
-![](./media/slide781_img3.jpeg)
-![](./media/slide781_img4.jpeg)
-![](./media/slide781_img5.jpeg)
-![](./media/slide781_img6.png)
-![](./media/slide781_img7.jpeg)
+![](./media/slide780_img2.png)
 
 ---
 
@@ -127,13 +86,6 @@ A medida que el RTO y el RPO disminuyen (recuperación más rápida con menor p�
 - **Pruebas No Disruptivas:** Permite realizar simulacros frecuentes de recuperación ante desastres sin interrumpir la operación ni la replicación continua.
 
 ![](./media/slide783_img1.png)
-![](./media/slide783_img2.png)
-![](./media/slide783_img3.jpeg)
-![](./media/slide783_img4.png)
-![](./media/slide783_img5.png)
-![](./media/slide783_img6.png)
-![](./media/slide783_img7.jpeg)
-![](./media/slide783_img8.jpeg)
 
 ---
 
@@ -147,21 +99,6 @@ Servicio centralizado y totalmente gestionado para automatizar y coordinar respa
 
 ![](./media/slide792_img1.jpeg)
 
-![](./media/slide793_img1.jpeg)
-
-![](./media/slide794_img1.jpeg)
-![](./media/slide794_img2.jpeg)
-![](./media/slide794_img3.jpeg)
-![](./media/slide794_img4.jpeg)
-![](./media/slide794_img5.jpeg)
-![](./media/slide794_img6.jpeg)
-![](./media/slide794_img7.jpeg)
-![](./media/slide794_img8.jpeg)
-![](./media/slide794_img9.jpeg)
-![](./media/slide794_img10.jpeg)
-![](./media/slide794_img11.jpeg)
-![](./media/slide794_img12.jpeg)
-
 ---
 
 ### 4.2 AWS Backup Vault Lock
@@ -169,8 +106,7 @@ Aplica un modelo de cumplimiento estricto **WORM (*Write Once, Read Many*)** a l
 - Impide que cualquier entidad (incluido el usuario `root` de la cuenta de AWS) pueda eliminar copias de seguridad o acortar los períodos de retención configurados.
 - Esencial para cumplir normativas regulatorias estrictas y proteger la organización contra ataques maliciosos internos o secuestro por **ransomware**.
 
-![](./media/slide795_img1.png)
-![](./media/slide795_img2.jpeg)
+![](./media/slide793_img1.jpeg)
 
 ---
 
@@ -185,13 +121,10 @@ Servicio administrado que migra almacenes de datos relacionales y no relacionale
 - **Fuentes y Destinos Soportados:** Migra desde Oracle, SQL Server, MySQL, Postgres o MongoDB hacia Amazon RDS, Aurora, DynamoDB, Redshift, S3 o DocumentDB.
 
 ![](./media/slide784_img1.jpeg)
-![](./media/slide784_img2.jpeg)
-![](./media/slide784_img3.jpeg)
-![](./media/slide784_img4.png)
 
-![](./media/slide788_img1.png)
-![](./media/slide788_img2.png)
-![](./media/slide788_img3.png)
+![](./media/slide789_img4.jpeg)
+
+![](./media/slide789_img5.jpeg)
 
 ---
 
@@ -201,20 +134,6 @@ Herramienta que convierte esquemas de bases de datos, vistas, procedimientos alm
 - **Cuándo NO se requiere:** En **migraciones homogéneas** (ej. PostgreSQL local a Amazon RDS PostgreSQL), ya que los esquemas son idénticos y el motor de origen coincide con el destino.
 
 ![](./media/slide786_img1.jpeg)
-![](./media/slide786_img2.png)
-![](./media/slide786_img3.jpeg)
-![](./media/slide786_img4.jpeg)
-
-![](./media/slide787_img1.png)
-![](./media/slide787_img2.png)
-![](./media/slide787_img3.jpeg)
-![](./media/slide787_img4.jpeg)
-![](./media/slide787_img5.png)
-![](./media/slide787_img6.png)
-![](./media/slide787_img7.png)
-![](./media/slide787_img8.jpeg)
-![](./media/slide787_img9.png)
-![](./media/slide787_img10.png)
 
 ---
 
@@ -228,16 +147,8 @@ Herramienta que convierte esquemas de bases de datos, vistas, procedimientos alm
 | **PostgreSQL Externo $\rightarrow$ Aurora PostgreSQL** | Exportar backup a Amazon S3 e importar utilizando la extensión `aws_s3` de Aurora PostgreSQL; o utilizar **AWS DMS**. |
 
 ![](./media/slide789_img1.jpeg)
-![](./media/slide789_img2.jpeg)
-![](./media/slide789_img3.png)
-![](./media/slide789_img4.jpeg)
-![](./media/slide789_img5.jpeg)
 
-![](./media/slide790_img1.jpeg)
-![](./media/slide790_img2.png)
-![](./media/slide790_img3.jpeg)
-![](./media/slide790_img4.jpeg)
-![](./media/slide790_img5.jpeg)
+![](./media/slide789_img2.jpeg)
 
 ---
 
@@ -259,12 +170,6 @@ Solución primaria recomendada por AWS para migraciones masivas de tipo *Lift-an
 - Permite realizar pruebas de lanzamiento no disruptivas antes de ejecutar la conmutación final con un tiempo de inactividad mínimo.
 
 ![](./media/slide797_img1.jpeg)
-![](./media/slide797_img2.png)
-![](./media/slide797_img3.png)
-![](./media/slide797_img4.jpeg)
-![](./media/slide797_img5.png)
-![](./media/slide797_img6.png)
-![](./media/slide797_img7.png)
 
 ---
 
@@ -273,18 +178,6 @@ Permite extender o migrar centros de datos locales basados en VMware vSphere dir
 - Permite operar con las mismas herramientas habituales (vCenter, vSAN, NSX-T) sin necesidad de reescribir aplicaciones ni convertir máquinas virtuales.
 
 ![](./media/slide798_img1.jpeg)
-![](./media/slide798_img2.jpeg)
-![](./media/slide798_img3.jpeg)
-![](./media/slide798_img4.jpeg)
-![](./media/slide798_img5.jpeg)
-![](./media/slide798_img6.png)
-![](./media/slide798_img7.png)
-![](./media/slide798_img8.jpeg)
-![](./media/slide798_img9.jpeg)
-![](./media/slide798_img10.jpeg)
-![](./media/slide798_img11.jpeg)
-![](./media/slide798_img12.jpeg)
-![](./media/slide798_img13.jpeg)
 
 ---
 

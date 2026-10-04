@@ -23,16 +23,6 @@ El desacoplamiento de componentes es uno de los principios rectores más importa
 **Amazon SQS** es un servicio de colas de mensajes administrado que opera bajo un modelo de extracción (*Pull model*): los consumidores sondean activamente la cola para recibir y procesar mensajes.
 
 ![](./media/slide377_img1.jpeg)
-![](./media/slide377_img2.png)
-![](./media/slide378_img1.jpeg)
-![](./media/slide379_img1.png)
-![](./media/slide379_img2.png)
-![](./media/slide380_img1.png)
-![](./media/slide380_img2.jpeg)
-![](./media/slide380_img3.png)
-![](./media/slide381_img1.png)
-![](./media/slide381_img2.png)
-![](./media/slide381_img3.png)
 
 ### Características Técnicas de las Colas Estándar
 - **Rendimiento ilimitado**: Admite un número virtualmente infinito de transacciones por segundo.
@@ -55,45 +45,18 @@ El desacoplamiento de componentes es uno de los principios rectores más importa
    - **Límites de rendimiento**: Hasta **300 mensajes/segundo** (o hasta **3,000 msg/s con procesamiento por lotes / batching**).
 
 ![](./media/slide385_img1.png)
-![](./media/slide386_img1.png)
+
 ![](./media/slide387_img1.png)
-![](./media/slide387_img2.png)
-![](./media/slide387_img3.png)
-![](./media/slide388_img1.png)
 
 ### Arquitectura de Amortiguación y Escalado: SQS + ASG
 - Para evitar sobrecargar bases de datos relacionales durante picos masivos de escritura, se coloca una cola SQS como **búfer intermedio**.
 - El backend en un Auto Scaling Group de instancias EC2 escala horizontalmente monitoreando la métrica de CloudWatch **`ApproximateNumberOfMessagesVisible`** dividida entre el número de instancias activas.
 
 ![](./media/slide382_img1.jpeg)
-![](./media/slide382_img2.jpeg)
+
 ![](./media/slide382_img3.png)
-![](./media/slide382_img4.png)
+
 ![](./media/slide383_img1.jpeg)
-![](./media/slide383_img2.jpeg)
-![](./media/slide383_img3.png)
-![](./media/slide383_img4.png)
-![](./media/slide383_img5.jpeg)
-![](./media/slide389_img1.jpeg)
-![](./media/slide389_img2.jpeg)
-![](./media/slide389_img3.png)
-![](./media/slide389_img4.png)
-![](./media/slide390_img1.png)
-![](./media/slide390_img2.jpeg)
-![](./media/slide390_img3.jpeg)
-![](./media/slide390_img4.jpeg)
-![](./media/slide390_img5.jpeg)
-![](./media/slide391_img1.jpeg)
-![](./media/slide391_img2.jpeg)
-![](./media/slide391_img3.png)
-![](./media/slide391_img4.png)
-![](./media/slide391_img5.jpeg)
-![](./media/slide391_img6.jpeg)
-![](./media/slide391_img7.jpeg)
-![](./media/slide392_img1.jpeg)
-![](./media/slide392_img2.jpeg)
-![](./media/slide392_img3.png)
-![](./media/slide392_img4.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > Si una pregunta de examen indica que las instancias EC2 que procesan mensajes de una cola SQS **están procesando el mismo mensaje múltiples veces de forma duplicada porque tardan 45 segundos en completar la tarea**, la solución **no es agregar más instancias EC2 ni cambiar a una cola FIFO**; la solución es **incrementar el `Visibility Timeout` de la cola a un valor superior a 45 segundos (ej. 60 o 120 segundos)** o invocar `ChangeMessageVisibility`.
@@ -105,13 +68,8 @@ El desacoplamiento de componentes es uno de los principios rectores más importa
 **Amazon SNS** es un servicio administrado de mensajería basado en el modelo **Publicación/Suscripción (*Pub/Sub - Push model*)**.
 
 ![](./media/slide393_img1.png)
-![](./media/slide394_img1.jpeg)
+
 ![](./media/slide394_img2.jpeg)
-![](./media/slide394_img3.png)
-![](./media/slide394_img4.jpeg)
-![](./media/slide394_img5.png)
-![](./media/slide394_img6.jpeg)
-![](./media/slide394_img7.jpeg)
 
 - **Mecánica**: Un productor publica un mensaje en un **SNS Topic**. El servicio distribuye y empuja (*push*) de forma inmediata una copia del mensaje a todos los suscriptores suscritos al tema.
 - **Límites**: Hasta **12,500,000 suscripciones por tema** y hasta **100,000 temas por cuenta**.
@@ -126,22 +84,8 @@ El desacoplamiento de componentes es uno de los principios rectores más importa
 - **SNS FIFO Topics**: Preservan el orden estricto y admiten deduplicación, pero **únicamente pueden tener colas SQS FIFO como suscriptores**.
 
 ![](./media/slide395_img1.jpeg)
-![](./media/slide395_img2.jpeg)
+
 ![](./media/slide395_img3.jpeg)
-![](./media/slide395_img4.jpeg)
-![](./media/slide395_img5.jpeg)
-![](./media/slide395_img6.jpeg)
-![](./media/slide395_img7.jpeg)
-![](./media/slide395_img8.jpeg)
-![](./media/slide395_img9.jpeg)
-![](./media/slide395_img10.jpeg)
-![](./media/slide401_img1.png)
-![](./media/slide402_img1.png)
-![](./media/slide402_img2.png)
-![](./media/slide403_img1.png)
-![](./media/slide403_img2.png)
-![](./media/slide403_img3.png)
-![](./media/slide403_img4.png)
 
 ---
 
@@ -150,20 +94,11 @@ El desacoplamiento de componentes es uno de los principios rectores más importa
 El patrón **Fan-Out** es una de las soluciones arquitectónicas más evaluadas en el SAA-C03:
 
 ![](./media/slide398_img1.png)
-![](./media/slide398_img2.png)
 
 1. El emisor publica un único mensaje en un **SNS Topic**.
 2. Múltiples colas **SQS** se suscriben a dicho Topic.
 3. Cada cola SQS recibe una copia independiente del mensaje.
 4. Diferentes servicios consumidores (ej. Servicio de Facturación, Servicio Antifraude y Servicio de Envíos) procesan los datos a su propia velocidad con capacidad de reintentos, persistencia y almacenamiento intermedio sin interferir entre sí.
-
-![](./media/slide399_img1.png)
-![](./media/slide399_img2.png)
-![](./media/slide399_img3.jpeg)
-![](./media/slide399_img4.png)
-![](./media/slide400_img1.png)
-![](./media/slide400_img2.jpeg)
-![](./media/slide400_img3.jpeg)
 
 > **💡 SAA-C03 Exam Tip:**  
 > **Limitación de reglas en S3 resuelta con Fan-Out**:  
@@ -176,35 +111,8 @@ El patrón **Fan-Out** es una de las soluciones arquitectónicas más evaluadas 
 La familia **Amazon Kinesis** está diseñada para ingerir, procesar y analizar grandes volúmenes de datos continuos de streaming en tiempo real (telemetría IoT, logs de servidores, flujos de clics web e información financiera).
 
 ![](./media/slide404_img1.jpeg)
-![](./media/slide404_img2.png)
+
 ![](./media/slide404_img3.jpeg)
-![](./media/slide404_img4.png)
-![](./media/slide404_img5.jpeg)
-![](./media/slide404_img6.jpeg)
-![](./media/slide404_img7.jpeg)
-![](./media/slide405_img1.jpeg)
-![](./media/slide407_img1.jpeg)
-![](./media/slide407_img2.jpeg)
-![](./media/slide407_img3.jpeg)
-![](./media/slide407_img4.jpeg)
-![](./media/slide407_img5.jpeg)
-![](./media/slide407_img6.png)
-![](./media/slide407_img7.png)
-![](./media/slide407_img8.png)
-![](./media/slide407_img9.png)
-![](./media/slide407_img10.jpeg)
-![](./media/slide407_img11.jpeg)
-![](./media/slide407_img12.jpeg)
-![](./media/slide407_img13.jpeg)
-![](./media/slide407_img14.png)
-![](./media/slide407_img15.jpeg)
-![](./media/slide407_img16.jpeg)
-![](./media/slide407_img17.jpeg)
-![](./media/slide407_img18.jpeg)
-![](./media/slide407_img19.png)
-![](./media/slide408_img1.jpeg)
-![](./media/slide409_img1.jpeg)
-![](./media/slide409_img2.jpeg)
 
 ### Comparativa: Kinesis Data Streams vs. Amazon Data Firehose
 
@@ -221,10 +129,6 @@ La familia **Amazon Kinesis** está diseñada para ingerir, procesar y analizar 
 
 ## 6. Comparativa Maestra: SQS vs. SNS vs. Kinesis
 
-![](./media/slide410_img1.jpeg)
-![](./media/slide410_img2.jpeg)
-![](./media/slide410_img3.jpeg)
-
 | Parámetro | Amazon SQS | Amazon SNS | Amazon Kinesis Data Streams |
 | :--- | :--- | :--- | :--- |
 | **Modelo de Consumo** | **Pull (Sondeo por consumidores)**. | **Push (Empuje instantáneo a suscriptores)**. | **Pull estándar** (o Push mediante *Enhanced Fan-Out*). |
@@ -240,12 +144,6 @@ La familia **Amazon Kinesis** está diseñada para ingerir, procesar y analizar 
 **Amazon MQ** es un servicio administrado de agentes de mensajes (*message broker*) para **Apache ActiveMQ** y **RabbitMQ**.
 
 ![](./media/slide411_img1.jpeg)
-![](./media/slide411_img2.jpeg)
-![](./media/slide411_img3.png)
-![](./media/slide412_img1.png)
-![](./media/slide412_img2.jpeg)
-![](./media/slide412_img3.jpeg)
-![](./media/slide412_img4.png)
 
 ### SQS/SNS vs. Amazon MQ
 - **SQS y SNS** son servicios nativos de AWS que operan sobre APIs propietarias HTTP/HTTPS. Ofrecen escala infinita sin aprovisionamiento de servidores.

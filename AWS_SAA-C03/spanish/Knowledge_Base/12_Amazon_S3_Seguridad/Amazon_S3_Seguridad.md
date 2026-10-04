@@ -21,40 +21,20 @@ S3 ofrece cuatro métodos de cifrado para proteger los datos en reposo:
 
 ### Tabla Comparativa de Métodos de Cifrado en S3
 
-| Método | Gestión de la Clave | Algoritmo | Cabecera HTTP Requerida en `PUT` | Ventajas y Cuotas Críticas en SAA-C03 |
-| :--- | :--- | :--- | :--- | :--- |
-| **SSE-S3** *(Cifrado del lado del servidor con claves gestionadas por S3)* | Administrada, rotada y propiedad 100% de AWS S3. | AES-256 | `"x-amz-server-side-encryption": "AES256"` | **Habilitado por defecto** para todos los buckets nuevos y existentes sin costo adicional. Cero sobrecarga administrativa. |
-| **SSE-KMS** *(Cifrado con claves de AWS KMS)* | Administrada por el usuario dentro de **AWS Key Management Service (KMS)**. | KMS Customer Managed Key (CMK) o AWS Managed Key (`aws/s3`) | `"x-amz-server-side-encryption": "aws:kms"` | Permite **auditoría completa de uso de claves en AWS CloudTrail** y control granular mediante KMS Key Policies. **Impacto en cuotas**: Genera llamadas a `kms:GenerateDataKey` y `kms:Decrypt`, consumiendo cuota por segundo de KMS. |
-| **SSE-C** *(Cifrado con claves provistas por el cliente)* | El cliente administra la clave fuera de AWS. **AWS jamás almacena la clave**. | Clave provista por el cliente en cada petición. | `"x-amz-server-side-encryption-customer-algorithm"` y `"x-amz-server-side-encryption-customer-key"` | **Obligatorio el uso estricto de HTTPS**. Si el cliente pierde la clave criptográfica, los datos almacenados en S3 son irrecuperables. |
-| **Client-Side Encryption** | El cliente cifra los datos localmente en su entorno **antes** de enviarlos a S3. | Gestionado por bibliotecas del cliente (Amazon S3 Encryption Client). | Ninguna en S3 (S3 solo recibe un archivo de bytes ya cifrado). | Control absoluto del ciclo criptográfico de extremo a extremo. S3 actúa como almacenamiento ciego. |
+| Método                                                                     | Gestión de la Clave                                                              | Algoritmo                                                             | Cabecera HTTP Requerida en `PUT`                                                                    | Ventajas y Cuotas Críticas en SAA-C03                                                                                                                                                                                                 |
+| :------------------------------------------------------------------------- | :------------------------------------------------------------------------------- | :-------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **SSE-S3** *(Cifrado del lado del servidor con claves gestionadas por S3)* | Administrada, rotada y propiedad 100% de AWS S3.                                 | AES-256                                                               | `"x-amz-server-side-encryption": "AES256"`                                                          | **Habilitado por defecto** para todos los buckets nuevos y existentes sin costo adicional. Cero sobrecarga administrativa.                                                                                                            |
+| **SSE-KMS** *(Cifrado con claves de AWS KMS)*                              | Administrada por el usuario dentro de **AWS Key Management Service (KMS)**.      | KMS Customer Managed Key (CMK) o AWS Managed Key (`aws/s3`)           | `"x-amz-server-side-encryption": "aws:kms"`                                                         | Permite **auditoría completa de uso de claves en AWS CloudTrail** y control granular mediante KMS Key Policies. **Impacto en cuotas**: Genera llamadas a `kms:GenerateDataKey` y `kms:Decrypt`, consumiendo cuota por segundo de KMS. |
+| **SSE-C** *(Cifrado con claves provistas por el cliente)*                  | El cliente administra la clave fuera de AWS. **AWS jamás almacena la clave**.    | Clave provista por el cliente en cada petición.                       | `"x-amz-server-side-encryption-customer-algorithm"` y `"x-amz-server-side-encryption-customer-key"` | **Obligatorio el uso estricto de HTTPS**. Si el cliente pierde la clave criptográfica, los datos almacenados en S3 son irrecuperables.                                                                                                |
+| **Client-Side Encryption**                                                 | El cliente cifra los datos localmente en su entorno **antes** de enviarlos a S3. | Gestionado por bibliotecas del cliente (Amazon S3 Encryption Client). | Ninguna en S3 (S3 solo recibe un archivo de bytes ya cifrado).                                      | Control absoluto del ciclo criptográfico de extremo a extremo. S3 actúa como almacenamiento ciego.                                                                                                                                    |
 
 ![](./media/slide314_img1.jpeg)
+
 ![](./media/slide314_img2.jpeg)
+
 ![](./media/slide314_img3.png)
-![](./media/slide314_img4.jpeg)
+
 ![](./media/slide314_img5.jpeg)
-![](./media/slide314_img6.jpeg)
-![](./media/slide315_img1.jpeg)
-![](./media/slide315_img2.jpeg)
-![](./media/slide315_img3.png)
-![](./media/slide315_img4.jpeg)
-![](./media/slide315_img5.jpeg)
-![](./media/slide315_img6.jpeg)
-![](./media/slide315_img7.jpeg)
-![](./media/slide316_img1.jpeg)
-![](./media/slide316_img2.png)
-![](./media/slide316_img3.jpeg)
-![](./media/slide317_img1.jpeg)
-![](./media/slide317_img2.jpeg)
-![](./media/slide317_img3.png)
-![](./media/slide317_img4.jpeg)
-![](./media/slide317_img5.jpeg)
-![](./media/slide317_img6.jpeg)
-![](./media/slide318_img1.jpeg)
-![](./media/slide318_img2.jpeg)
-![](./media/slide318_img3.jpeg)
-![](./media/slide318_img4.png)
-![](./media/slide318_img5.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > **Cuotas de API y cuellos de botella con SSE-KMS**:  
@@ -92,15 +72,12 @@ S3 expone endpoints seguros bajo TLS/HTTPS y endpoints en texto claro bajo HTTP.
 }
 ```
 
-![](./media/slide319_img1.jpeg)
 ![](./media/slide320_img1.jpeg)
-![](./media/slide320_img2.png)
+
 ![](./media/slide320_img3.jpeg)
-![](./media/slide320_img4.png)
-![](./media/slide320_img5.png)
-![](./media/slide320_img6.png)
-![](./media/slide320_img7.jpeg)
+
 ![](./media/slide321_img1.jpeg)
+
 ![](./media/slide321_img2.jpeg)
 
 ---
@@ -113,10 +90,8 @@ Un navegador web bloquea las solicitudes HTTP que intentan cargar recursos desde
 - **Solución**: Habilitar una configuración de **CORS XML/JSON** en el bucket de destino (`bucket-assets`) especificando las cabeceras `Access-Control-Allow-Origin`, `Access-Control-Allow-Methods` (GET, PUT) y cabeceras permitidas.
 
 ![](./media/slide323_img1.png)
+
 ![](./media/slide323_img2.png)
-![](./media/slide324_img1.png)
-![](./media/slide324_img2.jpeg)
-![](./media/slide324_img3.png)
 
 ---
 
@@ -127,8 +102,7 @@ Un navegador web bloquea las solicitudes HTTP que intentan cargar recursos desde
 - **Regla crítica de arquitectura**: **El bucket de destino donde se guardan los logs DEBE ser diferente al bucket monitorizado**, y residir en la misma región. Si se utiliza el mismo bucket, se genera un bucle recursivo infinito (*log loop*) que disparará el almacenamiento y los costos exponencialmente.
 
 ![](./media/slide326_img1.jpeg)
-![](./media/slide326_img2.jpeg)
-![](./media/slide327_img1.jpeg)
+
 ![](./media/slide327_img2.jpeg)
 
 ### URLs Pre-firmadas (Pre-Signed URLs)
@@ -137,10 +111,6 @@ Un navegador web bloquea las solicitudes HTTP que intentan cargar recursos desde
 - Casos de uso: Permitir descargas de videos de pago a usuarios autenticados en una web o subida directa de archivos desde el navegador a S3 sin pasar por el servidor web backend.
 
 ![](./media/slide328_img1.jpeg)
-![](./media/slide328_img2.png)
-![](./media/slide328_img3.jpeg)
-![](./media/slide328_img4.png)
-![](./media/slide328_img5.png)
 
 ### MFA Delete
 - Exige ingresar un token físico o virtual de autenticación multifactor (MFA) para dos operaciones destructivas críticas:
@@ -159,7 +129,6 @@ Un navegador web bloquea las solicitudes HTTP que intentan cargar recursos desde
 Para sectores altamente regulados (financiero, seguros, legal, médico), AWS ofrece modelos de escritura única y múltiples lecturas (**WORM - Write Once, Read Many**).
 
 ![](./media/slide329_img1.png)
-![](./media/slide329_img2.jpeg)
 
 ### S3 Object Lock vs. S3 Glacier Vault Lock
 
@@ -179,9 +148,6 @@ Para sectores altamente regulados (financiero, seguros, legal, médico), AWS ofr
 A medida que los data lakes crecen, una única Bucket Policy puede superar el límite máximo de tamaño de 20 KB de JSON debido a la complejidad de permisos de cientos de departamentos.
 
 ![](./media/slide331_img1.png)
-![](./media/slide331_img2.jpeg)
-![](./media/slide331_img3.jpeg)
-![](./media/slide331_img4.jpeg)
 
 ### S3 Access Points (Puntos de Acceso)
 - Puntos de enlace con nombres DNS dedicados vinculados al bucket que poseen **su propia política de acceso independiente**.
@@ -190,11 +156,6 @@ A medida que los data lakes crecen, una única Bucket Policy puede superar el l�
 
 ![](./media/slide332_img1.png)
 ![](./media/slide332_img2.jpeg)
-![](./media/slide332_img3.png)
-![](./media/slide332_img4.jpeg)
-![](./media/slide332_img5.jpeg)
-![](./media/slide332_img6.jpeg)
-![](./media/slide332_img7.png)
 
 ### S3 Object Lambda
 - Permite insertar código personalizado de **AWS Lambda** para procesar, transformar o filtrar los datos devueltos por una llamada estándar `s3:GetObject` **antes de que los datos alcancen a la aplicación cliente**.
@@ -205,12 +166,6 @@ A medida que los data lakes crecen, una única Bucket Policy puede superar el l�
   - **Marcas de agua e imágenes**: Insertar marcas de agua personalizadas o redimensionar fotos según el usuario solicitante.
 
 ![](./media/slide333_img1.jpeg)
-![](./media/slide333_img2.png)
-![](./media/slide333_img3.png)
-![](./media/slide333_img4.jpeg)
-![](./media/slide333_img5.jpeg)
-![](./media/slide333_img6.png)
-![](./media/slide333_img7.jpeg)
 
 > **💡 SAA-C03 Exam Tip:**  
 > Cuando una empresa solicita almacenar una única versión de archivos confidenciales en S3, pero exige que **"los analistas de datos reciban los archivos con los campos de tarjetas de crédito redactados/anonimizados, mientras que el departamento de auditoría legal debe recibir el archivo original intacto, sin crear buckets duplicados"**, la arquitectura óptima es utilizar **S3 Object Lambda**.

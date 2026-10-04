@@ -19,12 +19,10 @@ El examen **AWS Certified Solutions Architect - Associate (SAA-C03)** incluye co
 - **SQS FIFO + Lambda:** Los mensajes se procesan en estricto orden por grupo de mensajes (*MessageGroupID*). Si un mensaje falla, el procesamiento de ese grupo se bloquea (*head-of-line blocking*) hasta que se resuelva o el mensaje se envíe a la DLQ.
 
 ![](./media/slide801_img1.jpeg)
+
 ![](./media/slide801_img2.jpeg)
-![](./media/slide801_img3.jpeg)
 
 ![](./media/slide802_img1.jpeg)
-![](./media/slide802_img2.jpeg)
-![](./media/slide802_img3.jpeg)
 
 ---
 
@@ -37,13 +35,7 @@ Amazon S3 puede emitir notificaciones ante mutaciones de objetos (`s3:ObjectCrea
 | **Capacidades de Filtrado** | Básico: únicamente por prefijo y sufijo del nombre de la clave (ej. `.jpg`). | **Filtrado JSON avanzado** (por tamaño de objeto, metadatos, tipo de operación, cabeceras). |
 | **Gobernanza y Confiabilidad** | Sin capacidades de archivo ni repetición. | **Archive & Replay**, entrega confiable y auditoría de eventos. |
 
-![](./media/slide803_img1.jpeg)
-![](./media/slide803_img2.jpeg)
-![](./media/slide803_img3.jpeg)
-![](./media/slide803_img4.jpeg)
-
-![](./media/slide804_img1.jpeg)
-![](./media/slide804_img2.jpeg)
+![](./media/slide802_img2.jpeg)
 
 ---
 
@@ -52,12 +44,7 @@ Un patrón recurrente de seguridad consiste en reaccionar ante acciones destruct
 - CloudTrail registra el evento de gestión.
 - **Amazon EventBridge** captura la regla del evento y activa una alerta inmediata a un tema de **Amazon SNS** o dispara una función **AWS Lambda** para revertir el cambio.
 
-![](./media/slide805_img1.jpeg)
-![](./media/slide805_img2.jpeg)
-![](./media/slide805_img3.jpeg)
-![](./media/slide805_img4.jpeg)
-![](./media/slide805_img5.jpeg)
-![](./media/slide805_img6.jpeg)
+![](./media/slide803_img2.jpeg)
 
 ---
 
@@ -67,10 +54,6 @@ Para ingestar datos masivos en tiempo real (ej. streaming de telemetría IoT o c
 - Elimina capas innecesarias de cómputo, reduce la latencia de ingestión y minimiza costos operativos.
 
 ![](./media/slide806_img1.jpeg)
-![](./media/slide806_img2.jpeg)
-![](./media/slide806_img3.jpeg)
-![](./media/slide806_img4.jpeg)
-![](./media/slide806_img5.png)
 
 ---
 
@@ -84,12 +67,6 @@ El examen evalúa con frecuencia la optimización de latencia, cómputo y costos
 4. **Capa de Base de Datos NoSQL (DynamoDB Accelerator - DAX):** Clúster de caché en memoria transparente frente a tablas DynamoDB que reduce la latencia de lectura de milisegundos a microsegundos.
 
 ![](./media/slide807_img1.jpeg)
-![](./media/slide807_img2.jpeg)
-![](./media/slide807_img3.jpeg)
-![](./media/slide807_img4.png)
-![](./media/slide807_img5.jpeg)
-![](./media/slide807_img6.jpeg)
-![](./media/slide807_img7.jpeg)
 
 ---
 
@@ -116,31 +93,14 @@ Una de las preguntas clásicas del examen SAA-C03 presenta un ataque proveniente
    - **Solución Obligatoria:** Implementar **AWS WAF acoplado a la distribución de CloudFront** (o usar la función de restricción geográfica de CloudFront) para descartar el tráfico malicioso en el borde antes de que ingrese a la red de AWS.
 
 ![](./media/slide808_img1.jpeg)
+
 ![](./media/slide808_img2.png)
+
 ![](./media/slide808_img3.jpeg)
 
 ![](./media/slide809_img1.jpeg)
+
 ![](./media/slide809_img2.jpeg)
-![](./media/slide809_img3.png)
-![](./media/slide809_img4.jpeg)
-
-![](./media/slide810_img1.jpeg)
-![](./media/slide810_img2.jpeg)
-![](./media/slide810_img3.png)
-![](./media/slide810_img4.jpeg)
-
-![](./media/slide811_img1.jpeg)
-![](./media/slide811_img2.png)
-![](./media/slide811_img3.jpeg)
-![](./media/slide811_img4.jpeg)
-![](./media/slide811_img5.jpeg)
-
-![](./media/slide812_img1.jpeg)
-![](./media/slide812_img2.png)
-![](./media/slide812_img3.jpeg)
-![](./media/slide812_img4.jpeg)
-![](./media/slide812_img5.jpeg)
-![](./media/slide812_img6.jpeg)
 
 ---
 
@@ -171,10 +131,6 @@ Cuando una aplicación heredada no puede ejecutarse en múltiples instancias sim
 - En caso de fallo, una automatización o función Lambda inicia una instancia secundaria de respaldo en espera y le **reasigna la Elastic IP (EIP)** de la instancia dañada.
 
 ![](./media/slide819_img1.png)
-![](./media/slide819_img2.jpeg)
-![](./media/slide819_img3.png)
-![](./media/slide819_img4.png)
-![](./media/slide819_img5.jpeg)
 
 ---
 
@@ -188,9 +144,6 @@ Cuando una aplicación heredada no puede ejecutarse en múltiples instancias sim
 - **Asignación de IP:** Mediante un script en los datos de usuario de EC2 (*User Data*) y un rol IAM con permisos `ec2:AssociateAddress`, la nueva instancia se autoasigna la Elastic IP fija en el arranque.
 
 ![](./media/slide820_img1.png)
-![](./media/slide820_img2.jpeg)
-![](./media/slide820_img3.png)
-![](./media/slide820_img4.png)
 
 ---
 
@@ -200,11 +153,6 @@ Para preservar los datos en un volumen EBS cuando la instancia se reemplaza en o
 2. **Lanzamiento:** Durante el lanzamiento de la nueva instancia en otra AZ, otro Lifecycle Hook restaura el volumen EBS a partir del último snapshot etiquetado en la nueva AZ y lo adjunta a la instancia antes de que comience a procesar tráfico.
 
 ![](./media/slide821_img1.png)
-![](./media/slide821_img2.jpeg)
-![](./media/slide821_img3.png)
-![](./media/slide821_img4.png)
-![](./media/slide821_img5.png)
-![](./media/slide821_img6.png)
 
 ---
 

@@ -10,29 +10,6 @@ tags: [aws, arquitectura, cloud-native]
 El módulo de **Amazon Virtual Private Cloud (Amazon VPC)** es la columna vertebral de la infraestructura en AWS y uno de los dominios más evaluados en el examen **AWS Certified Solutions Architect - Associate (SAA-C03)**. Un arquitecto debe dominar el direccionamiento CIDR IPv4/IPv6, el diseño de subredes públicas y privadas, tablas de ruteo, componentes de salida a Internet (IGW, NAT Gateway, Egress-Only IGW), mecanismos de defensa en capas (Security Groups, NACLs, Network Firewall), interconexión y conectividad híbrida (VPC Peering, VPC Endpoints/PrivateLink, Site-to-Site VPN, Direct Connect, Transit Gateway) y optimización de costos de transferencia de red.
 
 ![](./media/slide697_img1.jpeg)
-![](./media/slide697_img2.png)
-![](./media/slide697_img3.jpeg)
-![](./media/slide697_img4.jpeg)
-![](./media/slide697_img5.png)
-![](./media/slide697_img6.png)
-![](./media/slide697_img7.jpeg)
-![](./media/slide697_img8.jpeg)
-![](./media/slide697_img9.jpeg)
-![](./media/slide697_img10.png)
-![](./media/slide697_img11.jpeg)
-![](./media/slide697_img12.png)
-![](./media/slide697_img13.jpeg)
-![](./media/slide697_img14.png)
-![](./media/slide697_img15.png)
-![](./media/slide697_img16.png)
-![](./media/slide697_img17.jpeg)
-![](./media/slide697_img18.jpeg)
-![](./media/slide697_img19.jpeg)
-![](./media/slide697_img20.jpeg)
-![](./media/slide697_img21.jpeg)
-![](./media/slide697_img22.jpeg)
-![](./media/slide697_img23.jpeg)
-![](./media/slide697_img24.jpeg)
 
 ---
 
@@ -55,8 +32,6 @@ Un bloque CIDR (*Classless Inter-Domain Routing*) se compone de una dirección I
 
 ![](./media/slide700_img1.png)
 
-![](./media/slide704_img1.jpeg)
-
 ---
 
 ### 1.2 Las 5 Direcciones IP Reservadas por AWS en cada Subred
@@ -66,8 +41,6 @@ En **cada subred** aprovisionada en AWS, **5 direcciones IP están reservadas** 
 - `10.0.0.2`: Servidor DNS asignado por Amazon (Route 53 Resolver / AmazonProvidedDNS).
 - `10.0.0.3`: Reservada por AWS para uso futuro.
 - `10.0.0.255`: Dirección de difusión (*Broadcast address*). AWS no admite tráfico de difusión en VPC.
-
-![](./media/slide707_img1.png)
 
 > **💡 SAA-C03 Exam Tip:**
 > Si un escenario de examen exige desplegar una subred que aloje al menos **29 instancias EC2**, una máscara `/27` **NO es suficiente**:
@@ -87,22 +60,6 @@ En **cada subred** aprovisionada en AWS, **5 direcciones IP están reservadas** 
 
 ![](./media/slide708_img1.jpeg)
 
-![](./media/slide709_img1.jpeg)
-![](./media/slide709_img2.png)
-![](./media/slide709_img3.png)
-![](./media/slide709_img4.png)
-![](./media/slide709_img5.jpeg)
-
-![](./media/slide710_img1.jpeg)
-![](./media/slide710_img2.png)
-![](./media/slide710_img3.png)
-![](./media/slide710_img4.png)
-![](./media/slide710_img5.jpeg)
-![](./media/slide710_img6.jpeg)
-![](./media/slide710_img7.jpeg)
-![](./media/slide710_img8.png)
-![](./media/slide710_img9.png)
-
 ---
 
 ### 2.2 Bastion Host (Servidor Bastión)
@@ -111,10 +68,6 @@ Instancia EC2 alojada en una **subred pública** con una IP pública / EIP, util
 - Los Security Groups de las instancias privadas solo deben permitir tráfico en el puerto 22/3389 referenciando el **Security Group ID del Bastion Host**.
 
 ![](./media/slide711_img1.jpeg)
-![](./media/slide711_img2.png)
-![](./media/slide711_img3.png)
-![](./media/slide711_img4.jpeg)
-![](./media/slide711_img5.png)
 
 ---
 
@@ -131,49 +84,13 @@ Instancia EC2 alojada en una **subred pública** con una IP pública / EIP, util
 | **Grupos de Seguridad** | No utiliza Security Groups (no se asocian a NAT Gateway). | Requiere configurar reglas de Security Group para entrada y salida. |
 
 ![](./media/slide712_img1.jpeg)
+
 ![](./media/slide712_img2.png)
-![](./media/slide712_img3.png)
+
+
 ![](./media/slide712_img4.png)
-![](./media/slide712_img5.png)
+
 ![](./media/slide712_img6.png)
-
-![](./media/slide713_img1.jpeg)
-![](./media/slide713_img2.png)
-![](./media/slide713_img3.png)
-![](./media/slide713_img4.png)
-![](./media/slide713_img5.jpeg)
-![](./media/slide713_img6.jpeg)
-![](./media/slide713_img7.jpeg)
-![](./media/slide713_img8.png)
-![](./media/slide713_img9.png)
-![](./media/slide713_img10.png)
-
-![](./media/slide715_img1.jpeg)
-
-![](./media/slide716_img1.jpeg)
-![](./media/slide716_img2.png)
-![](./media/slide716_img3.png)
-![](./media/slide716_img4.png)
-![](./media/slide716_img5.jpeg)
-![](./media/slide716_img6.jpeg)
-![](./media/slide716_img7.jpeg)
-![](./media/slide716_img8.png)
-![](./media/slide716_img9.png)
-![](./media/slide716_img10.jpeg)
-
-![](./media/slide717_img1.jpeg)
-![](./media/slide717_img2.png)
-![](./media/slide717_img3.png)
-![](./media/slide717_img4.png)
-![](./media/slide717_img5.jpeg)
-![](./media/slide717_img6.png)
-![](./media/slide717_img7.jpeg)
-![](./media/slide717_img8.jpeg)
-![](./media/slide717_img9.png)
-![](./media/slide717_img10.jpeg)
-
-![](./media/slide718_img1.png)
-![](./media/slide718_img2.png)
 
 ---
 
@@ -183,55 +100,22 @@ La seguridad perimetral dentro de la VPC opera mediante un modelo de defensa en 
 
 ### 3.1 Comparativa Técnica
 
-| Característica | Security Group (SG) | Network ACL (NACL) |
-| :--- | :--- | :--- |
-| **Nivel de Operación** | A nivel de **Interfaz de Red Elástica (ENI) / Instancia**. | A nivel de **Subred**. |
-| **Manejo de Estado** | **Stateful (Con estado):** Si el tráfico entrante está permitido, el tráfico de retorno de salida se permite automáticamente sin importar reglas de salida. | **Stateless (Sin estado):** El tráfico de retorno debe estar explícitamente autorizado en ambas direcciones (entrante y saliente). |
-| **Tipos de Reglas** | Solo reglas de **Permitir (*Allow*)**. Denegación implícita. | Reglas de **Permitir (*Allow*) y Denegar (*Deny*)**. |
-| **Orden de Evaluación** | Se evalúan **todas las reglas** antes de tomar la decisión. | Se evalúan en **orden numérico estricto (1-32766)**. La primera regla coincidente aplica (*first match wins*). Regla `*` final deniega el resto. |
-| **Bloqueo de IPs** | No puede denegar una IP específica (solo permite). | **Herramienta ideal para bloquear una IP o rango CIDR malicioso**. |
-| **Puertos Efímeros** | No aplican (automático por ser stateful). | **Requiere abrir puertos efímeros (1024-65535)** en las reglas de salida o entrada para permitir respuestas de clientes. |
+| Característica          | Security Group (SG)                                                                                                                                         | Network ACL (NACL)                                                                                                                               |
+| :---------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Nivel de Operación**  | A nivel de **Interfaz de Red Elástica (ENI) / Instancia**.                                                                                                  | A nivel de **Subred**.                                                                                                                           |
+| **Manejo de Estado**    | **Stateful (Con estado):** Si el tráfico entrante está permitido, el tráfico de retorno de salida se permite automáticamente sin importar reglas de salida. | **Stateless (Sin estado):** El tráfico de retorno debe estar explícitamente autorizado en ambas direcciones (entrante y saliente).               |
+| **Tipos de Reglas**     | Solo reglas de **Permitir (*Allow*)**. Denegación implícita.                                                                                                | Reglas de **Permitir (*Allow*) y Denegar (*Deny*)**.                                                                                             |
+| **Orden de Evaluación** | Se evalúan **todas las reglas** antes de tomar la decisión.                                                                                                 | Se evalúan en **orden numérico estricto (1-32766)**. La primera regla coincidente aplica (*first match wins*). Regla `*` final deniega el resto. |
+| **Bloqueo de IPs**      | No puede denegar una IP específica (solo permite).                                                                                                          | **Herramienta ideal para bloquear una IP o rango CIDR malicioso**.                                                                               |
+| **Puertos Efímeros**    | No aplican (automático por ser stateful).                                                                                                                   | **Requiere abrir puertos efímeros (1024-65535)** en las reglas de salida o entrada para permitir respuestas de clientes.                         |
 
 ![](./media/slide720_img1.png)
+
 ![](./media/slide720_img2.png)
+
 ![](./media/slide720_img3.jpeg)
+
 ![](./media/slide720_img4.png)
-
-![](./media/slide721_img1.jpeg)
-
-![](./media/slide722_img1.jpeg)
-![](./media/slide722_img2.png)
-![](./media/slide722_img3.png)
-![](./media/slide722_img4.png)
-![](./media/slide722_img5.jpeg)
-![](./media/slide722_img6.jpeg)
-![](./media/slide722_img7.jpeg)
-![](./media/slide722_img8.png)
-![](./media/slide722_img9.png)
-![](./media/slide722_img10.jpeg)
-![](./media/slide722_img11.jpeg)
-
-![](./media/slide723_img1.jpeg)
-
-![](./media/slide724_img1.png)
-![](./media/slide724_img2.png)
-
-![](./media/slide725_img1.jpeg)
-![](./media/slide725_img2.png)
-![](./media/slide725_img3.png)
-![](./media/slide725_img4.jpeg)
-![](./media/slide725_img5.jpeg)
-![](./media/slide725_img6.png)
-![](./media/slide725_img7.png)
-
-![](./media/slide726_img1.jpeg)
-![](./media/slide726_img2.png)
-![](./media/slide726_img3.png)
-![](./media/slide726_img4.png)
-![](./media/slide726_img5.jpeg)
-![](./media/slide726_img6.jpeg)
-![](./media/slide726_img7.jpeg)
-![](./media/slide726_img8.png)
 
 ---
 
@@ -246,22 +130,12 @@ Permite interconectar dos VPCs de forma privada utilizando la red troncal de AWS
 - **Referencias en Security Groups:** En la misma región, un Security Group de una VPC puede referenciar por ID a un Security Group de la VPC emparejada.
 
 ![](./media/slide728_img1.jpeg)
-![](./media/slide728_img2.jpeg)
 
 ![](./media/slide729_img1.jpeg)
 
 ![](./media/slide730_img1.jpeg)
-![](./media/slide730_img2.png)
+
 ![](./media/slide730_img3.png)
-![](./media/slide730_img4.png)
-![](./media/slide730_img5.jpeg)
-![](./media/slide730_img6.jpeg)
-![](./media/slide730_img7.jpeg)
-![](./media/slide730_img8.png)
-![](./media/slide730_img9.png)
-![](./media/slide730_img10.jpeg)
-![](./media/slide730_img11.jpeg)
-![](./media/slide730_img12.jpeg)
 
 ---
 
@@ -279,52 +153,10 @@ Aunque el Gateway Endpoint es gratuito y preferido dentro de la VPC, el **Interf
 2. Una VPC en otra región o mediante un **Transit Gateway**.
 
 ![](./media/slide731_img1.jpeg)
+
 ![](./media/slide731_img2.png)
-![](./media/slide731_img3.png)
+
 ![](./media/slide731_img4.png)
-![](./media/slide731_img5.jpeg)
-![](./media/slide731_img6.jpeg)
-![](./media/slide731_img7.jpeg)
-![](./media/slide731_img8.png)
-![](./media/slide731_img9.png)
-![](./media/slide731_img10.jpeg)
-![](./media/slide731_img11.jpeg)
-![](./media/slide731_img12.jpeg)
-![](./media/slide731_img13.jpeg)
-![](./media/slide731_img14.jpeg)
-![](./media/slide731_img15.jpeg)
-![](./media/slide731_img16.jpeg)
-
-![](./media/slide732_img1.jpeg)
-![](./media/slide732_img2.jpeg)
-![](./media/slide732_img3.png)
-![](./media/slide732_img4.png)
-![](./media/slide732_img5.jpeg)
-![](./media/slide732_img6.jpeg)
-![](./media/slide732_img7.png)
-![](./media/slide732_img8.jpeg)
-![](./media/slide732_img9.png)
-
-![](./media/slide733_img1.png)
-![](./media/slide733_img2.jpeg)
-![](./media/slide733_img3.jpeg)
-![](./media/slide733_img4.png)
-![](./media/slide733_img5.png)
-![](./media/slide733_img6.jpeg)
-![](./media/slide733_img7.jpeg)
-![](./media/slide733_img8.jpeg)
-![](./media/slide733_img9.jpeg)
-
-![](./media/slide734_img1.jpeg)
-![](./media/slide734_img2.png)
-![](./media/slide734_img3.jpeg)
-![](./media/slide734_img4.jpeg)
-![](./media/slide734_img5.jpeg)
-![](./media/slide734_img6.png)
-![](./media/slide734_img7.jpeg)
-![](./media/slide734_img8.jpeg)
-![](./media/slide734_img9.jpeg)
-![](./media/slide734_img10.jpeg)
 
 ---
 
@@ -339,44 +171,15 @@ Captura información sobre el tráfico IP que entra y sale de las interfaces de 
 
 ![](./media/slide735_img1.png)
 
-![](./media/slide736_img1.jpeg)
-![](./media/slide736_img2.png)
-![](./media/slide736_img3.png)
-![](./media/slide736_img4.png)
-![](./media/slide736_img5.jpeg)
-![](./media/slide736_img6.jpeg)
-![](./media/slide736_img7.jpeg)
-![](./media/slide736_img8.png)
-![](./media/slide736_img9.png)
-![](./media/slide736_img10.jpeg)
-![](./media/slide736_img11.jpeg)
-![](./media/slide736_img12.jpeg)
-![](./media/slide736_img13.jpeg)
-![](./media/slide736_img14.jpeg)
-![](./media/slide736_img15.jpeg)
-![](./media/slide736_img16.jpeg)
-![](./media/slide736_img17.png)
 
 ![](./media/slide737_img1.jpeg)
 
 ![](./media/slide738_img1.png)
+
 ![](./media/slide738_img2.png)
-![](./media/slide738_img3.jpeg)
-![](./media/slide738_img4.png)
 
-![](./media/slide739_img1.png)
-![](./media/slide739_img2.png)
-![](./media/slide739_img3.png)
-![](./media/slide739_img4.png)
-![](./media/slide739_img5.jpeg)
-![](./media/slide739_img6.png)
-![](./media/slide739_img7.jpeg)
-![](./media/slide739_img8.jpeg)
-![](./media/slide739_img9.jpeg)
 ![](./media/slide739_img10.jpeg)
-
 ![](./media/slide740_img1.jpeg)
-![](./media/slide740_img2.jpeg)
 
 ---
 
@@ -389,48 +192,10 @@ Conecta de forma segura el centro de datos local con la VPC a través de túnele
 - **Paso Crítico de Configuración:** Habilitar la **propagación de rutas (*Route Propagation*)** en las tablas de ruteo de la VPC para aprender automáticamente las rutas de la red on-premises.
 
 ![](./media/slide741_img1.jpeg)
-![](./media/slide741_img2.png)
+
 ![](./media/slide741_img3.jpeg)
+
 ![](./media/slide741_img4.jpeg)
-![](./media/slide741_img5.png)
-![](./media/slide741_img6.png)
-![](./media/slide741_img7.jpeg)
-![](./media/slide741_img8.jpeg)
-![](./media/slide741_img9.jpeg)
-![](./media/slide741_img10.png)
-![](./media/slide741_img11.jpeg)
-![](./media/slide741_img12.png)
-![](./media/slide741_img13.jpeg)
-![](./media/slide741_img14.png)
-![](./media/slide741_img15.png)
-![](./media/slide741_img16.png)
-![](./media/slide741_img17.jpeg)
-![](./media/slide741_img18.jpeg)
-![](./media/slide741_img19.jpeg)
-![](./media/slide741_img20.jpeg)
-![](./media/slide741_img21.jpeg)
-![](./media/slide741_img22.jpeg)
-
-![](./media/slide742_img1.jpeg)
-
-![](./media/slide743_img1.jpeg)
-![](./media/slide743_img2.png)
-![](./media/slide743_img3.jpeg)
-![](./media/slide743_img4.png)
-![](./media/slide743_img5.png)
-![](./media/slide743_img6.jpeg)
-![](./media/slide743_img7.jpeg)
-![](./media/slide743_img8.png)
-![](./media/slide743_img9.jpeg)
-
-![](./media/slide744_img1.jpeg)
-![](./media/slide744_img2.png)
-![](./media/slide744_img3.png)
-![](./media/slide744_img4.png)
-![](./media/slide744_img5.png)
-![](./media/slide744_img6.jpeg)
-![](./media/slide744_img7.jpeg)
-![](./media/slide744_img8.jpeg)
 
 ---
 
@@ -446,45 +211,14 @@ Proporciona una conexión de red física y privada dedicada desde el centro de d
 ![](./media/slide745_img1.jpeg)
 
 ![](./media/slide746_img1.png)
+
 ![](./media/slide746_img2.jpeg)
+
 ![](./media/slide746_img3.png)
+
 ![](./media/slide746_img4.png)
+
 ![](./media/slide746_img5.jpeg)
-![](./media/slide746_img6.jpeg)
-![](./media/slide746_img7.jpeg)
-![](./media/slide746_img8.jpeg)
-![](./media/slide746_img9.jpeg)
-![](./media/slide746_img10.png)
-
-![](./media/slide747_img1.png)
-![](./media/slide747_img2.jpeg)
-![](./media/slide747_img3.jpeg)
-![](./media/slide747_img4.jpeg)
-![](./media/slide747_img5.png)
-![](./media/slide747_img6.jpeg)
-
-![](./media/slide749_img1.png)
-![](./media/slide749_img2.jpeg)
-![](./media/slide749_img3.png)
-![](./media/slide749_img4.png)
-![](./media/slide749_img5.jpeg)
-![](./media/slide749_img6.jpeg)
-![](./media/slide749_img7.jpeg)
-![](./media/slide749_img8.png)
-![](./media/slide749_img9.jpeg)
-![](./media/slide749_img10.png)
-
-![](./media/slide750_img1.png)
-![](./media/slide750_img2.jpeg)
-![](./media/slide750_img3.jpeg)
-![](./media/slide750_img4.png)
-![](./media/slide750_img5.jpeg)
-
-![](./media/slide751_img1.jpeg)
-![](./media/slide751_img2.jpeg)
-![](./media/slide751_img3.jpeg)
-![](./media/slide751_img4.jpeg)
-![](./media/slide751_img5.png)
 
 ---
 
@@ -496,42 +230,12 @@ Actúa como un router de red centralizado (*Hub-and-Spoke*) que simplifica la to
 - **Compartición:** Se comparte entre múltiples cuentas de AWS Organizations usando **AWS RAM (Resource Access Manager)**.
 
 ![](./media/slide752_img1.jpeg)
+
 ![](./media/slide752_img2.jpeg)
+
 ![](./media/slide752_img3.jpeg)
+
 ![](./media/slide752_img4.jpeg)
-![](./media/slide752_img5.jpeg)
-
-![](./media/slide753_img1.jpeg)
-![](./media/slide753_img2.jpeg)
-![](./media/slide753_img3.jpeg)
-![](./media/slide753_img4.jpeg)
-![](./media/slide753_img5.jpeg)
-![](./media/slide753_img6.jpeg)
-
-![](./media/slide754_img1.jpeg)
-![](./media/slide754_img2.jpeg)
-![](./media/slide754_img3.jpeg)
-![](./media/slide754_img4.png)
-![](./media/slide754_img5.jpeg)
-
-![](./media/slide755_img1.jpeg)
-![](./media/slide755_img2.jpeg)
-![](./media/slide755_img3.jpeg)
-![](./media/slide755_img4.jpeg)
-![](./media/slide755_img5.png)
-![](./media/slide755_img6.png)
-
-![](./media/slide756_img1.jpeg)
-![](./media/slide756_img2.jpeg)
-![](./media/slide756_img3.png)
-![](./media/slide756_img4.png)
-![](./media/slide756_img5.png)
-![](./media/slide756_img6.png)
-![](./media/slide756_img7.jpeg)
-![](./media/slide756_img8.jpeg)
-![](./media/slide756_img9.png)
-![](./media/slide756_img10.jpeg)
-![](./media/slide756_img11.jpeg)
 
 ---
 
@@ -541,10 +245,6 @@ Actúa como un router de red centralizado (*Hub-and-Spoke*) que simplifica la to
 Permite duplicar de forma no intrusiva el tráfico de red de interfaces ENI de origen y enviarlo a dispositivos de seguridad dedicados (monitoreo IDS/IPS, analizadores de paquetes) alojados detrás de un **Network Load Balancer** u otra ENI.
 
 ![](./media/slide757_img1.png)
-![](./media/slide757_img2.jpeg)
-![](./media/slide757_img3.jpeg)
-![](./media/slide757_img4.jpeg)
-![](./media/slide757_img5.png)
 
 ---
 
@@ -554,30 +254,10 @@ Permite duplicar de forma no intrusiva el tráfico de red de interfaces ENI de o
 - **Egress-Only Internet Gateway (EIGW):** Componente para IPv6 análogo al NAT Gateway en IPv4. Permite que las instancias de subredes privadas inicien conexiones salientes hacia Internet vía IPv6, **impidiendo que clientes externos inicien conexiones entrantes** hacia dichas instancias.
 
 ![](./media/slide759_img1.png)
-![](./media/slide759_img2.jpeg)
+
 ![](./media/slide759_img3.png)
-![](./media/slide759_img4.jpeg)
 
 ![](./media/slide760_img1.jpeg)
-![](./media/slide760_img2.png)
-![](./media/slide760_img3.jpeg)
-
-![](./media/slide761_img1.jpeg)
-![](./media/slide761_img2.jpeg)
-![](./media/slide761_img3.png)
-![](./media/slide761_img4.png)
-![](./media/slide761_img5.png)
-![](./media/slide761_img6.jpeg)
-![](./media/slide761_img7.png)
-
-![](./media/slide762_img1.png)
-![](./media/slide762_img2.jpeg)
-![](./media/slide762_img3.png)
-![](./media/slide762_img4.png)
-![](./media/slide762_img5.jpeg)
-![](./media/slide762_img6.jpeg)
-![](./media/slide762_img7.png)
-![](./media/slide762_img8.png)
 
 ---
 
@@ -590,31 +270,12 @@ Permite duplicar de forma no intrusiva el tráfico de red de interfaces ENI de o
 5. **Gateway Endpoint vs NAT Gateway para S3:** Acceder a Amazon S3 a través de un **Gateway Endpoint es 100% gratuito** (sin costo por hora ni por GB procesado), mientras que acceder a través de un NAT Gateway incurre en $0.045/hora más $0.045 por GB procesado.
 
 ![](./media/slide766_img1.png)
+
 ![](./media/slide766_img2.png)
 
 ![](./media/slide767_img1.png)
+
 ![](./media/slide767_img2.png)
-![](./media/slide767_img3.jpeg)
-![](./media/slide767_img4.jpeg)
-![](./media/slide767_img5.png)
-![](./media/slide767_img6.png)
-
-![](./media/slide768_img1.jpeg)
-![](./media/slide768_img2.jpeg)
-![](./media/slide768_img3.jpeg)
-![](./media/slide768_img4.png)
-![](./media/slide768_img5.png)
-
-![](./media/slide769_img1.png)
-![](./media/slide769_img2.jpeg)
-![](./media/slide769_img3.png)
-![](./media/slide769_img4.png)
-![](./media/slide769_img5.jpeg)
-![](./media/slide769_img6.jpeg)
-![](./media/slide769_img7.png)
-![](./media/slide769_img8.jpeg)
-![](./media/slide769_img9.jpeg)
-![](./media/slide769_img10.png)
 
 ---
 
@@ -626,17 +287,6 @@ Servicio de firewall administrado de inspección profunda de paquetes (Capas 3 a
 - **Reglas con Estado (*Stateful Rules*):** Filtrado por nombres de dominio (FQDN lista blanca como `*.corp.com`), firmas de detección de intrusiones (reglas compatibles con Suricata) e inspección de protocolos.
 
 ![](./media/slide771_img1.jpeg)
-![](./media/slide771_img2.png)
-![](./media/slide771_img3.jpeg)
-![](./media/slide771_img4.jpeg)
-![](./media/slide771_img5.png)
-![](./media/slide771_img6.jpeg)
-![](./media/slide771_img7.jpeg)
-![](./media/slide771_img8.jpeg)
-![](./media/slide771_img9.jpeg)
-![](./media/slide771_img10.png)
-
-![](./media/slide772_img1.jpeg)
 
 ---
 

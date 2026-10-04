@@ -26,14 +26,8 @@ $$\underbrace{\text{http://}}_{\text{Protocolo}} \overbrace{\underbrace{\text{ap
 - **Servidor de Nombres Autoritativo (Authoritative Name Server)**: Servidor que posee la copia definitiva y oficial de los registros DNS de una zona determinada; el cliente o administrador tiene control directo para modificar dichos registros.
 
 ![](./media/slide195_img1.png)
-![](./media/slide195_img2.jpeg)
+
 ![](./media/slide195_img3.png)
-![](./media/slide195_img4.jpeg)
-![](./media/slide195_img5.jpeg)
-![](./media/slide196_img1.jpeg)
-![](./media/slide196_img2.png)
-![](./media/slide196_img3.jpeg)
-![](./media/slide196_img4.png)
 
 ---
 
@@ -45,14 +39,6 @@ Una **Hosted Zone (Zona Hospedada)** es un contenedor de registros DNS que defin
 - **Private Hosted Zone (Zona Privada)**: Registros accesibles **exclusivamente dentro de una o varias VPCs asociadas** (ej. `db.produccion.internal`), protegiendo la topología y nombres internos de la red corporativa.
 
 ![](./media/slide199_img1.jpeg)
-![](./media/slide200_img1.jpeg)
-![](./media/slide200_img2.jpeg)
-![](./media/slide200_img3.png)
-![](./media/slide200_img4.jpeg)
-![](./media/slide200_img5.jpeg)
-![](./media/slide200_img6.jpeg)
-![](./media/slide200_img7.jpeg)
-![](./media/slide200_img8.png)
 
 ### Registros DNS Clave
 - **A**: Asocia un nombre de host a una dirección **IPv4** (ej. `app.dominio.com` $\to$ `54.22.33.44`).
@@ -62,9 +48,6 @@ Una **Hosted Zone (Zona Hospedada)** es un contenedor de registros DNS que defin
 - **TTL (Time to Live)**: Tiempo en segundos durante el cual los clientes y resolvers intermedios almacenan la respuesta DNS en caché. Un TTL alto reduce costos y consultas pero retrasa la propagación de cambios; un TTL bajo permite cambios rápidos a costa de más consultas.
 
 ![](./media/slide201_img1.png)
-![](./media/slide201_img2.jpeg)
-![](./media/slide201_img3.png)
-![](./media/slide201_img4.jpeg)
 
 ---
 
@@ -84,17 +67,6 @@ Los recursos de AWS (como Application Load Balancers o CloudFront) exponen nombr
 | **Health Checks Nativos** | Opcional con integración externa. | Admite comprobaciones de salud nativas integradas (*Evaluate Target Health*). |
 | **Destinos Válidos** | Cualquier nombre de host en internet. | • **Application / Network Load Balancers**<br>• **Distribuciones de CloudFront**<br>• **Buckets de Amazon S3 configurados como Static Website**<br>• **AWS Global Accelerator**<br>• **Amazon API Gateway**<br>• **VPC Interface Endpoints**<br>*(Nota: NO aplica directamente para nombres DNS de instancias EC2 sueltas)*. |
 
-![](./media/slide203_img1.jpeg)
-![](./media/slide203_img2.jpeg)
-![](./media/slide204_img1.jpeg)
-![](./media/slide204_img2.jpeg)
-![](./media/slide204_img3.jpeg)
-![](./media/slide204_img4.jpeg)
-![](./media/slide204_img5.jpeg)
-![](./media/slide204_img6.jpeg)
-![](./media/slide204_img7.jpeg)
-![](./media/slide204_img8.jpeg)
-
 > **💡 SAA-C03 Exam Tip:**  
 > Si una pregunta de examen te pide mapear el **dominio raíz / Zone Apex (ejemplo: `miempresa.com`)** hacia un **Application Load Balancer o una distribución de CloudFront**, la opción CNAME siempre será **incorrecta**. La única respuesta arquitectónicamente válida es un **Registro Alias de tipo A**.
 
@@ -109,7 +81,6 @@ Las políticas de enrutamiento determinan cómo responde Route 53 a las solicitu
 - **No admite comprobaciones de salud (Health Checks)**. Si una IP cae, Route 53 la seguirá devolviendo.
 
 ![](./media/slide206_img1.png)
-![](./media/slide206_img2.jpeg)
 
 ### 2. Weighted Routing (Enrutamiento Ponderado)
 - Distribuye porcentualmente las respuestas DNS asignando pesos numéricos relativos a cada registro.
@@ -118,24 +89,18 @@ $$\text{Tráfico para recurso } i = \frac{\text{Peso}_i}{\sum \text{Pesos Totale
 - **Casos de uso**: Despliegues Canary / Blue-Green y pruebas A/B de nuevas versiones de software.
 
 ![](./media/slide207_img1.png)
-![](./media/slide207_img2.jpeg)
 
 ### 3. Latency-Based Routing (Enrutamiento Basado en Latencia)
 - Dirige al usuario hacia la **Región de AWS que proporcione la menor latencia de red estimada** calculada periódicamente entre la ubicación del usuario y los centros de datos de AWS.
 - Admite comprobaciones de salud para conmutación por error automática entre regiones.
 
 ![](./media/slide208_img1.jpeg)
-![](./media/slide208_img2.jpeg)
-![](./media/slide208_img3.png)
 
 ### 4. Failover Routing (Conmutación por Error Activo-Pasivo)
 - Requiere asociar un **Health Check** obligatorio.
 - Devuelve la dirección del recurso **Primario** mientras esté saludable; si el chequeo falla, Route 53 conmuta automáticamente y responde con el recurso **Secundario (Disaster Recovery)**.
 
 ![](./media/slide213_img1.png)
-![](./media/slide213_img2.png)
-![](./media/slide213_img3.jpeg)
-![](./media/slide213_img4.jpeg)
 
 ### 5. Geolocation Routing (Enrutamiento por Geolocalización)
 - Resuelve consultas en función de la **ubicación geográfica real del usuario** (continente, país o estado en EE. UU.).
@@ -151,19 +116,12 @@ $$\text{Tráfico para recurso } i = \frac{\text{Peso}_i}{\sum \text{Pesos Totale
 - Requiere el uso de **Route 53 Traffic Flow**.
 
 ![](./media/slide216_img1.png)
-![](./media/slide216_img2.png)
-![](./media/slide216_img3.jpeg)
-![](./media/slide217_img1.png)
-![](./media/slide217_img2.png)
-![](./media/slide217_img3.jpeg)
 
 ### 7. IP-Based Routing (Enrutamiento Basado en IP)
 - Resuelve consultas basándose en el bloque CIDR de la dirección IP pública del cliente (o de su resolver DNS local).
 - **Casos de uso**: Optimizar rutas para ISPs específicos o reducir costos de tránsito corporativo enrutando clientes empresariales a endpoints dedicados.
 
-![](./media/slide218_img1.png)
 ![](./media/slide218_img2.jpeg)
-![](./media/slide218_img3.png)
 
 ### 8. Multi-Value Answer Routing (Respuesta Multivalor)
 - Devuelve hasta **8 registros de direcciones IP saludables** seleccionadas aleatoriamente por consulta.
@@ -183,31 +141,18 @@ $$\text{Tráfico para recurso } i = \frac{\text{Peso}_i}{\sum \text{Pesos Totale
 
 Route 53 utiliza una red distribuida de aproximadamente 15 verificadores de salud globales externos para monitorear la disponibilidad de endpoints.
 
-![](./media/slide209_img1.png)
-![](./media/slide209_img2.png)
-![](./media/slide209_img3.jpeg)
-![](./media/slide209_img4.png)
-![](./media/slide209_img5.jpeg)
-![](./media/slide209_img6.jpeg)
-![](./media/slide210_img1.png)
-![](./media/slide210_img2.png)
-![](./media/slide210_img3.png)
-![](./media/slide210_img4.jpeg)
-![](./media/slide210_img5.jpeg)
-
 ### Tipos de Health Checks
 1. **Endpoint Health Checks**: Realizan peticiones periódicas (intervalo estándar de 30s o rápido de 10s) vía HTTP, HTTPS o TCP hacia un recurso público. Se consideran saludables si responden con códigos 2xx o 3xx dentro de los primeros 5120 bytes de respuesta.
 2. **Calculated Health Checks**: Combinan el estado de hasta 256 chequeos "hijo" (*child checks*) utilizando operadores lógicos (`AND`, `OR`, `NOT`) para determinar si el chequeo "padre" pasa. Útil para mantenimientos escalonados.
 3. **CloudWatch Alarm Health Checks**: Monitorean el estado de una alarma de CloudWatch en lugar de un endpoint directo.
 
-![](./media/slide211_img1.jpeg)
-![](./media/slide211_img2.jpeg)
 ![](./media/slide211_img3.png)
+
+![](./media/slide211_img1.jpeg)
+
+![](./media/slide211_img2.jpeg)
+
 ![](./media/slide212_img1.png)
-![](./media/slide212_img2.png)
-![](./media/slide212_img3.jpeg)
-![](./media/slide212_img4.png)
-![](./media/slide212_img5.jpeg)
 
 > **💡 SAA-C03 Exam Tip:**  
 > Los verificadores de salud de Route 53 residen en la Internet pública fuera de tu VPC y **no pueden acceder a subredes privadas**. Para monitorear una base de datos o servidor alojado en una subred privada o en una red on-premises, la solución oficial es **crear una alarma de CloudWatch que evalúe la métrica interna y asociar el Health Check de Route 53 a dicha alarma de CloudWatch**.
@@ -222,12 +167,13 @@ Es posible adquirir el registro de un dominio en un proveedor externo (como GoDa
 3. Ingresar al panel del registrador externo y reemplazar los servidores de nombres predeterminados por los 4 servidores NS de Route 53.
 
 ![](./media/slide220_img1.jpeg)
+
 ![](./media/slide220_img2.png)
-![](./media/slide220_img3.jpeg)
+
 ![](./media/slide221_img1.jpeg)
+
 ![](./media/slide221_img2.jpeg)
-![](./media/slide221_img3.jpeg)
-![](./media/slide221_img4.png)
+
 
 ---
 
@@ -235,11 +181,7 @@ Es posible adquirir el registro de un dominio en un proveedor externo (como GoDa
 
 En arquitecturas híbridas (red local conectada a AWS mediante **AWS Direct Connect** o **AWS Site-to-Site VPN**), los servidores on-premises y las instancias EC2 en VPCs privadas necesitan resolver nombres de dominio cruzados de manera bidireccional.
 
-![](./media/slide223_img1.png)
 ![](./media/slide223_img2.png)
-![](./media/slide223_img3.png)
-![](./media/slide223_img4.png)
-![](./media/slide223_img5.jpeg)
 
 ### Comparativa: Inbound vs. Outbound Resolver Endpoints
 
@@ -248,17 +190,6 @@ En arquitecturas híbridas (red local conectada a AWS mediante **AWS Direct Conn
 | **Inbound Resolver Endpoint** | **On-Premises $\longrightarrow$ AWS VPC** | Permite que los clientes y servidores locales de tu centro de datos resuelvan nombres de dominios privados en AWS (ej. `app.aws.internal` alojados en Private Hosted Zones). | Se crea una tarjeta de red virtual (ENI) con una **IP privada de la VPC**. Los servidores DNS locales configuran un reenvío condicional (*conditional forwarder*) hacia esa IP privada. |
 | **Outbound Resolver Endpoint** | **AWS VPC $\longrightarrow$ On-Premises** | Permite que instancias EC2 y cargas en la VPC resuelvan nombres de dominios corporativos locales (ej. `crm.empresa.local`). | Se definen **Reglas de Reenvío de Route 53 Resolver (*Resolver Rules*)**. Si la consulta coincide con el dominio on-premises, Route 53 la redirige a través de la ENI de salida hacia los resolvers DNS locales a través del túnel VPN o Direct Connect. |
 
-![](./media/slide224_img1.png)
-![](./media/slide224_img2.jpeg)
-![](./media/slide224_img3.png)
-![](./media/slide224_img4.png)
-![](./media/slide224_img5.png)
-![](./media/slide224_img6.jpeg)
-![](./media/slide224_img7.png)
-![](./media/slide224_img8.jpeg)
-![](./media/slide225_img1.png)
-![](./media/slide225_img2.png)
-![](./media/slide225_img3.png)
-![](./media/slide225_img4.png)
-![](./media/slide225_img5.jpeg)
-![](./media/slide225_img6.png)
+![](./media/slide223_img3.png)
+
+![](./media/slide223_img5.jpeg)

@@ -33,9 +33,6 @@ Rekognition detecta de manera automatizada contenido explícito, sugerente, viol
 - Para casos ambiguos o de alta sensibilidad legal, se integra con **Amazon Augmented AI (A2I)**, el cual desvía automáticamente las imágenes dudosas hacia equipos de revisión humana antes de publicar el contenido.
 
 ![](./media/slide561_img1.jpeg)
-![](./media/slide561_img2.jpeg)
-![](./media/slide561_img3.png)
-![](./media/slide561_img4.jpeg)
 
 ---
 
@@ -48,7 +45,6 @@ Convierte lenguaje hablado en texto escrito utilizando reconocimiento automátic
 - **Transcripción de Llamadas:** Transcribe audio de centros de contacto y separa canales de audio por interlocutor (*Speaker Identification* / diarización).
 
 ![](./media/slide562_img1.jpeg)
-![](./media/slide562_img2.png)
 
 ---
 
@@ -58,7 +54,6 @@ Convierte cadenas de texto en audio realista utilizando tecnologías neuronales 
 - **Léxicos de Pronunciación (*Pronunciation Lexicons*):** Reglas para pronunciar correctamente acrónimos de la industria (ej. "AWS" -> "Amazon Web Services") o nombres corporativos estilizados.
 
 ![](./media/slide563_img1.jpeg)
-![](./media/slide563_img2.png)
 
 ---
 
@@ -67,10 +62,10 @@ Servicio de traducción automática neuronal que entrega traducciones de alta ca
 - Ideal para traducir catálogos de e-commerce, sitios web dinámicos y comunicaciones de soporte al cliente en tiempo real.
 - Permite terminología personalizada para preservar nombres de marcas y jerga corporativa sin traducir.
 
+![](./media/slide565_img4.jpeg)
 ![](./media/slide565_img1.jpeg)
 ![](./media/slide565_img2.jpeg)
 ![](./media/slide565_img3.jpeg)
-![](./media/slide565_img4.jpeg)
 
 ---
 
@@ -84,10 +79,6 @@ Servicio de traducción automática neuronal que entrega traducciones de alta ca
   - Se integra de forma nativa con Amazon Lex para resolver peticiones de clientes de manera automatizada antes de transferir a un agente humano.
 
 ![](./media/slide566_img1.png)
-![](./media/slide566_img2.jpeg)
-![](./media/slide566_img3.jpeg)
-![](./media/slide566_img4.jpeg)
-![](./media/slide566_img5.jpeg)
 
 ---
 
@@ -111,16 +102,6 @@ Motor de búsqueda corporativo impulsado por Machine Learning que comprende cons
 - **Aprendizaje Continuo:** Reordena los resultados basándose en la retroalimentación de los clics de los usuarios (*Search Relevance Tuning*).
 
 ![](./media/slide570_img1.jpeg)
-![](./media/slide570_img2.jpeg)
-![](./media/slide570_img3.jpeg)
-![](./media/slide570_img4.jpeg)
-![](./media/slide570_img5.jpeg)
-![](./media/slide570_img6.png)
-![](./media/slide570_img7.jpeg)
-![](./media/slide570_img8.png)
-![](./media/slide570_img9.png)
-![](./media/slide570_img10.jpeg)
-![](./media/slide570_img11.png)
 
 ---
 
@@ -153,12 +134,6 @@ Motor de personalización y recomendaciones en tiempo real basado en la misma te
 - Genera recomendaciones a medida de productos, reclasificación de contenidos y campañas de marketing dirigido sin que los desarrolladores deban diseñar modelos de Machine Learning.
 
 ![](./media/slide571_img1.jpeg)
-![](./media/slide571_img2.png)
-![](./media/slide571_img3.jpeg)
-![](./media/slide571_img4.png)
-![](./media/slide571_img5.png)
-![](./media/slide571_img6.png)
-![](./media/slide571_img7.png)
 
 ---
 
@@ -170,10 +145,6 @@ Motor de personalización y recomendaciones en tiempo real basado en la misma te
 - Gestiona endpoints de inferencia elásticos en tiempo real o procesamiento por lotes (*Batch Transform*).
 
 ![](./media/slide569_img1.jpeg)
-![](./media/slide569_img2.png)
-![](./media/slide569_img3.jpeg)
-![](./media/slide569_img4.png)
-![](./media/slide569_img5.png)
 
 ---
 

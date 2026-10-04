@@ -24,9 +24,6 @@ El diseño de una arquitectura empresarial escalable en AWS exige ir más allá 
 ![](./media/slide619_img1.jpeg)
 
 ![](./media/slide620_img1.png)
-![](./media/slide620_img2.jpeg)
-![](./media/slide620_img3.png)
-![](./media/slide620_img4.jpeg)
 
 ---
 
@@ -40,9 +37,6 @@ Las **SCPs** son barreras de contención (*guardrails*) que definen los permisos
   - Afectan a **todos los usuarios y roles**, incluido el usuario `root` de las cuentas miembro.
 
 ![](./media/slide623_img1.jpeg)
-![](./media/slide623_img2.jpeg)
-![](./media/slide623_img3.png)
-![](./media/slide623_img4.png)
 
 ![](./media/slide624_img1.jpeg)
 ![](./media/slide624_img2.jpeg)
@@ -78,11 +72,6 @@ Permiten añadir capas de seguridad contextuales dentro de bloques `Condition`:
 
 ![](./media/slide629_img1.jpeg)
 ![](./media/slide629_img2.jpeg)
-![](./media/slide629_img3.png)
-![](./media/slide629_img4.jpeg)
-![](./media/slide629_img5.png)
-![](./media/slide629_img6.jpeg)
-![](./media/slide629_img7.jpeg)
 
 ---
 
@@ -94,11 +83,6 @@ Permiten añadir capas de seguridad contextuales dentro de bloques `Condition`:
 | **Política Basada en Recursos (ej. S3 Bucket Policy)** | El usuario **mantiene sus permisos originales** en la cuenta de origen mientras accede directamente al recurso en la cuenta destino. | Escenarios donde una entidad necesita combinar recursos de ambas cuentas en una misma acción (ej. leer de DynamoDB en Cuenta A y escribir en S3 de Cuenta B). |
 
 ![](./media/slide630_img1.jpeg)
-
-![](./media/slide632_img1.jpeg)
-![](./media/slide632_img2.jpeg)
-![](./media/slide632_img3.jpeg)
-![](./media/slide632_img4.jpeg)
 
 ---
 
@@ -115,7 +99,6 @@ Los **Permission Boundaries** son políticas administradas avanzadas que estable
 ![](./media/slide634_img1.jpeg)
 
 ![](./media/slide635_img1.jpeg)
-![](./media/slide635_img2.jpeg)
 
 ![](./media/slide636_img1.jpeg)
 
@@ -134,49 +117,13 @@ Los **Permission Boundaries** son políticas administradas avanzadas que estable
   - Directorios corporativos locales o en la nube mediante **AWS Directory Service**.
 - **Control de Acceso Basado en Atributos (ABAC):** Utiliza atributos del perfil de usuario (ej. `CostCenter`, `Department`) para otorgar permisos dinámicos en AWS sin necesidad de actualizar políticas constantemente.
 
-![](./media/slide637_img1.jpeg)
-![](./media/slide637_img2.jpeg)
-
 ![](./media/slide638_img1.jpeg)
+
 ![](./media/slide638_img2.jpeg)
+
 ![](./media/slide638_img3.jpeg)
+
 ![](./media/slide638_img4.jpeg)
-
-![](./media/slide639_img1.png)
-![](./media/slide639_img2.png)
-![](./media/slide639_img3.jpeg)
-![](./media/slide639_img4.jpeg)
-![](./media/slide639_img5.jpeg)
-![](./media/slide639_img6.png)
-![](./media/slide639_img7.png)
-![](./media/slide639_img8.png)
-![](./media/slide639_img9.png)
-![](./media/slide639_img10.png)
-![](./media/slide639_img11.png)
-![](./media/slide639_img12.png)
-![](./media/slide639_img13.png)
-![](./media/slide639_img14.jpeg)
-![](./media/slide639_img15.jpeg)
-![](./media/slide639_img16.jpeg)
-![](./media/slide639_img17.jpeg)
-
-![](./media/slide640_img1.jpeg)
-![](./media/slide640_img2.jpeg)
-![](./media/slide640_img3.png)
-![](./media/slide640_img4.png)
-![](./media/slide640_img5.jpeg)
-![](./media/slide640_img6.jpeg)
-![](./media/slide640_img7.png)
-
-![](./media/slide641_img1.jpeg)
-![](./media/slide641_img2.png)
-![](./media/slide641_img3.jpeg)
-![](./media/slide641_img4.png)
-![](./media/slide641_img5.jpeg)
-![](./media/slide641_img6.jpeg)
-![](./media/slide641_img7.jpeg)
-![](./media/slide641_img8.jpeg)
-![](./media/slide641_img9.jpeg)
 
 ---
 
@@ -194,16 +141,6 @@ Para empresas con infraestructura basada en Windows y Active Directory local, AW
 
 ![](./media/slide642_img1.png)
 
-![](./media/slide643_img1.jpeg)
-![](./media/slide643_img2.png)
-![](./media/slide643_img3.png)
-![](./media/slide643_img4.png)
-
-![](./media/slide644_img1.jpeg)
-![](./media/slide644_img2.jpeg)
-![](./media/slide644_img3.jpeg)
-![](./media/slide644_img4.jpeg)
-
 ---
 
 ## 6. AWS Control Tower: Gobernanza Automatizada Multicuenta
@@ -215,14 +152,6 @@ Para empresas con infraestructura basada en Windows y Active Directory local, AW
   - *Detective Guardrails (Detectivos):* Implementados mediante **AWS Config** para monitorear el cumplimiento de recursos y alertar/remediar automáticamente violaciones (ej. identificar y reportar volúmenes EBS sin cifrar o recursos sin etiquetas requeridas).
 
 ![](./media/slide645_img1.jpeg)
-
-![](./media/slide646_img1.jpeg)
-![](./media/slide646_img2.png)
-![](./media/slide646_img3.jpeg)
-![](./media/slide646_img4.jpeg)
-![](./media/slide646_img5.jpeg)
-![](./media/slide646_img6.png)
-![](./media/slide646_img7.jpeg)
 
 ---
 

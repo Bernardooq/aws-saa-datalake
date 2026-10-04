@@ -27,13 +27,6 @@ CloudWatch recopila métricas operativas numéricas de prácticamente todos los 
 
 ![](./media/slide575_img1.jpeg)
 
-![](./media/slide576_img1.jpeg)
-![](./media/slide576_img2.jpeg)
-![](./media/slide576_img3.jpeg)
-![](./media/slide576_img4.jpeg)
-![](./media/slide576_img5.jpeg)
-![](./media/slide576_img6.jpeg)
-
 ---
 
 ### 1.2 CloudWatch Logs y CloudWatch Logs Insights
@@ -42,8 +35,6 @@ CloudWatch recopila métricas operativas numéricas de prácticamente todos los 
   - *Log Stream:* Secuencia de eventos emitidos por un origen específico (ej. una instancia EC2, una tarea ECS o una función Lambda).
 - **Cifrado y Seguridad:** Cifrado por defecto en reposo con soporte opcional de claves administradas por el cliente en **AWS KMS**.
 - **CloudWatch Logs Insights:** Motor de consultas interactivo con sintaxis propia diseñada para filtrar, ordenar, calcular estadísticas y extraer campos JSON de logs sin aprovisionar servidores.
-
-![](./media/slide577_img1.png)
 
 ![](./media/slide579_img1.jpeg)
 
@@ -58,29 +49,15 @@ Un concepto crítico evaluado en el examen es la diferencia en tiempo de entrega
 - **Agregación Multi-Cuenta / Multi-Región:** Permite centralizar logs de múltiples cuentas en un único Kinesis Data Stream receptor mediante un rol IAM de asunción entre cuentas (*Cross-Account IAM Role*).
 
 ![](./media/slide581_img1.jpeg)
-![](./media/slide581_img2.jpeg)
 
 ![](./media/slide582_img1.jpeg)
-![](./media/slide582_img2.jpeg)
+
 ![](./media/slide582_img3.jpeg)
-![](./media/slide582_img4.jpeg)
+
 ![](./media/slide582_img5.jpeg)
-![](./media/slide582_img6.jpeg)
-![](./media/slide582_img7.png)
 
-![](./media/slide583_img1.jpeg)
-![](./media/slide583_img2.jpeg)
-![](./media/slide583_img3.jpeg)
-![](./media/slide583_img4.jpeg)
-
-![](./media/slide584_img1.jpeg)
 ![](./media/slide584_img2.jpeg)
 ![](./media/slide584_img3.jpeg)
-![](./media/slide584_img4.png)
-![](./media/slide584_img5.jpeg)
-![](./media/slide584_img6.jpeg)
-![](./media/slide584_img7.png)
-![](./media/slide584_img8.png)
 
 ---
 
@@ -103,24 +80,8 @@ Una alarma pasa por tres estados: `OK`, `ALARM` e `INSUFFICIENT_DATA`.
 ![](./media/slide588_img1.png)
 
 ![](./media/slide589_img1.jpeg)
-![](./media/slide589_img2.jpeg)
+
 ![](./media/slide589_img3.jpeg)
-
-![](./media/slide590_img1.png)
-![](./media/slide590_img2.png)
-![](./media/slide590_img3.jpeg)
-![](./media/slide590_img4.jpeg)
-
-![](./media/slide591_img1.png)
-![](./media/slide591_img2.jpeg)
-![](./media/slide591_img3.jpeg)
-
-![](./media/slide592_img1.png)
-![](./media/slide592_img2.jpeg)
-![](./media/slide592_img3.png)
-![](./media/slide592_img4.png)
-![](./media/slide592_img5.jpeg)
-![](./media/slide592_img6.jpeg)
 
 ---
 
@@ -131,15 +92,11 @@ Una alarma pasa por tres estados: `OK`, `ALARM` e `INSUFFICIENT_DATA`.
 - **CloudWatch Application Insights:** Descubre y configura dashboards automatizados respaldados por modelos analíticos de SageMaker para aplicaciones corporativas (Java, .NET, bases de datos).
 
 ![](./media/slide599_img1.jpeg)
-![](./media/slide599_img2.png)
-![](./media/slide599_img3.png)
 ![](./media/slide599_img4.jpeg)
 
 ![](./media/slide600_img1.jpeg)
 
 ![](./media/slide601_img1.png)
-![](./media/slide601_img2.png)
-![](./media/slide601_img3.png)
 
 ---
 
@@ -155,28 +112,6 @@ Una alarma pasa por tres estados: `OK`, `ALARM` e `INSUFFICIENT_DATA`.
 - **Programación Cron / Rate:** Ejecuta tareas periódicas recurrentes (reemplazo de servidores cron tradicionales).
 
 ![](./media/slide594_img1.png)
-![](./media/slide594_img2.png)
-![](./media/slide594_img3.png)
-![](./media/slide594_img4.png)
-![](./media/slide594_img5.jpeg)
-
-![](./media/slide595_img1.jpeg)
-![](./media/slide595_img2.jpeg)
-![](./media/slide595_img3.jpeg)
-![](./media/slide595_img4.jpeg)
-![](./media/slide595_img5.jpeg)
-![](./media/slide595_img6.jpeg)
-![](./media/slide595_img7.jpeg)
-![](./media/slide595_img8.png)
-![](./media/slide595_img9.jpeg)
-![](./media/slide595_img10.jpeg)
-![](./media/slide595_img11.jpeg)
-![](./media/slide595_img12.jpeg)
-![](./media/slide595_img13.jpeg)
-![](./media/slide595_img14.jpeg)
-![](./media/slide595_img15.jpeg)
-![](./media/slide595_img16.jpeg)
-![](./media/slide595_img17.jpeg)
 
 ---
 
@@ -185,24 +120,10 @@ Una alarma pasa por tres estados: `OK`, `ALARM` e `INSUFFICIENT_DATA`.
 - **Archivado y Replay de Eventos (*Archive & Replay*):** Permite retener eventos de manera indefinida o por un TTL específico y **reproducir (*replay*)** eventos históricos para depuración o recuperación ante fallos.
 - **Schema Registry:** Infiere automáticamente el esquema de los eventos JSON y genera código tipado (*bindings*) para Java, Python o TypeScript.
 
-![](./media/slide596_img1.jpeg)
-![](./media/slide596_img2.jpeg)
-![](./media/slide596_img3.png)
-![](./media/slide596_img4.jpeg)
-![](./media/slide596_img5.jpeg)
-![](./media/slide596_img6.jpeg)
-![](./media/slide596_img7.jpeg)
-![](./media/slide596_img8.jpeg)
-![](./media/slide596_img9.png)
-![](./media/slide596_img10.png)
-
 ![](./media/slide597_img1.jpeg)
 
 ![](./media/slide598_img1.jpeg)
 ![](./media/slide598_img2.jpeg)
-![](./media/slide598_img3.jpeg)
-![](./media/slide598_img4.jpeg)
-![](./media/slide598_img5.jpeg)
 
 ---
 
@@ -217,21 +138,9 @@ Una alarma pasa por tres estados: `OK`, `ALARM` e `INSUFFICIENT_DATA`.
 
 ![](./media/slide604_img1.jpeg)
 
-![](./media/slide605_img1.jpeg)
-![](./media/slide605_img2.jpeg)
-![](./media/slide605_img3.png)
-![](./media/slide605_img4.jpeg)
-![](./media/slide605_img5.jpeg)
 ![](./media/slide605_img6.png)
-![](./media/slide605_img7.jpeg)
+
 ![](./media/slide605_img8.png)
-
-![](./media/slide606_img1.jpeg)
-
-![](./media/slide607_img1.jpeg)
-![](./media/slide607_img2.jpeg)
-![](./media/slide607_img3.jpeg)
-![](./media/slide607_img4.jpeg)
 
 ---
 
@@ -241,25 +150,8 @@ Una alarma pasa por tres estados: `OK`, `ALARM` e `INSUFFICIENT_DATA`.
 - **Intercepción y Alertas Inmediatas:** EventBridge puede escuchar llamadas a la API registradas por CloudTrail (ej. `DeleteTable`, `AuthorizeSecurityGroupIngress`, `StopLogging`) y disparar inmediatamente alertas SNS o funciones Lambda de remediación.
 
 ![](./media/slide608_img1.jpeg)
-![](./media/slide608_img2.jpeg)
+
 ![](./media/slide608_img3.jpeg)
-![](./media/slide608_img4.jpeg)
-
-![](./media/slide609_img1.jpeg)
-![](./media/slide609_img2.jpeg)
-![](./media/slide609_img3.jpeg)
-![](./media/slide609_img4.jpeg)
-![](./media/slide609_img5.jpeg)
-![](./media/slide609_img6.jpeg)
-
-![](./media/slide610_img1.jpeg)
-![](./media/slide610_img2.png)
-![](./media/slide610_img3.png)
-![](./media/slide610_img4.png)
-![](./media/slide610_img5.jpeg)
-![](./media/slide610_img6.png)
-![](./media/slide610_img7.png)
-![](./media/slide610_img8.png)
 
 ---
 
@@ -287,18 +179,6 @@ Cuando un recurso se marca como `NON_COMPLIANT`, AWS Config puede ejecutar accio
 - Permite configurar reintentos automáticos si la remediación inicial no restablece la conformidad.
 
 ![](./media/slide614_img1.jpeg)
-![](./media/slide614_img2.jpeg)
-![](./media/slide614_img3.jpeg)
-![](./media/slide614_img4.jpeg)
-
-![](./media/slide615_img1.jpeg)
-![](./media/slide615_img2.jpeg)
-![](./media/slide615_img3.png)
-![](./media/slide615_img4.jpeg)
-![](./media/slide615_img5.jpeg)
-![](./media/slide615_img6.jpeg)
-![](./media/slide615_img7.jpeg)
-![](./media/slide615_img8.png)
 
 ---
 
