@@ -36,7 +36,6 @@ Con una cuota de mercado sólida, más de 128 mil millones de dólares en ingres
 - **Big Data, Analítica e IA**: Ingesta masiva en tiempo real, lagos de datos (Data Lakes) y entrenamiento/inferencia de modelos de Machine Learning.
 - **Aplicaciones Web, Móviles y Gaming**: Arquitecturas serverless y microservicios con escalado horizontal automático y distribución global.
 
-![](./media/01_img6.png)
 ![](./media/01_img7.png)
 ![](./media/01_img8.png)
 ![](./media/01_img9.png)
@@ -81,10 +80,6 @@ Para el examen SAA-C03, seleccionar la región adecuada no es una decisión arbi
    - Los costos de cómputo, almacenamiento y transferencia de datos varían sustancialmente entre regiones debido a factores locales (impuestos, costos energéticos, hardware). Por ejemplo, `us-east-1` suele ser más económica que `sa-east-1` (São Paulo).
 
 ![](./media/01_img13.png)
-![](./media/01_img14.png)
-![](./media/01_img15.png)
-![](./media/01_img16.png)
-![](./media/01_img17.png)
 
 > **💡 SAA-C03 Exam Tip:**  
 > Si una pregunta de examen plantea que una empresa financiera o de salud exige que ningún registro o respaldo salga de una frontera nacional específica por motivos de auditoría, **el requerimiento de gobernanza y soberanía de datos (Compliance) anula cualquier consideración de costo o latencia**. Además, recuerda: AWS **jamás** mueve tus datos entre regiones de forma automática.
